@@ -69,13 +69,13 @@ public class Login extends JFrame implements MouseListener{
         txtPassword.addMouseListener(this);
 
         //Logo for Password next to Password txt box
-        ImageIcon iconPassword = new ImageIcon("C:\\Users\\Administrator\\Desktop\\Java\\Car_Rental_System_2\\src\\key.png");
+        ImageIcon iconPassword = new ImageIcon("src\\key.png");
         picPassword.setIcon(iconPassword);
         picPassword.setSize(32, 40);
         picPassword.setLocation(66, 135);
 
         //Logo for Username next to Username txt box
-        ImageIcon iconUsername = new ImageIcon("C:\\Users\\Administrator\\Desktop\\Java\\Car_Rental_System_2\\src\\user.png");
+        ImageIcon iconUsername = new ImageIcon("src\\user.png");
         picUsername.setIcon(iconUsername);
         picUsername.setSize(32, 40);
         picUsername.setLocation(70, 58);
@@ -94,7 +94,7 @@ public class Login extends JFrame implements MouseListener{
         //Rentizen Logo in left panel
         picLogo.setForeground(Color.WHITE);
         picLogo.setSize(223, 221);
-        ImageIcon logo = new ImageIcon("C:\\Users\\Administrator\\Desktop\\Java\\Car_Rental_System_2\\src\\Logo1.png");
+        ImageIcon logo = new ImageIcon("src\\Logo1.png");
         picLogo.setIcon(logo);
         
         //Left panel
@@ -112,12 +112,12 @@ public class Login extends JFrame implements MouseListener{
         pnl2.setBackground(new Color(127,126,144));
 
         //Frame settings
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().setLayout(null);
-        frame.setSize(700, 349);
-        frame.setIconImage(logo.getImage());
-        frame.setResizable(false);
-        frame.setVisible(true);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.getContentPane().setLayout(null);
+        this.setSize(700, 349);
+        this.setIconImage(logo.getImage());
+        this.setResizable(false);
+        this.setVisible(true);
 
         //Adding to Frame
         pnl2.add(separator2);
@@ -128,8 +128,8 @@ public class Login extends JFrame implements MouseListener{
         pnl2.add(txtUsername);
         pnl2.add(txtPassword);
         pnl1.add(picLogo);
-        frame.add(pnl1);
-        frame.add(pnl2);
+        this.add(pnl1);
+        this.add(pnl2);
     }
 
     @Override
@@ -141,6 +141,9 @@ public class Login extends JFrame implements MouseListener{
             if(user.equals("HamidKarim")) {
                 if(pwd.equals("hamidkarim123")) {
                     System.out.println("Login Successful");
+                    HomePage hP = new HomePage();
+                    hP.setVisible(true);
+                    this.setVisible(false);
                 } else {
                     System.out.println("Login Denied1");
                 }
