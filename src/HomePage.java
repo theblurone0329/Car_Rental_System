@@ -12,6 +12,7 @@ public class HomePage extends JFrame implements MouseListener{
         new HomePage();
     }
 
+    //Declare Form Components
     JPanel pnl1 = new JPanel();
     JPanel pnl2 = new JPanel();
     JLabel picCar = new JLabel();
@@ -23,52 +24,68 @@ public class HomePage extends JFrame implements MouseListener{
     JLabel status = new JLabel();
 
     HomePage() {
+
+        //Status text
         status.setText("Status: Rent Request Pending");
         status.setForeground(new Color(225,223,186));
         status.setBackground(new Color(54,41,44));
         status.setFont(new Font("Segoe UI", Font.BOLD, 16));
         status.setSize(230, 35);
-        status.setLocation(185, 260);
+        status.setLocation(155, 260);
 
-        ImageIcon prog0 = new ImageIcon("src\\0_Percent.png");
-        ImageIcon prog25 = new ImageIcon("src\\25_Percent.png");
-        ImageIcon prog50 = new ImageIcon();
-        ImageIcon prog75 = new ImageIcon();
-        ImageIcon prog100 = new ImageIcon();
+        //Progress Bar Images
+        ImageIcon prog0 = new ImageIcon("src\\1.png");
+        ImageIcon prog25 = new ImageIcon("src\\5.png");
+        ImageIcon prog50 = new ImageIcon("src\\2.png");
+        ImageIcon prog75 = new ImageIcon("src\\3.png");
+        ImageIcon prog100 = new ImageIcon("src\\4.png");
 
         picProgBar_0.setIcon(prog0);
         picProgBar_0.setSize(246, 243);
-        picProgBar_0.setLocation(430, 95);
+        picProgBar_0.setLocation(400, 95);
 
         picProgBar_25.setIcon(prog25);
         picProgBar_25.setSize(246, 243);
-        picProgBar_25.setLocation(430, 95);
+        picProgBar_25.setLocation(400, 95);
 
         picProgBar_50.setIcon(prog50);
-        picProgBar_75.setIcon(prog75);
-        picProgBar_100.setIcon(prog100);
+        picProgBar_50.setSize(246, 243);
+        picProgBar_50.setLocation(400, 95);
 
+        picProgBar_75.setIcon(prog75);
+        picProgBar_75.setSize(246, 243);
+        picProgBar_75.setLocation(400, 95);
+
+        picProgBar_100.setIcon(prog100);
+        picProgBar_100.setSize(246, 243);
+        picProgBar_100.setLocation(400, 95);
+
+        // Car Picture
         ImageIcon car = new ImageIcon("src\\Tesla_Model_S_Logo.png");
         picCar.setIcon(car);
         picCar.setSize(236, 125);
-        picCar.setLocation(180, 130);
+        picCar.setLocation(150, 130);
 
+        //Bottom Panel / Menu
         pnl2.setBackground(new Color(127, 126, 144));
         pnl2.setLayout(null);
-        pnl2.setBounds(0, 420, 855, 108);
+        pnl2.setBounds(0, 420, 805, 108);
 
-        pnl1.setBackground(new Color(54,41,44));
+        //Top Panel
+        pnl1.setBackground(new Color(27, 28, 30));
         pnl1.setLayout(null);
-        pnl1.setBounds(0, 0, 855, 420);
+        pnl1.setBounds(0, 0, 805, 420);
 
-        ImageIcon icon = new ImageIcon("src\\Logo1.png");
+        //Frame
+        ImageIcon icon = new ImageIcon("src\\Company Logo.png");
         this.setIconImage(icon.getImage());
         this.setTitle("RentiZen");
         this.setLayout(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(855, 528);
+        this.setSize(805, 528);
         this.setVisible(true);
         
+        //Add Stuff
         pnl1.add(status);
         pnl1.add(picProgBar_100);
         pnl1.add(picProgBar_75);
@@ -78,6 +95,11 @@ public class HomePage extends JFrame implements MouseListener{
         pnl1.add(picCar);
         this.add(pnl2);
         this.add(pnl1);
+
+        picProgBar_100.setVisible(false);
+        picProgBar_75.setVisible(false);
+        picProgBar_50.setVisible(false);
+        picProgBar_25.setVisible(false);
         
     }
 

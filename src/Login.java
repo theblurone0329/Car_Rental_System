@@ -92,29 +92,27 @@ public class Login extends JFrame implements MouseListener{
         txtUsername.addMouseListener(this);
 
         //Rentizen Logo in left panel
-        picLogo.setForeground(Color.WHITE);
-        picLogo.setSize(223, 221);
-        ImageIcon logo = new ImageIcon("src\\Logo1.png");
+        picLogo.setSize(350, 310);
+        ImageIcon logo = new ImageIcon("src\\Logo.png");
         picLogo.setIcon(logo);
         
         //Left panel
         pnl1.setLayout(null);
-        pnl1.setBounds(0, 0, 350, 310);
-        pnl1.setBackground(new Color(54,41,44));
+        pnl1.setBounds(0, 0, 345, 310);
+        pnl1.setBackground(new Color(27, 28, 30));
         
         //Location for Rentizen logo
-        picLogo.setLocation(65, 35);
-        picLogo.setSize(223, 221);
+        picLogo.setLocation(0, 0);
 
         //Right panel
         pnl2.setLayout(null);
-        pnl2.setBounds(350, 0, 350, 310);
+        pnl2.setBounds(345, 0, 345, 310);
         pnl2.setBackground(new Color(127,126,144));
 
         //Frame settings
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.getContentPane().setLayout(null);
-        this.setSize(700, 349);
+        this.setSize(690, 349);
         this.setIconImage(logo.getImage());
         this.setResizable(false);
         this.setVisible(true);
