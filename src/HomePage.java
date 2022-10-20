@@ -21,6 +21,7 @@ public class HomePage extends JFrame implements MouseListener{
     JLabel picProgBar_50 = new JLabel();
     JLabel picProgBar_75 = new JLabel();
     JLabel picProgBar_100 = new JLabel();
+    JLabel background = new JLabel();
     JLabel status = new JLabel();
 
     HomePage() {
@@ -31,7 +32,7 @@ public class HomePage extends JFrame implements MouseListener{
         status.setBackground(new Color(54,41,44));
         status.setFont(new Font("Segoe UI", Font.BOLD, 16));
         status.setSize(230, 35);
-        status.setLocation(155, 260);
+        status.setLocation(115, 260);
 
         //Progress Bar Images
         ImageIcon prog0 = new ImageIcon("src\\1.png");
@@ -42,29 +43,29 @@ public class HomePage extends JFrame implements MouseListener{
 
         picProgBar_0.setIcon(prog0);
         picProgBar_0.setSize(246, 243);
-        picProgBar_0.setLocation(400, 95);
+        picProgBar_0.setLocation(360, 95);
 
         picProgBar_25.setIcon(prog25);
         picProgBar_25.setSize(246, 243);
-        picProgBar_25.setLocation(400, 95);
+        picProgBar_25.setLocation(360, 95);
 
         picProgBar_50.setIcon(prog50);
         picProgBar_50.setSize(246, 243);
-        picProgBar_50.setLocation(400, 95);
+        picProgBar_50.setLocation(360, 95);
 
         picProgBar_75.setIcon(prog75);
         picProgBar_75.setSize(246, 243);
-        picProgBar_75.setLocation(400, 95);
+        picProgBar_75.setLocation(360, 95);
 
         picProgBar_100.setIcon(prog100);
         picProgBar_100.setSize(246, 243);
-        picProgBar_100.setLocation(400, 95);
+        picProgBar_100.setLocation(360, 95);
 
         // Car Picture
         ImageIcon car = new ImageIcon("src\\Tesla_Model_S_Logo.png");
         picCar.setIcon(car);
         picCar.setSize(236, 125);
-        picCar.setLocation(150, 130);
+        picCar.setLocation(110, 130);
 
         //Bottom Panel / Menu
         pnl2.setBackground(new Color(127, 126, 144));
@@ -82,7 +83,7 @@ public class HomePage extends JFrame implements MouseListener{
         this.setTitle("RentiZen");
         this.setLayout(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(805, 528);
+        this.setSize(725, 528);
         this.setVisible(true);
         
         //Add Stuff

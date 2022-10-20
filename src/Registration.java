@@ -25,8 +25,20 @@ public class Registration extends JFrame implements MouseListener{
     JTextField txtEmail= new JTextField();
     JTextField txtPhoneNum = new JTextField();
     JLabel pageTitle = new JLabel();
+    JLabel car1 = new JLabel();
+    JLabel car2 = new JLabel();
 
     Registration() {
+
+        ImageIcon car_2 = new ImageIcon("src\\car2.png");
+        car2.setIcon(car_2);
+        car2.setSize(400, 200);
+        car2.setLocation(470,220);
+
+        ImageIcon car_1 = new ImageIcon("src\\car1.png");
+        car1.setIcon(car_1);
+        car1.setSize(400, 200);
+        car1.setLocation(-110,220);
 
         //Register Button
         btnRegister.setText("Register User");
@@ -36,67 +48,67 @@ public class Registration extends JFrame implements MouseListener{
         btnRegister.setForeground(new Color(225,223,186));
         btnRegister.setBackground(new Color(27, 28, 30));
         btnRegister.setSize(158, 44);
-        btnRegister.setLocation(310, 285);
+        btnRegister.setLocation(270, 285);
         btnRegister.addMouseListener(this);
 
         //Separators under each textboxes
         separator4.setForeground(new Color(225,223,186));
         separator4.setBackground(new Color(27, 28, 30));
         separator4.setSize(195, 17);
-        separator4.setLocation(440, 240);
+        separator4.setLocation(400, 240);
 
         separator3.setForeground(new Color(225,223,186));
         separator3.setBackground(new Color(27, 28, 30));
         separator3.setSize(195, 17);
-        separator3.setLocation(140, 240);
+        separator3.setLocation(125, 240);
 
         separator2.setForeground(new Color(225,223,186));
         separator2.setBackground(new Color(27, 28, 30));
         separator2.setSize(195, 17);
-        separator2.setLocation(440, 130);
+        separator2.setLocation(400, 130);
 
         separator1.setForeground(new Color(225,223,186));
         separator1.setBackground(new Color(27, 28, 30));
         separator1.setSize(195, 17);
-        separator1.setLocation(140, 130);
+        separator1.setLocation(125, 130);
 
         //Text Box for Phone Num
         txtPhoneNum.setText("Phone No.");
-        txtPhoneNum.setFont(new Font("TW Cen MT", Font.PLAIN, 18));
+        txtPhoneNum.setFont(new Font("Segoe UI", Font.PLAIN, 15));
         txtPhoneNum.setForeground(new Color(225,223,186));
         txtPhoneNum.setBackground(new Color(27, 28, 30));
         txtPhoneNum.setSize(195, 44);
-        txtPhoneNum.setLocation(440, 195);
+        txtPhoneNum.setLocation(400, 195);
         txtPhoneNum.setBorder(null);
         txtPhoneNum.addMouseListener(this);
 
         //Text Box for Password
         txtPassword.setText("Password");
-        txtPassword.setFont(new Font("TW Cen MT", Font.PLAIN, 18));
+        txtPassword.setFont(new Font("Segoe UI", Font.PLAIN, 15));
         txtPassword.setForeground(new Color(225,223,186));
         txtPassword.setBackground(new Color(27, 28, 30));
         txtPassword.setSize(195, 44);
-        txtPassword.setLocation(440, 85);
+        txtPassword.setLocation(400, 85);
         txtPassword.setBorder(null);
         txtPassword.addMouseListener(this);
 
         //Text Box for Email
         txtEmail.setText("Email");
-        txtEmail.setFont(new Font("TW Cen MT", Font.PLAIN, 18));
+        txtEmail.setFont(new Font("Segoe UI", Font.PLAIN, 15));
         txtEmail.setForeground(new Color(225,223,186));
         txtEmail.setBackground(new Color(27, 28, 30));
         txtEmail.setSize(195, 44);
-        txtEmail.setLocation(140, 195);
+        txtEmail.setLocation(125, 195);
         txtEmail.setBorder(null);
         txtEmail.addMouseListener(this);
 
         //Text Box for Username
         txtUsername.setText("Username");
-        txtUsername.setFont(new Font("TW Cen MT", Font.PLAIN, 18));
+        txtUsername.setFont(new Font("Segoe UI", Font.PLAIN, 15));
         txtUsername.setForeground(new Color(225,223,186));
         txtUsername.setBackground(new Color(27, 28, 30));
         txtUsername.setSize(195, 44);
-        txtUsername.setLocation(140, 85);
+        txtUsername.setLocation(125, 85);
         txtUsername.setBorder(null);
         txtUsername.addMouseListener(this);
 
@@ -106,7 +118,7 @@ public class Registration extends JFrame implements MouseListener{
         pageTitle.setForeground(new Color(225,223,186));
         pageTitle.setBackground(new Color(27, 28, 30));
         pageTitle.setSize(122, 27);
-        pageTitle.setLocation(340, 10);
+        pageTitle.setLocation(290, 10);
 
         //Form
         ImageIcon icon = new ImageIcon("src\\Logo1.png");
@@ -115,7 +127,7 @@ public class Registration extends JFrame implements MouseListener{
         this.setTitle("RentiZen");
         this.setLayout(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(805, 420);
+        this.setSize(725, 420);
         this.setVisible(true);
 
         //Adding Components to form
@@ -129,6 +141,8 @@ public class Registration extends JFrame implements MouseListener{
         this.add(txtEmail);
         this.add(txtUsername);
         this.add(pageTitle);
+        this.add(car1);
+        this.add(car2);
     }
 
     @Override
