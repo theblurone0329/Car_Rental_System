@@ -18,14 +18,26 @@ public class Profile extends JFrame implements MouseListener{
     JLabel border = new JLabel();
     JLabel border2 = new JLabel();
     JLabel user = new JLabel();
+    JLabel progBar0 = new JLabel();
+    JLabel car_Profile = new JLabel();
+    JLabel btnView = new JLabel();
     
-
     Profile() {
 
-        ImageIcon user1 = new ImageIcon("src\\user_1.png");
-        user.setIcon(user1);
-        user.setSize(64, 64);
-        user.setLocation(290, 70);
+        ImageIcon btn_View = new ImageIcon("src\\file.png");
+        btnView.setIcon(btn_View);
+        btnView.setSize(64, 64);
+        btnView.setLocation(555, 220);
+
+        ImageIcon car = new ImageIcon("src\\Car_profile.png");
+        car_Profile.setIcon(car);
+        car_Profile.setSize(174, 100);
+        car_Profile.setLocation(435, 95);
+
+        ImageIcon progBar_0 = new ImageIcon("src\\1_1.png");
+        progBar0.setIcon(progBar_0);
+        progBar0.setSize(135, 139);
+        progBar0.setLocation(410, 190);
 
         ImageIcon br1 = new ImageIcon("src\\Border.png");
         border2.setIcon(br1);
@@ -70,7 +82,9 @@ public class Profile extends JFrame implements MouseListener{
         this.setSize(725, 420);
         this.setVisible(true);
 
-        //this.add(user);
+        this.add(btnView);
+        this.add(car_Profile);
+        this.add(progBar0);
         this.add(btnEdit);
         this.add(lblUsername);
         this.add(lblEmail);
