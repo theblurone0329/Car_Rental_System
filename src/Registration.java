@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -43,7 +45,8 @@ public class Registration extends JFrame implements MouseListener{
         //Register Button
         btnRegister.setText("Register User");
         btnRegister.setFont(new Font("TW Cen MT", Font.BOLD, 18));
-        btnRegister.setBorder(null);
+        Border border = new LineBorder(new Color(225,223,186), 1, true);
+        btnRegister.setBorder(border);
         btnRegister.setFocusable(false);
         btnRegister.setForeground(new Color(225,223,186));
         btnRegister.setBackground(new Color(27, 28, 30));
