@@ -23,10 +23,24 @@ public class Booking extends JFrame implements MouseListener{
     JSeparator separator1 = new JSeparator();
     Booking() {
 
+        separator1.setForeground(new Color(225,223,186));
+        separator1.setBackground(new Color(27, 28, 30));
+        separator1.setSize(195, 17);
+        separator1.setLocation(120, 137);
+
+        txtCarModel.setText("Tesla Model S");
+        txtCarModel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        txtCarModel.setForeground(new Color(225,223,186));
+        txtCarModel.setBackground(new Color(27, 28, 30));
+        txtCarModel.setSize(100, 42);
+        txtCarModel.setLocation(120, 95);
+        txtCarModel.setBorder(null);
+        txtCarModel.setEditable(false);
+
         carModel.setText("Car Model");
         carModel.setBackground(new Color(27, 28, 30));
         carModel.setForeground(new Color(225,223,186));
-        carModel.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+        carModel.setFont(new Font("Segoe UI", Font.PLAIN, 17));
         carModel.setSize(100,25);
         carModel.setLocation(100, 70);
 
@@ -61,6 +75,8 @@ public class Booking extends JFrame implements MouseListener{
         this.setSize(725, 420);
         this.setVisible(true);
 
+        this.add(separator1);
+        this.add(txtCarModel);
         this.add(pageTitle);
         this.add(carModel);
         this.add(bookingDate);
