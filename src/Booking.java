@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 
 public class Booking extends JFrame implements MouseListener{
     public static void main(String[] args) {
@@ -19,9 +21,59 @@ public class Booking extends JFrame implements MouseListener{
     JLabel endBookingDate = new JLabel();
     JLabel pageTitle = new JLabel();
     JTextField txtCarModel = new JTextField();
+    JTextField txtStartDate = new JTextField();
+    JTextField txtEndDate = new JTextField();
     JButton btnBook = new JButton();
     JSeparator separator1 = new JSeparator();
+    JSeparator separator2 = new JSeparator();
+    JSeparator separator3 = new JSeparator();
+    JLabel calendarPic = new JLabel();
+
     Booking() {
+
+        btnBook.setText("Book");
+        btnBook.setFont(new Font("TW Cen MT", Font.BOLD, 18));
+        Border border = new LineBorder(new Color(225,223,186), 1, true);
+        btnBook.setBorder(border);
+        btnBook.setFocusable(false);
+        btnBook.setForeground(new Color(225,223,186));
+        btnBook.setBackground(new Color(27, 28, 30));
+        btnBook.setSize(110, 44);
+        btnBook.setLocation(300, 315);
+        btnBook.addMouseListener(this);
+
+        ImageIcon calendar = new ImageIcon("src\\calendar.png");
+        calendarPic.setIcon(calendar);
+        calendarPic.setSize(256, 256);
+        calendarPic.setLocation(430, 40);
+
+        separator3.setForeground(new Color(225,223,186));
+        separator3.setBackground(new Color(27, 28, 30));
+        separator3.setSize(195, 17);
+        separator3.setLocation(120, 297);
+
+        txtEndDate.setText("10-09-2022");
+        txtEndDate.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        txtEndDate.setForeground(new Color(225,223,186));
+        txtEndDate.setBackground(new Color(27, 28, 30));
+        txtEndDate.setSize(100, 42);
+        txtEndDate.setLocation(120, 255);
+        txtEndDate.setBorder(null);
+        txtEndDate.setEditable(false);
+
+        separator2.setForeground(new Color(225,223,186));
+        separator2.setBackground(new Color(27, 28, 30));
+        separator2.setSize(195, 17);
+        separator2.setLocation(120, 217);
+
+        txtStartDate.setText("09-09-2022");
+        txtStartDate.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        txtStartDate.setForeground(new Color(225,223,186));
+        txtStartDate.setBackground(new Color(27, 28, 30));
+        txtStartDate.setSize(100, 42);
+        txtStartDate.setLocation(120, 175);
+        txtStartDate.setBorder(null);
+        txtStartDate.setEditable(false);
 
         separator1.setForeground(new Color(225,223,186));
         separator1.setBackground(new Color(27, 28, 30));
@@ -75,6 +127,12 @@ public class Booking extends JFrame implements MouseListener{
         this.setSize(725, 420);
         this.setVisible(true);
 
+        this.add(btnBook);
+        this.add(calendarPic);
+        this.add(separator3);
+        this.add(txtEndDate);
+        this.add(separator2);
+        this.add(txtStartDate);
         this.add(separator1);
         this.add(txtCarModel);
         this.add(pageTitle);
