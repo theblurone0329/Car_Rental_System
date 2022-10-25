@@ -31,6 +31,7 @@ public class Booking extends JFrame implements MouseListener{
 
     Booking() {
 
+        //Booking Button
         btnBook.setText("Book");
         btnBook.setFont(new Font("TW Cen MT", Font.BOLD, 18));
         Border border = new LineBorder(new Color(225,223,186), 1, true);
@@ -42,16 +43,19 @@ public class Booking extends JFrame implements MouseListener{
         btnBook.setLocation(300, 315);
         btnBook.addMouseListener(this);
 
+        //Big Calendar Picture
         ImageIcon calendar = new ImageIcon("src\\calendar.png");
         calendarPic.setIcon(calendar);
         calendarPic.setSize(256, 256);
         calendarPic.setLocation(430, 40);
 
+        //Separator Under End Date txt Box
         separator3.setForeground(new Color(225,223,186));
         separator3.setBackground(new Color(27, 28, 30));
         separator3.setSize(195, 17);
         separator3.setLocation(120, 297);
 
+        //End Date txt Box
         txtEndDate.setText("10-09-2022");
         txtEndDate.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         txtEndDate.setForeground(new Color(225,223,186));
@@ -61,11 +65,13 @@ public class Booking extends JFrame implements MouseListener{
         txtEndDate.setBorder(null);
         txtEndDate.setEditable(false);
 
+        //Separator Under Start Date txt Box
         separator2.setForeground(new Color(225,223,186));
         separator2.setBackground(new Color(27, 28, 30));
         separator2.setSize(195, 17);
         separator2.setLocation(120, 217);
 
+        //Start Date Txt Box
         txtStartDate.setText("09-09-2022");
         txtStartDate.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         txtStartDate.setForeground(new Color(225,223,186));
@@ -75,11 +81,13 @@ public class Booking extends JFrame implements MouseListener{
         txtStartDate.setBorder(null);
         txtStartDate.setEditable(false);
 
+        //Separator under Car Model txt Box
         separator1.setForeground(new Color(225,223,186));
         separator1.setBackground(new Color(27, 28, 30));
         separator1.setSize(195, 17);
         separator1.setLocation(120, 137);
 
+        //Car Model txt Box
         txtCarModel.setText("Tesla Model S");
         txtCarModel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         txtCarModel.setForeground(new Color(225,223,186));
@@ -89,6 +97,7 @@ public class Booking extends JFrame implements MouseListener{
         txtCarModel.setBorder(null);
         txtCarModel.setEditable(false);
 
+        //Car Model Title
         carModel.setText("Car Model");
         carModel.setBackground(new Color(27, 28, 30));
         carModel.setForeground(new Color(225,223,186));
@@ -96,6 +105,7 @@ public class Booking extends JFrame implements MouseListener{
         carModel.setSize(100,25);
         carModel.setLocation(100, 70);
 
+        //Start Date Title
         bookingDate.setText("Start Date");
         bookingDate.setBackground(new Color(27, 28, 30));
         bookingDate.setForeground(new Color(225,223,186));
@@ -103,6 +113,7 @@ public class Booking extends JFrame implements MouseListener{
         bookingDate.setSize(130,25);
         bookingDate.setLocation(100, 150);
 
+        //End Date Title
         endBookingDate.setText("End Date");
         endBookingDate.setBackground(new Color(27, 28, 30));
         endBookingDate.setForeground(new Color(225,223,186));
@@ -118,6 +129,7 @@ public class Booking extends JFrame implements MouseListener{
         pageTitle.setSize(122, 27);
         pageTitle.setLocation(320, 10);
         
+        //Frame
         ImageIcon icon = new ImageIcon("src\\Logo1.png");
         this.getContentPane().setBackground(new Color(27, 28, 30));
         this.setIconImage(icon.getImage());
@@ -127,6 +139,7 @@ public class Booking extends JFrame implements MouseListener{
         this.setSize(725, 420);
         this.setVisible(true);
 
+        //Adding items to frame
         this.add(btnBook);
         this.add(calendarPic);
         this.add(separator3);
