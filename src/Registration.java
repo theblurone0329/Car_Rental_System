@@ -29,14 +29,44 @@ public class Registration extends JFrame implements MouseListener{
     JLabel pageTitle = new JLabel();
     JLabel car1 = new JLabel();
     JLabel car2 = new JLabel();
+    JLabel icnUsername = new JLabel();
+    JLabel icnPhoneNum = new JLabel();
+    JLabel icnEmail = new JLabel();
+    JLabel icnPassword = new JLabel();
 
     Registration() {
 
+        //Icons for Phone No.
+        ImageIcon icnPhone = new ImageIcon("src\\smartphone.png");
+        icnPhoneNum.setIcon(icnPhone);
+        icnPhoneNum.setSize(32, 32);
+        icnPhoneNum.setLocation(360, 207);
+
+        //Icon for Email
+        ImageIcon icnEma = new ImageIcon("src\\email.png");
+        icnEmail.setIcon(icnEma);
+        icnEmail.setSize(32, 32);
+        icnEmail.setLocation(85, 207);
+
+        //Icon for Password
+        ImageIcon icnPwd = new ImageIcon("src\\key.png");
+        icnPassword.setIcon(icnPwd);
+        icnPassword.setSize(32, 32);
+        icnPassword.setLocation(360, 97);
+
+        //Icon for Username
+        ImageIcon icnUser = new ImageIcon("src\\user.png");
+        icnUsername.setIcon(icnUser);
+        icnUsername.setSize(32, 32);
+        icnUsername.setLocation(85, 97);
+
+        //Car picture on right 
         ImageIcon car_2 = new ImageIcon("src\\car2.png");
         car2.setIcon(car_2);
         car2.setSize(400, 200);
         car2.setLocation(470,220);
 
+        //Car picture on left
         ImageIcon car_1 = new ImageIcon("src\\car1.png");
         car1.setIcon(car_1);
         car1.setSize(400, 200);
@@ -117,11 +147,11 @@ public class Registration extends JFrame implements MouseListener{
 
         //Text for Page Title
         pageTitle.setText("Registration");
-        pageTitle.setFont(new Font("TW Cen MT", Font.PLAIN, 24));
+        pageTitle.setFont(new Font("TW Cen MT", Font.PLAIN, 28));
         pageTitle.setForeground(new Color(225,223,186));
         pageTitle.setBackground(new Color(27, 28, 30));
-        pageTitle.setSize(122, 27);
-        pageTitle.setLocation(290, 10);
+        pageTitle.setSize(150, 27);
+        pageTitle.setLocation(275, 10);
 
         //Form
         ImageIcon icon = new ImageIcon("src\\Logo1.png");
@@ -134,6 +164,10 @@ public class Registration extends JFrame implements MouseListener{
         this.setVisible(true);
 
         //Adding Components to form
+        this.add(icnPhoneNum);
+        this.add(icnEmail);
+        this.add(icnPassword);
+        this.add(icnUsername);
         this.add(btnRegister);
         this.add(separator4);
         this.add(separator3);

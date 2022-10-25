@@ -26,14 +26,58 @@ public class Profile extends JFrame implements MouseListener{
     JLabel progBar100 = new JLabel();
     JLabel car_Profile = new JLabel();
     JButton btnView = new JButton();
+    JLabel icnUsername = new JLabel();
+    JLabel icnEmail = new JLabel();
+    JLabel icnPhoneNum = new JLabel();
+    JLabel titleProfile = new JLabel();
+    JLabel titleService = new JLabel();
+    JLabel txtView = new JLabel();
     
     Profile() {
+
+        //Titles for each section
+        titleService.setText("Current Service");
+        titleService.setFont(new Font("TW Cen MT", Font.PLAIN, 28));
+        titleService.setForeground(new Color(225,223,186));
+        titleService.setBackground(new Color(27, 28, 30));
+        titleService.setSize(200, 27);
+        titleService.setLocation(440, 30);
+
+        titleProfile.setText("User Profile");
+        titleProfile.setFont(new Font("TW Cen MT", Font.PLAIN, 28));
+        titleProfile.setForeground(new Color(225,223,186));
+        titleProfile.setBackground(new Color(27, 28, 30));
+        titleProfile.setSize(150, 27);
+        titleProfile.setLocation(115, 320);
+
+        //Icons
+        ImageIcon icnPhoneNo = new ImageIcon("src\\smartphone.png");
+        icnPhoneNum.setIcon(icnPhoneNo);
+        icnPhoneNum.setSize(32, 32);
+        icnPhoneNum.setLocation(85, 187);
+
+        ImageIcon icnEma = new ImageIcon("src\\email.png");
+        icnEmail.setIcon(icnEma);
+        icnEmail.setSize(32, 32);
+        icnEmail.setLocation(85, 127);
+
+        ImageIcon icnUser = new ImageIcon("src\\user.png");
+        icnUsername.setIcon(icnUser);
+        icnUsername.setSize(32, 32);
+        icnUsername.setLocation(85, 67);
+
+        //Txt view under view button
+        txtView.setText("View");
+        txtView.setSize(40, 32);
+        txtView.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+        txtView.setForeground(new Color(225,223,186));
+        txtView.setLocation(560, 260);
 
         //View button to show current booked service
         ImageIcon btn_View = new ImageIcon("src\\file.png");
         btnView.setIcon(btn_View);
         btnView.setSize(32, 32);
-        btnView.setLocation(560, 247);
+        btnView.setLocation(560, 237);
         btnView.setFocusable(false);
         btnView.setBorder(null);
         btnView.setBackground(new Color(27, 28, 30));
@@ -96,21 +140,21 @@ public class Profile extends JFrame implements MouseListener{
         lblPhoneNum.setFont(new Font("Segoe UI", Font.PLAIN, 15));
         lblPhoneNum.setForeground(new Color(225,223,186));
         lblPhoneNum.setSize(100,25);
-        lblPhoneNum.setLocation(115, 190);
+        lblPhoneNum.setLocation(125, 190);
 
         //Txt for Email
         lblEmail.setText("adrianfwl@gmail.com");
         lblEmail.setFont(new Font("Segoe UI", Font.PLAIN, 15));
         lblEmail.setForeground(new Color(225,223,186));
         lblEmail.setSize(150,25);
-        lblEmail.setLocation(115, 130);
+        lblEmail.setLocation(125, 130);
 
         //Txt for Username
         lblUsername.setText("Adrian_Fu");
         lblUsername.setFont(new Font("Segoe UI", Font.PLAIN, 15));
         lblUsername.setForeground(new Color(225,223,186));
         lblUsername.setSize(88,25);
-        lblUsername.setLocation(115, 70);
+        lblUsername.setLocation(125, 70);
         
         //Frame
         ImageIcon icon = new ImageIcon("src\\Logo1.png");
@@ -123,6 +167,12 @@ public class Profile extends JFrame implements MouseListener{
         this.setVisible(true);
 
         //Adding items to frame
+        this.add(txtView);
+        this.add(titleService);
+        this.add(titleProfile);
+        this.add(icnPhoneNum);
+        this.add(icnEmail);
+        this.add(icnUsername);
         this.add(btnView);
         this.add(car_Profile);
         this.add(progBar100);

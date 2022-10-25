@@ -123,11 +123,11 @@ public class Booking extends JFrame implements MouseListener{
 
         //Text for Page Title
         pageTitle.setText("Booking");
-        pageTitle.setFont(new Font("TW Cen MT", Font.PLAIN, 24));
+        pageTitle.setFont(new Font("TW Cen MT", Font.PLAIN, 28));
         pageTitle.setForeground(new Color(225,223,186));
         pageTitle.setBackground(new Color(27, 28, 30));
         pageTitle.setSize(122, 27);
-        pageTitle.setLocation(320, 10);
+        pageTitle.setLocation(310, 10);
         
         //Frame
         ImageIcon icon = new ImageIcon("src\\Logo1.png");
