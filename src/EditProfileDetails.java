@@ -29,23 +29,29 @@ public class EditProfileDetails extends JFrame implements MouseListener{
     JLabel icnUsername = new JLabel();
     JLabel icnPhoneNum = new JLabel();
     JLabel icnEmail = new JLabel();
+    JLabel carPic = new JLabel();
 
     EditProfileDetails() {
+
+        ImageIcon car = new ImageIcon("src\\sport-car.png");
+        carPic.setIcon(car);
+        carPic.setSize(256, 256);
+        carPic.setLocation(300, 140);
 
         ImageIcon user = new ImageIcon("src\\user.png");
         icnUsername.setIcon(user);
         icnUsername.setSize(32, 32);
-        icnUsername.setLocation(90, 93);
+        icnUsername.setLocation(70, 93);
 
         ImageIcon email = new ImageIcon("src\\email.png");
         icnEmail.setIcon(email);
         icnEmail.setSize(32, 32);
-        icnEmail.setLocation(87, 173);
+        icnEmail.setLocation(70, 173);
 
         ImageIcon phone = new ImageIcon("src\\smartphone.png");
         icnPhoneNum.setIcon(phone);
         icnPhoneNum.setSize(32, 32);
-        icnPhoneNum.setLocation(87, 253);
+        icnPhoneNum.setLocation(70, 253);
 
         pageTitle.setText("Change Details");
         pageTitle.setFont(new Font("TW Cen MT", Font.PLAIN, 28));
@@ -56,7 +62,7 @@ public class EditProfileDetails extends JFrame implements MouseListener{
 
         btnChange.setText("Change Details");
         btnChange.setSize(140, 44);
-        btnChange.setLocation(500, 130);
+        btnChange.setLocation(520, 130);
         btnChange.setForeground(new Color(225,223,186));
         btnChange.setBackground(new Color(27, 28, 30));
         Border border = new LineBorder(new Color(225,223,186), 1, true);
@@ -66,7 +72,7 @@ public class EditProfileDetails extends JFrame implements MouseListener{
 
         btnChangePwd.setText("Change Password");
         btnChangePwd.setSize(140, 44);
-        btnChangePwd.setLocation(500, 185);
+        btnChangePwd.setLocation(520, 185);
         btnChangePwd.setForeground(new Color(225,223,186));
         btnChangePwd.setBackground(new Color(27, 28, 30));
         Border border1 = new LineBorder(new Color(225,223,186), 1, true);
@@ -76,7 +82,7 @@ public class EditProfileDetails extends JFrame implements MouseListener{
 
         btnDefault.setText("Back to Default");
         btnDefault.setSize(140, 44);
-        btnDefault.setLocation(500, 240);
+        btnDefault.setLocation(520, 240);
         btnDefault.setForeground(new Color(225,223,186));
         btnDefault.setBackground(new Color(27, 28, 30));
         Border border2 = new LineBorder(new Color(225,223,186), 1, true);
@@ -90,13 +96,13 @@ public class EditProfileDetails extends JFrame implements MouseListener{
         lblPhoneNum.setForeground(new Color(225,223,186));
         lblPhoneNum.setBackground(new Color(27, 28, 30));
         lblPhoneNum.setSize(180,30);
-        lblPhoneNum.setLocation(125, 250);
+        lblPhoneNum.setLocation(110, 250);
         lblPhoneNum.setBorder(null);
 
         separator3.setForeground(new Color(225,223,186));
         separator3.setBackground(new Color(27, 28, 30));
         separator3.setSize(180, 17);
-        separator3.setLocation(125, 283);
+        separator3.setLocation(110, 283);
 
         //Txt for Email
         lblEmail.setText("adrianfwl@gmail.com");
@@ -104,13 +110,13 @@ public class EditProfileDetails extends JFrame implements MouseListener{
         lblEmail.setForeground(new Color(225,223,186));
         lblEmail.setBackground(new Color(27, 28, 30));
         lblEmail.setSize(180,30);
-        lblEmail.setLocation(125, 170);
+        lblEmail.setLocation(110, 170);
         lblEmail.setBorder(null);
 
         separator2.setForeground(new Color(225,223,186));
         separator2.setBackground(new Color(27, 28, 30));
         separator2.setSize(180, 17);
-        separator2.setLocation(125, 203);
+        separator2.setLocation(110, 203);
 
         //Txt for Username
         lblUsername.setText("Adrian_Fu");
@@ -118,13 +124,13 @@ public class EditProfileDetails extends JFrame implements MouseListener{
         lblUsername.setForeground(new Color(225,223,186));
         lblUsername.setBackground(new Color(27, 28, 30));
         lblUsername.setSize(180,30);
-        lblUsername.setLocation(125, 90);
+        lblUsername.setLocation(110, 90);
         lblUsername.setBorder(null);
 
         separator1.setForeground(new Color(225,223,186));
         separator1.setBackground(new Color(27, 28, 30));
         separator1.setSize(180, 17);
-        separator1.setLocation(125, 123);
+        separator1.setLocation(110, 123);
         
         ImageIcon icon = new ImageIcon("src\\Logo1.png");
         this.getContentPane().setBackground(new Color(27, 28, 30));
@@ -148,6 +154,7 @@ public class EditProfileDetails extends JFrame implements MouseListener{
         this.add(icnUsername);
         this.add(icnEmail);
         this.add(icnPhoneNum);
+        this.add(carPic);
     }
 
     @Override
