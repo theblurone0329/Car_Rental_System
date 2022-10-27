@@ -12,26 +12,25 @@ public class Profile extends JFrame implements MouseListener{
         new Profile();
     }
 
-    JLabel lblUsername = new JLabel();
-    JLabel lblEmail = new JLabel();
-    JLabel lblPhoneNum = new JLabel();
-    JButton btnEdit = new JButton();
-    JLabel border = new JLabel();
-    JLabel border2 = new JLabel();
-    JLabel user = new JLabel();
-    JLabel progBar0 = new JLabel();
-    JLabel progBar25 = new JLabel();
-    JLabel progBar50 = new JLabel();
-    JLabel progBar75 = new JLabel();
-    JLabel progBar100 = new JLabel();
-    JLabel car_Profile = new JLabel();
-    JButton btnView = new JButton();
-    JLabel icnUsername = new JLabel();
-    JLabel icnEmail = new JLabel();
-    JLabel icnPhoneNum = new JLabel();
-    JLabel titleProfile = new JLabel();
-    JLabel titleService = new JLabel();
-    JLabel txtView = new JLabel();
+    private JLabel lblUsername = new JLabel();
+    private JLabel lblEmail = new JLabel();
+    private JLabel lblPhoneNum = new JLabel();
+    private JButton btnEdit = new JButton();
+    private JLabel border = new JLabel();
+    private JLabel border2 = new JLabel();
+    private JLabel progBar0 = new JLabel();
+    private JLabel progBar25 = new JLabel();
+    private JLabel progBar50 = new JLabel();
+    private JLabel progBar75 = new JLabel();
+    private JLabel progBar100 = new JLabel();
+    private JLabel car_Profile = new JLabel();
+    private JButton btnView = new JButton();
+    private JLabel icnUsername = new JLabel();
+    private JLabel icnEmail = new JLabel();
+    private JLabel icnPhoneNum = new JLabel();
+    private JLabel titleProfile = new JLabel();
+    private JLabel titleService = new JLabel();
+    private JLabel txtView = new JLabel();
     
     Profile() {
 

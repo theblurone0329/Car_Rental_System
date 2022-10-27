@@ -2,6 +2,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JTextArea;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -12,83 +13,130 @@ public class viewCar extends JFrame implements MouseListener{
         new viewCar();
     }
 
-    JLabel carPic = new JLabel();
-    JLabel pnl1 = new JLabel();
-    JLabel pnl2 = new JLabel();
-    JLabel pricePerHr = new JLabel();
-    JLabel carSeats = new JLabel();
-    JLabel seats = new JLabel();
-    JLabel available = new JLabel();
-    JLabel location = new JLabel();
-    JLabel location1 = new JLabel();
-    JLabel carName = new JLabel();
-    JLabel carRating = new JLabel();
-    JLabel pricePic = new JLabel();
-    JLabel seatPic = new JLabel();
-    JLabel back = new JLabel();
-    JLabel book = new JLabel();
-    JButton btnBook = new JButton();
-    JButton btnBack = new JButton();
+    private JLabel carPic = new JLabel();
+    private JLabel pnl1 = new JLabel();
+    private JLabel pnl2 = new JLabel();
+    private JLabel pricePerHr = new JLabel();
+    private JLabel carSeats = new JLabel();
+    private JLabel seats = new JLabel();
+    private JLabel available = new JLabel();
+    private JLabel availableTxt = new JLabel();
+    private JLabel location = new JLabel();
+    private JTextArea location1 = new JTextArea();
+    private JLabel carName = new JLabel();
+    private JLabel carRating = new JLabel();
+    private JLabel pricePic = new JLabel();
+    private JLabel seatPic = new JLabel();
+    private JLabel back = new JLabel();
+    private JLabel book = new JLabel();
+    private JLabel star = new JLabel();
+    private JButton btnBook = new JButton();
+    private JButton btnBack = new JButton();
 
     viewCar() {
 
+        //Car Name
+        carName.setText("Tesla Model S");
+        carName.setFont(new Font("TW Cen MT", Font.BOLD, 35));
+        carName.setForeground(new Color(225,223,186));
+        carName.setBackground(new Color(27, 28, 30));
+        carName.setSize(300, 27);
+        carName.setLocation(390, 30);
+
+        //Available text
+        availableTxt.setText("Not Available");
+        availableTxt.setFont(new Font("Segoe UI", Font.BOLD, 13));
+        availableTxt.setSize(150, 100);
+        availableTxt.setForeground(new Color(225,223,186));
+        availableTxt.setBackground(new Color(27, 28, 30));
+        availableTxt.setLocation(536, 190);
+
+        available.setText("Status: ");
+        available.setFont(new Font("Segoe UI", Font.BOLD, 13));
+        available.setSize(50, 100);
+        available.setForeground(new Color(225,223,186));
+        available.setBackground(new Color(27, 28, 30));
+        available.setLocation(486, 190);
+
+        //Star Pic
+        ImageIcon starPic = new ImageIcon("src\\star.png");
+        star.setIcon(starPic);
+        star.setSize(24, 24);
+        star.setLocation(403, 225);
+
+        //Car Rating txt
+        carRating.setText("4.7");
+        carRating.setFont(new Font("Segoe UI", Font.BOLD, 13));
+        carRating.setSize(50, 100);
+        carRating.setForeground(new Color(225,223,186));
+        carRating.setBackground(new Color(27, 28, 30));
+        carRating.setLocation(436, 190);
+
+        //Back Button Text
         back.setText("Back");
         back.setSize(180, 30);
         back.setFont(new Font("TW Cen MT", Font.BOLD, 18));
         back.setForeground(new Color(225,223,186));
-        back.setLocation(565, 315);
+        back.setLocation(565, 335);
 
+        //Back Button
         ImageIcon goback = new ImageIcon("src\\turn-back.png");
         btnBack.setIcon(goback);
         btnBack.setForeground(new Color(225,223,186));
         btnBack.setBackground(new Color(27, 28, 30));
         btnBack.setFocusable(false);
         btnBack.setSize(64, 64);
-        btnBack.setLocation(550, 250);
+        btnBack.setLocation(550, 270);
         btnBack.setBorder(null);
         btnBack.addMouseListener(this);
 
+        //Book button text 
         book.setText("Book Now!");
         book.setSize(180, 30);
         book.setFont(new Font("TW Cen MT", Font.BOLD, 18));
         book.setForeground(new Color(225,223,186));
-        book.setLocation(408, 315);
+        book.setLocation(408, 335);
 
+        //Bookin icon
         ImageIcon booking = new ImageIcon("src\\appointment.png");
         btnBook.setIcon(booking);
         btnBook.setForeground(new Color(225,223,186));
         btnBook.setBackground(new Color(27, 28, 30));
         btnBook.setFocusable(false);
         btnBook.setSize(64, 64);
-        btnBook.setLocation(417, 250);
+        btnBook.setLocation(417, 270);
         btnBook.setBorder(null);
         btnBook.addMouseListener(this);
 
-        location1.setText("Jalan Teknologi 5, Taman Teknologi Malaysia, " +
-        "57000 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur");
-        location1.setFont(new Font("Segoe UI", Font.BOLD, 13));
+        //Location txt
+        location1.setText("Jalan Teknologi 5, Taman Teknologi Malaysia, \n57000 Kuala Lumpur, \n\nWilayah Persekutuan Kuala Lumpur");
+        location1.setFont(new Font("Segoe UI", Font.BOLD, 12));
         location1.setBackground(new Color(27, 28, 30));
         location1.setForeground(new Color(225,223,186));
         location1.setSize(250, 100);
-        location1.setLocation(413, 50);
-        location1.setVerticalTextPosition(JLabel.TOP);
+        location1.setLocation(423, 110);
+        location1.setLineWrap(true);
 
+        //Location title
         location.setText("Location: ");
         location.setFont(new Font("TW Cen MT", Font.BOLD, 23));
         location.setForeground(new Color(225,223,186));
         location.setSize(180, 30);
-        location.setLocation(413, 35);
+        location.setLocation(413, 75);
 
+        //Seats icon
         ImageIcon seat = new ImageIcon("src\\car-seat.png");
         seatPic.setIcon(seat);
         seatPic.setSize(64, 64);
         seatPic.setLocation(247, 245);
 
+        //Price icon
         ImageIcon price = new ImageIcon("src\\price-tag.png");
         pricePic.setIcon(price);
         pricePic.setSize(64, 64);
         pricePic.setLocation(92, 245);
 
+        //txt for Seats
         seats.setText("seats");
         seats.setFont(new Font("Segoe UI", Font.BOLD, 18));
         seats.setForeground(new Color(27, 28, 30));
@@ -97,6 +145,7 @@ public class viewCar extends JFrame implements MouseListener{
         seats.setLocation(265, 310);
         seats.setBorder(null);
 
+        //Number of seats
         carSeats.setText("5");
         carSeats.setFont(new Font("Segoe UI", Font.BOLD, 18));
         carSeats.setForeground(new Color(27, 28, 30));
@@ -105,6 +154,7 @@ public class viewCar extends JFrame implements MouseListener{
         carSeats.setLocation(248, 310);
         carSeats.setBorder(null);
 
+        //Price Per Hr txt
         pricePerHr.setText("RM 25/hr");
         pricePerHr.setFont(new Font("Segoe UI", Font.BOLD, 18));
         pricePerHr.setForeground(new Color(27, 28, 30));
@@ -113,6 +163,7 @@ public class viewCar extends JFrame implements MouseListener{
         pricePerHr.setLocation(87, 310);
         pricePerHr.setBorder(null);
 
+        //Rounded Square graphic
         ImageIcon pnl = new ImageIcon("src\\smallPnl.png");
         pnl1.setIcon(pnl);
         pnl1.setSize(135, 134);
@@ -122,11 +173,13 @@ public class viewCar extends JFrame implements MouseListener{
         pnl2.setSize(135, 134);
         pnl2.setLocation(210, 230);
 
+        //Car Pic
         ImageIcon car = new ImageIcon("src\\Tesla Model S.png");
         carPic.setIcon(car);
         carPic.setSize(412, 225);
         carPic.setLocation(0, 5);
         
+        //Frame
         ImageIcon icon = new ImageIcon("src\\Logo1.png");
         this.getContentPane().setBackground(new Color(27, 28, 30));
         this.setIconImage(icon.getImage());
@@ -136,6 +189,7 @@ public class viewCar extends JFrame implements MouseListener{
         this.setSize(725, 420);
         this.setVisible(true);
 
+        //Adding components to Frame
         this.add(back);
         this.add(book);
         this.add(btnBook);
@@ -150,6 +204,11 @@ public class viewCar extends JFrame implements MouseListener{
         this.add(carPic);
         this.add(pnl1);
         this.add(pnl2);
+        this.add(carRating);
+        this.add(star);
+        this.add(carName);
+        this.add(available);
+        this.add(availableTxt);
     }
 
     @Override

@@ -17,22 +17,22 @@ public class Registration extends JFrame implements MouseListener{
     }
 
     //Declare Form Components
-    JButton btnRegister = new JButton();
-    JSeparator separator1 = new JSeparator();
-    JSeparator separator2 = new JSeparator();
-    JSeparator separator3 = new JSeparator();
-    JSeparator separator4 = new JSeparator();
-    JTextField txtUsername = new JTextField();
-    JTextField txtPassword = new JTextField();
-    JTextField txtEmail= new JTextField();
-    JTextField txtPhoneNum = new JTextField();
-    JLabel pageTitle = new JLabel();
-    JLabel car1 = new JLabel();
-    JLabel car2 = new JLabel();
-    JLabel icnUsername = new JLabel();
-    JLabel icnPhoneNum = new JLabel();
-    JLabel icnEmail = new JLabel();
-    JLabel icnPassword = new JLabel();
+    private JButton btnRegister = new JButton();
+    private JSeparator separator1 = new JSeparator();
+    private JSeparator separator2 = new JSeparator();
+    private JSeparator separator3 = new JSeparator();
+    private JSeparator separator4 = new JSeparator();
+    private JTextField txtUsername = new JTextField();
+    private JTextField txtPassword = new JTextField();
+    private JTextField txtEmail= new JTextField();
+    private JTextField txtPhoneNum = new JTextField();
+    private JLabel pageTitle = new JLabel();
+    private JLabel car1 = new JLabel();
+    private JLabel car2 = new JLabel();
+    private JLabel icnUsername = new JLabel();
+    private JLabel icnPhoneNum = new JLabel();
+    private JLabel icnEmail = new JLabel();
+    private JLabel icnPassword = new JLabel();
 
     Registration() {
 

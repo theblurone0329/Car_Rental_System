@@ -16,43 +16,48 @@ public class EditProfileDetails extends JFrame implements MouseListener{
         new EditProfileDetails();
     }
 
-    JTextField lblUsername = new JTextField();
-    JTextField lblPhoneNum = new JTextField();
-    JTextField lblEmail = new JTextField();
-    JButton btnChange = new JButton();
-    JButton btnChangePwd = new JButton();
-    JButton btnDefault = new JButton();
-    JLabel pageTitle = new JLabel();
-    JSeparator separator1 = new JSeparator();
-    JSeparator separator2 = new JSeparator();
-    JSeparator separator3 = new JSeparator();
-    JLabel icnUsername = new JLabel();
-    JLabel icnPhoneNum = new JLabel();
-    JLabel icnEmail = new JLabel();
-    JLabel carPic = new JLabel();
+    private JTextField lblUsername = new JTextField();
+    private JTextField lblPhoneNum = new JTextField();
+    private JTextField lblEmail = new JTextField();
+    private JButton btnChange = new JButton();
+    private JButton btnChangePwd = new JButton();
+    private JButton btnDefault = new JButton();
+    private JLabel pageTitle = new JLabel();
+    private JSeparator separator1 = new JSeparator();
+    private JSeparator separator2 = new JSeparator();
+    private JSeparator separator3 = new JSeparator();
+    private JLabel icnUsername = new JLabel();
+    private JLabel icnPhoneNum = new JLabel();
+    private JLabel icnEmail = new JLabel();
+    private JLabel carPic = new JLabel();
 
     EditProfileDetails() {
 
+        //Car Picture
         ImageIcon car = new ImageIcon("src\\sport-car.png");
         carPic.setIcon(car);
         carPic.setSize(256, 256);
         carPic.setLocation(300, 140);
 
+        //Icon for Username
         ImageIcon user = new ImageIcon("src\\user.png");
         icnUsername.setIcon(user);
         icnUsername.setSize(32, 32);
         icnUsername.setLocation(70, 93);
 
+        //Icon for Email
         ImageIcon email = new ImageIcon("src\\email.png");
         icnEmail.setIcon(email);
         icnEmail.setSize(32, 32);
         icnEmail.setLocation(70, 173);
 
+        //Icon for Phone
         ImageIcon phone = new ImageIcon("src\\smartphone.png");
         icnPhoneNum.setIcon(phone);
         icnPhoneNum.setSize(32, 32);
         icnPhoneNum.setLocation(70, 253);
 
+        //Page Title
         pageTitle.setText("Change Details");
         pageTitle.setFont(new Font("TW Cen MT", Font.PLAIN, 28));
         pageTitle.setForeground(new Color(225,223,186));
@@ -60,6 +65,7 @@ public class EditProfileDetails extends JFrame implements MouseListener{
         pageTitle.setSize(200, 27);
         pageTitle.setLocation(280, 10);
 
+        //Change Button
         btnChange.setText("Change Details");
         btnChange.setSize(140, 44);
         btnChange.setLocation(520, 130);
@@ -70,6 +76,7 @@ public class EditProfileDetails extends JFrame implements MouseListener{
         btnChange.setFont(new Font("TW Cen MT", Font.BOLD, 15));
         btnChange.setFocusable(false);
 
+        //Change Password Button
         btnChangePwd.setText("Change Password");
         btnChangePwd.setSize(140, 44);
         btnChangePwd.setLocation(520, 185);
@@ -80,6 +87,7 @@ public class EditProfileDetails extends JFrame implements MouseListener{
         btnChangePwd.setFont(new Font("TW Cen MT", Font.BOLD, 15));
         btnChangePwd.setFocusable(false);
 
+        //Reset Button
         btnDefault.setText("Back to Default");
         btnDefault.setSize(140, 44);
         btnDefault.setLocation(520, 240);
@@ -132,6 +140,7 @@ public class EditProfileDetails extends JFrame implements MouseListener{
         separator1.setSize(180, 17);
         separator1.setLocation(110, 123);
         
+        //Frame
         ImageIcon icon = new ImageIcon("src\\Logo1.png");
         this.getContentPane().setBackground(new Color(27, 28, 30));
         this.setIconImage(icon.getImage());
@@ -141,6 +150,7 @@ public class EditProfileDetails extends JFrame implements MouseListener{
         this.setSize(725, 420);
         this.setVisible(true);
 
+        //Adding Components to Frame
         this.add(lblUsername);
         this.add(lblEmail);
         this.add(lblPhoneNum);

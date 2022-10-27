@@ -16,18 +16,18 @@ public class Booking extends JFrame implements MouseListener{
         new Booking();
     }
 
-    JLabel carModel = new JLabel();
-    JLabel bookingDate = new JLabel();
-    JLabel endBookingDate = new JLabel();
-    JLabel pageTitle = new JLabel();
-    JTextField txtCarModel = new JTextField();
-    JTextField txtStartDate = new JTextField();
-    JTextField txtEndDate = new JTextField();
-    JButton btnBook = new JButton();
-    JSeparator separator1 = new JSeparator();
-    JSeparator separator2 = new JSeparator();
-    JSeparator separator3 = new JSeparator();
-    JLabel calendarPic = new JLabel();
+    private JLabel carModel = new JLabel();
+    private JLabel bookingDate = new JLabel();
+    private JLabel endBookingDate = new JLabel();
+    private JLabel pageTitle = new JLabel();
+    private JTextField txtCarModel = new JTextField();
+    private JTextField txtStartDate = new JTextField();
+    private JTextField txtEndDate = new JTextField();
+    private JButton btnBook = new JButton();
+    private JSeparator separator1 = new JSeparator();
+    private JSeparator separator2 = new JSeparator();
+    private JSeparator separator3 = new JSeparator();
+    private JLabel calendarPic = new JLabel();
 
     Booking() {
 

@@ -9,7 +9,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
-import javax.swing.table.DefaultTableModel;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -21,38 +20,84 @@ public class return_admin extends JFrame implements MouseListener{
         new return_admin();
     }
 
-    JLabel returnID = new JLabel();
-    JLabel cusUsername = new JLabel();
-    JLabel returnStatus = new JLabel();
-    JLabel returnDate = new JLabel();
-    JLabel onRentTitle = new JLabel();
-    JLabel returnedTitle = new JLabel();
-    JTable onRent = new JTable();
-    JTable returned = new JTable(); 
-    JTextField txtReturnID = new JTextField();
-    JTextField txtCusUsername = new JTextField();
-    JTextField txtReturnStatus = new JTextField();
-    JTextField txtReturnDate = new JTextField();
-    JButton btnReset = new JButton();
-    JButton btnSearch = new JButton();
-    JSeparator separator1 = new JSeparator();
-    JSeparator separator2 = new JSeparator();
-    JSeparator separator3 = new JSeparator();
-    JSeparator separator4 = new JSeparator();
-    JScrollPane pane = new JScrollPane();
-    JPanel onRentPnl = new JPanel();
-    Border border = new LineBorder(new Color(225,223,186), 1, true);
+    private JLabel returnID = new JLabel();
+    private JLabel cusUsername = new JLabel();
+    private JLabel returnStatus = new JLabel();
+    private JLabel returnDate = new JLabel();
+    private JLabel onRentTitle = new JLabel();
+    private JLabel returnedTitle = new JLabel();
+    private JTable onRent = new JTable();
+    private JTable returned = new JTable(); 
+    private JTextField txtReturnID = new JTextField();
+    private JTextField txtCusUsername = new JTextField();
+    private JTextField txtReturnStatus = new JTextField();
+    private JTextField txtReturnDate = new JTextField();
+    private JButton btnReset = new JButton();
+    private JButton btnSearch = new JButton();
+    private JSeparator separator1 = new JSeparator();
+    private JSeparator separator2 = new JSeparator();
+    private JSeparator separator3 = new JSeparator();
+    private JSeparator separator4 = new JSeparator();
+    private JScrollPane pane = new JScrollPane();
+    private JPanel onRentPnl = new JPanel();
+    private JPanel returnedPnl = new JPanel();
+    private Border border = new LineBorder(new Color(225,223,186), 1, true);
 
     return_admin() {
 
-        String[] columns = {"Return ID", "Username", "Status", "Return Date"};
-        String[][] rows = {{"R01", "Hamid_Karim_123", "Returned", "04-10-2022"}, 
+        //Returned Table
+        returnedTitle.setText("RETURNED CARS");
+        returnedTitle.setFont(new Font("TW Cen MT", Font.BOLD, 16));
+        returnedTitle.setSize(200, 22);
+        returnedTitle.setForeground(new Color(225,223,186));
+        returnedTitle.setBackground(new Color(27, 28, 30));
+        returnedTitle.setLocation(420, 198);
+
+        String[] columnsReturn = {"Return ID", "Username", "Status", "Return Date"};
+        String[][] rowsReturn = {{"R01", "Hamid_Karim_123", "Returned", "04-10-2022"}, 
                             {"R02", "Adrian_Fu", "Not Returned", "N/A"},
                             {"R02", "Adrian_Fu", "Not Returned", "N/A"},
                             {"R02", "Adrian_Fu", "Not Returned", "N/A"}, 
                             {"R02", "Adrian_Fu", "Not Returned", "N/A"}};
 
-        onRent = new JTable(rows, columns){
+        returned = new JTable(rowsReturn, columnsReturn){
+            public boolean isCellEditable(int rows, int columns) {
+                return false;
+            }
+        };
+
+        returned.setPreferredScrollableViewportSize(new Dimension(400, 151));
+        returned.setFillsViewportHeight(true);
+        returned.setBackground(new Color(27, 28, 30));
+        returned.setForeground(new Color(225,223,186));
+        returned.setGridColor(new Color(225,223,186));
+        returned.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+        returned.setRowHeight(30);
+        
+        pane = new JScrollPane(returned);
+
+        returnedPnl.setSize(400, 155);
+        returnedPnl.setLocation(280, 220);
+        returnedPnl.add(pane);
+
+        Object[] rowReturns = new Object[4];
+
+        //On Rent Table
+        onRentTitle.setText("CARS ON RENT");
+        onRentTitle.setFont(new Font("TW Cen MT", Font.BOLD, 16));
+        onRentTitle.setSize(200, 22);
+        onRentTitle.setForeground(new Color(225,223,186));
+        onRentTitle.setBackground(new Color(27, 28, 30));
+        onRentTitle.setLocation(420, 13);
+
+        String[] columnsRent = {"Return ID", "Username", "Status", "Return Date"};
+        String[][] rowsRent = {{"R01", "Hamid_Karim_123", "Returned", "04-10-2022"}, 
+                            {"R02", "Adrian_Fu", "Not Returned", "N/A"},
+                            {"R02", "Adrian_Fu", "Not Returned", "N/A"},
+                            {"R02", "Adrian_Fu", "Not Returned", "N/A"}, 
+                            {"R02", "Adrian_Fu", "Not Returned", "N/A"}};
+
+        onRent = new JTable(rowsRent, columnsRent){
             public boolean isCellEditable(int rows, int columns) {
                 return false;
             }
@@ -72,8 +117,9 @@ public class return_admin extends JFrame implements MouseListener{
         onRentPnl.setLocation(280, 35);
         onRentPnl.add(pane);
 
-        Object[] row = new Object[4];
+        Object[] rowRents = new Object[4];
 
+        //Search Button
         btnSearch.setText("Search");
         btnSearch.setSize(90, 37);
         btnSearch.setLocation(130, 320);
@@ -82,7 +128,9 @@ public class return_admin extends JFrame implements MouseListener{
         btnSearch.setBorder(border);
         btnSearch.setFont(new Font("TW Cen MT", Font.BOLD, 15));
         btnSearch.setFocusable(false);
+        btnSearch.addMouseListener(this);
 
+        //Reset Button
         btnReset.setText("Reset");
         btnReset.setSize(90, 37);
         btnReset.setLocation(30, 320);
@@ -91,6 +139,7 @@ public class return_admin extends JFrame implements MouseListener{
         btnReset.setBorder(border);
         btnReset.setFont(new Font("TW Cen MT", Font.BOLD, 15));
         btnReset.setFocusable(false);
+        btnReset.addMouseListener(this);
 
         //Components for return ID
         separator1.setForeground(new Color(225,223,186));
@@ -180,6 +229,7 @@ public class return_admin extends JFrame implements MouseListener{
         returnDate.setSize(180, 30);
         returnDate.setLocation(15, 235);
         
+        //Frame
         ImageIcon icon = new ImageIcon("src\\Logo1.png");
         this.getContentPane().setBackground(new Color(27, 28, 30));
         this.setIconImage(icon.getImage());
@@ -189,6 +239,7 @@ public class return_admin extends JFrame implements MouseListener{
         this.setSize(725, 420);
         this.setVisible(true);
         
+        //Adding Components to Frame
         this.add(returnID);
         this.add(cusUsername);
         this.add(returnStatus);
@@ -204,6 +255,9 @@ public class return_admin extends JFrame implements MouseListener{
         this.add(btnReset);
         this.add(btnSearch);
         this.add(onRentPnl);
+        this.add(returnedPnl);
+        this.add(returnedTitle);
+        this.add(onRentTitle);
     }
 
     @Override

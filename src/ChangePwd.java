@@ -16,13 +16,13 @@ public class ChangePwd extends JFrame implements MouseListener{
         new ChangePwd();
     }
 
-    JTextField password = new JTextField();
-    JTextField confirmPwd = new JTextField(); 
-    JLabel pageTitle = new JLabel();
-    JLabel pwdPic = new JLabel();
-    JSeparator separator1 = new JSeparator();
-    JSeparator separator2 = new JSeparator();
-    JButton btnChange = new JButton();
+    private JTextField password = new JTextField();
+    private JTextField confirmPwd = new JTextField(); 
+    private JLabel pageTitle = new JLabel();
+    private JLabel pwdPic = new JLabel();
+    private JSeparator separator1 = new JSeparator();
+    private JSeparator separator2 = new JSeparator();
+    private JButton btnChange = new JButton();
     
     ChangePwd() {
 

@@ -13,16 +13,15 @@ public class HomePage extends JFrame implements MouseListener{
     }
 
     //Declare Form Components
-    JPanel pnl1 = new JPanel();
-    JPanel pnl2 = new JPanel();
-    JLabel picCar = new JLabel();
-    JLabel picProgBar_0 = new JLabel();
-    JLabel picProgBar_25 = new JLabel();
-    JLabel picProgBar_50 = new JLabel();
-    JLabel picProgBar_75 = new JLabel();
-    JLabel picProgBar_100 = new JLabel();
-    JLabel background = new JLabel();
-    JLabel status = new JLabel();
+    private JPanel pnl1 = new JPanel();
+    private JPanel pnl2 = new JPanel();
+    private JLabel picCar = new JLabel();
+    private JLabel picProgBar_0 = new JLabel();
+    private JLabel picProgBar_25 = new JLabel();
+    private JLabel picProgBar_50 = new JLabel();
+    private JLabel picProgBar_75 = new JLabel();
+    private JLabel picProgBar_100 = new JLabel();
+    private JLabel status = new JLabel();
 
     HomePage() {
 
