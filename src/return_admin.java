@@ -80,7 +80,7 @@ public class return_admin extends JFrame implements MouseListener{
         returnedPnl.setLocation(280, 220);
         returnedPnl.add(pane);
 
-        Object[] rowReturns = new Object[4];
+        //Object[] rowReturns = new Object[4];
 
         //On Rent Table
         onRentTitle.setText("CARS ON RENT");
@@ -117,7 +117,7 @@ public class return_admin extends JFrame implements MouseListener{
         onRentPnl.setLocation(280, 35);
         onRentPnl.add(pane);
 
-        Object[] rowRents = new Object[4];
+        //Object[] rowRents = new Object[4];
 
         //Search Button
         btnSearch.setText("Search");
