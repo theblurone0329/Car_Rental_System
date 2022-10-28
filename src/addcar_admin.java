@@ -21,27 +21,27 @@ public class addcar_admin extends JFrame implements MouseListener{
         new addcar_admin();
     }
 
-    JLabel carBrand = new JLabel();
-    JLabel carModel = new JLabel();
-    JLabel carPlateNum = new JLabel();
-    JLabel carYear = new JLabel();
-    JLabel carSeat = new JLabel();
-    JTextField txtCarBrand = new JTextField();
-    JTextField txtCarModel = new JTextField();
-    JTextField txtCarPlateNum = new JTextField();
-    JTextField txtCarYear = new JTextField();
-    JTextField txtCarSeat = new JTextField();
-    JButton btnClear = new JButton();
-    JButton btnCancel = new JButton();
-    JButton btnAdd = new JButton(); 
-    JTable table = new JTable();
-    JPanel tablePnl = new JPanel();
-    JSeparator separator1 = new JSeparator();
-    JSeparator separator2 = new JSeparator();
-    JSeparator separator3 = new JSeparator();
-    JSeparator separator4 = new JSeparator();
-    JSeparator separator5 = new JSeparator();
-    JScrollPane pane = new JScrollPane();
+    private JLabel carBrand = new JLabel();
+    private JLabel carModel = new JLabel();
+    private JLabel carPlateNum = new JLabel();
+    private JLabel carYear = new JLabel();
+    private JLabel carSeat = new JLabel();
+    private JTextField txtCarBrand = new JTextField();
+    private JTextField txtCarModel = new JTextField();
+    private JTextField txtCarPlateNum = new JTextField();
+    private JTextField txtCarYear = new JTextField();
+    private JTextField txtCarSeat = new JTextField();
+    private JButton btnClear = new JButton();
+    private JButton btnCancel = new JButton();
+    private JButton btnAdd = new JButton(); 
+    private JTable table = new JTable();
+    private JPanel tablePnl = new JPanel();
+    private JSeparator separator1 = new JSeparator();
+    private JSeparator separator2 = new JSeparator();
+    private JSeparator separator3 = new JSeparator();
+    private JSeparator separator4 = new JSeparator();
+    private JSeparator separator5 = new JSeparator();
+    private JScrollPane pane = new JScrollPane();
     private Border border = new LineBorder(new Color(225,223,186), 1, true);
 
     addcar_admin() {
@@ -107,6 +107,7 @@ public class addcar_admin extends JFrame implements MouseListener{
         btnClear.setFocusable(false);
         btnClear.addMouseListener(this);
 
+        //Car seat text box and label 
         separator5.setForeground(new Color(225,223,186));
         separator5.setBackground(new Color(27, 28, 30));
         separator5.setSize(120, 17);
@@ -128,6 +129,7 @@ public class addcar_admin extends JFrame implements MouseListener{
         carSeat.setSize(180, 30);
         carSeat.setLocation(15, 280);
 
+        //Car Year text box and label
         separator4.setForeground(new Color(225,223,186));
         separator4.setBackground(new Color(27, 28, 30));
         separator4.setSize(120, 17);
@@ -149,6 +151,7 @@ public class addcar_admin extends JFrame implements MouseListener{
         carYear.setSize(180, 30);
         carYear.setLocation(15, 215);
 
+        //Car Plate Number text box and label
         separator3.setForeground(new Color(225,223,186));
         separator3.setBackground(new Color(27, 28, 30));
         separator3.setSize(120, 17);
@@ -170,6 +173,7 @@ public class addcar_admin extends JFrame implements MouseListener{
         carPlateNum.setSize(180, 30);
         carPlateNum.setLocation(15, 150);
 
+        //Car Model text box and label
         separator2.setForeground(new Color(225,223,186));
         separator2.setBackground(new Color(27, 28, 30));
         separator2.setSize(120, 17);
@@ -191,6 +195,7 @@ public class addcar_admin extends JFrame implements MouseListener{
         carModel.setSize(180, 30);
         carModel.setLocation(15, 85);
 
+        //Car Brand text box and label
         separator1.setForeground(new Color(225,223,186));
         separator1.setBackground(new Color(27, 28, 30));
         separator1.setSize(120, 17);
@@ -222,6 +227,7 @@ public class addcar_admin extends JFrame implements MouseListener{
         this.setSize(725, 420);
         this.setVisible(true);
 
+        //Adding components to frame
         this.add(carBrand);
         this.add(txtCarBrand);
         this.add(separator1);
