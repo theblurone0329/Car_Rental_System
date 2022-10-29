@@ -2,8 +2,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneLayout;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
@@ -57,6 +61,11 @@ public class viewAllCar extends JFrame implements MouseListener{
     private JButton search = new JButton();
     private JSeparator separator = new JSeparator();
     private JSeparator separator2 = new JSeparator();
+    private JPanel panel1 = new JPanel();
+    private JScrollPane pane = new JScrollPane();
+    ImageIcon pnl = new ImageIcon("src\\pnl.png");
+    ImageIcon pricePic = new ImageIcon("src\\price-tag (1).png");
+    ImageIcon seat = new ImageIcon("src\\car-seat (1).png");
     private Border border = new LineBorder(new Color(27, 28, 30), 4, true);
 
     viewAllCar() {
@@ -94,6 +103,47 @@ public class viewAllCar extends JFrame implements MouseListener{
         separator.setSize(725, 17);
         separator.setLocation(0, 80);
 
+        //Second Car Panel
+        btn2.setText("Learn More!");
+        btn2.setForeground(new Color(27, 28, 30));
+        btn2.setBackground(new Color(127, 126, 144));
+        btn2.setFont(new Font("TW Cen MT", Font.BOLD, 18));
+        btn2.setFocusable(false);
+        btn2.setSize(110, 35);
+        btn2.setLocation(405, 400);
+        btn2.setBorder(border);
+        btn1.addMouseListener(this);
+        
+        price2.setIcon(pricePic);
+        price2.setText("RM 24/hr");
+        price2.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+        price2.setForeground(new Color(27, 28, 30));
+        price2.setSize(140, 32);
+        price2.setLocation(410, 325);
+
+        seats2.setIcon(seat);
+        seats2.setText("4");
+        seats2.setFont(new Font("Segoe UI", Font.PLAIN, 20));
+        seats2.setForeground(new Color(27, 28, 30));
+        seats2.setSize(50, 32);
+        seats2.setLocation(410, 360);
+
+        carName2.setText("Tesla Model S");
+        carName2.setForeground(new Color(27, 28, 30));
+        carName2.setBackground(new Color(127, 126, 144));
+        carName2.setFont(new Font("Segoe UI", Font.BOLD, 26));
+        carName2.setSize(180, 30);
+        carName2.setLocation(190, 396);
+
+        ImageIcon car2Pic = new ImageIcon("src\\Tesla_Model_S_Logo.png");
+        car2.setIcon(car2Pic);
+        car2.setSize(241, 121);
+        car2.setLocation(170, 295);
+
+        pnl2.setIcon(pnl);
+        pnl2.setSize(394, 160);
+        pnl2.setLocation(155, 295);
+
         //First Car Panel
         btn1.setText("Learn More!");
         btn1.setForeground(new Color(27, 28, 30));
@@ -105,15 +155,13 @@ public class viewAllCar extends JFrame implements MouseListener{
         btn1.setBorder(border);
         btn1.addMouseListener(this);
         
-        ImageIcon price = new ImageIcon("src\\price-tag (1).png");
-        price1.setIcon(price);
+        price1.setIcon(pricePic);
         price1.setText("RM 24/hr");
         price1.setFont(new Font("Segoe UI", Font.PLAIN, 16));
         price1.setForeground(new Color(27, 28, 30));
         price1.setSize(140, 32);
         price1.setLocation(410, 150);
 
-        ImageIcon seat = new ImageIcon("src\\car-seat (1).png");
         seats1.setIcon(seat);
         seats1.setText("4");
         seats1.setFont(new Font("Segoe UI", Font.PLAIN, 20));
@@ -138,6 +186,28 @@ public class viewAllCar extends JFrame implements MouseListener{
         pnl1.setSize(394, 160);
         pnl1.setLocation(155, 120);
 
+        pane.setSize(725, 420);
+        pane.setBackground(new Color(27, 28, 30));
+        pane.setLayout(null);
+
+        pane.add(car1);
+        pane.add(carName1);
+        pane.add(btn1);
+        pane.add(seats1);
+        pane.add(price1);
+        pane.add(pnl1);
+        pane.add(car2);
+        pane.add(carName2);
+        pane.add(btn2);
+        pane.add(seats2);
+        pane.add(price2);
+        pane.add(pnl2);
+        pane.add(separator);
+        pane.add(seats);
+        pane.add(txtSeats);
+        pane.add(separator2);
+        pane.add(search);
+
         //Frame
         ImageIcon icon = new ImageIcon("src\\Logo1.png");
         this.getContentPane().setBackground(new Color(27, 28, 30));
@@ -148,18 +218,7 @@ public class viewAllCar extends JFrame implements MouseListener{
         this.setSize(725, 420);
         this.setVisible(true);
 
-        this.add(car1);
-        this.add(carName1);
-        this.add(btn1);
-        this.add(seats1);
-        this.add(price1);
-        this.add(pnl1);
-        this.add(separator);
-        this.add(seats);
-        this.add(txtSeats);
-        this.add(separator2);
-        this.add(search);
-         
+        this.add(pane);
     }
 
     @Override
