@@ -97,7 +97,7 @@ public class viewCar extends JFrame implements MouseListener{
         book.setForeground(new Color(225,223,186));
         book.setLocation(408, 335);
 
-        //Bookin icon
+        //Booking icon
         ImageIcon booking = new ImageIcon("src\\appointment.png");
         btnBook.setIcon(booking);
         btnBook.setForeground(new Color(225,223,186));
@@ -177,7 +177,7 @@ public class viewCar extends JFrame implements MouseListener{
         ImageIcon car = new ImageIcon("src\\Tesla Model S.png");
         carPic.setIcon(car);
         carPic.setSize(412, 225);
-        carPic.setLocation(0, 5);
+        carPic.setLocation(3, 25);
         
         //Frame
         ImageIcon icon = new ImageIcon("src\\Logo1.png");
