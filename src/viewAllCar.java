@@ -62,7 +62,6 @@ public class viewAllCar extends JFrame implements MouseListener{
     private JSeparator separator = new JSeparator();
     private JSeparator separator2 = new JSeparator();
     private JPanel panel1 = new JPanel();
-    private JScrollPane pane = new JScrollPane();
     ImageIcon pnl = new ImageIcon("src\\pnl.png");
     ImageIcon pricePic = new ImageIcon("src\\price-tag (1).png");
     ImageIcon seat = new ImageIcon("src\\car-seat (1).png");
@@ -103,6 +102,47 @@ public class viewAllCar extends JFrame implements MouseListener{
         separator.setSize(725, 17);
         separator.setLocation(0, 80);
 
+        //Third Car Panel
+        btn3.setText("Learn More!");
+        btn3.setForeground(new Color(27, 28, 30));
+        btn3.setBackground(new Color(127, 126, 144));
+        btn3.setFont(new Font("TW Cen MT", Font.BOLD, 18));
+        btn3.setFocusable(false);
+        btn3.setSize(110, 35);
+        btn3.setLocation(405, 575);
+        btn3.setBorder(border);
+        btn3.addMouseListener(this);
+        
+        price3.setIcon(pricePic);
+        price3.setText("RM 24/hr");
+        price3.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+        price3.setForeground(new Color(27, 28, 30));
+        price3.setSize(140, 32);
+        price3.setLocation(410, 500);
+
+        seats3.setIcon(seat);
+        seats3.setText("4");
+        seats3.setFont(new Font("Segoe UI", Font.PLAIN, 20));
+        seats3.setForeground(new Color(27, 28, 30));
+        seats3.setSize(50, 32);
+        seats3.setLocation(410, 535);
+
+        carName3.setText("Tesla Model S");
+        carName3.setForeground(new Color(27, 28, 30));
+        carName3.setBackground(new Color(127, 126, 144));
+        carName3.setFont(new Font("Segoe UI", Font.BOLD, 26));
+        carName3.setSize(180, 30);
+        carName3.setLocation(190, 571);
+
+        ImageIcon car3Pic = new ImageIcon("src\\Tesla_Model_S_Logo.png");
+        car3.setIcon(car3Pic);
+        car3.setSize(241, 121);
+        car3.setLocation(170, 470);
+
+        pnl3.setIcon(pnl);
+        pnl3.setSize(394, 160);
+        pnl3.setLocation(155, 470);
+
         //Second Car Panel
         btn2.setText("Learn More!");
         btn2.setForeground(new Color(27, 28, 30));
@@ -112,7 +152,7 @@ public class viewAllCar extends JFrame implements MouseListener{
         btn2.setSize(110, 35);
         btn2.setLocation(405, 400);
         btn2.setBorder(border);
-        btn1.addMouseListener(this);
+        btn2.addMouseListener(this);
         
         price2.setIcon(pricePic);
         price2.setText("RM 24/hr");
@@ -186,27 +226,26 @@ public class viewAllCar extends JFrame implements MouseListener{
         pnl1.setSize(394, 160);
         pnl1.setLocation(155, 120);
 
-        pane.setSize(725, 420);
-        pane.setBackground(new Color(27, 28, 30));
-        pane.setLayout(null);
+        panel1.setSize(725, 420);
+        panel1.setBackground(new Color(27, 28, 30));
 
-        pane.add(car1);
-        pane.add(carName1);
-        pane.add(btn1);
-        pane.add(seats1);
-        pane.add(price1);
-        pane.add(pnl1);
-        pane.add(car2);
-        pane.add(carName2);
-        pane.add(btn2);
-        pane.add(seats2);
-        pane.add(price2);
-        pane.add(pnl2);
-        pane.add(separator);
-        pane.add(seats);
-        pane.add(txtSeats);
-        pane.add(separator2);
-        pane.add(search);
+        panel1.add(car1);
+        panel1.add(carName1);
+        panel1.add(btn1);
+        panel1.add(seats1);
+        panel1.add(price1);
+        panel1.add(pnl1);
+        panel1.add(car2);
+        panel1.add(carName2);
+        panel1.add(btn2);
+        panel1.add(seats2);
+        panel1.add(price2);
+        panel1.add(pnl2);
+        panel1.add(separator);
+        panel1.add(seats);
+        panel1.add(txtSeats);
+        panel1.add(separator2);
+        panel1.add(search);
 
         //Frame
         ImageIcon icon = new ImageIcon("src\\Logo1.png");
@@ -218,6 +257,10 @@ public class viewAllCar extends JFrame implements MouseListener{
         this.setSize(725, 420);
         this.setVisible(true);
 
+        JScrollPane pane = new JScrollPane(panel1, 
+            JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
+            JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        //this.add(panel1);
         this.add(pane);
     }
 
