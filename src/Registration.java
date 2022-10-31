@@ -10,6 +10,9 @@ import javax.swing.border.LineBorder;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 
 public class Registration extends JFrame implements MouseListener{
     public static void main(String[] args) {
@@ -186,8 +189,24 @@ public class Registration extends JFrame implements MouseListener{
     public void mouseClicked(MouseEvent e) {
         // TODO Auto-generated method stub
         if(e.getSource() == btnRegister) {
-            System.out.println("Username: " + txtUsername.getText() + "\nPassword: " + txtPassword.getText() + 
-            "\nEmail: " + txtEmail.getText() + "\nPhone No.: " + txtPhoneNum.getText());
+            String[] array = {txtUsername.getText(), txtPassword.getText(), txtEmail.getText(), txtPhoneNum.getText(), "\n"};
+            try
+            {
+                FileWriter fw = new FileWriter("src\\Text Files\\userDetails.txt", true);
+                BufferedWriter bw = new BufferedWriter(fw);
+                PrintWriter pw = new PrintWriter(bw);    
+
+                for (int i = 0; i < array.length ; i++)
+                {
+                    pw.write(array[i] + ", ");
+                }
+                pw.close();
+            }
+            catch (Exception f)
+            {
+                f.printStackTrace();
+                System.out.println("No such file exists.");
+            }
         } else if(e.getSource() == txtUsername) {
             txtUsername.setText("");
         } else if(e.getSource() == txtPassword) {

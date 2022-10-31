@@ -1,5 +1,9 @@
 import java.awt.event.*;
-
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 import java.awt.Color;
 import java.awt.Font;
 
@@ -131,28 +135,56 @@ public class Login extends JFrame implements MouseListener{
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public void mouseClicked(MouseEvent e){
         // TODO Auto-generated method stub
         if(e.getSource() == btnLogin1) {
             String pwd = String.valueOf(txtPassword.getPassword());
             String user = txtUsername.getText();
-            if(user.equals("HamidKarim")) {
-                if(pwd.equals("hamidkarim123")) {
-                    System.out.println("Login Successful");
-                    HomePage hP = new HomePage();
-                    hP.setVisible(true);
-                    this.setVisible(false);
-                } else {
-                    System.out.println("Login Denied");
+            // arraylist to store strings
+            List<String> listOfStrings
+            = new ArrayList<String>();
+   
+            try (// load content of file based on specific delimiter
+            Scanner sc = new Scanner(new FileReader("src\\Text Files\\userDetails.txt"))
+                            .useDelimiter(",\\s*")) {
+                String str;
+      
+                // checking end of file
+                while (sc.hasNext()) {
+                    str = sc.next();
+                
+                    // adding each string to arraylist
+                    listOfStrings.add(str);
                 }
-            } else {
-                System.out.println("Login Denied");
+            } catch (FileNotFoundException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
             }
+            // convert any arraylist to array
+            String[] array
+                = listOfStrings.toArray(new String[0]);
+
+            //Validation
+            for(int i = 0; i < array.length; i++) {
+                if(user.equals(array[i])) {
+                    if(pwd.equals(array[i+1])) {
+                        System.out.println("Login Successful");
+                        HomePage hP = new HomePage();
+                        hP.setVisible(true);
+                        this.setVisible(false);
+                    } else {
+                        System.out.println("Login Denied Pwd");
+                    }
+                } else {
+                    System.out.println("Login Denied User");
+                }
+            }
+            
         } else if(e.getSource() == txtUsername) {
             txtUsername.setText("");
         } else if(e.getSource() == txtPassword) {
             txtPassword.setText("");
-        }
+        }   
     }
 
     @Override
