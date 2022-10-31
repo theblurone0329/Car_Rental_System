@@ -143,10 +143,10 @@ public class Login extends JFrame implements MouseListener{
                     hP.setVisible(true);
                     this.setVisible(false);
                 } else {
-                    System.out.println("Login Denied1");
+                    System.out.println("Login Denied");
                 }
             } else {
-                System.out.println("Login Denied2");
+                System.out.println("Login Denied");
             }
         } else if(e.getSource() == txtUsername) {
             txtUsername.setText("");

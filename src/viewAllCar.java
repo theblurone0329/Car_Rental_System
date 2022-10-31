@@ -150,7 +150,7 @@ public class viewAllCar extends JFrame implements MouseListener{
         btn2.setFont(new Font("TW Cen MT", Font.BOLD, 18));
         btn2.setFocusable(false);
         btn2.setSize(110, 35);
-        btn2.setLocation(405, 400);
+        btn2.setLocation(405, 420);
         btn2.setBorder(border);
         btn2.addMouseListener(this);
         
@@ -159,30 +159,30 @@ public class viewAllCar extends JFrame implements MouseListener{
         price2.setFont(new Font("Segoe UI", Font.PLAIN, 16));
         price2.setForeground(new Color(27, 28, 30));
         price2.setSize(140, 32);
-        price2.setLocation(410, 325);
+        price2.setLocation(410, 345);
 
         seats2.setIcon(seat);
         seats2.setText("4");
         seats2.setFont(new Font("Segoe UI", Font.PLAIN, 20));
         seats2.setForeground(new Color(27, 28, 30));
         seats2.setSize(50, 32);
-        seats2.setLocation(410, 360);
+        seats2.setLocation(410, 380);
 
         carName2.setText("Tesla Model S");
         carName2.setForeground(new Color(27, 28, 30));
         carName2.setBackground(new Color(127, 126, 144));
         carName2.setFont(new Font("Segoe UI", Font.BOLD, 26));
         carName2.setSize(180, 30);
-        carName2.setLocation(190, 396);
+        carName2.setLocation(190, 416);
 
         ImageIcon car2Pic = new ImageIcon("src\\Tesla_Model_S_Logo.png");
         car2.setIcon(car2Pic);
         car2.setSize(241, 121);
-        car2.setLocation(170, 295);
+        car2.setLocation(170, 285);
 
         pnl2.setIcon(pnl);
         pnl2.setSize(394, 160);
-        pnl2.setLocation(155, 295);
+        pnl2.setLocation(155, 315);
 
         //First Car Panel
         btn1.setText("Learn More!");
@@ -228,6 +228,7 @@ public class viewAllCar extends JFrame implements MouseListener{
 
         panel1.setSize(725, 420);
         panel1.setBackground(new Color(27, 28, 30));
+        panel1.setLayout(null);
 
         panel1.add(car1);
         panel1.add(carName1);
@@ -257,11 +258,11 @@ public class viewAllCar extends JFrame implements MouseListener{
         this.setSize(725, 420);
         this.setVisible(true);
 
-        JScrollPane pane = new JScrollPane(panel1, 
-            JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
-            JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        //this.add(panel1);
-        this.add(pane);
+        //JScrollPane pane = new JScrollPane(panel1, 
+            //JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
+            //JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        this.add(panel1);
+        //this.add(pane);
     }
 
     @Override
