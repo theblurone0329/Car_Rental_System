@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
@@ -86,7 +87,316 @@ public class App extends JFrame implements MouseListener{
     private JPanel tablePnl = new JPanel();
     private Border borderVMP = new LineBorder(new Color(225,223,186), 1, true);
 
+    //View All Car Page
+    private JLabel pnl1Car = new JLabel();
+    private JLabel pnl2Car = new JLabel();
+    private JLabel pnl3Car = new JLabel();
+    private JLabel pnl4Car = new JLabel();
+    private JLabel pnl5Car = new JLabel();
+    private JLabel pnlBorder1 = new JLabel();
+    private JLabel pnlBorder2 = new JLabel();
+    private JLabel pnlBorder3 = new JLabel();
+    private JLabel pnlBorder4 = new JLabel();
+    private JLabel pnlBorder5 = new JLabel();
+    private JLabel car1 = new JLabel();
+    private JLabel car2 = new JLabel();
+    private JLabel car3 = new JLabel();
+    private JLabel car4 = new JLabel();
+    private JLabel car5 = new JLabel();
+    private JLabel carName1 = new JLabel();
+    private JLabel carName2 = new JLabel();
+    private JLabel carName3 = new JLabel();
+    private JLabel carName4 = new JLabel();
+    private JLabel carName5 = new JLabel();
+    private JLabel seats1 = new JLabel();
+    private JLabel seats2 = new JLabel();
+    private JLabel seats3 = new JLabel();
+    private JLabel seats4 = new JLabel();
+    private JLabel seats5 = new JLabel();
+    private JLabel price1 = new JLabel();
+    private JLabel price2 = new JLabel();
+    private JLabel price3 = new JLabel();
+    private JLabel price4 = new JLabel();
+    private JLabel price5 = new JLabel();
+    private JLabel price = new JLabel();
+    private JLabel seats = new JLabel();
+    private JTextField txtSeats = new JTextField();
+    private JButton btn1 = new JButton();
+    private JButton btn2 = new JButton();
+    private JButton btn3 = new JButton();
+    private JButton btn4 = new JButton();
+    private JButton btn5 = new JButton();
+    private JButton search = new JButton();
+    private JSeparator separator = new JSeparator();
+    private JSeparator separator2 = new JSeparator();
+    private JPanel pnlViewAllCar = new JPanel();
+    ImageIcon pnl = new ImageIcon("src\\Pics\\pnl.png");
+    ImageIcon pricePic = new ImageIcon("src\\Pics\\price-tag (1).png");
+    ImageIcon seat = new ImageIcon("src\\Pics\\car-seat (1).png");
+    private Border borderCar = new LineBorder(new Color(27, 28, 30), 4, true);
+
+    //RBP Page
+    private JPanel pnlRBP = new JPanel();
+    private JPanel pnlLeftRBP = new JPanel();
+    private JPanel pnlRightRBP = new JPanel();
+    private JLabel txtReport = new JLabel();
+    private JLabel txtBook = new JLabel();
+    private JButton btnReport  = new JButton();
+    private JButton btnBook = new JButton();
+    private JSeparator separator1RBP = new JSeparator(SwingConstants.VERTICAL);
+
     App() {
+
+        //View Report or Booking Page
+        {
+            separator1RBP.setForeground(new Color(225,223,186));
+            separator1RBP.setBackground(new Color(27, 28, 30));
+            separator1RBP.setSize(10, 420);
+            separator1RBP.setLocation(363, 0);
+
+            txtReport.setText("View Reports");
+            txtReport.setSize(150, 37);
+            txtReport.setLocation(133, 214);
+            txtReport.setBackground(new Color(27, 28, 30));
+            txtReport.setForeground(new Color(225,223,186));
+            txtReport.setFont(new Font("TW Cent", Font.PLAIN, 16));
+
+            txtBook.setText("View Booking Request");
+            txtBook.setSize(180, 37);
+            txtBook.setLocation(103, 214);
+            txtBook.setBackground(new Color(27, 28, 30));
+            txtBook.setForeground(new Color(225,223,186));
+            txtBook.setFont(new Font("TW Cent", Font.PLAIN, 16));
+
+            ImageIcon cus = new ImageIcon("src\\Pics\\online-booking2.png");
+            btnBook.setIcon(cus);
+            btnBook.setSize(64, 64);
+            btnBook.setBackground(new Color(27, 28, 30));
+            btnBook.setLocation(150, 150);
+            btnBook.setFocusable(false);
+            btnBook.setBorder(null);
+            btnBook.addMouseListener(this);
+
+            ImageIcon car = new ImageIcon("src\\Pics\\clipboard.png");
+            btnReport.setIcon(car);
+            btnReport.setSize(64, 64);
+            btnReport.setBackground(new Color(27, 28, 30));
+            btnReport.setLocation(150, 150);
+            btnReport.setFocusable(false);
+            btnReport.setBorder(null);
+            btnReport.addMouseListener(this);
+
+            pnlRightRBP.setBackground(new Color(27, 28, 30));
+            pnlRightRBP.setBounds(364, 0, 362, 420);
+            pnlRightRBP.setLayout(null);
+
+            pnlLeftRBP.setBackground(new Color(27, 28, 30));
+            pnlLeftRBP.setBounds(0, 0, 362, 420);
+            pnlLeftRBP.setLayout(null);
+
+            pnlRightRBP.add(txtBook);
+            pnlRightRBP.add(btnBook);
+            pnlLeftRBP.add(txtReport);
+            pnlLeftRBP.add(btnReport);
+
+            //Panel
+            pnlRBP.setBackground(new Color(27, 28, 30));
+            pnlRBP.setLayout(null);
+            pnlRBP.setSize(725, 420);
+            pnlRBP.setVisible(false);
+
+            pnlRBP.add(pnlLeftRBP);
+            pnlRBP.add(pnlRightRBP);
+            pnlRBP.add(separator1RBP);
+        }
+
+        //View All Car Page
+        {
+            ImageIcon searchPic = new ImageIcon("src\\Pics\\magnifier.png");
+            search.setIcon(searchPic);
+            search.setSize(32, 32);
+            search.setBackground(new Color(27, 28, 30));
+            search.setBorder(null);
+            search.setLocation(485, 30);
+            search.addMouseListener(this);
+
+            separator2.setForeground(new Color(225,223,186));
+            separator2.setBackground(new Color(27, 28, 30));
+            separator2.setSize(70, 17);
+            separator2.setLocation(405, 65);
+
+            txtSeats.setText("eg: 4");
+            txtSeats.setSize(70, 35);
+            txtSeats.setForeground(new Color(225,223,186));
+            txtSeats.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+            txtSeats.setBackground(new Color(27, 28, 30));
+            txtSeats.setLocation(405, 30);
+            txtSeats.setBorder(null);
+            txtSeats.addMouseListener(this);
+
+            seats.setText("Preferred Amount of Seats: ");
+            seats.setFont(new Font("TW Cen MT", Font.BOLD, 18));
+            seats.setForeground(new Color(225,223,186));
+            seats.setSize(220, 35);
+            seats.setLocation(185, 30);
+
+            separator.setForeground(new Color(225,223,186));
+            separator.setBackground(new Color(27, 28, 30));
+            separator.setSize(725, 17);
+            separator.setLocation(0, 80);
+
+            //Third Car Panel
+            btn3.setText("Learn More!");
+            btn3.setForeground(new Color(27, 28, 30));
+            btn3.setBackground(new Color(127, 126, 144));
+            btn3.setFont(new Font("TW Cen MT", Font.BOLD, 18));
+            btn3.setFocusable(false);
+            btn3.setSize(110, 35);
+            btn3.setLocation(405, 575);
+            btn3.setBorder(borderCar);
+            btn3.addMouseListener(this);
+            
+            price3.setIcon(pricePic);
+            price3.setText("RM 24/hr");
+            price3.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+            price3.setForeground(new Color(27, 28, 30));
+            price3.setSize(140, 32);
+            price3.setLocation(410, 500);
+
+            seats3.setIcon(seat);
+            seats3.setText("4");
+            seats3.setFont(new Font("Segoe UI", Font.PLAIN, 20));
+            seats3.setForeground(new Color(27, 28, 30));
+            seats3.setSize(50, 32);
+            seats3.setLocation(410, 535);
+
+            carName3.setText("Tesla Model S");
+            carName3.setForeground(new Color(27, 28, 30));
+            carName3.setBackground(new Color(127, 126, 144));
+            carName3.setFont(new Font("Segoe UI", Font.BOLD, 26));
+            carName3.setSize(180, 30);
+            carName3.setLocation(190, 571);
+
+            ImageIcon car3Pic = new ImageIcon("src\\Pics\\Tesla_Model_S_Logo.png");
+            car3.setIcon(car3Pic);
+            car3.setSize(241, 121);
+            car3.setLocation(170, 470);
+
+            pnl3Car.setIcon(pnl);
+            pnl3Car.setSize(394, 160);
+            pnl3Car.setLocation(155, 470);
+
+            //Second Car Panel
+            btn2.setText("Learn More!");
+            btn2.setForeground(new Color(27, 28, 30));
+            btn2.setBackground(new Color(127, 126, 144));
+            btn2.setFont(new Font("TW Cen MT", Font.BOLD, 18));
+            btn2.setFocusable(false);
+            btn2.setSize(110, 35);
+            btn2.setLocation(405, 420);
+            btn2.setBorder(borderCar);
+            btn2.addMouseListener(this);
+            
+            price2.setIcon(pricePic);
+            price2.setText("RM 24/hr");
+            price2.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+            price2.setForeground(new Color(27, 28, 30));
+            price2.setSize(140, 32);
+            price2.setLocation(410, 345);
+
+            seats2.setIcon(seat);
+            seats2.setText("4");
+            seats2.setFont(new Font("Segoe UI", Font.PLAIN, 20));
+            seats2.setForeground(new Color(27, 28, 30));
+            seats2.setSize(50, 32);
+            seats2.setLocation(410, 380);
+
+            carName2.setText("Tesla Model S");
+            carName2.setForeground(new Color(27, 28, 30));
+            carName2.setBackground(new Color(127, 126, 144));
+            carName2.setFont(new Font("Segoe UI", Font.BOLD, 26));
+            carName2.setSize(180, 30);
+            carName2.setLocation(190, 416);
+
+            ImageIcon car2Pic = new ImageIcon("src\\Pics\\Tesla_Model_S_Logo.png");
+            car2.setIcon(car2Pic);
+            car2.setSize(241, 121);
+            car2.setLocation(170, 285);
+
+            pnl2Car.setIcon(pnl);
+            pnl2Car.setSize(394, 160);
+            pnl2Car.setLocation(155, 315);
+
+            //First Car Panel
+            btn1.setText("Learn More!");
+            btn1.setForeground(new Color(27, 28, 30));
+            btn1.setBackground(new Color(127, 126, 144));
+            btn1.setFont(new Font("TW Cen MT", Font.BOLD, 18));
+            btn1.setFocusable(false);
+            btn1.setSize(110, 35);
+            btn1.setLocation(405, 225);
+            btn1.setBorder(borderCar);
+            btn1.addMouseListener(this);
+            
+            price1.setIcon(pricePic);
+            price1.setText("RM 24/hr");
+            price1.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+            price1.setForeground(new Color(27, 28, 30));
+            price1.setSize(140, 32);
+            price1.setLocation(410, 150);
+
+            seats1.setIcon(seat);
+            seats1.setText("4");
+            seats1.setFont(new Font("Segoe UI", Font.PLAIN, 20));
+            seats1.setForeground(new Color(27, 28, 30));
+            seats1.setSize(50, 32);
+            seats1.setLocation(410, 185);
+
+            carName1.setText("Tesla Model S");
+            carName1.setForeground(new Color(27, 28, 30));
+            carName1.setBackground(new Color(127, 126, 144));
+            carName1.setFont(new Font("Segoe UI", Font.BOLD, 26));
+            carName1.setSize(180, 30);
+            carName1.setLocation(190, 221);
+
+            ImageIcon car1Pic = new ImageIcon("src\\Pics\\Tesla_Model_S_Logo.png");
+            car1.setIcon(car1Pic);
+            car1.setSize(241, 121);
+            car1.setLocation(170, 90);
+
+            ImageIcon pnl = new ImageIcon("src\\Pics\\pnl.png");
+            pnl1Car.setIcon(pnl);
+            pnl1Car.setSize(394, 160);
+            pnl1Car.setLocation(155, 120);
+
+            pnlViewAllCar.setSize(725, 420);
+            pnlViewAllCar.setBackground(new Color(27, 28, 30));
+            pnlViewAllCar.setLayout(null);
+            pnlViewAllCar.setVisible(false);
+
+            pnlViewAllCar.add(car1);
+            pnlViewAllCar.add(carName1);
+            pnlViewAllCar.add(btn1);
+            pnlViewAllCar.add(seats1);
+            pnlViewAllCar.add(price1);
+            pnlViewAllCar.add(pnl1Car);
+            pnlViewAllCar.add(car2);
+            pnlViewAllCar.add(carName2);
+            pnlViewAllCar.add(btn2);
+            pnlViewAllCar.add(seats2);
+            pnlViewAllCar.add(price2);
+            pnlViewAllCar.add(pnl2Car);
+            pnlViewAllCar.add(separator);
+            pnlViewAllCar.add(seats);
+            pnlViewAllCar.add(txtSeats);
+            pnlViewAllCar.add(separator2);
+            pnlViewAllCar.add(search);
+
+            //JScrollPane pane = new JScrollPane(panel1, 
+                //JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
+                //JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            //this.add(pane);
+        }
 
         //View Monthly Report Page
         {
@@ -154,7 +464,7 @@ public class App extends JFrame implements MouseListener{
             totalIncome.setSize(193, 26);
             totalIncome.setLocation(360, 60);
 
-            //Radio button for uncompleted
+            //CheckBox for uncompleted
             uncompleted.setText("Uncompleted");
             uncompleted.setForeground(new Color(225,223,186));
             uncompleted.setBackground(new Color(27, 28, 30));
@@ -163,7 +473,7 @@ public class App extends JFrame implements MouseListener{
             uncompleted.setLocation(60, 60);
             uncompleted.setFocusable(false);
 
-            //Radio button for completed
+            //CheckBox for completed
             completed.setText("Completed");
             completed.setForeground(new Color(225,223,186));
             completed.setBackground(new Color(27, 28, 30));
@@ -254,13 +564,6 @@ public class App extends JFrame implements MouseListener{
         //Profile Page
         {
             //Titles for each section
-            titleService.setText("Current Service");
-            titleService.setFont(new Font("TW Cen MT", Font.PLAIN, 28));
-            titleService.setForeground(new Color(225,223,186));
-            titleService.setBackground(new Color(27, 28, 30));
-            titleService.setSize(200, 27);
-            titleService.setLocation(440, 50);
-
             titleProfile.setText("User Profile");
             titleProfile.setFont(new Font("TW Cen MT", Font.PLAIN, 28));
             titleProfile.setForeground(new Color(225,223,186));
@@ -283,60 +586,6 @@ public class App extends JFrame implements MouseListener{
             icnUsername.setIcon(icnUser);
             icnUsername.setSize(32, 32);
             icnUsername.setLocation(85, 87);
-
-            //Txt view under view button
-            txtView.setText("View");
-            txtView.setSize(40, 32);
-            txtView.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-            txtView.setForeground(new Color(225,223,186));
-            txtView.setLocation(560, 280);
-
-            //View button to show current booked service
-            ImageIcon btn_View = new ImageIcon("src\\Pics\\file.png");
-            btnView.setIcon(btn_View);
-            btnView.setSize(32, 32);
-            btnView.setLocation(560, 257);
-            btnView.setFocusable(false);
-            btnView.setBorder(null);
-            btnView.setBackground(new Color(27, 28, 30));
-
-            //Current booked car picture
-            ImageIcon car = new ImageIcon("src\\Pics\\Car_profile.png");
-            car_Profile.setIcon(car);
-            car_Profile.setSize(174, 100);
-            car_Profile.setLocation(435, 115);
-
-            //Current service progress
-            ImageIcon progBar_0 = new ImageIcon("src\\Pics\\1_1.png");
-            progBar0.setIcon(progBar_0);
-            progBar0.setSize(135, 139);
-            progBar0.setLocation(430, 210);
-
-            ImageIcon progBar_25 = new ImageIcon("src\\Pics\\1_2.png");
-            progBar25.setIcon(progBar_25);
-            progBar25.setSize(135, 139);
-            progBar25.setLocation(430, 210);
-
-            ImageIcon progBar_50 = new ImageIcon("src\\Pics\\1_3.png");
-            progBar50.setIcon(progBar_50);
-            progBar50.setSize(135, 139);
-            progBar50.setLocation(430, 210);
-
-            ImageIcon progBar_75 = new ImageIcon("src\\Pics\\1_4.png");
-            progBar75.setIcon(progBar_75);
-            progBar75.setSize(135, 139);
-            progBar75.setLocation(430, 210);
-
-            ImageIcon progBar_100 = new ImageIcon("src\\Pics\\1_5.png");
-            progBar100.setIcon(progBar_100);
-            progBar100.setSize(135, 139);
-            progBar100.setLocation(430, 210);
-
-            //Gradient Border on the right
-            ImageIcon br1 = new ImageIcon("src\\Pics\\Border.png");
-            border2.setIcon(br1);
-            border2.setSize(400, 320);
-            border2.setLocation(390, 70);
 
             //Gradient Border on the left
             ImageIcon br = new ImageIcon("src\\Pics\\Border.png");
@@ -557,6 +806,8 @@ public class App extends JFrame implements MouseListener{
             this.add(pnl1);
             
             //Pages
+            this.add(pnlRBP);
+            this.add(pnlViewAllCar);
             this.add(pnlVMP);
             this.add(pnlAdd);
             this.add(pnlProfile);
@@ -575,19 +826,40 @@ public class App extends JFrame implements MouseListener{
     public void mouseClicked(MouseEvent e) {
         // TODO Auto-generated method stub
         if(e.getSource() == btnProfile) {
-            pnl1.setVisible(false);
             pnlProfile.setVisible(true);
+            pnl1.setVisible(false);
+            pnlVMP.setVisible(false);
+            pnlAdd.setVisible(false);
+            pnlViewAllCar.setVisible(false);
+            pnlRBP.setVisible(false);
         } else if(e.getSource() == btnHome) {
             pnl1.setVisible(true);
             pnlProfile.setVisible(false);
             pnlAdd.setVisible(false);
             pnlVMP.setVisible(false);
+            pnlViewAllCar.setVisible(false);
+            pnlRBP.setVisible(false);
         } else if(e.getSource() == btnRegistration) {
-            pnl1.setVisible(false);
             pnlAdd.setVisible(true);
-        } else if(e.getSource() == btnReports) {
             pnl1.setVisible(false);
-            pnlVMP.setVisible(true);
+            pnlVMP.setVisible(false);
+            pnlProfile.setVisible(false);
+            pnlViewAllCar.setVisible(false);
+            pnlRBP.setVisible(false);
+        } else if(e.getSource() == btnReports) {
+            pnlRBP.setVisible(true);
+            pnlVMP.setVisible(false);
+            pnl1.setVisible(false);
+            pnlAdd.setVisible(false);
+            pnlProfile.setVisible(false);
+            pnlViewAllCar.setVisible(false);
+        } else if(e.getSource() == btnBooking) {
+            pnlViewAllCar.setVisible(true);
+            pnlVMP.setVisible(false);
+            pnl1.setVisible(false);
+            pnlAdd.setVisible(false);
+            pnlProfile.setVisible(false);
+            pnlRBP.setVisible(false);
         }
     }
 
