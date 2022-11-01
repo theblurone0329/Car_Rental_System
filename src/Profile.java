@@ -4,10 +4,10 @@ import java.awt.event.*;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
-public class Profile extends JFrame implements MouseListener{
+public class Profile extends JPanel implements MouseListener{
     public static void main(String[] args) {
         new Profile();
     }
@@ -155,13 +155,9 @@ public class Profile extends JFrame implements MouseListener{
         lblUsername.setSize(88,25);
         lblUsername.setLocation(125, 70);
         
-        //Frame
-        ImageIcon icon = new ImageIcon("src\\Pics\\Logo1.png");
-        this.getContentPane().setBackground(new Color(27, 28, 30));
-        this.setIconImage(icon.getImage());
-        this.setTitle("RentiZen");
+        //Panel
+        this.setBackground(new Color(27, 28, 30));
         this.setLayout(null);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(725, 420);
         this.setVisible(true);
 
