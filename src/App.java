@@ -1,19 +1,28 @@
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.*;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 
 public class App extends JFrame implements MouseListener{
     public static void main(String[] args) {
         new App();
     }
 
-    //Declare Form Components
+    //Home Page
     private JPanel pnl1 = new JPanel();
     private JPanel pnl2 = new JPanel();
     private JPanel pnl3 = new JPanel();
@@ -54,7 +63,193 @@ public class App extends JFrame implements MouseListener{
     private JLabel titleService = new JLabel();
     private JLabel txtView = new JLabel();
 
+    //Add Page
+    private JPanel pnlAdd = new JPanel();
+    private JPanel pnlLeft = new JPanel();
+    private JPanel pnlRight = new JPanel();
+    private JLabel txtCus = new JLabel();
+    private JLabel txtCar = new JLabel();
+    private JButton btnAddCus = new JButton();
+    private JButton btnAddCar = new JButton();
+    private JSeparator separator1 = new JSeparator(SwingConstants.VERTICAL);
+
+    //View Monthly Report Page
+    private JPanel pnlVMP = new JPanel();
+    private JButton btnClear = new JButton();
+    private JButton btnSearch = new JButton();
+    private JLabel totalIncome = new JLabel();
+    private JLabel txtTotalIncome = new JLabel();
+    private JCheckBox completed = new JCheckBox();
+    private JCheckBox uncompleted = new JCheckBox();
+    private JTable table = new JTable();
+    private JScrollPane pane = new JScrollPane();
+    private JPanel tablePnl = new JPanel();
+    private Border borderVMP = new LineBorder(new Color(225,223,186), 1, true);
+
     App() {
+
+        //View Monthly Report Page
+        {
+            //Table
+            String[] columnsReturn = {"First", "Second", "Third", "Fourth"};
+            String[][] rowsReturn = {};
+
+            table = new JTable(rowsReturn, columnsReturn){
+                public boolean isCellEditable(int rows, int columns) {
+                    return false;
+                }
+            };
+
+            table.setPreferredScrollableViewportSize(new Dimension(597, 1500));
+            table.setFillsViewportHeight(true);
+            table.setBackground(new Color(27, 28, 30));
+            table.setForeground(new Color(225,223,186));
+            table.setGridColor(new Color(225,223,186));
+            table.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+            table.setRowHeight(30);
+            
+            pane = new JScrollPane(table);
+
+            tablePnl.setBounds(50, 155, 597, 300);
+            tablePnl.setBorder(BorderFactory.createLineBorder(new Color(225,223,186)));
+            tablePnl.add(pane);
+
+            //Object[] rowReturns = new Object[4];
+
+            //Cancel Button
+            btnSearch.setText("Search");
+            btnSearch.setSize(85, 37);
+            btnSearch.setLocation(155, 100);
+            btnSearch.setForeground(new Color(225,223,186));
+            btnSearch.setBackground(new Color(27, 28, 30));
+            btnSearch.setBorder(borderVMP);
+            btnSearch.setFont(new Font("TW Cen MT", Font.BOLD, 16));
+            btnSearch.setFocusable(false);
+            btnSearch.addMouseListener(this);
+            
+            //Clear Button
+            btnClear.setText("Clear");
+            btnClear.setSize(85, 37);
+            btnClear.setLocation(50, 100);
+            btnClear.setForeground(new Color(225,223,186));
+            btnClear.setBackground(new Color(27, 28, 30));
+            btnClear.setBorder(borderVMP);
+            btnClear.setFont(new Font("TW Cen MT", Font.BOLD, 16));
+            btnClear.setFocusable(false);
+            btnClear.addMouseListener(this);
+
+            //Text Total income (Manipulate)
+            txtTotalIncome.setText("RM 4,230.00");
+            txtTotalIncome.setFont(new Font("TW Cen MT", Font.BOLD, 16));
+            txtTotalIncome.setForeground(new Color(225,223,186));
+            txtTotalIncome.setBackground(new Color(27, 28, 30));
+            txtTotalIncome.setSize(193, 26);
+            txtTotalIncome.setLocation(553, 60);
+
+            //Text total income
+            totalIncome.setText("TOTAL INCOME (MONTH): ");
+            totalIncome.setFont(new Font("TW Cen MT", Font.BOLD, 16));
+            totalIncome.setForeground(new Color(225,223,186));
+            totalIncome.setBackground(new Color(27, 28, 30));
+            totalIncome.setSize(193, 26);
+            totalIncome.setLocation(360, 60);
+
+            //Radio button for uncompleted
+            uncompleted.setText("Uncompleted");
+            uncompleted.setForeground(new Color(225,223,186));
+            uncompleted.setBackground(new Color(27, 28, 30));
+            uncompleted.setSize(110, 25);
+            uncompleted.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+            uncompleted.setLocation(60, 60);
+            uncompleted.setFocusable(false);
+
+            //Radio button for completed
+            completed.setText("Completed");
+            completed.setForeground(new Color(225,223,186));
+            completed.setBackground(new Color(27, 28, 30));
+            completed.setSize(98, 25);
+            completed.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+            completed.setLocation(60, 30);
+            completed.setFocusable(false);
+
+            //Frame
+            pnlVMP.setBackground(new Color(27, 28, 30));
+            pnlVMP.setLayout(null);
+            pnlVMP.setSize(725, 420);
+            pnlVMP.setVisible(false);
+
+            //Adding components to Frame
+            pnlVMP.add(completed);
+            pnlVMP.add(uncompleted);
+            pnlVMP.add(totalIncome);
+            pnlVMP.add(txtTotalIncome);
+            pnlVMP.add(btnClear);
+            pnlVMP.add(btnSearch);
+            pnlVMP.add(tablePnl);
+        }
+
+        //Add Page
+        {
+            separator1.setForeground(new Color(225,223,186));
+            separator1.setBackground(new Color(27, 28, 30));
+            separator1.setSize(10, 420);
+            separator1.setLocation(363, 0);
+
+            txtCar.setText("Register New Car");
+            txtCar.setSize(150, 37);
+            txtCar.setLocation(123, 214);
+            txtCar.setBackground(new Color(27, 28, 30));
+            txtCar.setForeground(new Color(225,223,186));
+            txtCar.setFont(new Font("TW Cent", Font.PLAIN, 16));
+
+            txtCus.setText("Register New Customer");
+            txtCus.setSize(180, 37);
+            txtCus.setLocation(103, 214);
+            txtCus.setBackground(new Color(27, 28, 30));
+            txtCus.setForeground(new Color(225,223,186));
+            txtCus.setFont(new Font("TW Cent", Font.PLAIN, 16));
+
+            ImageIcon cus = new ImageIcon("src\\Pics\\add-user.png");
+            btnAddCus.setIcon(cus);
+            btnAddCus.setSize(64, 64);
+            btnAddCus.setBackground(new Color(27, 28, 30));
+            btnAddCus.setLocation(150, 150);
+            btnAddCus.setFocusable(false);
+            btnAddCus.setBorder(null);
+            btnAddCus.addMouseListener(this);
+
+            ImageIcon car = new ImageIcon("src\\Pics\\add-car.png");
+            btnAddCar.setIcon(car);
+            btnAddCar.setSize(64, 64);
+            btnAddCar.setBackground(new Color(27, 28, 30));
+            btnAddCar.setLocation(150, 160);
+            btnAddCar.setFocusable(false);
+            btnAddCar.setBorder(null);
+            btnAddCar.addMouseListener(this);
+
+            pnlRight.setBackground(new Color(27, 28, 30));
+            pnlRight.setBounds(364, 0, 362, 420);
+            pnlRight.setLayout(null);
+
+            pnlLeft.setBackground(new Color(27, 28, 30));
+            pnlLeft.setBounds(0, 0, 362, 420);
+            pnlLeft.setLayout(null);
+
+            pnlRight.add(txtCar);
+            pnlRight.add(btnAddCar);
+            pnlLeft.add(txtCus);
+            pnlLeft.add(btnAddCus);
+
+            //Frame
+            pnlAdd.setBackground(new Color(27, 28, 30));
+            pnlAdd.setLayout(null);
+            pnlAdd.setSize(725, 420);
+            pnlAdd.setVisible(false);
+
+            pnlAdd.add(pnlLeft);
+            pnlAdd.add(pnlRight);
+            pnlAdd.add(separator1);
+        }
 
         //Profile Page
         {
@@ -183,7 +378,7 @@ public class App extends JFrame implements MouseListener{
             pnlProfile.setBackground(new Color(27, 28, 30));
             pnlProfile.setLayout(null);
             pnlProfile.setBounds(0, 0, 725, 420);
-            pnlProfile.setVisible(true);
+            pnlProfile.setVisible(false);
 
             //Adding items to Panel Profile
             pnlProfile.add(txtView);
@@ -356,13 +551,19 @@ public class App extends JFrame implements MouseListener{
             pnl2.add(btnRegistration);
             pnl2.add(btnReports);
             pnl2.add(btnProfile);
-            this.add(pnlProfile);
+            
+            //Adding Components to Main Frame
             this.add(pnl2);
             this.add(pnl1);
-
+            
+            //Pages
+            this.add(pnlVMP);
+            this.add(pnlAdd);
+            this.add(pnlProfile);
+            
             message.setVisible(false);
             message2.setVisible(false);
-            pnlProfile.setVisible(false);
+
             picProgBar_100.setVisible(false);
             picProgBar_75.setVisible(false);
             picProgBar_50.setVisible(false);
@@ -379,6 +580,14 @@ public class App extends JFrame implements MouseListener{
         } else if(e.getSource() == btnHome) {
             pnl1.setVisible(true);
             pnlProfile.setVisible(false);
+            pnlAdd.setVisible(false);
+            pnlVMP.setVisible(false);
+        } else if(e.getSource() == btnRegistration) {
+            pnl1.setVisible(false);
+            pnlAdd.setVisible(true);
+        } else if(e.getSource() == btnReports) {
+            pnl1.setVisible(false);
+            pnlVMP.setVisible(true);
         }
     }
 

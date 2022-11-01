@@ -169,7 +169,7 @@ public class Login extends JFrame implements MouseListener{
                 if(user.equals(array[i])) {
                     if(pwd.equals(array[i+1])) {
                         System.out.println("Login Successful");
-                        HomePage hP = new HomePage();
+                        App hP = new App();
                         hP.setVisible(true);
                         this.setVisible(false);
                     } else {
