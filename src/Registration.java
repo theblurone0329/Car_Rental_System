@@ -40,37 +40,37 @@ public class Registration extends JFrame implements MouseListener{
     Registration() {
 
         //Icons for Phone No.
-        ImageIcon icnPhone = new ImageIcon("src\\smartphone.png");
+        ImageIcon icnPhone = new ImageIcon("src\\Pics\\smartphone.png");
         icnPhoneNum.setIcon(icnPhone);
         icnPhoneNum.setSize(32, 32);
         icnPhoneNum.setLocation(360, 207);
 
         //Icon for Email
-        ImageIcon icnEma = new ImageIcon("src\\email.png");
+        ImageIcon icnEma = new ImageIcon("src\\Pics\\email.png");
         icnEmail.setIcon(icnEma);
         icnEmail.setSize(32, 32);
         icnEmail.setLocation(85, 207);
 
         //Icon for Password
-        ImageIcon icnPwd = new ImageIcon("src\\key.png");
+        ImageIcon icnPwd = new ImageIcon("src\\Pics\\key.png");
         icnPassword.setIcon(icnPwd);
         icnPassword.setSize(32, 32);
         icnPassword.setLocation(360, 97);
 
         //Icon for Username
-        ImageIcon icnUser = new ImageIcon("src\\user.png");
+        ImageIcon icnUser = new ImageIcon("src\\Pics\\user.png");
         icnUsername.setIcon(icnUser);
         icnUsername.setSize(32, 32);
         icnUsername.setLocation(85, 97);
 
         //Car picture on right 
-        ImageIcon car_2 = new ImageIcon("src\\car2.png");
+        ImageIcon car_2 = new ImageIcon("src\\Pics\\car2.png");
         car2.setIcon(car_2);
         car2.setSize(400, 200);
         car2.setLocation(470,220);
 
         //Car picture on left
-        ImageIcon car_1 = new ImageIcon("src\\car1.png");
+        ImageIcon car_1 = new ImageIcon("src\\Pics\\car1.png");
         car1.setIcon(car_1);
         car1.setSize(400, 200);
         car1.setLocation(-110,220);
@@ -157,7 +157,7 @@ public class Registration extends JFrame implements MouseListener{
         pageTitle.setLocation(275, 10);
 
         //Form
-        ImageIcon icon = new ImageIcon("src\\Logo1.png");
+        ImageIcon icon = new ImageIcon("src\\Pics\\Logo1.png");
         this.getContentPane().setBackground(new Color(27, 28, 30));
         this.setIconImage(icon.getImage());
         this.setTitle("RentiZen");

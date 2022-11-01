@@ -73,13 +73,13 @@ public class Login extends JFrame implements MouseListener{
         txtPassword.addMouseListener(this);
 
         //Logo for Password next to Password txt box
-        ImageIcon iconPassword = new ImageIcon("src\\key.png");
+        ImageIcon iconPassword = new ImageIcon("src\\Pics\\key.png");
         picPassword.setIcon(iconPassword);
         picPassword.setSize(32, 40);
         picPassword.setLocation(66, 135);
 
         //Logo for Username next to Username txt box
-        ImageIcon iconUsername = new ImageIcon("src\\user.png");
+        ImageIcon iconUsername = new ImageIcon("src\\Pics\\user.png");
         picUsername.setIcon(iconUsername);
         picUsername.setSize(32, 40);
         picUsername.setLocation(70, 58);
@@ -97,7 +97,7 @@ public class Login extends JFrame implements MouseListener{
 
         //Rentizen Logo in left panel
         picLogo.setSize(350, 310);
-        ImageIcon logo = new ImageIcon("src\\Logo.png");
+        ImageIcon logo = new ImageIcon("src\\Pics\\Logo.png");
         picLogo.setIcon(logo);
         
         //Left panel

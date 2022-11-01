@@ -50,17 +50,17 @@ public class Profile extends JFrame implements MouseListener{
         titleProfile.setLocation(115, 320);
 
         //Icons
-        ImageIcon icnPhoneNo = new ImageIcon("src\\smartphone.png");
+        ImageIcon icnPhoneNo = new ImageIcon("src\\Pics\\smartphone.png");
         icnPhoneNum.setIcon(icnPhoneNo);
         icnPhoneNum.setSize(32, 32);
         icnPhoneNum.setLocation(85, 187);
 
-        ImageIcon icnEma = new ImageIcon("src\\email.png");
+        ImageIcon icnEma = new ImageIcon("src\\Pics\\email.png");
         icnEmail.setIcon(icnEma);
         icnEmail.setSize(32, 32);
         icnEmail.setLocation(85, 127);
 
-        ImageIcon icnUser = new ImageIcon("src\\user.png");
+        ImageIcon icnUser = new ImageIcon("src\\Pics\\user.png");
         icnUsername.setIcon(icnUser);
         icnUsername.setSize(32, 32);
         icnUsername.setLocation(85, 67);
@@ -73,7 +73,7 @@ public class Profile extends JFrame implements MouseListener{
         txtView.setLocation(560, 260);
 
         //View button to show current booked service
-        ImageIcon btn_View = new ImageIcon("src\\file.png");
+        ImageIcon btn_View = new ImageIcon("src\\Pics\\file.png");
         btnView.setIcon(btn_View);
         btnView.setSize(32, 32);
         btnView.setLocation(560, 237);
@@ -82,51 +82,51 @@ public class Profile extends JFrame implements MouseListener{
         btnView.setBackground(new Color(27, 28, 30));
 
         //Current booked car picture
-        ImageIcon car = new ImageIcon("src\\Car_profile.png");
+        ImageIcon car = new ImageIcon("src\\Pics\\Car_profile.png");
         car_Profile.setIcon(car);
         car_Profile.setSize(174, 100);
         car_Profile.setLocation(435, 95);
 
         //Current service progress
-        ImageIcon progBar_0 = new ImageIcon("src\\1_1.png");
+        ImageIcon progBar_0 = new ImageIcon("src\\Pics\\1_1.png");
         progBar0.setIcon(progBar_0);
         progBar0.setSize(135, 139);
         progBar0.setLocation(430, 190);
 
-        ImageIcon progBar_25 = new ImageIcon("src\\1_2.png");
+        ImageIcon progBar_25 = new ImageIcon("src\\Pics\\1_2.png");
         progBar25.setIcon(progBar_25);
         progBar25.setSize(135, 139);
         progBar25.setLocation(430, 190);
 
-        ImageIcon progBar_50 = new ImageIcon("src\\1_3.png");
+        ImageIcon progBar_50 = new ImageIcon("src\\Pics\\1_3.png");
         progBar50.setIcon(progBar_50);
         progBar50.setSize(135, 139);
         progBar50.setLocation(430, 190);
 
-        ImageIcon progBar_75 = new ImageIcon("src\\1_4.png");
+        ImageIcon progBar_75 = new ImageIcon("src\\Pics\\1_4.png");
         progBar75.setIcon(progBar_75);
         progBar75.setSize(135, 139);
         progBar75.setLocation(430, 190);
 
-        ImageIcon progBar_100 = new ImageIcon("src\\1_5.png");
+        ImageIcon progBar_100 = new ImageIcon("src\\Pics\\1_5.png");
         progBar100.setIcon(progBar_100);
         progBar100.setSize(135, 139);
         progBar100.setLocation(430, 190);
 
         //Gradient Border on the right
-        ImageIcon br1 = new ImageIcon("src\\Border.png");
+        ImageIcon br1 = new ImageIcon("src\\Pics\\Border.png");
         border2.setIcon(br1);
         border2.setSize(400, 320);
         border2.setLocation(390, 50);
 
         //Gradient Border on the left
-        ImageIcon br = new ImageIcon("src\\Border.png");
+        ImageIcon br = new ImageIcon("src\\Pics\\Border.png");
         border.setIcon(br);
         border.setSize(400, 320);
         border.setLocation(50, 5);
 
         //Edit button for editing profile details
-        ImageIcon btn = new ImageIcon("src\\btnEdit2.png");
+        ImageIcon btn = new ImageIcon("src\\Pics\\btnEdit2.png");
         btnEdit.setIcon(btn);
         btnEdit.setSize(78, 39);
         btnEdit.setLocation(145, 240);
@@ -156,7 +156,7 @@ public class Profile extends JFrame implements MouseListener{
         lblUsername.setLocation(125, 70);
         
         //Frame
-        ImageIcon icon = new ImageIcon("src\\Logo1.png");
+        ImageIcon icon = new ImageIcon("src\\Pics\\Logo1.png");
         this.getContentPane().setBackground(new Color(27, 28, 30));
         this.setIconImage(icon.getImage());
         this.setTitle("RentiZen");

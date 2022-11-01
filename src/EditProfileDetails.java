@@ -34,25 +34,25 @@ public class EditProfileDetails extends JFrame implements MouseListener{
     EditProfileDetails() {
 
         //Car Picture
-        ImageIcon car = new ImageIcon("src\\sport-car.png");
+        ImageIcon car = new ImageIcon("src\\Pics\\sport-car.png");
         carPic.setIcon(car);
         carPic.setSize(256, 256);
         carPic.setLocation(300, 140);
 
         //Icon for Username
-        ImageIcon user = new ImageIcon("src\\user.png");
+        ImageIcon user = new ImageIcon("src\\Pics\\user.png");
         icnUsername.setIcon(user);
         icnUsername.setSize(32, 32);
         icnUsername.setLocation(70, 93);
 
         //Icon for Email
-        ImageIcon email = new ImageIcon("src\\email.png");
+        ImageIcon email = new ImageIcon("src\\Pics\\email.png");
         icnEmail.setIcon(email);
         icnEmail.setSize(32, 32);
         icnEmail.setLocation(70, 173);
 
         //Icon for Phone
-        ImageIcon phone = new ImageIcon("src\\smartphone.png");
+        ImageIcon phone = new ImageIcon("src\\Pics\\smartphone.png");
         icnPhoneNum.setIcon(phone);
         icnPhoneNum.setSize(32, 32);
         icnPhoneNum.setLocation(70, 253);
@@ -141,7 +141,7 @@ public class EditProfileDetails extends JFrame implements MouseListener{
         separator1.setLocation(110, 123);
         
         //Frame
-        ImageIcon icon = new ImageIcon("src\\Logo1.png");
+        ImageIcon icon = new ImageIcon("src\\Pics\\Logo1.png");
         this.getContentPane().setBackground(new Color(27, 28, 30));
         this.setIconImage(icon.getImage());
         this.setTitle("RentiZen");

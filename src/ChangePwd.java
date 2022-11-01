@@ -26,7 +26,7 @@ public class ChangePwd extends JFrame implements MouseListener{
     
     ChangePwd() {
 
-        ImageIcon pwd = new ImageIcon("src\\password.png");
+        ImageIcon pwd = new ImageIcon("src\\Pics\\password.png");
         pwdPic.setIcon(pwd);
         pwdPic.setSize(256, 256);
         pwdPic.setLocation(420, 60);

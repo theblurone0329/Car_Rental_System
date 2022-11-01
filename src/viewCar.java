@@ -59,7 +59,7 @@ public class viewCar extends JFrame implements MouseListener{
         available.setLocation(486, 190);
 
         //Star Pic
-        ImageIcon starPic = new ImageIcon("src\\star.png");
+        ImageIcon starPic = new ImageIcon("src\\Pics\\star.png");
         star.setIcon(starPic);
         star.setSize(24, 24);
         star.setLocation(403, 225);
@@ -80,7 +80,7 @@ public class viewCar extends JFrame implements MouseListener{
         back.setLocation(565, 335);
 
         //Back Button
-        ImageIcon goback = new ImageIcon("src\\turn-back.png");
+        ImageIcon goback = new ImageIcon("src\\Pics\\turn-back.png");
         btnBack.setIcon(goback);
         btnBack.setForeground(new Color(225,223,186));
         btnBack.setBackground(new Color(27, 28, 30));
@@ -98,7 +98,7 @@ public class viewCar extends JFrame implements MouseListener{
         book.setLocation(408, 335);
 
         //Booking icon
-        ImageIcon booking = new ImageIcon("src\\appointment.png");
+        ImageIcon booking = new ImageIcon("src\\Pics\\appointment.png");
         btnBook.setIcon(booking);
         btnBook.setForeground(new Color(225,223,186));
         btnBook.setBackground(new Color(27, 28, 30));
@@ -125,13 +125,13 @@ public class viewCar extends JFrame implements MouseListener{
         location.setLocation(413, 75);
 
         //Seats icon
-        ImageIcon seat = new ImageIcon("src\\car-seat.png");
+        ImageIcon seat = new ImageIcon("src\\Pics\\car-seat.png");
         seatPic.setIcon(seat);
         seatPic.setSize(64, 64);
         seatPic.setLocation(247, 245);
 
         //Price icon
-        ImageIcon price = new ImageIcon("src\\price-tag.png");
+        ImageIcon price = new ImageIcon("src\\Pics\\price-tag.png");
         pricePic.setIcon(price);
         pricePic.setSize(64, 64);
         pricePic.setLocation(92, 245);
@@ -164,7 +164,7 @@ public class viewCar extends JFrame implements MouseListener{
         pricePerHr.setBorder(null);
 
         //Rounded Square graphic
-        ImageIcon pnl = new ImageIcon("src\\smallPnl.png");
+        ImageIcon pnl = new ImageIcon("src\\Pics\\smallPnl.png");
         pnl1.setIcon(pnl);
         pnl1.setSize(135, 134);
         pnl1.setLocation(60, 230);
@@ -174,13 +174,13 @@ public class viewCar extends JFrame implements MouseListener{
         pnl2.setLocation(210, 230);
 
         //Car Pic
-        ImageIcon car = new ImageIcon("src\\Tesla Model S.png");
+        ImageIcon car = new ImageIcon("src\\Pics\\Tesla Model S.png");
         carPic.setIcon(car);
         carPic.setSize(412, 225);
         carPic.setLocation(3, 25);
         
         //Frame
-        ImageIcon icon = new ImageIcon("src\\Logo1.png");
+        ImageIcon icon = new ImageIcon("src\\Pics\\Logo1.png");
         this.getContentPane().setBackground(new Color(27, 28, 30));
         this.setIconImage(icon.getImage());
         this.setTitle("RentiZen");

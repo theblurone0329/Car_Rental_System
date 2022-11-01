@@ -143,7 +143,7 @@ public class addcar_admin extends JFrame implements MouseListener{
         txtCarYear.setFont(new Font("TW Cen MT", Font.BOLD, 14));
         txtCarYear.setLocation(35,240);
 
-        carYear.setText("Car Plate Number");
+        carYear.setText("Car Year");
         carYear.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         carYear.setForeground(new Color(225,223,186));
         carYear.setBackground(new Color(27, 28, 30));
@@ -218,7 +218,7 @@ public class addcar_admin extends JFrame implements MouseListener{
         carBrand.setLocation(15, 25);
         
         //Frame
-        ImageIcon icon = new ImageIcon("src\\Logo1.png");
+        ImageIcon icon = new ImageIcon("src\\Pics\\Logo1.png");
         this.getContentPane().setBackground(new Color(27, 28, 30));
         this.setIconImage(icon.getImage());
         this.setTitle("RentiZen");

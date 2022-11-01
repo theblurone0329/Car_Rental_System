@@ -62,14 +62,14 @@ public class viewAllCar extends JFrame implements MouseListener{
     private JSeparator separator = new JSeparator();
     private JSeparator separator2 = new JSeparator();
     private JPanel panel1 = new JPanel();
-    ImageIcon pnl = new ImageIcon("src\\pnl.png");
-    ImageIcon pricePic = new ImageIcon("src\\price-tag (1).png");
-    ImageIcon seat = new ImageIcon("src\\car-seat (1).png");
+    ImageIcon pnl = new ImageIcon("src\\Pics\\pnl.png");
+    ImageIcon pricePic = new ImageIcon("src\\Pics\\price-tag (1).png");
+    ImageIcon seat = new ImageIcon("src\\Pics\\car-seat (1).png");
     private Border border = new LineBorder(new Color(27, 28, 30), 4, true);
 
     viewAllCar() {
 
-        ImageIcon searchPic = new ImageIcon("src\\magnifier.png");
+        ImageIcon searchPic = new ImageIcon("src\\Pics\\magnifier.png");
         search.setIcon(searchPic);
         search.setSize(32, 32);
         search.setBackground(new Color(27, 28, 30));
@@ -134,7 +134,7 @@ public class viewAllCar extends JFrame implements MouseListener{
         carName3.setSize(180, 30);
         carName3.setLocation(190, 571);
 
-        ImageIcon car3Pic = new ImageIcon("src\\Tesla_Model_S_Logo.png");
+        ImageIcon car3Pic = new ImageIcon("src\\Pics\\Tesla_Model_S_Logo.png");
         car3.setIcon(car3Pic);
         car3.setSize(241, 121);
         car3.setLocation(170, 470);
@@ -175,7 +175,7 @@ public class viewAllCar extends JFrame implements MouseListener{
         carName2.setSize(180, 30);
         carName2.setLocation(190, 416);
 
-        ImageIcon car2Pic = new ImageIcon("src\\Tesla_Model_S_Logo.png");
+        ImageIcon car2Pic = new ImageIcon("src\\Pics\\Tesla_Model_S_Logo.png");
         car2.setIcon(car2Pic);
         car2.setSize(241, 121);
         car2.setLocation(170, 285);
@@ -216,12 +216,12 @@ public class viewAllCar extends JFrame implements MouseListener{
         carName1.setSize(180, 30);
         carName1.setLocation(190, 221);
 
-        ImageIcon car1Pic = new ImageIcon("src\\Tesla_Model_S_Logo.png");
+        ImageIcon car1Pic = new ImageIcon("src\\Pics\\Tesla_Model_S_Logo.png");
         car1.setIcon(car1Pic);
         car1.setSize(241, 121);
         car1.setLocation(170, 90);
 
-        ImageIcon pnl = new ImageIcon("src\\pnl.png");
+        ImageIcon pnl = new ImageIcon("src\\Pics\\pnl.png");
         pnl1.setIcon(pnl);
         pnl1.setSize(394, 160);
         pnl1.setLocation(155, 120);
@@ -249,7 +249,7 @@ public class viewAllCar extends JFrame implements MouseListener{
         panel1.add(search);
 
         //Frame
-        ImageIcon icon = new ImageIcon("src\\Logo1.png");
+        ImageIcon icon = new ImageIcon("src\\Pics\\Logo1.png");
         this.getContentPane().setBackground(new Color(27, 28, 30));
         this.setIconImage(icon.getImage());
         this.setTitle("RentiZen");

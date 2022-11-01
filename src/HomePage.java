@@ -35,7 +35,7 @@ public class HomePage extends JFrame implements MouseListener{
     HomePage() {
 
         //Home icon
-        ImageIcon home = new ImageIcon("src\\home.png");
+        ImageIcon home = new ImageIcon("src\\Pics\\home.png");
         btnHome.setIcon(home);
         btnHome.setBackground(new Color(127, 126, 144));
         btnHome.setFocusable(false);
@@ -45,7 +45,7 @@ public class HomePage extends JFrame implements MouseListener{
         btnHome.addMouseListener(this);
 
         //Report icon
-        ImageIcon reports = new ImageIcon("src\\report.png");
+        ImageIcon reports = new ImageIcon("src\\Pics\\report.png");
         btnReports.setIcon(reports);
         btnReports.setBackground(new Color(127, 126, 144));
         btnReports.setFocusable(false);
@@ -55,7 +55,7 @@ public class HomePage extends JFrame implements MouseListener{
         btnReports.addMouseListener(this);
 
         //Register icon
-        ImageIcon register = new ImageIcon("src\\form.png");
+        ImageIcon register = new ImageIcon("src\\Pics\\form.png");
         btnRegistration.setIcon(register);
         btnRegistration.setBackground(new Color(127, 126, 144));
         btnRegistration.setFocusable(false);
@@ -65,7 +65,7 @@ public class HomePage extends JFrame implements MouseListener{
         btnRegistration.addMouseListener(this);
 
         //Booking icon
-        ImageIcon booking = new ImageIcon("src\\online-booking.png");
+        ImageIcon booking = new ImageIcon("src\\Pics\\online-booking.png");
         btnBooking.setIcon(booking);
         btnBooking.setBackground(new Color(127, 126, 144));
         btnBooking.setFocusable(false);
@@ -75,7 +75,7 @@ public class HomePage extends JFrame implements MouseListener{
         btnBooking.addMouseListener(this);
 
         //Profile icon
-        ImageIcon profile = new ImageIcon("src\\account.png");
+        ImageIcon profile = new ImageIcon("src\\Pics\\account.png");
         btnProfile.setIcon(profile);
         btnProfile.setBackground(new Color(127, 126, 144));
         btnProfile.setFocusable(false);
@@ -109,11 +109,11 @@ public class HomePage extends JFrame implements MouseListener{
         status.setLocation(13, 190);
 
         //Progress Bar Images
-        ImageIcon prog0 = new ImageIcon("src\\1.png");
-        ImageIcon prog25 = new ImageIcon("src\\5.png");
-        ImageIcon prog50 = new ImageIcon("src\\2.png");
-        ImageIcon prog75 = new ImageIcon("src\\3.png");
-        ImageIcon prog100 = new ImageIcon("src\\4.png");
+        ImageIcon prog0 = new ImageIcon("src\\Pics\\1.png");
+        ImageIcon prog25 = new ImageIcon("src\\Pics\\5.png");
+        ImageIcon prog50 = new ImageIcon("src\\Pics\\2.png");
+        ImageIcon prog75 = new ImageIcon("src\\Pics\\3.png");
+        ImageIcon prog100 = new ImageIcon("src\\Pics\\4.png");
 
         picProgBar_0.setIcon(prog0);
         picProgBar_0.setSize(246, 243);
@@ -136,7 +136,7 @@ public class HomePage extends JFrame implements MouseListener{
         picProgBar_100.setLocation(240, 30);
 
         // Car Picture
-        ImageIcon car = new ImageIcon("src\\Tesla_Model_S_Logo.png");
+        ImageIcon car = new ImageIcon("src\\Pics\\Tesla_Model_S_Logo.png");
         picCar.setIcon(car);
         picCar.setSize(236, 125);
         picCar.setLocation(5, 70);
@@ -157,7 +157,7 @@ public class HomePage extends JFrame implements MouseListener{
         pnl1.setBounds(0, 0, 805, 420);
 
         //Frame
-        ImageIcon icon = new ImageIcon("src\\Company Logo.png");
+        ImageIcon icon = new ImageIcon("src\\Pics\\Company Logo.png");
         this.setIconImage(icon.getImage());
         this.setTitle("RentiZen");
         this.setLayout(null);

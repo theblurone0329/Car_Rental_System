@@ -44,7 +44,7 @@ public class Booking extends JFrame implements MouseListener{
         btnBook.addMouseListener(this);
 
         //Big Calendar Picture
-        ImageIcon calendar = new ImageIcon("src\\calendar.png");
+        ImageIcon calendar = new ImageIcon("src\\Pics\\calendar.png");
         calendarPic.setIcon(calendar);
         calendarPic.setSize(256, 256);
         calendarPic.setLocation(430, 40);
@@ -130,7 +130,7 @@ public class Booking extends JFrame implements MouseListener{
         pageTitle.setLocation(310, 10);
         
         //Frame
-        ImageIcon icon = new ImageIcon("src\\Logo1.png");
+        ImageIcon icon = new ImageIcon("src\\Pics\\Logo1.png");
         this.getContentPane().setBackground(new Color(27, 28, 30));
         this.setIconImage(icon.getImage());
         this.setTitle("RentiZen");
