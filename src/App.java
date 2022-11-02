@@ -145,7 +145,545 @@ public class App extends JFrame implements MouseListener{
     private JButton btnBook = new JButton();
     private JSeparator separator1RBP = new JSeparator(SwingConstants.VERTICAL);
 
+    //Registration Page
+    private JPanel pnlR = new JPanel();
+    private JButton btnRegisterR = new JButton();
+    private JSeparator separator1R = new JSeparator();
+    private JSeparator separator2R = new JSeparator();
+    private JSeparator separator3R = new JSeparator();
+    private JSeparator separator4R = new JSeparator();
+    private JTextField txtUsernameR = new JTextField();
+    private JTextField txtPasswordR = new JTextField();
+    private JTextField txtEmailR= new JTextField();
+    private JTextField txtPhoneNumR = new JTextField();
+    private JLabel pageTitleR = new JLabel();
+    private JLabel car1R = new JLabel();
+    private JLabel car2R = new JLabel();
+    private JLabel icnUsernameR = new JLabel();
+    private JLabel icnPhoneNumR = new JLabel();
+    private JLabel icnEmailR = new JLabel();
+    private JLabel icnPasswordR = new JLabel();
+
+    //Add Car Admin Page
+    private JPanel pnlAC = new JPanel();
+    private JLabel carBrandAC = new JLabel();
+    private JLabel carModelAC = new JLabel();
+    private JLabel carPlateNumAC = new JLabel();
+    private JLabel carYearAC = new JLabel();
+    private JLabel carSeatAC = new JLabel();
+    private JTextField txtCarBrandAC = new JTextField();
+    private JTextField txtCarModelAC = new JTextField();
+    private JTextField txtCarPlateNumAC = new JTextField();
+    private JTextField txtCarYearAC = new JTextField();
+    private JTextField txtCarSeatAC = new JTextField();
+    private JButton btnClearAC = new JButton();
+    private JButton btnCancelAC = new JButton();
+    private JButton btnAddAC = new JButton(); 
+    private JTable tableAC = new JTable();
+    private JPanel tablePnlAC = new JPanel();
+    private JSeparator separator1AC = new JSeparator();
+    private JSeparator separator2AC = new JSeparator();
+    private JSeparator separator3AC = new JSeparator();
+    private JSeparator separator4AC = new JSeparator();
+    private JSeparator separator5AC = new JSeparator();
+    private JScrollPane paneAC = new JScrollPane();
+    private Border borderAC = new LineBorder(new Color(225,223,186), 1, true);
+
+    //Edit Profile Page
+    private JPanel pnlEP = new JPanel();
+    private JTextField lblUsernameEP = new JTextField();
+    private JTextField lblPhoneNumEP = new JTextField();
+    private JTextField lblEmailEP = new JTextField();
+    private JButton btnChangeEP = new JButton();
+    private JButton btnChangePwdEP = new JButton();
+    private JButton btnDefaultEP = new JButton();
+    private JLabel pageTitleEP = new JLabel();
+    private JSeparator separator1EP = new JSeparator();
+    private JSeparator separator2EP = new JSeparator();
+    private JSeparator separator3EP = new JSeparator();
+    private JLabel icnUsernameEP = new JLabel();
+    private JLabel icnPhoneNumEP = new JLabel();
+    private JLabel icnEmailEP = new JLabel();
+    private JLabel carPicEP = new JLabel();
+
     App() {
+
+        //Edit Profile Page
+        {
+            //Car Picture
+            ImageIcon carEP = new ImageIcon("src\\Pics\\sport-car.png");
+            carPicEP.setIcon(carEP);
+            carPicEP.setSize(256, 256);
+            carPicEP.setLocation(300, 140);
+
+            //Icon for Username
+            ImageIcon userEP = new ImageIcon("src\\Pics\\user.png");
+            icnUsernameEP.setIcon(userEP);
+            icnUsernameEP.setSize(32, 32);
+            icnUsernameEP.setLocation(70, 93);
+
+            //Icon for Email
+            ImageIcon emailEP = new ImageIcon("src\\Pics\\email.png");
+            icnEmailEP.setIcon(emailEP);
+            icnEmailEP.setSize(32, 32);
+            icnEmailEP.setLocation(70, 173);
+
+            //Icon for Phone
+            ImageIcon phoneEP = new ImageIcon("src\\Pics\\smartphone.png");
+            icnPhoneNumEP.setIcon(phoneEP);
+            icnPhoneNumEP.setSize(32, 32);
+            icnPhoneNumEP.setLocation(70, 253);
+
+            //Page Title
+            pageTitleEP.setText("Change Details");
+            pageTitleEP.setFont(new Font("TW Cen MT", Font.PLAIN, 28));
+            pageTitleEP.setForeground(new Color(225,223,186));
+            pageTitleEP.setBackground(new Color(27, 28, 30));
+            pageTitleEP.setSize(200, 27);
+            pageTitleEP.setLocation(280, 10);
+
+            //Change Button
+            btnChangeEP.setText("Change Details");
+            btnChangeEP.setSize(140, 44);
+            btnChangeEP.setLocation(535, 130);
+            btnChangeEP.setForeground(new Color(225,223,186));
+            btnChangeEP.setBackground(new Color(27, 28, 30));
+            Border borderEP= new LineBorder(new Color(225,223,186), 1, true);
+            btnChangeEP.setBorder(borderEP);
+            btnChangeEP.setFont(new Font("TW Cen MT", Font.BOLD, 15));
+            btnChangeEP.setFocusable(false);
+
+            //Change Password Button
+            btnChangePwdEP.setText("Change Password");
+            btnChangePwdEP.setSize(140, 44);
+            btnChangePwdEP.setLocation(535, 185);
+            btnChangePwdEP.setForeground(new Color(225,223,186));
+            btnChangePwdEP.setBackground(new Color(27, 28, 30));
+            Border border1EP = new LineBorder(new Color(225,223,186), 1, true);
+            btnChangePwdEP.setBorder(border1EP);
+            btnChangePwdEP.setFont(new Font("TW Cen MT", Font.BOLD, 15));
+            btnChangePwdEP.setFocusable(false);
+
+            //Reset Button
+            btnDefaultEP.setText("Back to Default");
+            btnDefaultEP.setSize(140, 44);
+            btnDefaultEP.setLocation(535, 240);
+            btnDefaultEP.setForeground(new Color(225,223,186));
+            btnDefaultEP.setBackground(new Color(27, 28, 30));
+            Border border2EP = new LineBorder(new Color(225,223,186), 1, true);
+            btnDefaultEP.setBorder(border2EP);
+            btnDefaultEP.setFont(new Font("TW Cen MT", Font.BOLD, 15));
+            btnDefaultEP.setFocusable(false);
+
+            //Txt for Phone No.
+            lblPhoneNumEP.setText("011-1087 8646");
+            lblPhoneNumEP.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+            lblPhoneNumEP.setForeground(new Color(225,223,186));
+            lblPhoneNumEP.setBackground(new Color(27, 28, 30));
+            lblPhoneNumEP.setSize(180,30);
+            lblPhoneNumEP.setLocation(110, 250);
+            lblPhoneNumEP.setBorder(null);
+
+            separator3EP.setForeground(new Color(225,223,186));
+            separator3EP.setBackground(new Color(27, 28, 30));
+            separator3EP.setSize(180, 17);
+            separator3EP.setLocation(110, 283);
+
+            //Txt for Email
+            lblEmailEP.setText("adrianfwl@gmail.com");
+            lblEmailEP.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+            lblEmailEP.setForeground(new Color(225,223,186));
+            lblEmailEP.setBackground(new Color(27, 28, 30));
+            lblEmailEP.setSize(180,30);
+            lblEmailEP.setLocation(110, 170);
+            lblEmailEP.setBorder(null);
+
+            separator2EP.setForeground(new Color(225,223,186));
+            separator2EP.setBackground(new Color(27, 28, 30));
+            separator2EP.setSize(180, 17);
+            separator2EP.setLocation(110, 203);
+
+            //Txt for Username
+            lblUsernameEP.setText("Adrian_Fu");
+            lblUsernameEP.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+            lblUsernameEP.setForeground(new Color(225,223,186));
+            lblUsernameEP.setBackground(new Color(27, 28, 30));
+            lblUsernameEP.setSize(180,30);
+            lblUsernameEP.setLocation(110, 90);
+            lblUsernameEP.setBorder(null);
+
+            separator1EP.setForeground(new Color(225,223,186));
+            separator1EP.setBackground(new Color(27, 28, 30));
+            separator1EP.setSize(180, 17);
+            separator1EP.setLocation(110, 123);
+            
+            //Frame
+            pnlEP.setBackground(new Color(27, 28, 30));
+            pnlEP.setLayout(null);
+            pnlEP.setSize(725, 420);
+            pnlEP.setVisible(false);
+
+            //Adding Components to Frame
+            pnlEP.add(lblUsernameEP);
+            pnlEP.add(lblEmailEP);
+            pnlEP.add(lblPhoneNumEP);
+            pnlEP.add(btnChangeEP);
+            pnlEP.add(btnChangePwdEP);
+            pnlEP.add(btnDefaultEP);
+            pnlEP.add(pageTitleEP);
+            pnlEP.add(separator1EP);
+            pnlEP.add(separator2EP);
+            pnlEP.add(separator3EP);
+            pnlEP.add(icnUsernameEP);
+            pnlEP.add(icnEmailEP);
+            pnlEP.add(icnPhoneNumEP);
+            pnlEP.add(carPicEP);
+        }
+
+        //Add Car Admin Page
+        {
+            //Table
+            String[] columnsReturn = {"Car Brand", "CarModel", "Car Plate Number", "Car Year", "Car Seats"};
+            String[][] rowsReturn = {{"Tesla", "Model S", "ABC 1234", "2020", "4"}, 
+                                {"Perodua", "Myvi", "ABC 4576", "2018", "4"},
+                                {"Proton", "Saga", "KLD 4657", "2018", "4"}};
+
+            tableAC = new JTable(rowsReturn, columnsReturn){
+                public boolean isCellEditable(int rows, int columns) {
+                    return false;
+                }
+            };
+
+            tableAC.setPreferredScrollableViewportSize(new Dimension(359, 1500));
+            tableAC.setFillsViewportHeight(true);
+            tableAC.setBackground(new Color(27, 28, 30));
+            tableAC.setForeground(new Color(225,223,186));
+            tableAC.setGridColor(new Color(225,223,186));
+            tableAC.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+            tableAC.setRowHeight(30);
+            
+            paneAC = new JScrollPane(tableAC);
+
+            tablePnlAC.setBounds(320, 20, 363, 347);
+            tablePnlAC.setBorder(BorderFactory.createLineBorder(new Color(225,223,186)));
+            tablePnlAC.add(paneAC);
+
+            //Object[] rowReturns = new Object[4];
+
+            //Add Button
+            btnAddAC.setText("Add");
+            btnAddAC.setSize(90, 37);
+            btnAddAC.setLocation(200, 300);
+            btnAddAC.setForeground(new Color(225,223,186));
+            btnAddAC.setBackground(new Color(27, 28, 30));
+            btnAddAC.setBorder(borderAC);
+            btnAddAC.setFont(new Font("TW Cen MT", Font.BOLD, 15));
+            btnAddAC.setFocusable(false);
+            btnAddAC.addMouseListener(this);
+
+            //Cancel Button
+            btnCancelAC.setText("Cancel");
+            btnCancelAC.setSize(90, 37);
+            btnCancelAC.setLocation(200, 250);
+            btnCancelAC.setForeground(new Color(225,223,186));
+            btnCancelAC.setBackground(new Color(27, 28, 30));
+            btnCancelAC.setBorder(borderAC);
+            btnCancelAC.setFont(new Font("TW Cen MT", Font.BOLD, 15));
+            btnCancelAC.setFocusable(false);
+            btnCancelAC.addMouseListener(this);
+            
+            //Clear Button
+            btnClearAC.setText("Clear");
+            btnClearAC.setSize(90, 37);
+            btnClearAC.setLocation(200, 200);
+            btnClearAC.setForeground(new Color(225,223,186));
+            btnClearAC.setBackground(new Color(27, 28, 30));
+            btnClearAC.setBorder(borderAC);
+            btnClearAC.setFont(new Font("TW Cen MT", Font.BOLD, 15));
+            btnClearAC.setFocusable(false);
+            btnClearAC.addMouseListener(this);
+
+            //Car seat text box and label 
+            separator5AC.setForeground(new Color(225,223,186));
+            separator5AC.setBackground(new Color(27, 28, 30));
+            separator5AC.setSize(120, 17);
+            separator5AC.setLocation(35, 335);
+
+            txtCarSeatAC.setText("eg: 4");
+            txtCarSeatAC.setSize(120, 30);
+            txtCarSeatAC.setBorder(null);
+            txtCarSeatAC.setForeground(new Color(225,223,186));
+            txtCarSeatAC.setBackground(new Color(27, 28, 30));
+            txtCarSeatAC.setFont(new Font("TW Cen MT", Font.BOLD, 14));
+            txtCarSeatAC.setLocation(35,305);
+
+            carSeatAC.setText("Car Seats");
+            carSeatAC.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+            carSeatAC.setForeground(new Color(225,223,186));
+            carSeatAC.setBackground(new Color(27, 28, 30));
+            carSeatAC.setBorder(null);
+            carSeatAC.setSize(180, 30);
+            carSeatAC.setLocation(15, 280);
+
+            //Car Year text box and label
+            separator4AC.setForeground(new Color(225,223,186));
+            separator4AC.setBackground(new Color(27, 28, 30));
+            separator4AC.setSize(120, 17);
+            separator4AC.setLocation(35, 270);
+
+            txtCarYearAC.setText("eg: 2017");
+            txtCarYearAC.setSize(120, 30);
+            txtCarYearAC.setBorder(null);
+            txtCarYearAC.setForeground(new Color(225,223,186));
+            txtCarYearAC.setBackground(new Color(27, 28, 30));
+            txtCarYearAC.setFont(new Font("TW Cen MT", Font.BOLD, 14));
+            txtCarYearAC.setLocation(35,240);
+
+            carYearAC.setText("Car Year");
+            carYearAC.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+            carYearAC.setForeground(new Color(225,223,186));
+            carYearAC.setBackground(new Color(27, 28, 30));
+            carYearAC.setBorder(null);
+            carYearAC.setSize(180, 30);
+            carYearAC.setLocation(15, 215);
+
+            //Car Plate Number text box and label
+            separator3AC.setForeground(new Color(225,223,186));
+            separator3AC.setBackground(new Color(27, 28, 30));
+            separator3AC.setSize(120, 17);
+            separator3AC.setLocation(35, 205);
+
+            txtCarPlateNumAC.setText("eg: SA 0923 B");
+            txtCarPlateNumAC.setSize(120, 30);
+            txtCarPlateNumAC.setBorder(null);
+            txtCarPlateNumAC.setForeground(new Color(225,223,186));
+            txtCarPlateNumAC.setBackground(new Color(27, 28, 30));
+            txtCarPlateNumAC.setFont(new Font("TW Cen MT", Font.BOLD, 14));
+            txtCarPlateNumAC.setLocation(35,175);
+
+            carPlateNumAC.setText("Car Plate Number");
+            carPlateNumAC.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+            carPlateNumAC.setForeground(new Color(225,223,186));
+            carPlateNumAC.setBackground(new Color(27, 28, 30));
+            carPlateNumAC.setBorder(null);
+            carPlateNumAC.setSize(180, 30);
+            carPlateNumAC.setLocation(15, 150);
+
+            //Car Model text box and label
+            separator2AC.setForeground(new Color(225,223,186));
+            separator2AC.setBackground(new Color(27, 28, 30));
+            separator2AC.setSize(120, 17);
+            separator2AC.setLocation(35, 140);
+
+            txtCarModelAC.setText("eg: Corolla Altis");
+            txtCarModelAC.setSize(120, 30);
+            txtCarModelAC.setBorder(null);
+            txtCarModelAC.setForeground(new Color(225,223,186));
+            txtCarModelAC.setBackground(new Color(27, 28, 30));
+            txtCarModelAC.setFont(new Font("TW Cen MT", Font.BOLD, 14));
+            txtCarModelAC.setLocation(35,110);
+
+            carModelAC.setText("Car Model");
+            carModelAC.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+            carModelAC.setForeground(new Color(225,223,186));
+            carModelAC.setBackground(new Color(27, 28, 30));
+            carModelAC.setBorder(null);
+            carModelAC.setSize(180, 30);
+            carModelAC.setLocation(15, 85);
+
+            //Car Brand text box and label
+            separator1AC.setForeground(new Color(225,223,186));
+            separator1AC.setBackground(new Color(27, 28, 30));
+            separator1AC.setSize(120, 17);
+            separator1AC.setLocation(35, 80);
+
+            txtCarBrandAC.setText("eg: Toyota");
+            txtCarBrandAC.setSize(120, 30);
+            txtCarBrandAC.setBorder(null);
+            txtCarBrandAC.setForeground(new Color(225,223,186));
+            txtCarBrandAC.setBackground(new Color(27, 28, 30));
+            txtCarBrandAC.setFont(new Font("TW Cen MT", Font.BOLD, 14));
+            txtCarBrandAC.setLocation(35,50);
+
+            carBrandAC.setText("Car Brand");
+            carBrandAC.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+            carBrandAC.setForeground(new Color(225,223,186));
+            carBrandAC.setBackground(new Color(27, 28, 30));
+            carBrandAC.setBorder(null);
+            carBrandAC.setSize(180, 30);
+            carBrandAC.setLocation(15, 25);
+            
+            //Panel
+            pnlAC.setBackground(new Color(27, 28, 30));
+            pnlAC.setLayout(null);
+            pnlAC.setSize(725, 420);
+            pnlAC.setVisible(false);
+
+            //Adding components to frame
+            pnlAC.add(carBrandAC);
+            pnlAC.add(txtCarBrandAC);
+            pnlAC.add(separator1AC);
+            pnlAC.add(carModelAC);
+            pnlAC.add(txtCarModelAC);
+            pnlAC.add(separator2AC);
+            pnlAC.add(carPlateNumAC);
+            pnlAC.add(txtCarPlateNumAC);
+            pnlAC.add(separator3AC);
+            pnlAC.add(carYearAC);
+            pnlAC.add(txtCarYearAC);
+            pnlAC.add(separator4AC);
+            pnlAC.add(carSeatAC);
+            pnlAC.add(txtCarSeatAC);
+            pnlAC.add(separator5AC);
+            pnlAC.add(btnClearAC);
+            pnlAC.add(btnCancelAC);
+            pnlAC.add(btnAddAC);
+            pnlAC.add(tablePnlAC);
+        }
+
+        //Registration Page
+        {
+            //Icons for Phone No.
+            ImageIcon icnPhoneR = new ImageIcon("src\\Pics\\smartphone.png");
+            icnPhoneNumR.setIcon(icnPhoneR);
+            icnPhoneNumR.setSize(32, 32);
+            icnPhoneNumR.setLocation(360, 207);
+
+            //Icon for Email
+            ImageIcon icnEmaR = new ImageIcon("src\\Pics\\email.png");
+            icnEmailR.setIcon(icnEmaR);
+            icnEmailR.setSize(32, 32);
+            icnEmailR.setLocation(85, 207);
+
+            //Icon for Password
+            ImageIcon icnPwdR = new ImageIcon("src\\Pics\\key.png");
+            icnPasswordR.setIcon(icnPwdR);
+            icnPasswordR.setSize(32, 32);
+            icnPasswordR.setLocation(360, 97);
+
+            //Icon for Username
+            ImageIcon icnUserR = new ImageIcon("src\\Pics\\user.png");
+            icnUsernameR.setIcon(icnUserR);
+            icnUsernameR.setSize(32, 32);
+            icnUsernameR.setLocation(85, 97);
+
+            //Car picture on right 
+            ImageIcon car_2R = new ImageIcon("src\\Pics\\car2.png");
+            car2R.setIcon(car_2R);
+            car2R.setSize(400, 200);
+            car2R.setLocation(470,220);
+
+            //Car picture on left
+            ImageIcon car_1R = new ImageIcon("src\\Pics\\car1.png");
+            car1R.setIcon(car_1R);
+            car1R.setSize(400, 200);
+            car1R.setLocation(-110,220);
+
+            //Register Button
+            btnRegisterR.setText("Register User");
+            btnRegisterR.setFont(new Font("TW Cen MT", Font.BOLD, 18));
+            Border borderR = new LineBorder(new Color(225,223,186), 1, true);
+            btnRegisterR.setBorder(borderR);
+            btnRegisterR.setFocusable(false);
+            btnRegisterR.setForeground(new Color(225,223,186));
+            btnRegisterR.setBackground(new Color(27, 28, 30));
+            btnRegisterR.setSize(158, 44);
+            btnRegisterR.setLocation(270, 285);
+            btnRegisterR.addMouseListener(this);
+
+            //Separators under each textboxes
+            separator4R.setForeground(new Color(225,223,186));
+            separator4R.setBackground(new Color(27, 28, 30));
+            separator4R.setSize(195, 17);
+            separator4R.setLocation(400, 240);
+
+            separator3R.setForeground(new Color(225,223,186));
+            separator3R.setBackground(new Color(27, 28, 30));
+            separator3R.setSize(195, 17);
+            separator3R.setLocation(125, 240);
+
+            separator2R.setForeground(new Color(225,223,186));
+            separator2R.setBackground(new Color(27, 28, 30));
+            separator2R.setSize(195, 17);
+            separator2R.setLocation(400, 130);
+
+            separator1R.setForeground(new Color(225,223,186));
+            separator1R.setBackground(new Color(27, 28, 30));
+            separator1R.setSize(195, 17);
+            separator1R.setLocation(125, 130);
+
+            //Text Box for Phone Num
+            txtPhoneNumR.setText("Phone No.");
+            txtPhoneNumR.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+            txtPhoneNumR.setForeground(new Color(225,223,186));
+            txtPhoneNumR.setBackground(new Color(27, 28, 30));
+            txtPhoneNumR.setSize(195, 44);
+            txtPhoneNumR.setLocation(400, 195);
+            txtPhoneNumR.setBorder(null);
+            txtPhoneNumR.addMouseListener(this);
+
+            //Text Box for Password
+            txtPasswordR.setText("Password");
+            txtPasswordR.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+            txtPasswordR.setForeground(new Color(225,223,186));
+            txtPasswordR.setBackground(new Color(27, 28, 30));
+            txtPasswordR.setSize(195, 44);
+            txtPasswordR.setLocation(400, 85);
+            txtPasswordR.setBorder(null);
+            txtPasswordR.addMouseListener(this);
+
+            //Text Box for Email
+            txtEmailR.setText("Email");
+            txtEmailR.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+            txtEmailR.setForeground(new Color(225,223,186));
+            txtEmailR.setBackground(new Color(27, 28, 30));
+            txtEmailR.setSize(195, 44);
+            txtEmailR.setLocation(125, 195);
+            txtEmailR.setBorder(null);
+            txtEmailR.addMouseListener(this);
+
+            //Text Box for Username
+            txtUsernameR.setText("Username");
+            txtUsernameR.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+            txtUsernameR.setForeground(new Color(225,223,186));
+            txtUsernameR.setBackground(new Color(27, 28, 30));
+            txtUsernameR.setSize(195, 44);
+            txtUsernameR.setLocation(125, 85);
+            txtUsernameR.setBorder(null);
+            txtUsernameR.addMouseListener(this);
+
+            //Text for Page Title
+            pageTitleR.setText("Registration");
+            pageTitleR.setFont(new Font("TW Cen MT", Font.PLAIN, 28));
+            pageTitleR.setForeground(new Color(225,223,186));
+            pageTitleR.setBackground(new Color(27, 28, 30));
+            pageTitleR.setSize(150, 27);
+            pageTitleR.setLocation(275, 10);
+
+            //Form
+            pnlR.setBackground(new Color(27, 28, 30));
+            pnlR.setLayout(null);
+            pnlR.setSize(725, 420);
+            pnlR.setVisible(false);
+
+            //Adding Components to form
+            pnlR.add(icnPhoneNumR);
+            pnlR.add(icnEmailR);
+            pnlR.add(icnPasswordR);
+            pnlR.add(icnUsernameR);
+            pnlR.add(btnRegisterR);
+            pnlR.add(separator4R);
+            pnlR.add(separator3R);
+            pnlR.add(separator2R);
+            pnlR.add(separator1R);
+            pnlR.add(txtPhoneNumR);
+            pnlR.add(txtPasswordR);
+            pnlR.add(txtEmailR);
+            pnlR.add(txtUsernameR);
+            pnlR.add(pageTitleR);
+            pnlR.add(car1R);
+            pnlR.add(car2R);
+        }
 
         //View Report or Booking Page
         {
@@ -806,6 +1344,9 @@ public class App extends JFrame implements MouseListener{
             this.add(pnl1);
             
             //Pages
+            this.add(pnlEP);
+            this.add(pnlAC);
+            this.add(pnlR);
             this.add(pnlRBP);
             this.add(pnlViewAllCar);
             this.add(pnlVMP);
@@ -824,7 +1365,7 @@ public class App extends JFrame implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
+        // Profile Button
         if(e.getSource() == btnProfile) {
             pnlProfile.setVisible(true);
             pnl1.setVisible(false);
@@ -832,29 +1373,81 @@ public class App extends JFrame implements MouseListener{
             pnlAdd.setVisible(false);
             pnlViewAllCar.setVisible(false);
             pnlRBP.setVisible(false);
-        } else if(e.getSource() == btnHome) {
+            pnlR.setVisible(false);
+            pnlAC.setVisible(false);
+            pnlEP.setVisible(false);
+        } //Home Button
+        else if(e.getSource() == btnHome) {
             pnl1.setVisible(true);
             pnlProfile.setVisible(false);
             pnlAdd.setVisible(false);
             pnlVMP.setVisible(false);
             pnlViewAllCar.setVisible(false);
             pnlRBP.setVisible(false);
-        } else if(e.getSource() == btnRegistration) {
+            pnlR.setVisible(false);
+            pnlAC.setVisible(false);
+            pnlEP.setVisible(false);
+        } //Registration Button 
+        else if(e.getSource() == btnRegistration) {
             pnlAdd.setVisible(true);
             pnl1.setVisible(false);
             pnlVMP.setVisible(false);
             pnlProfile.setVisible(false);
             pnlViewAllCar.setVisible(false);
             pnlRBP.setVisible(false);
-        } else if(e.getSource() == btnReports) {
+            pnlR.setVisible(false);
+            pnlAC.setVisible(false);
+            pnlEP.setVisible(false);
+        } //Reports Button
+        else if(e.getSource() == btnReports) {
             pnlRBP.setVisible(true);
             pnlVMP.setVisible(false);
             pnl1.setVisible(false);
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
             pnlViewAllCar.setVisible(false);
-        } else if(e.getSource() == btnBooking) {
+            pnlR.setVisible(false);
+            pnlAC.setVisible(false);
+            pnlEP.setVisible(false);
+        } //Booking Button
+        else if(e.getSource() == btnBooking) {
             pnlViewAllCar.setVisible(true);
+            pnlVMP.setVisible(false);
+            pnl1.setVisible(false);
+            pnlAdd.setVisible(false);
+            pnlProfile.setVisible(false);
+            pnlRBP.setVisible(false);
+            pnlR.setVisible(false);
+            pnlAC.setVisible(false);
+            pnlEP.setVisible(false);
+        } //Register Customer Page Button
+        else if(e.getSource() == btnAddCus) {
+            pnlR.setVisible(true);
+            pnlViewAllCar.setVisible(false);
+            pnlVMP.setVisible(false);
+            pnl1.setVisible(false);
+            pnlAdd.setVisible(false);
+            pnlProfile.setVisible(false);
+            pnlRBP.setVisible(false);
+            pnlAC.setVisible(false);
+            pnlEP.setVisible(false);
+        } //Add Car Page Button
+        else if(e.getSource() == btnAddCar) {
+            pnlAC.setVisible(true);
+            pnlR.setVisible(false);
+            pnlViewAllCar.setVisible(false);
+            pnlVMP.setVisible(false);
+            pnl1.setVisible(false);
+            pnlAdd.setVisible(false);
+            pnlProfile.setVisible(false);
+            pnlRBP.setVisible(false);
+            pnlEP.setVisible(false);
+        } //Edit Button in Profile Page
+        else if(e.getSource() == btnEdit) {
+            pnlEP.setVisible(true);
+            pnlAC.setVisible(false);
+            pnlR.setVisible(false);
+            pnlViewAllCar.setVisible(false);
             pnlVMP.setVisible(false);
             pnl1.setVisible(false);
             pnlAdd.setVisible(false);
