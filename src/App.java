@@ -206,7 +206,86 @@ public class App extends JFrame implements MouseListener{
     private JLabel icnEmailEP = new JLabel();
     private JLabel carPicEP = new JLabel();
 
+    //Change Password Page
+    private JPanel pnlCP = new JPanel();
+    private JTextField passwordCP = new JTextField();
+    private JTextField confirmPwdCP = new JTextField(); 
+    private JLabel pageTitleCP = new JLabel();
+    private JLabel pwdPicCP = new JLabel();
+    private JSeparator separator1CP = new JSeparator();
+    private JSeparator separator2CP = new JSeparator();
+    private JButton btnChangeCP = new JButton();
+
     App() {
+
+        //Change Password Page
+        {
+            ImageIcon pwdCP = new ImageIcon("src\\Pics\\password.png");
+            pwdPicCP.setIcon(pwdCP);
+            pwdPicCP.setSize(256, 256);
+            pwdPicCP.setLocation(420, 60);
+
+            btnChangeCP.setText("Change Password");
+            btnChangeCP.setSize(140, 44);
+            btnChangeCP.setLocation(290, 300);
+            btnChangeCP.setForeground(new Color(225,223,186));
+            btnChangeCP.setBackground(new Color(27, 28, 30));
+            Border borderCP = new LineBorder(new Color(225,223,186), 1, true);
+            btnChangeCP.setBorder(borderCP);
+            btnChangeCP.setFont(new Font("TW Cen MT", Font.BOLD, 15));
+            btnChangeCP.setFocusable(false);
+            btnChangeCP.addMouseListener(this);
+
+            pageTitleCP.setText("Change Password");
+            pageTitleCP.setFont(new Font("TW Cen MT", Font.PLAIN, 28));
+            pageTitleCP.setForeground(new Color(225,223,186));
+            pageTitleCP.setBackground(new Color(27, 28, 30));
+            pageTitleCP.setSize(200, 27);
+            pageTitleCP.setLocation(270, 10);
+
+            //Confirm Password box
+            confirmPwdCP.setText("Confirm Password");
+            confirmPwdCP.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+            confirmPwdCP.setForeground(new Color(225,223,186));
+            confirmPwdCP.setBackground(new Color(27, 28, 30));
+            confirmPwdCP.setSize(180,30);
+            confirmPwdCP.setLocation(125, 210);
+            confirmPwdCP.setBorder(null);
+            confirmPwdCP.addMouseListener(this);
+
+            separator2CP.setForeground(new Color(225,223,186));
+            separator2CP.setBackground(new Color(27, 28, 30));
+            separator2CP.setSize(180, 17);
+            separator2CP.setLocation(125, 243);
+
+            //First Password box
+            passwordCP.setText("Password");
+            passwordCP.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+            passwordCP.setForeground(new Color(225,223,186));
+            passwordCP.setBackground(new Color(27, 28, 30));
+            passwordCP.setSize(180,30);
+            passwordCP.setLocation(125, 110);
+            passwordCP.setBorder(null);
+            passwordCP.addMouseListener(this);
+
+            separator1CP.setForeground(new Color(225,223,186));
+            separator1CP.setBackground(new Color(27, 28, 30));
+            separator1CP.setSize(180, 17);
+            separator1CP.setLocation(125, 143);
+
+            pnlCP.setBackground(new Color(27, 28, 30));
+            pnlCP.setLayout(null);
+            pnlCP.setSize(725, 420);
+            pnlCP.setVisible(false);
+
+            pnlCP.add(passwordCP);
+            pnlCP.add(confirmPwdCP);
+            pnlCP.add(separator1CP);
+            pnlCP.add(separator2CP);
+            pnlCP.add(pageTitleCP);
+            pnlCP.add(btnChangeCP);
+            pnlCP.add(pwdPicCP);
+        }
 
         //Edit Profile Page
         {
@@ -263,6 +342,7 @@ public class App extends JFrame implements MouseListener{
             btnChangePwdEP.setBorder(border1EP);
             btnChangePwdEP.setFont(new Font("TW Cen MT", Font.BOLD, 15));
             btnChangePwdEP.setFocusable(false);
+            btnChangePwdEP.addMouseListener(this);
 
             //Reset Button
             btnDefaultEP.setText("Back to Default");
@@ -1320,6 +1400,7 @@ public class App extends JFrame implements MouseListener{
             this.setLayout(null);
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             this.setSize(725, 528);
+            this.setResizable(false);
             this.setVisible(true);
             
             //Add Stuff
@@ -1344,6 +1425,7 @@ public class App extends JFrame implements MouseListener{
             this.add(pnl1);
             
             //Pages
+            this.add(pnlCP);
             this.add(pnlEP);
             this.add(pnlAC);
             this.add(pnlR);
@@ -1376,6 +1458,7 @@ public class App extends JFrame implements MouseListener{
             pnlR.setVisible(false);
             pnlAC.setVisible(false);
             pnlEP.setVisible(false);
+            pnlCP.setVisible(false);
         } //Home Button
         else if(e.getSource() == btnHome) {
             pnl1.setVisible(true);
@@ -1387,6 +1470,7 @@ public class App extends JFrame implements MouseListener{
             pnlR.setVisible(false);
             pnlAC.setVisible(false);
             pnlEP.setVisible(false);
+            pnlCP.setVisible(false);
         } //Registration Button 
         else if(e.getSource() == btnRegistration) {
             pnlAdd.setVisible(true);
@@ -1398,6 +1482,7 @@ public class App extends JFrame implements MouseListener{
             pnlR.setVisible(false);
             pnlAC.setVisible(false);
             pnlEP.setVisible(false);
+            pnlCP.setVisible(false);
         } //Reports Button
         else if(e.getSource() == btnReports) {
             pnlRBP.setVisible(true);
@@ -1409,6 +1494,7 @@ public class App extends JFrame implements MouseListener{
             pnlR.setVisible(false);
             pnlAC.setVisible(false);
             pnlEP.setVisible(false);
+            pnlCP.setVisible(false);
         } //Booking Button
         else if(e.getSource() == btnBooking) {
             pnlViewAllCar.setVisible(true);
@@ -1420,6 +1506,7 @@ public class App extends JFrame implements MouseListener{
             pnlR.setVisible(false);
             pnlAC.setVisible(false);
             pnlEP.setVisible(false);
+            pnlCP.setVisible(false);
         } //Register Customer Page Button
         else if(e.getSource() == btnAddCus) {
             pnlR.setVisible(true);
@@ -1431,6 +1518,7 @@ public class App extends JFrame implements MouseListener{
             pnlRBP.setVisible(false);
             pnlAC.setVisible(false);
             pnlEP.setVisible(false);
+            pnlCP.setVisible(false);
         } //Add Car Page Button
         else if(e.getSource() == btnAddCar) {
             pnlAC.setVisible(true);
@@ -1442,9 +1530,22 @@ public class App extends JFrame implements MouseListener{
             pnlProfile.setVisible(false);
             pnlRBP.setVisible(false);
             pnlEP.setVisible(false);
+            pnlCP.setVisible(false);
         } //Edit Button in Profile Page
         else if(e.getSource() == btnEdit) {
             pnlEP.setVisible(true);
+            pnlAC.setVisible(false);
+            pnlR.setVisible(false);
+            pnlViewAllCar.setVisible(false);
+            pnlVMP.setVisible(false);
+            pnl1.setVisible(false);
+            pnlAdd.setVisible(false);
+            pnlProfile.setVisible(false);
+            pnlRBP.setVisible(false);
+            pnlCP.setVisible(false);
+        } else if(e.getSource() == btnChangePwdEP) {
+            pnlCP.setVisible(true);
+            pnlEP.setVisible(false);
             pnlAC.setVisible(false);
             pnlR.setVisible(false);
             pnlViewAllCar.setVisible(false);
