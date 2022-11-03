@@ -14,6 +14,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
@@ -230,8 +231,203 @@ public class App extends JFrame implements MouseListener{
     private JPanel tablePnlMR = new JPanel();
     private Border borderMR = new LineBorder(new Color(225,223,186), 1, true);
 
+    //View Car Page
+    private JPanel pnlBigOCP = new JPanel();
+    private JLabel carPicOCP = new JLabel();
+    private JLabel pnl1OCP = new JLabel();
+    private JLabel pnl2OCP = new JLabel();
+    private JLabel pricePerHrOCP = new JLabel();
+    private JLabel carSeatsOCP = new JLabel();
+    private JLabel seatsOCP = new JLabel();
+    private JLabel availableOCP = new JLabel();
+    private JLabel availableTxtOCP = new JLabel();
+    private JLabel locationOCP = new JLabel();
+    private JTextArea location1OCP = new JTextArea();
+    private JLabel carNameOCP = new JLabel();
+    private JLabel carRatingOCP = new JLabel();
+    private JLabel pricePicOCP = new JLabel();
+    private JLabel seatPicOCP = new JLabel();
+    private JLabel backOCP = new JLabel();
+    private JLabel bookOCP = new JLabel();
+    private JLabel starOCP = new JLabel();
+    private JButton btnBookOCP = new JButton();
+    private JButton btnBackOCP = new JButton();
 
     App() {
+
+        //View Car Page
+        {
+            //Car Name
+            carNameOCP.setText("Tesla Model S");
+            carNameOCP.setFont(new Font("TW Cen MT", Font.BOLD, 35));
+            carNameOCP.setForeground(new Color(225,223,186));
+            carNameOCP.setBackground(new Color(27, 28, 30));
+            carNameOCP.setSize(300, 27);
+            carNameOCP.setLocation(390, 30);
+
+            //Available text
+            availableTxtOCP.setText("Not Available");
+            availableTxtOCP.setFont(new Font("Segoe UI", Font.BOLD, 13));
+            availableTxtOCP.setSize(150, 100);
+            availableTxtOCP.setForeground(new Color(225,223,186));
+            availableTxtOCP.setBackground(new Color(27, 28, 30));
+            availableTxtOCP.setLocation(536, 190);
+
+            availableOCP.setText("Status: ");
+            availableOCP.setFont(new Font("Segoe UI", Font.BOLD, 13));
+            availableOCP.setSize(50, 100);
+            availableOCP.setForeground(new Color(225,223,186));
+            availableOCP.setBackground(new Color(27, 28, 30));
+            availableOCP.setLocation(486, 190);
+
+            //Star Pic
+            ImageIcon starPicOCP = new ImageIcon("src\\Pics\\star.png");
+            starOCP.setIcon(starPicOCP);
+            starOCP.setSize(24, 24);
+            starOCP.setLocation(403, 225);
+
+            //Car Rating txt
+            carRatingOCP.setText("4.7");
+            carRatingOCP.setFont(new Font("Segoe UI", Font.BOLD, 13));
+            carRatingOCP.setSize(50, 100);
+            carRatingOCP.setForeground(new Color(225,223,186));
+            carRatingOCP.setBackground(new Color(27, 28, 30));
+            carRatingOCP.setLocation(436, 190);
+
+            //Back Button Text
+            backOCP.setText("Back");
+            backOCP.setSize(180, 30);
+            backOCP.setFont(new Font("TW Cen MT", Font.BOLD, 18));
+            backOCP.setForeground(new Color(225,223,186));
+            backOCP.setLocation(565, 335);
+
+            //Back Button
+            ImageIcon gobackOCP = new ImageIcon("src\\Pics\\turn-back.png");
+            btnBackOCP.setIcon(gobackOCP);
+            btnBackOCP.setForeground(new Color(225,223,186));
+            btnBackOCP.setBackground(new Color(27, 28, 30));
+            btnBackOCP.setFocusable(false);
+            btnBackOCP.setSize(64, 64);
+            btnBackOCP.setLocation(550, 270);
+            btnBackOCP.setBorder(null);
+            btnBackOCP.addMouseListener(this);
+
+            //Book button text 
+            bookOCP.setText("Book Now!");
+            bookOCP.setSize(180, 30);
+            bookOCP.setFont(new Font("TW Cen MT", Font.BOLD, 18));
+            bookOCP.setForeground(new Color(225,223,186));
+            bookOCP.setLocation(408, 335);
+
+            //Booking icon
+            ImageIcon bookingOCP = new ImageIcon("src\\Pics\\appointment.png");
+            btnBookOCP.setIcon(bookingOCP);
+            btnBookOCP.setForeground(new Color(225,223,186));
+            btnBookOCP.setBackground(new Color(27, 28, 30));
+            btnBookOCP.setFocusable(false);
+            btnBookOCP.setSize(64, 64);
+            btnBookOCP.setLocation(417, 270);
+            btnBookOCP.setBorder(null);
+            btnBookOCP.addMouseListener(this);
+
+            //Location txt
+            location1OCP.setText("Jalan Teknologi 5, Taman Teknologi Malaysia, \n57000 Kuala Lumpur, \n\nWilayah Persekutuan Kuala Lumpur");
+            location1OCP.setFont(new Font("Segoe UI", Font.BOLD, 12));
+            location1OCP.setBackground(new Color(27, 28, 30));
+            location1OCP.setForeground(new Color(225,223,186));
+            location1OCP.setSize(250, 100);
+            location1OCP.setLocation(423, 110);
+            location1OCP.setLineWrap(true);
+
+            //Location title
+            locationOCP.setText("Location: ");
+            locationOCP.setFont(new Font("TW Cen MT", Font.BOLD, 23));
+            locationOCP.setForeground(new Color(225,223,186));
+            locationOCP.setSize(180, 30);
+            locationOCP.setLocation(413, 75);
+
+            //Seats icon
+            ImageIcon seatOCP = new ImageIcon("src\\Pics\\car-seat.png");
+            seatPicOCP.setIcon(seatOCP);
+            seatPicOCP.setSize(64, 64);
+            seatPicOCP.setLocation(247, 245);
+
+            //Price icon
+            ImageIcon priceOCP = new ImageIcon("src\\Pics\\price-tag.png");
+            pricePicOCP.setIcon(priceOCP);
+            pricePicOCP.setSize(64, 64);
+            pricePicOCP.setLocation(92, 245);
+
+            //txt for Seats
+            seatsOCP.setText("seats");
+            seatsOCP.setFont(new Font("Segoe UI", Font.BOLD, 18));
+            seatsOCP.setForeground(new Color(27, 28, 30));
+            seatsOCP.setBackground(new Color(225,223,186));
+            seatsOCP.setSize(180,30);
+            seatsOCP.setLocation(265, 310);
+            seatsOCP.setBorder(null);
+
+            //Number of seats
+            carSeatsOCP.setText("5");
+            carSeatsOCP.setFont(new Font("Segoe UI", Font.BOLD, 18));
+            carSeatsOCP.setForeground(new Color(27, 28, 30));
+            carSeatsOCP.setBackground(new Color(225,223,186));
+            carSeatsOCP.setSize(20,30);
+            carSeatsOCP.setLocation(248, 310);
+            carSeatsOCP.setBorder(null);
+
+            //Price Per Hr txt
+            pricePerHrOCP.setText("RM 25/hr");
+            pricePerHrOCP.setFont(new Font("Segoe UI", Font.BOLD, 18));
+            pricePerHrOCP.setForeground(new Color(27, 28, 30));
+            pricePerHrOCP.setBackground(new Color(225,223,186));
+            pricePerHrOCP.setSize(180,30);
+            pricePerHrOCP.setLocation(87, 310);
+            pricePerHrOCP.setBorder(null);
+
+            //Rounded Square graphic
+            ImageIcon pnlOCP = new ImageIcon("src\\Pics\\smallPnl.png");
+            pnl1OCP.setIcon(pnlOCP);
+            pnl1OCP.setSize(135, 134);
+            pnl1OCP.setLocation(60, 230);
+
+            pnl2OCP.setIcon(pnlOCP);
+            pnl2OCP.setSize(135, 134);
+            pnl2OCP.setLocation(210, 230);
+
+            //Car Pic
+            ImageIcon carOCP = new ImageIcon("src\\Pics\\Tesla Model S.png");
+            carPicOCP.setIcon(carOCP);
+            carPicOCP.setSize(412, 225);
+            carPicOCP.setLocation(3, 25);
+            
+            //Frame
+            pnlBigOCP.setBackground(new Color(27, 28, 30));
+            pnlBigOCP.setLayout(null);
+            pnlBigOCP.setSize(725, 420);
+            pnlBigOCP.setVisible(false);
+
+            //Adding components to Frame
+            pnlBigOCP.add(backOCP);
+            pnlBigOCP.add(bookOCP);
+            pnlBigOCP.add(btnBookOCP);
+            pnlBigOCP.add(btnBackOCP);
+            pnlBigOCP.add(location1OCP);
+            pnlBigOCP.add(locationOCP);
+            pnlBigOCP.add(seatPicOCP);
+            pnlBigOCP.add(pricePicOCP);
+            pnlBigOCP.add(pricePerHrOCP);
+            pnlBigOCP.add(carSeatsOCP);
+            pnlBigOCP.add(seatsOCP);
+            pnlBigOCP.add(carPicOCP);
+            pnlBigOCP.add(pnl1OCP);
+            pnlBigOCP.add(pnl2OCP);
+            pnlBigOCP.add(carRatingOCP);
+            pnlBigOCP.add(starOCP);
+            pnlBigOCP.add(carNameOCP);
+            pnlBigOCP.add(availableOCP);
+            pnlBigOCP.add(availableTxtOCP);
+        }
 
         //View Monthly Report 
         {
@@ -1540,6 +1736,7 @@ public class App extends JFrame implements MouseListener{
             this.add(pnl1);
             
             //Pages
+            this.add(pnlBigOCP);
             this.add(pnlMR);
             this.add(pnlCP);
             this.add(pnlEP);
@@ -1576,6 +1773,7 @@ public class App extends JFrame implements MouseListener{
             pnlEP.setVisible(false);
             pnlCP.setVisible(false);
             pnlMR.setVisible(false);
+            pnlBigOCP.setVisible(false);
         } //Home Button
         else if(e.getSource() == btnHome) {
             pnl1.setVisible(true);
@@ -1589,6 +1787,7 @@ public class App extends JFrame implements MouseListener{
             pnlEP.setVisible(false);
             pnlCP.setVisible(false);
             pnlMR.setVisible(false);
+            pnlBigOCP.setVisible(false);
         } //Registration Button 
         else if(e.getSource() == btnRegistration) {
             pnlAdd.setVisible(true);
@@ -1602,6 +1801,7 @@ public class App extends JFrame implements MouseListener{
             pnlEP.setVisible(false);
             pnlCP.setVisible(false);
             pnlMR.setVisible(false);
+            pnlBigOCP.setVisible(false);
         } //Reports Button
         else if(e.getSource() == btnReports) {
             pnlRBP.setVisible(true);
@@ -1615,6 +1815,7 @@ public class App extends JFrame implements MouseListener{
             pnlEP.setVisible(false);
             pnlCP.setVisible(false);
             pnlMR.setVisible(false);
+            pnlBigOCP.setVisible(false);
         } //Booking Button
         else if(e.getSource() == btnBooking) {
             pnlViewAllCar.setVisible(true);
@@ -1628,6 +1829,7 @@ public class App extends JFrame implements MouseListener{
             pnlEP.setVisible(false);
             pnlCP.setVisible(false);
             pnlMR.setVisible(false);
+            pnlBigOCP.setVisible(false);
         } //Register Customer Page Button
         else if(e.getSource() == btnAddCus) {
             pnlR.setVisible(true);
@@ -1641,6 +1843,7 @@ public class App extends JFrame implements MouseListener{
             pnlEP.setVisible(false);
             pnlCP.setVisible(false);
             pnlMR.setVisible(false);
+            pnlBigOCP.setVisible(false);
         } //Add Car Page Button
         else if(e.getSource() == btnAddCar) {
             pnlAC.setVisible(true);
@@ -1654,6 +1857,7 @@ public class App extends JFrame implements MouseListener{
             pnlEP.setVisible(false);
             pnlCP.setVisible(false);
             pnlMR.setVisible(false);
+            pnlBigOCP.setVisible(false);
         } //Edit Button in Profile Page
         else if(e.getSource() == btnEdit) {
             pnlEP.setVisible(true);
@@ -1667,6 +1871,7 @@ public class App extends JFrame implements MouseListener{
             pnlRBP.setVisible(false);
             pnlCP.setVisible(false);
             pnlMR.setVisible(false);
+            pnlBigOCP.setVisible(false);
         } else if(e.getSource() == btnChangePwdEP) {
             pnlCP.setVisible(true);
             pnlEP.setVisible(false);
@@ -1679,7 +1884,22 @@ public class App extends JFrame implements MouseListener{
             pnlProfile.setVisible(false);
             pnlRBP.setVisible(false);
             pnlMR.setVisible(false);
+            pnlBigOCP.setVisible(false);
         } else if(e.getSource() == btnReport) {
+            pnlMR.setVisible(true);
+            pnlCP.setVisible(false);
+            pnlEP.setVisible(false);
+            pnlAC.setVisible(false);
+            pnlR.setVisible(false);
+            pnlViewAllCar.setVisible(false);
+            pnlVMP.setVisible(false);
+            pnl1.setVisible(false);
+            pnlAdd.setVisible(false);
+            pnlProfile.setVisible(false);
+            pnlRBP.setVisible(false);
+            pnlBigOCP.setVisible(false);
+        } else if(e.getSource() == btn1) {
+            pnlBigOCP.setVisible(true);
             pnlMR.setVisible(true);
             pnlCP.setVisible(false);
             pnlEP.setVisible(false);
