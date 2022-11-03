@@ -43,15 +43,54 @@ public class ViewBookingRequest extends JFrame implements MouseListener{
     ViewBookingRequest() {
 
         lblUserIDBR.setText("User ID: ");
+        lblUserIDBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
+        lblUserIDBR.setForeground(new Color(225,223,186));
+        lblUserIDBR.setBackground(new Color(27, 28, 30));
+        lblUserIDBR.setLocation(60, 215);
+        lblUserIDBR.setSize(150, 26);
 
         lblUserNameBR.setText("Username: ");
+        lblUserNameBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
+        lblUserNameBR.setForeground(new Color(225,223,186));
+        lblUserNameBR.setBackground(new Color(27, 28, 30));
+        lblUserNameBR.setLocation(60, 242);
+        lblUserNameBR.setSize(150, 26);
 
         lblPhoneNumBR.setText("Phone Number: ");
+        lblPhoneNumBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
+        lblPhoneNumBR.setForeground(new Color(225,223,186));
+        lblPhoneNumBR.setBackground(new Color(27, 28, 30));
+        lblPhoneNumBR.setLocation(60, 269);
+        lblPhoneNumBR.setSize(150, 26);
 
-        lblCarInfoBR.setText("Car ");
+        lblCarInfoBR.setText("Car Information: ");
+        lblCarInfoBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
+        lblCarInfoBR.setForeground(new Color(225,223,186));
+        lblCarInfoBR.setBackground(new Color(27, 28, 30));
+        lblCarInfoBR.setLocation(60, 296);
+        lblCarInfoBR.setSize(150, 26);
 
-        //Returned Table
+        lblRentDateBR.setText("Rental Date: ");
+        lblRentDateBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
+        lblRentDateBR.setForeground(new Color(225,223,186));
+        lblRentDateBR.setBackground(new Color(27, 28, 30));
+        lblRentDateBR.setLocation(60, 323);
+        lblRentDateBR.setSize(150, 26);
 
+        lblReturnDateBR.setText("Return Date: ");
+        lblReturnDateBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
+        lblReturnDateBR.setForeground(new Color(225,223,186));
+        lblReturnDateBR.setBackground(new Color(27, 28, 30));
+        lblReturnDateBR.setLocation(60, 350);
+        lblReturnDateBR.setSize(150, 26);
+
+        btnCancelBR.setText("Cancel");
+
+        btnDeclineBR.setText("Decline");
+
+        btnAcceptBR.setText("Accept");
+
+        //Table
         String[] columnsReturn = {"Return ID", "Username", "Status", "Return Date"};
         String[][] rowsReturn = {{"R01", "Hamid_Karim_123", "Returned", "04-10-2022"}, 
                             {"R02", "Adrian_Fu", "Not Returned", "N/A"},
@@ -75,8 +114,8 @@ public class ViewBookingRequest extends JFrame implements MouseListener{
         
         paneBR = new JScrollPane(tableBR);
 
-        tableBRPnl.setSize(450, 155);
-        tableBRPnl.setLocation(130, 80);
+        tableBRPnl.setSize(450, 145);
+        tableBRPnl.setLocation(130, 60);
         tableBRPnl.add(paneBR);
 
         //Object[] rowReturns = new Object[4];
@@ -84,17 +123,18 @@ public class ViewBookingRequest extends JFrame implements MouseListener{
         separator1BR.setForeground(new Color(225,223,186));
         separator1BR.setBackground(new Color(27, 28, 30));
         separator1BR.setSize(160, 17);
-        separator1BR.setLocation(160, 56);
+        separator1BR.setLocation(160, 46);
 
         txtSearchBR.setSize(160, 30);
-        txtSearchBR.setLocation(160, 26);
+        txtSearchBR.setLocation(160, 16);
         txtSearchBR.setForeground(new Color(225,223,186));
         txtSearchBR.setBackground(new Color(27, 28, 30));
         txtSearchBR.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+        txtSearchBR.setCaretColor(new Color(225,223,186));
         
         lblSearchBR.setText("Search User ID: ");
         lblSearchBR.setSize(130, 37);
-        lblSearchBR.setLocation(30, 20);
+        lblSearchBR.setLocation(30, 10);
         lblSearchBR.setForeground(new Color(225,223,186));
         lblSearchBR.setBackground(new Color(27, 28, 30));
         lblSearchBR.setFont(new Font("TW Cen MT", Font.PLAIN, 18));
@@ -113,6 +153,12 @@ public class ViewBookingRequest extends JFrame implements MouseListener{
         this.add(txtSearchBR);
         this.add(separator1BR);
         this.add(tableBRPnl);
+        this.add(lblUserIDBR);
+        this.add(lblUserNameBR);
+        this.add(lblPhoneNumBR);
+        this.add(lblCarInfoBR);
+        this.add(lblRentDateBR);
+        this.add(lblReturnDateBR);
     }
 
     @Override
