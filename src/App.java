@@ -1898,7 +1898,7 @@ public class App extends JFrame implements MouseListener{
             pnlProfile.setVisible(false);
             pnlRBP.setVisible(false);
             pnlBigOCP.setVisible(false);
-        } else if(e.getSource() == btn1) {
+        } else if(e.getSource() == btn1 || e.getSource() == btn2 || e.getSource() == btn3 || e.getSource() == btn4 || e.getSource() == btn5) {
             pnlBigOCP.setVisible(true);
             pnlMR.setVisible(true);
             pnlCP.setVisible(false);
