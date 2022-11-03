@@ -7,6 +7,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -39,56 +41,118 @@ public class ViewBookingRequest extends JFrame implements MouseListener{
     JTable tableBR = new JTable();
     JScrollPane paneBR = new JScrollPane();
     JPanel tableBRPnl = new JPanel();
+    private Border border = new LineBorder(new Color(225,223,186), 1, true);
 
     ViewBookingRequest() {
+
+        txtUserIDBR.setText("U12");
+        txtUserIDBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
+        txtUserIDBR.setForeground(new Color(225,223,186));
+        txtUserIDBR.setBackground(new Color(27, 28, 30));
+        txtUserIDBR.setLocation(260, 215);
+        txtUserIDBR.setSize(150, 26);
+
+        txtUserNameBR.setText("Adrian_Fu");
+        txtUserNameBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
+        txtUserNameBR.setForeground(new Color(225,223,186));
+        txtUserNameBR.setBackground(new Color(27, 28, 30));
+        txtUserNameBR.setLocation(260, 242);
+        txtUserNameBR.setSize(150, 26);
+
+        txtPhoneNumBR.setText("0111234566");
+        txtPhoneNumBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
+        txtPhoneNumBR.setForeground(new Color(225,223,186));
+        txtPhoneNumBR.setBackground(new Color(27, 28, 30));
+        txtPhoneNumBR.setLocation(260, 269);
+        txtPhoneNumBR.setSize(150, 26);
+
+        txtCarInfoBR.setText("Honda City, VHJ 1023");
+        txtCarInfoBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
+        txtCarInfoBR.setForeground(new Color(225,223,186));
+        txtCarInfoBR.setBackground(new Color(27, 28, 30));
+        txtCarInfoBR.setLocation(260, 296);
+        txtCarInfoBR.setSize(150, 26);
+
+        txtRentDateBR.setText("12-09-2022");
+        txtRentDateBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
+        txtRentDateBR.setForeground(new Color(225,223,186));
+        txtRentDateBR.setBackground(new Color(27, 28, 30));
+        txtRentDateBR.setLocation(260, 323);
+        txtRentDateBR.setSize(150, 26);
+
+        txtReturnDateBR.setText("13-09-2022");
+        txtReturnDateBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
+        txtReturnDateBR.setForeground(new Color(225,223,186));
+        txtReturnDateBR.setBackground(new Color(27, 28, 30));
+        txtReturnDateBR.setLocation(260, 350);
+        txtReturnDateBR.setSize(150, 26);
 
         lblUserIDBR.setText("User ID: ");
         lblUserIDBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
         lblUserIDBR.setForeground(new Color(225,223,186));
         lblUserIDBR.setBackground(new Color(27, 28, 30));
-        lblUserIDBR.setLocation(60, 215);
+        lblUserIDBR.setLocation(110, 215);
         lblUserIDBR.setSize(150, 26);
 
         lblUserNameBR.setText("Username: ");
         lblUserNameBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
         lblUserNameBR.setForeground(new Color(225,223,186));
         lblUserNameBR.setBackground(new Color(27, 28, 30));
-        lblUserNameBR.setLocation(60, 242);
+        lblUserNameBR.setLocation(110, 242);
         lblUserNameBR.setSize(150, 26);
 
         lblPhoneNumBR.setText("Phone Number: ");
         lblPhoneNumBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
         lblPhoneNumBR.setForeground(new Color(225,223,186));
         lblPhoneNumBR.setBackground(new Color(27, 28, 30));
-        lblPhoneNumBR.setLocation(60, 269);
+        lblPhoneNumBR.setLocation(110, 269);
         lblPhoneNumBR.setSize(150, 26);
 
         lblCarInfoBR.setText("Car Information: ");
         lblCarInfoBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
         lblCarInfoBR.setForeground(new Color(225,223,186));
         lblCarInfoBR.setBackground(new Color(27, 28, 30));
-        lblCarInfoBR.setLocation(60, 296);
+        lblCarInfoBR.setLocation(110, 296);
         lblCarInfoBR.setSize(150, 26);
 
         lblRentDateBR.setText("Rental Date: ");
         lblRentDateBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
         lblRentDateBR.setForeground(new Color(225,223,186));
         lblRentDateBR.setBackground(new Color(27, 28, 30));
-        lblRentDateBR.setLocation(60, 323);
+        lblRentDateBR.setLocation(110, 323);
         lblRentDateBR.setSize(150, 26);
 
         lblReturnDateBR.setText("Return Date: ");
         lblReturnDateBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
         lblReturnDateBR.setForeground(new Color(225,223,186));
         lblReturnDateBR.setBackground(new Color(27, 28, 30));
-        lblReturnDateBR.setLocation(60, 350);
+        lblReturnDateBR.setLocation(110, 350);
         lblReturnDateBR.setSize(150, 26);
 
         btnCancelBR.setText("Cancel");
+        btnCancelBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
+        btnCancelBR.setForeground(new Color(225,223,186));
+        btnCancelBR.setBackground(new Color(27, 28, 30));
+        btnCancelBR.setLocation(500, 250);
+        btnCancelBR.setSize(80, 26);
+        btnCancelBR.setBorder(border);
 
         btnDeclineBR.setText("Decline");
+        btnDeclineBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
+        btnDeclineBR.setForeground(new Color(225,223,186));
+        btnDeclineBR.setBackground(new Color(27, 28, 30));
+        btnDeclineBR.setLocation(500, 285);
+        btnDeclineBR.setSize(80, 26);
+        btnDeclineBR.setBorder(border);
 
         btnAcceptBR.setText("Accept");
+        btnAcceptBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
+        btnAcceptBR.setForeground(new Color(225,223,186));
+        btnAcceptBR.setBackground(new Color(27, 28, 30));
+        btnAcceptBR.setLocation(500, 320);
+        btnAcceptBR.setSize(80, 26);
+        btnAcceptBR.setBorder(border);
+
 
         //Table
         String[] columnsReturn = {"Return ID", "Username", "Status", "Return Date"};
@@ -159,6 +223,15 @@ public class ViewBookingRequest extends JFrame implements MouseListener{
         this.add(lblCarInfoBR);
         this.add(lblRentDateBR);
         this.add(lblReturnDateBR);
+        this.add(txtUserIDBR);
+        this.add(txtUserNameBR);
+        this.add(txtPhoneNumBR);
+        this.add(txtCarInfoBR);
+        this.add(txtRentDateBR);
+        this.add(txtReturnDateBR);
+        this.add(btnCancelBR);
+        this.add(btnAcceptBR);
+        this.add(btnDeclineBR);
     }
 
     @Override
