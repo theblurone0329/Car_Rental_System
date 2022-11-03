@@ -10,6 +10,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
@@ -216,7 +217,121 @@ public class App extends JFrame implements MouseListener{
     private JSeparator separator2CP = new JSeparator();
     private JButton btnChangeCP = new JButton();
 
+    //View Monthly Report
+    private JPanel pnlMR = new JPanel();
+    private JButton btnClearMR = new JButton();
+    private JButton btnSearchMR = new JButton();
+    private JLabel totalIncomeMR = new JLabel();
+    private JLabel txtTotalIncomeMR = new JLabel();
+    private JRadioButton completedMR = new JRadioButton();
+    private JRadioButton uncompletedMR = new JRadioButton();
+    private JTable tableMR = new JTable();
+    private JScrollPane paneMR = new JScrollPane();
+    private JPanel tablePnlMR = new JPanel();
+    private Border borderMR = new LineBorder(new Color(225,223,186), 1, true);
+
+
     App() {
+
+        //View Monthly Report 
+        {
+            //Table
+            String[] columnsReturn = {"First", "Second", "Third", "Fourth"};
+            String[][] rowsReturn = {};
+
+            tableMR = new JTable(rowsReturn, columnsReturn){
+                public boolean isCellEditable(int rows, int columns) {
+                    return false;
+                }
+            };
+
+            tableMR.setPreferredScrollableViewportSize(new Dimension(597, 1500));
+            tableMR.setFillsViewportHeight(true);
+            tableMR.setBackground(new Color(27, 28, 30));
+            tableMR.setForeground(new Color(225,223,186));
+            tableMR.setGridColor(new Color(225,223,186));
+            tableMR.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+            tableMR.setRowHeight(30);
+            
+            paneMR = new JScrollPane(tableMR);
+
+            tablePnlMR.setBounds(50, 155, 597, 300);
+            tablePnlMR.setBorder(BorderFactory.createLineBorder(new Color(225,223,186)));
+            tablePnlMR.add(paneMR);
+
+            //Object[] rowReturns = new Object[4];
+
+            //Cancel Button
+            btnSearchMR.setText("Search");
+            btnSearchMR.setSize(85, 37);
+            btnSearchMR.setLocation(155, 100);
+            btnSearchMR.setForeground(new Color(225,223,186));
+            btnSearchMR.setBackground(new Color(27, 28, 30));
+            btnSearchMR.setBorder(borderMR);
+            btnSearchMR.setFont(new Font("TW Cen MT", Font.BOLD, 16));
+            btnSearchMR.setFocusable(false);
+            btnSearchMR.addMouseListener(this);
+            
+            //Clear Button
+            btnClearMR.setText("Clear");
+            btnClearMR.setSize(85, 37);
+            btnClearMR.setLocation(50, 100);
+            btnClearMR.setForeground(new Color(225,223,186));
+            btnClearMR.setBackground(new Color(27, 28, 30));
+            btnClearMR.setBorder(borderMR);
+            btnClearMR.setFont(new Font("TW Cen MT", Font.BOLD, 16));
+            btnClearMR.setFocusable(false);
+            btnClearMR.addMouseListener(this);
+
+            //Text Total income (Manipulate)
+            txtTotalIncomeMR.setText("RM 4,230.00");
+            txtTotalIncomeMR.setFont(new Font("TW Cen MT", Font.BOLD, 16));
+            txtTotalIncomeMR.setForeground(new Color(225,223,186));
+            txtTotalIncomeMR.setBackground(new Color(27, 28, 30));
+            txtTotalIncomeMR.setSize(193, 26);
+            txtTotalIncomeMR.setLocation(553, 60);
+
+            //Text total income
+            totalIncomeMR.setText("TOTAL INCOME (MONTH): ");
+            totalIncomeMR.setFont(new Font("TW Cen MT", Font.BOLD, 16));
+            totalIncomeMR.setForeground(new Color(225,223,186));
+            totalIncomeMR.setBackground(new Color(27, 28, 30));
+            totalIncomeMR.setSize(193, 26);
+            totalIncomeMR.setLocation(360, 60);
+
+            //Check Box for uncompleted
+            uncompletedMR.setText("Uncompleted");
+            uncompletedMR.setForeground(new Color(225,223,186));
+            uncompletedMR.setBackground(new Color(27, 28, 30));
+            uncompletedMR.setSize(110, 25);
+            uncompletedMR.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+            uncompletedMR.setLocation(60, 60);
+            uncompletedMR.setFocusable(false);
+
+            //Check Box for completed
+            completedMR.setText("Completed");
+            completedMR.setForeground(new Color(225,223,186));
+            completedMR.setBackground(new Color(27, 28, 30));
+            completedMR.setSize(98, 25);
+            completedMR.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+            completedMR.setLocation(60, 30);
+            completedMR.setFocusable(false);
+
+            //Panel 
+            pnlMR.setBackground(new Color(27, 28, 30));
+            pnlMR.setLayout(null);
+            pnlMR.setSize(725, 420);
+            pnlMR.setVisible(true);
+
+            //Adding components to Frame
+            pnlMR.add(completedMR);
+            pnlMR.add(uncompletedMR);
+            pnlMR.add(totalIncomeMR);
+            pnlMR.add(txtTotalIncomeMR);
+            pnlMR.add(btnClearMR);
+            pnlMR.add(btnSearchMR);
+            pnlMR.add(tablePnlMR);
+        }
 
         //Change Password Page
         {
@@ -1425,6 +1540,7 @@ public class App extends JFrame implements MouseListener{
             this.add(pnl1);
             
             //Pages
+            this.add(pnlMR);
             this.add(pnlCP);
             this.add(pnlEP);
             this.add(pnlAC);
@@ -1459,6 +1575,7 @@ public class App extends JFrame implements MouseListener{
             pnlAC.setVisible(false);
             pnlEP.setVisible(false);
             pnlCP.setVisible(false);
+            pnlMR.setVisible(false);
         } //Home Button
         else if(e.getSource() == btnHome) {
             pnl1.setVisible(true);
@@ -1471,6 +1588,7 @@ public class App extends JFrame implements MouseListener{
             pnlAC.setVisible(false);
             pnlEP.setVisible(false);
             pnlCP.setVisible(false);
+            pnlMR.setVisible(false);
         } //Registration Button 
         else if(e.getSource() == btnRegistration) {
             pnlAdd.setVisible(true);
@@ -1483,6 +1601,7 @@ public class App extends JFrame implements MouseListener{
             pnlAC.setVisible(false);
             pnlEP.setVisible(false);
             pnlCP.setVisible(false);
+            pnlMR.setVisible(false);
         } //Reports Button
         else if(e.getSource() == btnReports) {
             pnlRBP.setVisible(true);
@@ -1495,6 +1614,7 @@ public class App extends JFrame implements MouseListener{
             pnlAC.setVisible(false);
             pnlEP.setVisible(false);
             pnlCP.setVisible(false);
+            pnlMR.setVisible(false);
         } //Booking Button
         else if(e.getSource() == btnBooking) {
             pnlViewAllCar.setVisible(true);
@@ -1507,6 +1627,7 @@ public class App extends JFrame implements MouseListener{
             pnlAC.setVisible(false);
             pnlEP.setVisible(false);
             pnlCP.setVisible(false);
+            pnlMR.setVisible(false);
         } //Register Customer Page Button
         else if(e.getSource() == btnAddCus) {
             pnlR.setVisible(true);
@@ -1519,6 +1640,7 @@ public class App extends JFrame implements MouseListener{
             pnlAC.setVisible(false);
             pnlEP.setVisible(false);
             pnlCP.setVisible(false);
+            pnlMR.setVisible(false);
         } //Add Car Page Button
         else if(e.getSource() == btnAddCar) {
             pnlAC.setVisible(true);
@@ -1531,6 +1653,7 @@ public class App extends JFrame implements MouseListener{
             pnlRBP.setVisible(false);
             pnlEP.setVisible(false);
             pnlCP.setVisible(false);
+            pnlMR.setVisible(false);
         } //Edit Button in Profile Page
         else if(e.getSource() == btnEdit) {
             pnlEP.setVisible(true);
@@ -1543,8 +1666,22 @@ public class App extends JFrame implements MouseListener{
             pnlProfile.setVisible(false);
             pnlRBP.setVisible(false);
             pnlCP.setVisible(false);
+            pnlMR.setVisible(false);
         } else if(e.getSource() == btnChangePwdEP) {
             pnlCP.setVisible(true);
+            pnlEP.setVisible(false);
+            pnlAC.setVisible(false);
+            pnlR.setVisible(false);
+            pnlViewAllCar.setVisible(false);
+            pnlVMP.setVisible(false);
+            pnl1.setVisible(false);
+            pnlAdd.setVisible(false);
+            pnlProfile.setVisible(false);
+            pnlRBP.setVisible(false);
+            pnlMR.setVisible(false);
+        } else if(e.getSource() == btnReport) {
+            pnlMR.setVisible(true);
+            pnlCP.setVisible(false);
             pnlEP.setVisible(false);
             pnlAC.setVisible(false);
             pnlR.setVisible(false);
