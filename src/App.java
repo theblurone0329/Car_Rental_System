@@ -278,7 +278,143 @@ public class App extends JFrame implements MouseListener{
     private JPanel tableBRPnl = new JPanel();
     private Border borderBR = new LineBorder(new Color(225,223,186), 1, true);
 
+    //Booking Page
+    private JPanel pnlB = new JPanel();
+    private JLabel carModelB = new JLabel();
+    private JLabel bookingDateB = new JLabel();
+    private JLabel endBookingDateB = new JLabel();
+    private JLabel pageTitleB = new JLabel();
+    private JTextField txtCarModelB = new JTextField();
+    private JTextField txtStartDateB = new JTextField();
+    private JTextField txtEndDateB = new JTextField();
+    private JButton btnBookB = new JButton();
+    private JSeparator separator1B = new JSeparator();
+    private JSeparator separator2B = new JSeparator();
+    private JSeparator separator3B = new JSeparator();
+    private JLabel calendarPicB = new JLabel();
+
     App() {
+
+        //Booking Page
+        {
+            //Booking Button
+            btnBookB.setText("Book");
+            btnBookB.setFont(new Font("TW Cen MT", Font.BOLD, 18));
+            Border borderB = new LineBorder(new Color(225,223,186), 1, true);
+            btnBookB.setBorder(borderB);
+            btnBookB.setFocusable(false);
+            btnBookB.setForeground(new Color(225,223,186));
+            btnBookB.setBackground(new Color(27, 28, 30));
+            btnBookB.setSize(110, 44);
+            btnBookB.setLocation(300, 315);
+            btnBookB.addMouseListener(this);
+    
+            //Big Calendar Picture
+            ImageIcon calendarB = new ImageIcon("src\\Pics\\calendar.png");
+            calendarPicB.setIcon(calendarB);
+            calendarPicB.setSize(256, 256);
+            calendarPicB.setLocation(430, 40);
+    
+            //Separator Under End Date txt Box
+            separator3B.setForeground(new Color(225,223,186));
+            separator3B.setBackground(new Color(27, 28, 30));
+            separator3B.setSize(195, 17);
+            separator3B.setLocation(120, 297);
+    
+            //End Date txt Box
+            txtEndDateB.setText("10-09-2022");
+            txtEndDateB.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+            txtEndDateB.setForeground(new Color(225,223,186));
+            txtEndDateB.setBackground(new Color(27, 28, 30));
+            txtEndDateB.setSize(100, 42);
+            txtEndDateB.setLocation(120, 255);
+            txtEndDateB.setBorder(null);
+            txtEndDateB.setEditable(false);
+    
+            //Separator Under Start Date txt Box
+            separator2B.setForeground(new Color(225,223,186));
+            separator2B.setBackground(new Color(27, 28, 30));
+            separator2B.setSize(195, 17);
+            separator2B.setLocation(120, 217);
+    
+            //Start Date Txt Box
+            txtStartDateB.setText("09-09-2022");
+            txtStartDateB.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+            txtStartDateB.setForeground(new Color(225,223,186));
+            txtStartDateB.setBackground(new Color(27, 28, 30));
+            txtStartDateB.setSize(100, 42);
+            txtStartDateB.setLocation(120, 175);
+            txtStartDateB.setBorder(null);
+            txtStartDateB.setEditable(false);
+    
+            //Separator under Car Model txt Box
+            separator1B.setForeground(new Color(225,223,186));
+            separator1B.setBackground(new Color(27, 28, 30));
+            separator1B.setSize(195, 17);
+            separator1B.setLocation(120, 137);
+    
+            //Car Model txt Box
+            txtCarModelB.setText("Tesla Model S");
+            txtCarModelB.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+            txtCarModelB.setForeground(new Color(225,223,186));
+            txtCarModelB.setBackground(new Color(27, 28, 30));
+            txtCarModelB.setSize(100, 42);
+            txtCarModelB.setLocation(120, 95);
+            txtCarModelB.setBorder(null);
+            txtCarModelB.setEditable(false);
+    
+            //Car Model Title
+            carModelB.setText("Car Model");
+            carModelB.setBackground(new Color(27, 28, 30));
+            carModelB.setForeground(new Color(225,223,186));
+            carModelB.setFont(new Font("Segoe UI", Font.PLAIN, 17));
+            carModelB.setSize(100,25);
+            carModelB.setLocation(100, 70);
+    
+            //Start Date Title
+            bookingDateB.setText("Start Date");
+            bookingDateB.setBackground(new Color(27, 28, 30));
+            bookingDateB.setForeground(new Color(225,223,186));
+            bookingDateB.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+            bookingDateB.setSize(130,25);
+            bookingDateB.setLocation(100, 150);
+    
+            //End Date Title
+            endBookingDateB.setText("End Date");
+            endBookingDateB.setBackground(new Color(27, 28, 30));
+            endBookingDateB.setForeground(new Color(225,223,186));
+            endBookingDateB.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+            endBookingDateB.setSize(130,25);
+            endBookingDateB.setLocation(100, 230);
+    
+            //Text for Page Title
+            pageTitleB.setText("Booking");
+            pageTitleB.setFont(new Font("TW Cen MT", Font.PLAIN, 28));
+            pageTitleB.setForeground(new Color(225,223,186));
+            pageTitleB.setBackground(new Color(27, 28, 30));
+            pageTitleB.setSize(122, 27);
+            pageTitleB.setLocation(310, 10);
+            
+            //Panel
+            pnlB.setBackground(new Color(27, 28, 30));
+            pnlB.setLayout(null);
+            pnlB.setSize(725, 420);
+            pnlB.setVisible(true);
+    
+            //Adding items to frame
+            pnlB.add(btnBookB);
+            pnlB.add(calendarPicB);
+            pnlB.add(separator3B);
+            pnlB.add(txtEndDateB);
+            pnlB.add(separator2B);
+            pnlB.add(txtStartDateB);
+            pnlB.add(separator1B);
+            pnlB.add(txtCarModelB);
+            pnlB.add(pageTitleB);
+            pnlB.add(carModelB);
+            pnlB.add(bookingDateB);
+            pnlB.add(endBookingDateB);
+        }
 
         //View Booking Request Page
         {
@@ -286,91 +422,91 @@ public class App extends JFrame implements MouseListener{
             txtUserIDBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             txtUserIDBR.setForeground(new Color(225,223,186));
             txtUserIDBR.setBackground(new Color(27, 28, 30));
-            txtUserIDBR.setLocation(260, 215);
+            txtUserIDBR.setLocation(260, 235);
             txtUserIDBR.setSize(150, 26);
 
             txtUserNameBR.setText("Adrian_Fu");
             txtUserNameBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             txtUserNameBR.setForeground(new Color(225,223,186));
             txtUserNameBR.setBackground(new Color(27, 28, 30));
-            txtUserNameBR.setLocation(260, 242);
+            txtUserNameBR.setLocation(260, 262);
             txtUserNameBR.setSize(150, 26);
 
             txtPhoneNumBR.setText("0111234566");
             txtPhoneNumBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             txtPhoneNumBR.setForeground(new Color(225,223,186));
             txtPhoneNumBR.setBackground(new Color(27, 28, 30));
-            txtPhoneNumBR.setLocation(260, 269);
+            txtPhoneNumBR.setLocation(260, 289);
             txtPhoneNumBR.setSize(150, 26);
 
             txtCarInfoBR.setText("Honda City, VHJ 1023");
             txtCarInfoBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             txtCarInfoBR.setForeground(new Color(225,223,186));
             txtCarInfoBR.setBackground(new Color(27, 28, 30));
-            txtCarInfoBR.setLocation(260, 296);
+            txtCarInfoBR.setLocation(260, 316);
             txtCarInfoBR.setSize(150, 26);
 
             txtRentDateBR.setText("12-09-2022");
             txtRentDateBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             txtRentDateBR.setForeground(new Color(225,223,186));
             txtRentDateBR.setBackground(new Color(27, 28, 30));
-            txtRentDateBR.setLocation(260, 323);
+            txtRentDateBR.setLocation(260, 343);
             txtRentDateBR.setSize(150, 26);
 
             txtReturnDateBR.setText("13-09-2022");
             txtReturnDateBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             txtReturnDateBR.setForeground(new Color(225,223,186));
             txtReturnDateBR.setBackground(new Color(27, 28, 30));
-            txtReturnDateBR.setLocation(260, 350);
+            txtReturnDateBR.setLocation(260, 370);
             txtReturnDateBR.setSize(150, 26);
 
             lblUserIDBR.setText("User ID: ");
             lblUserIDBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             lblUserIDBR.setForeground(new Color(225,223,186));
             lblUserIDBR.setBackground(new Color(27, 28, 30));
-            lblUserIDBR.setLocation(110, 215);
+            lblUserIDBR.setLocation(110, 235);
             lblUserIDBR.setSize(150, 26);
 
             lblUserNameBR.setText("Username: ");
             lblUserNameBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             lblUserNameBR.setForeground(new Color(225,223,186));
             lblUserNameBR.setBackground(new Color(27, 28, 30));
-            lblUserNameBR.setLocation(110, 242);
+            lblUserNameBR.setLocation(110, 262);
             lblUserNameBR.setSize(150, 26);
 
             lblPhoneNumBR.setText("Phone Number: ");
             lblPhoneNumBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             lblPhoneNumBR.setForeground(new Color(225,223,186));
             lblPhoneNumBR.setBackground(new Color(27, 28, 30));
-            lblPhoneNumBR.setLocation(110, 269);
+            lblPhoneNumBR.setLocation(110, 289);
             lblPhoneNumBR.setSize(150, 26);
 
             lblCarInfoBR.setText("Car Information: ");
             lblCarInfoBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             lblCarInfoBR.setForeground(new Color(225,223,186));
             lblCarInfoBR.setBackground(new Color(27, 28, 30));
-            lblCarInfoBR.setLocation(110, 296);
+            lblCarInfoBR.setLocation(110, 316);
             lblCarInfoBR.setSize(150, 26);
 
             lblRentDateBR.setText("Rental Date: ");
             lblRentDateBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             lblRentDateBR.setForeground(new Color(225,223,186));
             lblRentDateBR.setBackground(new Color(27, 28, 30));
-            lblRentDateBR.setLocation(110, 323);
+            lblRentDateBR.setLocation(110, 343);
             lblRentDateBR.setSize(150, 26);
 
             lblReturnDateBR.setText("Return Date: ");
             lblReturnDateBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             lblReturnDateBR.setForeground(new Color(225,223,186));
             lblReturnDateBR.setBackground(new Color(27, 28, 30));
-            lblReturnDateBR.setLocation(110, 350);
+            lblReturnDateBR.setLocation(110, 370);
             lblReturnDateBR.setSize(150, 26);
 
             btnCancelBR.setText("Cancel");
             btnCancelBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             btnCancelBR.setForeground(new Color(225,223,186));
             btnCancelBR.setBackground(new Color(27, 28, 30));
-            btnCancelBR.setLocation(500, 250);
+            btnCancelBR.setLocation(500, 270);
             btnCancelBR.setSize(80, 26);
             btnCancelBR.setBorder(borderBR);
 
@@ -378,7 +514,7 @@ public class App extends JFrame implements MouseListener{
             btnDeclineBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             btnDeclineBR.setForeground(new Color(225,223,186));
             btnDeclineBR.setBackground(new Color(27, 28, 30));
-            btnDeclineBR.setLocation(500, 285);
+            btnDeclineBR.setLocation(500, 305);
             btnDeclineBR.setSize(80, 26);
             btnDeclineBR.setBorder(borderBR);
 
@@ -386,7 +522,7 @@ public class App extends JFrame implements MouseListener{
             btnAcceptBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             btnAcceptBR.setForeground(new Color(225,223,186));
             btnAcceptBR.setBackground(new Color(27, 28, 30));
-            btnAcceptBR.setLocation(500, 320);
+            btnAcceptBR.setLocation(500, 340);
             btnAcceptBR.setSize(80, 26);
             btnAcceptBR.setBorder(borderBR);
 
@@ -729,7 +865,7 @@ public class App extends JFrame implements MouseListener{
             pnlMR.setBackground(new Color(27, 28, 30));
             pnlMR.setLayout(null);
             pnlMR.setSize(725, 420);
-            pnlMR.setVisible(true);
+            pnlMR.setVisible(false);
 
             //Adding components to Frame
             pnlMR.add(completedMR);
@@ -1948,6 +2084,7 @@ public class App extends JFrame implements MouseListener{
             this.add(pnl1);
             
             //Pages
+            this.add(pnlB);
             this.add(pnlBR);
             this.add(pnlBigOCP);
             this.add(pnlMR);
@@ -1989,6 +2126,7 @@ public class App extends JFrame implements MouseListener{
             pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
         } //Home Button
+        //Home Button
         else if(e.getSource() == btnHome) {
             pnl1.setVisible(true);
             pnlProfile.setVisible(false);
@@ -2004,6 +2142,7 @@ public class App extends JFrame implements MouseListener{
             pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
         } //Registration Button 
+        //Add Button
         else if(e.getSource() == btnRegistration) {
             pnlAdd.setVisible(true);
             pnl1.setVisible(false);
@@ -2019,6 +2158,7 @@ public class App extends JFrame implements MouseListener{
             pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
         } //Reports Button
+        //Reports Button
         else if(e.getSource() == btnReports) {
             pnlRBP.setVisible(true);
             pnlVMP.setVisible(false);
@@ -2034,6 +2174,7 @@ public class App extends JFrame implements MouseListener{
             pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
         } //Booking Button
+        //Booking Button
         else if(e.getSource() == btnBooking) {
             pnlViewAllCar.setVisible(true);
             pnlVMP.setVisible(false);
@@ -2049,6 +2190,7 @@ public class App extends JFrame implements MouseListener{
             pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
         } //Register Customer Page Button
+        //Registration Button
         else if(e.getSource() == btnAddCus) {
             pnlR.setVisible(true);
             pnlViewAllCar.setVisible(false);
@@ -2064,6 +2206,7 @@ public class App extends JFrame implements MouseListener{
             pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
         } //Add Car Page Button
+        //Add Car Button (Admin)
         else if(e.getSource() == btnAddCar) {
             pnlAC.setVisible(true);
             pnlR.setVisible(false);
@@ -2093,7 +2236,9 @@ public class App extends JFrame implements MouseListener{
             pnlMR.setVisible(false);
             pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
-        } else if(e.getSource() == btnChangePwdEP) {
+        } 
+        //Change Password Button (Change Details Page)
+        else if(e.getSource() == btnChangePwdEP) {
             pnlCP.setVisible(true);
             pnlEP.setVisible(false);
             pnlAC.setVisible(false);
@@ -2107,7 +2252,9 @@ public class App extends JFrame implements MouseListener{
             pnlMR.setVisible(false);
             pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
-        } else if(e.getSource() == btnReport) {
+        } 
+        //View Monthly Reports Button
+        else if(e.getSource() == btnReport) {
             pnlMR.setVisible(true);
             pnlCP.setVisible(false);
             pnlEP.setVisible(false);
@@ -2121,9 +2268,11 @@ public class App extends JFrame implements MouseListener{
             pnlRBP.setVisible(false);
             pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
-        } else if(e.getSource() == btn1 || e.getSource() == btn2 || e.getSource() == btn3 || e.getSource() == btn4 || e.getSource() == btn5) {
+        } 
+        //View All Car Page (Learn More Button)
+        else if(e.getSource() == btn1 || e.getSource() == btn2 || e.getSource() == btn3 || e.getSource() == btn4 || e.getSource() == btn5) {
             pnlBigOCP.setVisible(true);
-            pnlMR.setVisible(true);
+            pnlMR.setVisible(false);
             pnlCP.setVisible(false);
             pnlEP.setVisible(false);
             pnlAC.setVisible(false);
@@ -2135,10 +2284,12 @@ public class App extends JFrame implements MouseListener{
             pnlProfile.setVisible(false);
             pnlRBP.setVisible(false);
             pnlBR.setVisible(false);
-        } else if(e.getSource() == btnBook) {
+        } 
+        //Booking Button
+        else if(e.getSource() == btnBook) {
             pnlBR.setVisible(true);
             pnlBigOCP.setVisible(false);
-            pnlMR.setVisible(true);
+            pnlMR.setVisible(false);
             pnlCP.setVisible(false);
             pnlEP.setVisible(false);
             pnlAC.setVisible(false);
@@ -2149,7 +2300,9 @@ public class App extends JFrame implements MouseListener{
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
             pnlRBP.setVisible(false);
-        } else if(e.getSource() == btnBackOCP) {
+        } 
+        //Back Button in View one Car Page
+        else if(e.getSource() == btnBackOCP) {
             pnlViewAllCar.setVisible(true);
             pnlBR.setVisible(false);
             pnlBigOCP.setVisible(false);
