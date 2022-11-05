@@ -307,7 +307,7 @@ public class addcar_admin extends JFrame implements MouseListener{
             String seat = txtCarSeat.getText();
             //add new car into Car.txt and new row into table
             try {
-                FileWriter fw = new FileWriter("C:\\Users\\M S I\\OneDrive\\Documents\\GitHub\\Car_Rental_System_2\\src\\Text Files\\Car.txt",true);
+                FileWriter fw = new FileWriter("src\\Text Files\\Car.txt",true);
                 PrintWriter pw = new PrintWriter(fw);
                 if(brand.trim().equals("") || model.trim().equals("") || plate.trim().equals("")|| year.trim().equals("") || seat.trim().equals("")){
                     JOptionPane.showMessageDialog(null, "Blank entry detected! ", "ERROR", JOptionPane.WARNING_MESSAGE);   

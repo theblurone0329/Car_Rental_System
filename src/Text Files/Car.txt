@@ -5,3 +5,5 @@ Proton	X50 adv	WPS 0909	2022	5
 Perodua	Saga	BPS 8394	2019	4
 Proton	Waja	SL 0943	2005	4
 Tesla	Model S	JWP 4321	2020	4
+eg: Toyota	eg: Corolla Altis	eg: SA 0923 B	eg: 2017	eg: 4
+eg: Toyota	eg: Corolla Altis	eg: SA 0923 B	eg: 2017	eg: 4

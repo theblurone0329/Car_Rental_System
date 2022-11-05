@@ -2,6 +2,15 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -9,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
@@ -19,6 +29,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 
 public class App extends JFrame implements MouseListener{
     public static void main(String[] args) {
@@ -399,7 +410,7 @@ public class App extends JFrame implements MouseListener{
             pnlB.setBackground(new Color(27, 28, 30));
             pnlB.setLayout(null);
             pnlB.setSize(725, 420);
-            pnlB.setVisible(true);
+            pnlB.setVisible(false);
     
             //Adding items to frame
             pnlB.add(btnBookB);
@@ -1081,17 +1092,28 @@ public class App extends JFrame implements MouseListener{
 
         //Add Car Admin Page
         {
-            //Table
-            String[] columnsReturn = {"Car Brand", "CarModel", "Car Plate Number", "Car Year", "Car Seats"};
-            String[][] rowsReturn = {{"Tesla", "Model S", "ABC 1234", "2020", "4"}, 
-                                {"Perodua", "Myvi", "ABC 4576", "2018", "4"},
-                                {"Proton", "Saga", "KLD 4657", "2018", "4"}};
+            //columns
+            Object headers[] = { "Car Brand", "CarModel", "Car Plate Number","Car Year","Car Seats"};
+            
+            //setup table with column, 0 row 
+            DefaultTableModel model = new DefaultTableModel(headers,0);
+            tableAC = new JTable();
+            tableAC.setModel(model);
 
-            tableAC = new JTable(rowsReturn, columnsReturn){
-                public boolean isCellEditable(int rows, int columns) {
-                    return false;
+            File file = new File("src\\Text Files\\Car.txt");
+            //import Car.txt data into table 
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(file));
+                DefaultTableModel model1 = (DefaultTableModel)table.getModel();
+                Object[] tableLines = br.lines().toArray();
+                for(int i = 0; i< tableLines.length;i++){
+                    String line = tableLines[i].toString().trim();
+                    String[] dataRow = line.split("\t");
+                    model1.addRow(dataRow);
                 }
-            };
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(addcar_admin.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
             tableAC.setPreferredScrollableViewportSize(new Dimension(359, 1500));
             tableAC.setFillsViewportHeight(true);
@@ -2316,6 +2338,35 @@ public class App extends JFrame implements MouseListener{
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
             pnlRBP.setVisible(false);
+        } else if(e.getSource()==btnAddAC){
+            String brand = txtCarBrandAC.getText();
+            String model = txtCarModelAC.getText();
+            String plate = txtCarPlateNumAC.getText();
+            String year = txtCarYearAC.getText();
+            String seat = txtCarSeatAC.getText();
+            //add new car into Car.txt and new row into table
+            try {
+                FileWriter fw = new FileWriter("src\\Text Files\\Car.txt",true);
+                PrintWriter pw = new PrintWriter(fw);
+                if(brand.trim().equals("") || model.trim().equals("") || plate.trim().equals("")|| year.trim().equals("") || seat.trim().equals("")){
+                    JOptionPane.showMessageDialog(null, "Blank entry detected! ", "ERROR", JOptionPane.WARNING_MESSAGE);   
+                }else{
+                    pw.print(brand+"\t"+model+"\t"+plate+"\t"+year+"\t"+seat+"\n");
+                    pw.close();
+                    DefaultTableModel updatedModel = (DefaultTableModel)table.getModel();
+                    String[] row = {brand,model,plate,year,seat};
+                    updatedModel.addRow(row);
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(addcar_admin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }else if(e.getSource()==btnClear){
+            txtCarBrandAC.setText("");
+            txtCarModelAC.setText("");
+            txtCarYearAC.setText("");
+            txtCarPlateNumAC.setText("");
+            txtCarSeatAC.setText("");
         }
     }
 
