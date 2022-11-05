@@ -3,10 +3,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
@@ -15,10 +17,30 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.*;
 import java.awt.Dimension;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 public class addcar_admin extends JFrame implements MouseListener{
-    public static void main(String[] args) {
+    public static void main(String[] args){
         new addcar_admin();
+        // try {
+        //     FileWriter addCar = new FileWriter("Car.txt");
+        //     addCar.write("Tesla"+"\t"+"Model S"+"\t"+"ABC 1234"+"\t"+"2020"+"\t"+"4"+"\n");
+        //     addCar.close();
+        //     System.out.println("Successfully wrote to the file.");
+        //   } catch (IOException e) {
+        //     System.out.println("An error occurred.");
+        //     e.printStackTrace();
+        //   }
+        
     }
 
     private JLabel carBrand = new JLabel();
@@ -44,19 +66,44 @@ public class addcar_admin extends JFrame implements MouseListener{
     private JScrollPane pane = new JScrollPane();
     private Border border = new LineBorder(new Color(225,223,186), 1, true);
 
-    addcar_admin() {
+
+    addcar_admin(){
 
         //Table
-        String[] columnsReturn = {"Car Brand", "CarModel", "Car Plate Number", "Car Year", "Car Seats"};
-        String[][] rowsReturn = {{"Tesla", "Model S", "ABC 1234", "2020", "4"}, 
-                            {"Perodua", "Myvi", "ABC 4576", "2018", "4"},
-                            {"Proton", "Saga", "KLD 4657", "2018", "4"}};
+        // String[] columnsReturn = {"Car Brand", "CarModel", "Car Plate Number", "Car Year", "Car Seats"};
+        // String[][] rowsReturn = {{"Tesla", "Model S", "ABC 1234", "2020", "4"}, 
+        //                      {"Perodua", "Myvi", "ABC 4576", "2018", "4"},
+        //                      {"Proton", "Saga", "KLD 4657", "2018", "4"}};
 
-        table = new JTable(rowsReturn, columnsReturn){
-            public boolean isCellEditable(int rows, int columns) {
-                return false;
+        // table = new JTable(rowsReturn, columnsReturn){
+        //     public boolean isCellEditable(int rows, int columns) {
+        //         return false;
+        //     }
+        // };
+
+        //columns
+        Object headers[] = { "Car Brand", "CarModel", "Car Plate Number","Car Year","Car Seats"};
+        
+        //setup table with column, 0 row 
+        DefaultTableModel model = new DefaultTableModel(headers,0);
+        table = new JTable();
+        table.setModel(model);
+
+        File file = new File("C:\\Users\\M S I\\OneDrive\\Documents\\GitHub\\Car_Rental_System_2\\src\\Text Files\\Car.txt");
+        //import Car.txt data into table 
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            DefaultTableModel model1 = (DefaultTableModel)table.getModel();
+            Object[] tableLines = br.lines().toArray();
+            for(int i = 0; i< tableLines.length;i++){
+                String line = tableLines[i].toString().trim();
+                String[] dataRow = line.split("\t");
+                model1.addRow(dataRow);
             }
-        };
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(addcar_admin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
 
         table.setPreferredScrollableViewportSize(new Dimension(359, 1500));
         table.setFillsViewportHeight(true);
@@ -252,12 +299,42 @@ public class addcar_admin extends JFrame implements MouseListener{
     @Override
     public void mouseClicked(MouseEvent e) {
         // TODO Auto-generated method stub
+        if(e.getSource()==btnAdd){
+            String brand = txtCarBrand.getText();
+            String model = txtCarModel.getText();
+            String plate = txtCarPlateNum.getText();
+            String year = txtCarYear.getText();
+            String seat = txtCarSeat.getText();
+            //add new car into Car.txt and new row into table
+            try {
+                FileWriter fw = new FileWriter("C:\\Users\\M S I\\OneDrive\\Documents\\GitHub\\Car_Rental_System_2\\src\\Text Files\\Car.txt",true);
+                PrintWriter pw = new PrintWriter(fw);
+                if(brand.trim().equals("") || model.trim().equals("") || plate.trim().equals("")|| year.trim().equals("") || seat.trim().equals("")){
+                    JOptionPane.showMessageDialog(null, "Blank entry detected! ", "ERROR", JOptionPane.WARNING_MESSAGE);   
+                }else{
+                    pw.print(brand+"\t"+model+"\t"+plate+"\t"+year+"\t"+seat+"\n");
+                    pw.close();
+                    DefaultTableModel updatedModel = (DefaultTableModel)table.getModel();
+                    String[] row = {brand,model,plate,year,seat};
+                    updatedModel.addRow(row);
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(addcar_admin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }else if(e.getSource()==btnClear){
+            txtCarBrand.setText("");
+            txtCarModel.setText("");
+            txtCarYear.setText("");
+            txtCarPlateNum.setText("");
+            txtCarSeat.setText("");
+        }
         
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        // TODO Auto-generated method stub
+
         
     }
 
