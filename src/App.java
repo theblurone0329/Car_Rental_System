@@ -34,8 +34,13 @@ import javax.swing.table.DefaultTableModel;
 
 public class App extends JFrame implements MouseListener{
     public static void main(String[] args) {
-        new App();
+
     }
+
+    private String username;
+    private String password;
+    private String email;
+    private String phoneNum;
 
     //Home Page
     private JPanel pnl1 = new JPanel();
@@ -315,7 +320,7 @@ public class App extends JFrame implements MouseListener{
     private JSeparator separator5B = new JSeparator();
     private JLabel calendarPicB = new JLabel();
 
-    App() {
+    App(User user) {
 
         //Booking Page
         {
@@ -1112,6 +1117,7 @@ public class App extends JFrame implements MouseListener{
             btnChangeEP.setBorder(borderEP);
             btnChangeEP.setFont(new Font("TW Cen MT", Font.BOLD, 15));
             btnChangeEP.setFocusable(false);
+            btnChangeEP.addMouseListener(this);
 
             //Change Password Button
             btnChangePwdEP.setText("Change Password");
@@ -1135,15 +1141,17 @@ public class App extends JFrame implements MouseListener{
             btnDefaultEP.setBorder(border2EP);
             btnDefaultEP.setFont(new Font("TW Cen MT", Font.BOLD, 15));
             btnDefaultEP.setFocusable(false);
+            btnDefaultEP.addMouseListener(this);
 
             //Txt for Phone No.
-            lblPhoneNumEP.setText("011-1087 8646");
+            lblPhoneNumEP.setText(user.getPhoneNum());
             lblPhoneNumEP.setFont(new Font("Segoe UI", Font.PLAIN, 18));
             lblPhoneNumEP.setForeground(new Color(225,223,186));
             lblPhoneNumEP.setBackground(new Color(27, 28, 30));
             lblPhoneNumEP.setSize(180,30);
             lblPhoneNumEP.setLocation(110, 250);
             lblPhoneNumEP.setBorder(null);
+            lblPhoneNumEP.setCaretColor(new Color(225,223,186));
 
             separator3EP.setForeground(new Color(225,223,186));
             separator3EP.setBackground(new Color(27, 28, 30));
@@ -1151,13 +1159,14 @@ public class App extends JFrame implements MouseListener{
             separator3EP.setLocation(110, 283);
 
             //Txt for Email
-            lblEmailEP.setText("adrianfwl@gmail.com");
+            lblEmailEP.setText(user.getEmail());
             lblEmailEP.setFont(new Font("Segoe UI", Font.PLAIN, 18));
             lblEmailEP.setForeground(new Color(225,223,186));
             lblEmailEP.setBackground(new Color(27, 28, 30));
             lblEmailEP.setSize(180,30);
             lblEmailEP.setLocation(110, 170);
             lblEmailEP.setBorder(null);
+            lblEmailEP.setCaretColor(new Color(225,223,186));
 
             separator2EP.setForeground(new Color(225,223,186));
             separator2EP.setBackground(new Color(27, 28, 30));
@@ -1165,13 +1174,14 @@ public class App extends JFrame implements MouseListener{
             separator2EP.setLocation(110, 203);
 
             //Txt for Username
-            lblUsernameEP.setText("Adrian_Fu");
+            lblUsernameEP.setText(user.getUsername());
             lblUsernameEP.setFont(new Font("Segoe UI", Font.PLAIN, 18));
             lblUsernameEP.setForeground(new Color(225,223,186));
             lblUsernameEP.setBackground(new Color(27, 28, 30));
             lblUsernameEP.setSize(180,30);
             lblUsernameEP.setLocation(110, 90);
             lblUsernameEP.setBorder(null);
+            lblUsernameEP.setCaretColor(new Color(225,223,186));
 
             separator1EP.setForeground(new Color(225,223,186));
             separator1EP.setBackground(new Color(27, 28, 30));
@@ -2013,21 +2023,21 @@ public class App extends JFrame implements MouseListener{
             btnEdit.setBorder(null);
 
             //Txt for Phone No.
-            lblPhoneNum.setText("011-1087 8646");
+            lblPhoneNum.setText(user.getPhoneNum());
             lblPhoneNum.setFont(new Font("Segoe UI", Font.PLAIN, 15));
             lblPhoneNum.setForeground(new Color(225,223,186));
-            lblPhoneNum.setSize(100,25);
+            lblPhoneNum.setSize(150,25);
             lblPhoneNum.setLocation(125, 210);
 
             //Txt for Email
-            lblEmail.setText("adrianfwl@gmail.com");
+            lblEmail.setText(user.getEmail());
             lblEmail.setFont(new Font("Segoe UI", Font.PLAIN, 15));
             lblEmail.setForeground(new Color(225,223,186));
-            lblEmail.setSize(150,25);
+            lblEmail.setSize(200,25);
             lblEmail.setLocation(125, 150);
 
             //Txt for Username
-            lblUsername.setText("Adrian_Fu");
+            lblUsername.setText(user.getUsername());
             lblUsername.setFont(new Font("Segoe UI", Font.PLAIN, 15));
             lblUsername.setForeground(new Color(225,223,186));
             lblUsername.setSize(88,25);
@@ -2559,14 +2569,14 @@ public class App extends JFrame implements MouseListener{
                 Logger.getLogger(addcar_admin.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-        }else if(e.getSource()==btnCancelAC){
+        } else if(e.getSource()==btnCancelAC){
             txtCarBrandAC.setText("");
             txtCarModelAC.setText("");
             txtCarYearAC.setText("");
             txtCarPlateNumAC.setText("");
             txtCarSeatAC.setText("");
 
-        } if(e.getSource() == btnRegisterR) {
+        } else if(e.getSource() == btnRegisterR) {
             String[] array = {txtUsernameR.getText(), txtPasswordR.getText(), txtEmailR.getText(), txtPhoneNumR.getText(), "\n"};
             try
             {
@@ -2656,6 +2666,10 @@ public class App extends JFrame implements MouseListener{
                 }
             }
 
+        } else if(e.getSource() == btnDefaultEP) {
+            lblUsernameEP.setText(lblUsername.getText());
+            lblEmailEP.setText(lblEmail.getText());
+            lblPhoneNumEP.setText(lblPhoneNum.getText());
         }
     }
 
