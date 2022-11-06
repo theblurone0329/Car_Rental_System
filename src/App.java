@@ -3,6 +3,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.*;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -291,46 +292,118 @@ public class App extends JFrame implements MouseListener{
 
     //Booking Page
     private JPanel pnlB = new JPanel();
+    private JPanel pnlDate = new JPanel();
+    private JPanel pnlHour = new JPanel();
     private JLabel carModelB = new JLabel();
     private JLabel bookingDateB = new JLabel();
     private JLabel endBookingDateB = new JLabel();
+    private JLabel bookingHourB = new JLabel();
+    private JLabel endBookingHourB = new JLabel();
     private JLabel pageTitleB = new JLabel();
     private JTextField txtCarModelB = new JTextField();
     private JTextField txtStartDateB = new JTextField();
     private JTextField txtEndDateB = new JTextField();
+    private JTextField txtStartHourB = new JTextField();
+    private JTextField txtEndHourB = new JTextField();
     private JButton btnBookB = new JButton();
+    private JButton btnHourB = new JButton();
+    private JButton btnDateB = new JButton();
     private JSeparator separator1B = new JSeparator();
     private JSeparator separator2B = new JSeparator();
     private JSeparator separator3B = new JSeparator();
+    private JSeparator separator4B = new JSeparator();
+    private JSeparator separator5B = new JSeparator();
     private JLabel calendarPicB = new JLabel();
 
     App() {
 
         //Booking Page
         {
-            //Booking Button
-            btnBookB.setText("Book");
-            btnBookB.setFont(new Font("TW Cen MT", Font.BOLD, 18));
-            Border borderB = new LineBorder(new Color(225,223,186), 1, true);
-            btnBookB.setBorder(borderB);
-            btnBookB.setFocusable(false);
-            btnBookB.setForeground(new Color(225,223,186));
-            btnBookB.setBackground(new Color(27, 28, 30));
-            btnBookB.setSize(110, 44);
-            btnBookB.setLocation(300, 315);
-            btnBookB.addMouseListener(this);
+            //Panel view when btnHourB clicked
+            pnlHour.setSize(340, 200);
+            pnlHour.setLocation(80, 200);
+            pnlHour.setVisible(false);
+            pnlHour.setBackground(new Color(27, 28, 30));
+            pnlHour.setLayout(null);
+
+            //Start Date Title
+            bookingHourB.setText("Start Time");
+            bookingHourB.setBackground(new Color(27, 28, 30));
+            bookingHourB.setForeground(new Color(225,223,186));
+            bookingHourB.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+            bookingHourB.setSize(130,25);
+            bookingHourB.setLocation(20, 20);
     
-            //Big Calendar Picture
-            ImageIcon calendarB = new ImageIcon("src\\Pics\\calendar.png");
-            calendarPicB.setIcon(calendarB);
-            calendarPicB.setSize(256, 256);
-            calendarPicB.setLocation(430, 40);
+            //End Date Title
+            endBookingHourB.setText("End Time");
+            endBookingHourB.setBackground(new Color(27, 28, 30));
+            endBookingHourB.setForeground(new Color(225,223,186));
+            endBookingHourB.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+            endBookingHourB.setSize(130,25);
+            endBookingHourB.setLocation(20, 100);
+
+            //Separator Under End Date txt Box
+            separator5B.setForeground(new Color(225,223,186));
+            separator5B.setBackground(new Color(27, 28, 30));
+            separator5B.setSize(195, 17);
+            separator5B.setLocation(40, 163);
     
+            //End Date txt Box
+            txtEndHourB.setText("17:00");
+            txtEndHourB.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+            txtEndHourB.setForeground(new Color(225,223,186));
+            txtEndHourB.setBackground(new Color(27, 28, 30));
+            txtEndHourB.setSize(100, 42);
+            txtEndHourB.setLocation(40, 120);
+            txtEndHourB.setBorder(null);
+            txtEndHourB.setEditable(true);
+            txtEndHourB.addMouseListener(this);
+    
+            //Separator Under Start Date txt Box
+            separator4B.setForeground(new Color(225,223,186));
+            separator4B.setBackground(new Color(27, 28, 30));
+            separator4B.setSize(195, 17);
+            separator4B.setLocation(40, 83);
+    
+            //Start Date Txt Box
+            txtStartHourB.setText("07:00");
+            txtStartHourB.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+            txtStartHourB.setForeground(new Color(225,223,186));
+            txtStartHourB.setBackground(new Color(27, 28, 30));
+            txtStartHourB.setSize(100, 42);
+            txtStartHourB.setLocation(40, 40);
+            txtStartHourB.setBorder(null);
+            txtStartHourB.setEditable(true);
+            txtStartHourB.addMouseListener(this);
+
+            //Panel view when btnDateB clicked
+            pnlDate.setSize(340, 200);
+            pnlDate.setLocation(80, 200);
+            pnlDate.setVisible(false);
+            pnlDate.setBackground(new Color(27, 28, 30));
+            pnlDate.setLayout(null);  
+
+            //Start Date Title
+            bookingDateB.setText("Start Date");
+            bookingDateB.setBackground(new Color(27, 28, 30));
+            bookingDateB.setForeground(new Color(225,223,186));
+            bookingDateB.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+            bookingDateB.setSize(130,25);
+            bookingDateB.setLocation(20, 20);
+    
+            //End Date Title
+            endBookingDateB.setText("End Date");
+            endBookingDateB.setBackground(new Color(27, 28, 30));
+            endBookingDateB.setForeground(new Color(225,223,186));
+            endBookingDateB.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+            endBookingDateB.setSize(130,25);
+            endBookingDateB.setLocation(20, 100);
+
             //Separator Under End Date txt Box
             separator3B.setForeground(new Color(225,223,186));
             separator3B.setBackground(new Color(27, 28, 30));
             separator3B.setSize(195, 17);
-            separator3B.setLocation(120, 297);
+            separator3B.setLocation(40, 163);
     
             //End Date txt Box
             txtEndDateB.setText("10-09-2022");
@@ -338,15 +411,16 @@ public class App extends JFrame implements MouseListener{
             txtEndDateB.setForeground(new Color(225,223,186));
             txtEndDateB.setBackground(new Color(27, 28, 30));
             txtEndDateB.setSize(100, 42);
-            txtEndDateB.setLocation(120, 255);
+            txtEndDateB.setLocation(40, 120);
             txtEndDateB.setBorder(null);
-            txtEndDateB.setEditable(false);
+            txtEndDateB.setEditable(true);
+            txtEndDateB.addMouseListener(this);
     
             //Separator Under Start Date txt Box
             separator2B.setForeground(new Color(225,223,186));
             separator2B.setBackground(new Color(27, 28, 30));
             separator2B.setSize(195, 17);
-            separator2B.setLocation(120, 217);
+            separator2B.setLocation(40, 83);
     
             //Start Date Txt Box
             txtStartDateB.setText("09-09-2022");
@@ -354,9 +428,50 @@ public class App extends JFrame implements MouseListener{
             txtStartDateB.setForeground(new Color(225,223,186));
             txtStartDateB.setBackground(new Color(27, 28, 30));
             txtStartDateB.setSize(100, 42);
-            txtStartDateB.setLocation(120, 175);
+            txtStartDateB.setLocation(40, 40);
             txtStartDateB.setBorder(null);
-            txtStartDateB.setEditable(false);
+            txtStartDateB.setEditable(true);
+            txtStartDateB.addMouseListener(this);
+
+            //Hour Button
+            btnHourB.setText("Book by Hour");
+            btnHourB.setFont(new Font("TW Cen MT", Font.BOLD, 18));
+            Border borderB = new LineBorder(new Color(225,223,186), 1, true);
+            btnHourB.setBorder(borderB);
+            btnHourB.setFocusable(false);
+            btnHourB.setForeground(new Color(225,223,186));
+            btnHourB.setBackground(new Color(27, 28, 30));
+            btnHourB.setSize(150, 30);
+            btnHourB.setLocation(80, 160);
+            btnHourB.addMouseListener(this);
+
+            //Date Button
+            btnDateB.setText("Book by Date");
+            btnDateB.setFont(new Font("TW Cen MT", Font.BOLD, 18));
+            btnDateB.setBorder(borderB);
+            btnDateB.setFocusable(false);
+            btnDateB.setForeground(new Color(225,223,186));
+            btnDateB.setBackground(new Color(27, 28, 30));
+            btnDateB.setSize(150, 30);
+            btnDateB.setLocation(250, 160);
+            btnDateB.addMouseListener(this);
+
+            //Booking Button
+            btnBookB.setText("Book");
+            btnBookB.setFont(new Font("TW Cen MT", Font.BOLD, 18));
+            btnBookB.setFocusable(false);
+            btnBookB.setForeground(new Color(225,223,186));
+            btnBookB.setBackground(new Color(27, 28, 30));
+            btnBookB.setSize(110, 44);
+            btnBookB.setLocation(485, 330);
+            btnBookB.addMouseListener(this);
+            btnBookB.setBorder(borderB);
+    
+            //Big Calendar Picture
+            ImageIcon calendarB = new ImageIcon("src\\Pics\\calendar.png");
+            calendarPicB.setIcon(calendarB);
+            calendarPicB.setSize(256, 256);
+            calendarPicB.setLocation(430, 40);
     
             //Separator under Car Model txt Box
             separator1B.setForeground(new Color(225,223,186));
@@ -382,22 +497,6 @@ public class App extends JFrame implements MouseListener{
             carModelB.setSize(100,25);
             carModelB.setLocation(100, 70);
     
-            //Start Date Title
-            bookingDateB.setText("Start Date");
-            bookingDateB.setBackground(new Color(27, 28, 30));
-            bookingDateB.setForeground(new Color(225,223,186));
-            bookingDateB.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-            bookingDateB.setSize(130,25);
-            bookingDateB.setLocation(100, 150);
-    
-            //End Date Title
-            endBookingDateB.setText("End Date");
-            endBookingDateB.setBackground(new Color(27, 28, 30));
-            endBookingDateB.setForeground(new Color(225,223,186));
-            endBookingDateB.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-            endBookingDateB.setSize(130,25);
-            endBookingDateB.setLocation(100, 230);
-    
             //Text for Page Title
             pageTitleB.setText("Booking");
             pageTitleB.setFont(new Font("TW Cen MT", Font.PLAIN, 28));
@@ -411,20 +510,32 @@ public class App extends JFrame implements MouseListener{
             pnlB.setLayout(null);
             pnlB.setSize(725, 420);
             pnlB.setVisible(false);
+
+            pnlHour.add(bookingHourB);
+            pnlHour.add(endBookingHourB);
+            pnlHour.add(txtEndHourB);
+            pnlHour.add(txtStartHourB);
+            pnlHour.add(separator4B);
+            pnlHour.add(separator5B);
     
+            pnlDate.add(bookingDateB);
+            pnlDate.add(endBookingDateB);
+            pnlDate.add(txtEndDateB);
+            pnlDate.add(txtStartDateB);
+            pnlDate.add(separator2B);
+            pnlDate.add(separator3B);
+
             //Adding items to frame
             pnlB.add(btnBookB);
             pnlB.add(calendarPicB);
-            pnlB.add(separator3B);
-            pnlB.add(txtEndDateB);
-            pnlB.add(separator2B);
-            pnlB.add(txtStartDateB);
             pnlB.add(separator1B);
             pnlB.add(txtCarModelB);
             pnlB.add(pageTitleB);
             pnlB.add(carModelB);
-            pnlB.add(bookingDateB);
-            pnlB.add(endBookingDateB);
+            pnlB.add(btnHourB);
+            pnlB.add(btnDateB);
+            pnlB.add(pnlDate);
+            pnlB.add(pnlHour);
         }
 
         //View Booking Request Page
@@ -2147,8 +2258,10 @@ public class App extends JFrame implements MouseListener{
             pnlMR.setVisible(false);
             pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
+            pnlB.setVisible(false);
+            pnlHour.setVisible(false);
+            pnlDate.setVisible(false);
         } //Home Button
-        //Home Button
         else if(e.getSource() == btnHome) {
             pnl1.setVisible(true);
             pnlProfile.setVisible(false);
@@ -2163,8 +2276,10 @@ public class App extends JFrame implements MouseListener{
             pnlMR.setVisible(false);
             pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
+            pnlB.setVisible(false);
+            pnlHour.setVisible(false);
+            pnlDate.setVisible(false);
         } //Registration Button 
-        //Add Button
         else if(e.getSource() == btnRegistration) {
             pnlAdd.setVisible(true);
             pnl1.setVisible(false);
@@ -2179,8 +2294,10 @@ public class App extends JFrame implements MouseListener{
             pnlMR.setVisible(false);
             pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
+            pnlB.setVisible(false);
+            pnlHour.setVisible(false);
+            pnlDate.setVisible(false);
         } //Reports Button
-        //Reports Button
         else if(e.getSource() == btnReports) {
             pnlRBP.setVisible(true);
             pnlVMP.setVisible(false);
@@ -2195,8 +2312,10 @@ public class App extends JFrame implements MouseListener{
             pnlMR.setVisible(false);
             pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
+            pnlB.setVisible(false);
+            pnlHour.setVisible(false);
+            pnlDate.setVisible(false);
         } //Booking Button
-        //Booking Button
         else if(e.getSource() == btnBooking) {
             pnlViewAllCar.setVisible(true);
             pnlVMP.setVisible(false);
@@ -2211,6 +2330,9 @@ public class App extends JFrame implements MouseListener{
             pnlMR.setVisible(false);
             pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
+            pnlB.setVisible(false);
+            pnlHour.setVisible(false);
+            pnlDate.setVisible(false);
         } //Register Customer Page Button
         //Registration Button
         else if(e.getSource() == btnAddCus) {
@@ -2227,6 +2349,9 @@ public class App extends JFrame implements MouseListener{
             pnlMR.setVisible(false);
             pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
+            pnlB.setVisible(false);
+            pnlHour.setVisible(false);
+            pnlDate.setVisible(false);
         } //Add Car Page Button
         //Add Car Button (Admin)
         else if(e.getSource() == btnAddCar) {
@@ -2243,6 +2368,9 @@ public class App extends JFrame implements MouseListener{
             pnlMR.setVisible(false);
             pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
+            pnlB.setVisible(false);
+            pnlHour.setVisible(false);
+            pnlDate.setVisible(false);
         } //Edit Button in Profile Page
         else if(e.getSource() == btnEdit) {
             pnlEP.setVisible(true);
@@ -2258,6 +2386,9 @@ public class App extends JFrame implements MouseListener{
             pnlMR.setVisible(false);
             pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
+            pnlB.setVisible(false);
+            pnlHour.setVisible(false);
+            pnlDate.setVisible(false);
         } 
         //Change Password Button (Change Details Page)
         else if(e.getSource() == btnChangePwdEP) {
@@ -2274,6 +2405,9 @@ public class App extends JFrame implements MouseListener{
             pnlMR.setVisible(false);
             pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
+            pnlB.setVisible(false);
+            pnlHour.setVisible(false);
+            pnlDate.setVisible(false);
         } 
         //View Monthly Reports Button
         else if(e.getSource() == btnReport) {
@@ -2290,6 +2424,9 @@ public class App extends JFrame implements MouseListener{
             pnlRBP.setVisible(false);
             pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
+            pnlB.setVisible(false);
+            pnlHour.setVisible(false);
+            pnlDate.setVisible(false);
         } 
         //View All Car Page (Learn More Button)
         else if(e.getSource() == btn1 || e.getSource() == btn2 || e.getSource() == btn3 || e.getSource() == btn4 || e.getSource() == btn5) {
@@ -2306,6 +2443,9 @@ public class App extends JFrame implements MouseListener{
             pnlProfile.setVisible(false);
             pnlRBP.setVisible(false);
             pnlBR.setVisible(false);
+            pnlB.setVisible(false);
+            pnlHour.setVisible(false);
+            pnlDate.setVisible(false);
         } 
         //Booking Button
         else if(e.getSource() == btnBook) {
@@ -2322,6 +2462,9 @@ public class App extends JFrame implements MouseListener{
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
             pnlRBP.setVisible(false);
+            pnlB.setVisible(false);
+            pnlHour.setVisible(false);
+            pnlDate.setVisible(false);
         } 
         //Back Button in View one Car Page
         else if(e.getSource() == btnBackOCP) {
@@ -2338,7 +2481,62 @@ public class App extends JFrame implements MouseListener{
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
             pnlRBP.setVisible(false);
-        } else if(e.getSource()==btnAddAC){
+            pnlB.setVisible(false);
+            pnlHour.setVisible(false);
+            pnlDate.setVisible(false);
+        } //Back Button in View one Car Page
+        else if(e.getSource() == btnBookOCP) {
+            pnlB.setVisible(true);
+            pnlViewAllCar.setVisible(false);
+            pnlBR.setVisible(false);
+            pnlBigOCP.setVisible(false);
+            pnlMR.setVisible(false);
+            pnlCP.setVisible(false);
+            pnlEP.setVisible(false);
+            pnlAC.setVisible(false);
+            pnlR.setVisible(false);
+            pnlVMP.setVisible(false);
+            pnl1.setVisible(false);
+            pnlAdd.setVisible(false);
+            pnlProfile.setVisible(false);
+            pnlRBP.setVisible(false);
+            pnlHour.setVisible(false);
+            pnlDate.setVisible(false);
+        } else if(e.getSource() == btnHourB) {
+            pnlHour.setVisible(true);
+            pnlViewAllCar.setVisible(false);
+            pnlBR.setVisible(false);
+            pnlBigOCP.setVisible(false);
+            pnlMR.setVisible(false);
+            pnlCP.setVisible(false);
+            pnlEP.setVisible(false);
+            pnlAC.setVisible(false);
+            pnlR.setVisible(false);
+            pnlVMP.setVisible(false);
+            pnl1.setVisible(false);
+            pnlAdd.setVisible(false);
+            pnlProfile.setVisible(false);
+            pnlRBP.setVisible(false);
+            pnlDate.setVisible(false);
+        } else if(e.getSource() == btnDateB) {
+            pnlDate.setVisible(true);
+            pnlViewAllCar.setVisible(false);
+            pnlBR.setVisible(false);
+            pnlBigOCP.setVisible(false);
+            pnlMR.setVisible(false);
+            pnlCP.setVisible(false);
+            pnlEP.setVisible(false);
+            pnlAC.setVisible(false);
+            pnlR.setVisible(false);
+            pnlVMP.setVisible(false);
+            pnl1.setVisible(false);
+            pnlAdd.setVisible(false);
+            pnlProfile.setVisible(false);
+            pnlRBP.setVisible(false);
+            pnlHour.setVisible(false);
+        }
+        //Button add in add car page
+        else if(e.getSource()==btnAddAC){
             String brand = txtCarBrandAC.getText();
             String model = txtCarModelAC.getText();
             String plate = txtCarPlateNumAC.getText();
@@ -2367,6 +2565,96 @@ public class App extends JFrame implements MouseListener{
             txtCarYearAC.setText("");
             txtCarPlateNumAC.setText("");
             txtCarSeatAC.setText("");
+        } if(e.getSource() == btnRegisterR) {
+            String[] array = {txtUsernameR.getText(), txtPasswordR.getText(), txtEmailR.getText(), txtPhoneNumR.getText(), "\n"};
+            try
+            {
+                FileWriter fw = new FileWriter("src\\Text Files\\userDetails.txt", true);
+                BufferedWriter bw = new BufferedWriter(fw);
+                PrintWriter pw = new PrintWriter(bw);    
+
+                for (int i = 0; i < array.length ; i++)
+                {
+                    pw.write(array[i] + ", ");
+                }
+                pw.close();
+            }
+            catch (Exception f)
+            {
+                f.printStackTrace();
+                System.out.println("No such file exists.");
+            }
+        } else if(e.getSource() == txtUsernameR) {
+            txtUsernameR.setText("");
+        } else if(e.getSource() == txtPasswordR) {
+            txtPasswordR.setText("");
+        } else if(e.getSource() == txtEmailR) {
+            txtEmailR.setText("");
+        } else if(e.getSource() == txtPhoneNumR) {
+            txtPhoneNumR.setText("");
+        } else if(e.getSource() == txtEndHourB) {
+            txtEndHourB.setText("");
+        } else if(e.getSource() == txtStartHourB) {
+            txtStartHourB.setText("");
+        } else if(e.getSource() == txtStartDateB) {
+            txtStartDateB.setText("");
+        } else if(e.getSource() == txtEndDateB) {
+            txtEndDateB.setText("");
+        } else if(e.getSource() == btnBookB) {
+            String model = txtCarModelB.getText();
+            String start = "";
+            String end = "";
+
+            if(pnlHour.isVisible()) {
+                start = txtStartHourB.getText();
+                end = txtEndHourB.getText();
+                String[] array = {model, start, end, "N/A", "N/A","\n"};
+                try
+                {
+                    FileWriter fw = new FileWriter("src\\Text Files\\Booking.txt", true);
+                    BufferedWriter bw = new BufferedWriter(fw);
+                    PrintWriter pw = new PrintWriter(bw);    
+
+                    for (int i = 0; i < array.length ; i++)
+                    {
+                        pw.write(array[i] + ", ");
+                    }
+                    pw.close();
+                    JOptionPane.showMessageDialog(null, "Booking Made Successful. Awaiting approval", "Booking Succesful", JOptionPane.INFORMATION_MESSAGE);
+                    pnlB.setVisible(false);
+                    pnlViewAllCar.setVisible(true);
+                }
+                catch (Exception f)
+                {
+                    f.printStackTrace();
+                    System.out.println("No such file exists.");
+                }
+            } else if(pnlDate.isVisible()) {
+                start = txtStartDateB.getText();
+                end = txtEndDateB.getText();
+                String[] array = {model, "N/A", "N/A", start, end, "\n"};
+                try
+                {
+                    FileWriter fw = new FileWriter("src\\Text Files\\Booking.txt", true);
+                    BufferedWriter bw = new BufferedWriter(fw);
+                    PrintWriter pw = new PrintWriter(bw);    
+
+                    for (int i = 0; i < array.length ; i++)
+                    {
+                        pw.write(array[i] + ", ");
+                    }
+                    pw.close();
+                    JOptionPane.showMessageDialog(null, "Booking Made Successful. Awaiting approval", "Booking Succesful", JOptionPane.INFORMATION_MESSAGE);
+                    pnlB.setVisible(false);
+                    pnlViewAllCar.setVisible(true);
+                }
+                catch (Exception f)
+                {
+                    f.printStackTrace();
+                    System.out.println("No such file exists.");
+                }
+            }
+
         }
     }
 
