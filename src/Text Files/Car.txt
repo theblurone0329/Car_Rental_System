@@ -7,3 +7,5 @@ Proton	Waja	SL 0943	2005	4
 Tesla	Model S	JWP 4321	2020	4
 eg: Toyota	eg: Corolla Altis	eg: SA 0923 B	eg: 2017	eg: 4
 eg: Toyota	eg: Corolla Altis	eg: SA 0923 B	eg: 2017	eg: 4
+sdawd	awd	wer	ert	etr
+Perodua	Kancil	ABB 6754	2012	4

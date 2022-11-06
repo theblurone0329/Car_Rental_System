@@ -1215,7 +1215,7 @@ public class App extends JFrame implements MouseListener{
             //import Car.txt data into table 
             try {
                 BufferedReader br = new BufferedReader(new FileReader(file));
-                DefaultTableModel model1 = (DefaultTableModel)table.getModel();
+                DefaultTableModel model1 = (DefaultTableModel)tableAC.getModel();
                 Object[] tableLines = br.lines().toArray();
                 for(int i = 0; i< tableLines.length;i++){
                     String line = tableLines[i].toString().trim();
@@ -2551,7 +2551,7 @@ public class App extends JFrame implements MouseListener{
                 }else{
                     pw.print(brand+"\t"+model+"\t"+plate+"\t"+year+"\t"+seat+"\n");
                     pw.close();
-                    DefaultTableModel updatedModel = (DefaultTableModel)table.getModel();
+                    DefaultTableModel updatedModel = (DefaultTableModel)tableAC.getModel();
                     String[] row = {brand,model,plate,year,seat};
                     updatedModel.addRow(row);
                 }
@@ -2559,12 +2559,13 @@ public class App extends JFrame implements MouseListener{
                 Logger.getLogger(addcar_admin.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-        }else if(e.getSource()==btnClear){
+        }else if(e.getSource()==btnCancelAC){
             txtCarBrandAC.setText("");
             txtCarModelAC.setText("");
             txtCarYearAC.setText("");
             txtCarPlateNumAC.setText("");
             txtCarSeatAC.setText("");
+
         } if(e.getSource() == btnRegisterR) {
             String[] array = {txtUsernameR.getText(), txtPasswordR.getText(), txtEmailR.getText(), txtPhoneNumR.getText(), "\n"};
             try
