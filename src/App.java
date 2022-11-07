@@ -10,6 +10,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -1038,6 +1041,7 @@ public class App extends JFrame implements MouseListener{
             confirmPwdCP.setLocation(125, 210);
             confirmPwdCP.setBorder(null);
             confirmPwdCP.addMouseListener(this);
+            confirmPwdCP.setEditable(true);
 
             separator2CP.setForeground(new Color(225,223,186));
             separator2CP.setBackground(new Color(27, 28, 30));
@@ -1053,6 +1057,7 @@ public class App extends JFrame implements MouseListener{
             passwordCP.setLocation(125, 110);
             passwordCP.setBorder(null);
             passwordCP.addMouseListener(this);
+            passwordCP.setEditable(true);
 
             separator1CP.setForeground(new Color(225,223,186));
             separator1CP.setBackground(new Color(27, 28, 30));
@@ -1236,7 +1241,8 @@ public class App extends JFrame implements MouseListener{
                 Logger.getLogger(addcar_admin.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            tableAC.setPreferredScrollableViewportSize(new Dimension(359, 1500));
+            tableAC.setPreferredScrollableViewportSize(new Dimension(359, 347));
+            tableAC.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
             tableAC.setFillsViewportHeight(true);
             tableAC.setBackground(new Color(27, 28, 30));
             tableAC.setForeground(new Color(225,223,186));
@@ -1244,9 +1250,10 @@ public class App extends JFrame implements MouseListener{
             tableAC.setFont(new Font("Segoe UI", Font.PLAIN, 13));
             tableAC.setRowHeight(30);
             
-            paneAC = new JScrollPane(tableAC);
+            paneAC = new JScrollPane(tableAC, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            paneAC.setVisible(true);
 
-            tablePnlAC.setBounds(320, 20, 363, 347);
+            tablePnlAC.setBounds(320, 20, 390, 347);
             tablePnlAC.setBorder(BorderFactory.createLineBorder(new Color(225,223,186)));
             tablePnlAC.add(paneAC);
 
@@ -2564,6 +2571,7 @@ public class App extends JFrame implements MouseListener{
                     DefaultTableModel updatedModel = (DefaultTableModel)tableAC.getModel();
                     String[] row = {brand,model,plate,year,seat};
                     updatedModel.addRow(row);
+                    JOptionPane.showMessageDialog(null, "Car Added Successfully!", "Successful", JOptionPane.INFORMATION_MESSAGE);   
                 }
             } catch (IOException ex) {
                 Logger.getLogger(addcar_admin.class.getName()).log(Level.SEVERE, null, ex);
@@ -2619,7 +2627,7 @@ public class App extends JFrame implements MouseListener{
             if(pnlHour.isVisible()) {
                 start = txtStartHourB.getText();
                 end = txtEndHourB.getText();
-                String[] array = {model, start, end, "N/A", "N/A","\n"};
+                String[] array = {lblUsernameEP.getText(), model, start, end, "N/A", "N/A","\n"};
                 try
                 {
                     FileWriter fw = new FileWriter("src\\Text Files\\Booking.txt", true);
@@ -2643,7 +2651,7 @@ public class App extends JFrame implements MouseListener{
             } else if(pnlDate.isVisible()) {
                 start = txtStartDateB.getText();
                 end = txtEndDateB.getText();
-                String[] array = {model, "N/A", "N/A", start, end, "\n"};
+                String[] array = {lblUsernameEP.getText(), model, "N/A", "N/A", start, end, "\n"};
                 try
                 {
                     FileWriter fw = new FileWriter("src\\Text Files\\Booking.txt", true);
@@ -2670,8 +2678,46 @@ public class App extends JFrame implements MouseListener{
             lblUsernameEP.setText(lblUsername.getText());
             lblEmailEP.setText(lblEmail.getText());
             lblPhoneNumEP.setText(lblPhoneNum.getText());
+        } else if(e.getSource() == btnChangeCP) {
+
+            if(passwordCP.getText() == confirmPwdCP.getText()) {
+                // arraylist to store strings
+                List<String> listOfStrings
+                = new ArrayList<String>();
+    
+                try (// load content of file based on specific delimiter
+                Scanner sc = new Scanner(new FileReader("src\\Text Files\\userDetails.txt"))
+                                .useDelimiter(",\\s*")) {
+                    String str;
+        
+                    // checking end of file
+                    while (sc.hasNext()) {
+                        str = sc.next();
+                    
+                        // adding each string to arraylist
+                        listOfStrings.add(str);
+                    }
+                } catch (FileNotFoundException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
+                // convert any arraylist to array
+                String[] array = listOfStrings.toArray(new String[0]);
+                for (int i = 0; i < array.length; i++) {
+                    if (lblUsernameEP.getText() == array[i]) {
+                        array[i+1] = passwordCP.getText();
+                        JOptionPane.showMessageDialog(null, "Password has been changed!", "Password Change Successful", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
+            }else if(passwordCP.getText() != confirmPwdCP.getText()) {
+                JOptionPane.showMessageDialog(null, "Passwords must be identical. Please try again.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        } else if(e.getSource() == passwordCP) {
+            passwordCP.setText("");
+        } else if(e.getSource() == confirmPwdCP) {
+            confirmPwdCP.setText("");
         }
-    }
+     }
 
     @Override
     public void mousePressed(MouseEvent e) {
