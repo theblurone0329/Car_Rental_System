@@ -2986,7 +2986,7 @@ public class App extends JFrame implements MouseListener{
             lblPhoneNumEP.setText(lblPhoneNum.getText());
         } else if(e.getSource() == btnChangeCP) {
 
-            if(passwordCP.getText() == confirmPwdCP.getText()) {
+            if(passwordCP.getText().equals(confirmPwdCP.getText())) {
                 // arraylist to store strings
                 List<String> listOfStrings
                 = new ArrayList<String>();
@@ -3007,15 +3007,39 @@ public class App extends JFrame implements MouseListener{
                     // TODO Auto-generated catch block
                     e1.printStackTrace();
                 }
-                // convert any arraylist to array
-                String[] array = listOfStrings.toArray(new String[0]);
-                for (int i = 0; i < array.length; i++) {
-                    if (lblUsernameEP.getText() == array[i]) {
-                        array[i+1] = passwordCP.getText();
-                        JOptionPane.showMessageDialog(null, "Password has been changed!", "Password Change Successful", JOptionPane.INFORMATION_MESSAGE);
+                for (int i = 0; i < listOfStrings.size(); i++) {
+                    if (lblUsernameEP.getText().equals(listOfStrings.get(i))) {
+                        
+
+                        for(int k = 4; k < listOfStrings.size(); k+=5){
+                            listOfStrings.set(k, "\n");
+                        }
+                        // convert any arraylist to array
+                        String[] array = listOfStrings.toArray(new String[0]);
+
+                        try
+                        {
+                            FileWriter fw = new FileWriter("src\\Text Files\\userDetails.txt");
+                            BufferedWriter bw = new BufferedWriter(fw);
+                            PrintWriter pw = new PrintWriter(bw);    
+
+                            for (int j = 0; j < array.length ; j++)
+                            {
+                                pw.write(array[j] + ", ");
+                            }
+                            pw.close();
+                        }
+                        catch (Exception f)
+                        {
+                            f.printStackTrace();
+                            System.out.println("No such file exists.");
+                        }
                     }
                 }
-            }else if(passwordCP.getText() != confirmPwdCP.getText()) {
+                JOptionPane.showMessageDialog(null, "Password has been changed!", "Password Change Successful", JOptionPane.INFORMATION_MESSAGE);
+                pnlCP.setVisible(false);
+                pnlProfile.setVisible(true);
+            }else if(!passwordCP.getText().equals(confirmPwdCP.getText())) {
                 JOptionPane.showMessageDialog(null, "Passwords must be identical. Please try again.", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
         } else if(e.getSource() == passwordCP) {
