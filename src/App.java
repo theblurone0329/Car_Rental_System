@@ -40,11 +40,6 @@ public class App extends JFrame implements MouseListener{
 
     }
 
-    private String username;
-    private String password;
-    private String email;
-    private String phoneNum;
-
     //Home Page
     private JPanel pnl1 = new JPanel();
     private JPanel pnl2 = new JPanel();
@@ -161,11 +156,15 @@ public class App extends JFrame implements MouseListener{
     private JPanel pnlRBP = new JPanel();
     private JPanel pnlLeftRBP = new JPanel();
     private JPanel pnlRightRBP = new JPanel();
+    private JPanel pnlDownRBP = new JPanel();
     private JLabel txtReport = new JLabel();
     private JLabel txtBook = new JLabel();
+    private JLabel txtReturnCar = new JLabel();
     private JButton btnReport  = new JButton();
     private JButton btnBook = new JButton();
+    private JButton btnReturnCar = new JButton();
     private JSeparator separator1RBP = new JSeparator(SwingConstants.VERTICAL);
+    private JSeparator separator2RBP = new JSeparator();
 
     //Registration Page
     private JPanel pnlR = new JPanel();
@@ -1576,6 +1575,11 @@ public class App extends JFrame implements MouseListener{
 
         //View Report or Booking Page
         {
+            separator2RBP.setForeground(new Color(225,223,186));
+            separator2RBP.setBackground(new Color(27, 28, 30));
+            separator2RBP.setSize(10, 420);
+            separator2RBP.setLocation(363, 0);
+
             separator1RBP.setForeground(new Color(225,223,186));
             separator1RBP.setBackground(new Color(27, 28, 30));
             separator1RBP.setSize(10, 420);
@@ -1613,12 +1617,16 @@ public class App extends JFrame implements MouseListener{
             btnReport.setBorder(null);
             btnReport.addMouseListener(this);
 
+            pnlDownRBP.setBackground(new Color(27, 28, 30));
+            pnlDownRBP.setBounds(0, 212, 724, 210);
+            pnlDownRBP.setLayout(null);
+
             pnlRightRBP.setBackground(new Color(27, 28, 30));
-            pnlRightRBP.setBounds(364, 0, 362, 420);
+            pnlRightRBP.setBounds(364, 0, 362, 210);
             pnlRightRBP.setLayout(null);
 
             pnlLeftRBP.setBackground(new Color(27, 28, 30));
-            pnlLeftRBP.setBounds(0, 0, 362, 420);
+            pnlLeftRBP.setBounds(0, 0, 362, 210);
             pnlLeftRBP.setLayout(null);
 
             pnlRightRBP.add(txtBook);
@@ -1634,6 +1642,7 @@ public class App extends JFrame implements MouseListener{
 
             pnlRBP.add(pnlLeftRBP);
             pnlRBP.add(pnlRightRBP);
+            pnlRBP.add(pnlDownRBP);
             pnlRBP.add(separator1RBP);
         }
 
