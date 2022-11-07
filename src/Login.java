@@ -40,7 +40,7 @@ public class Login extends JFrame implements MouseListener{
 
         //Login Button
         btnLogin1.setText("Login");
-        btnLogin1.setForeground(new Color(225,223,186));
+        btnLogin1.setForeground(new Color(27, 28, 30));
         btnLogin1.setBackground(new Color(127,126,144));
         btnLogin1.setSize(52, 29);
         btnLogin1.setHorizontalTextPosition(JLabel.CENTER);
@@ -51,13 +51,13 @@ public class Login extends JFrame implements MouseListener{
         btnLogin1.setFocusable(false);
 
         //Line below Password txt box
-        separator2.setForeground(new Color(225,223,186));
+        separator2.setForeground(new Color(27, 28, 30));
         separator2.setBackground(new Color(127,126,144));
         separator2.setSize(155, 15);
         separator2.setLocation(105, 179);
 
         //Line below Username txt box
-        separator1.setForeground(new Color(225,223,186));
+        separator1.setForeground(new Color(27, 28, 30));
         separator1.setBackground(new Color(127,126,144));
         separator1.setSize(155, 15);
         separator1.setLocation(105, 100);
@@ -67,10 +67,11 @@ public class Login extends JFrame implements MouseListener{
         txtPassword.setText("Password");
         txtPassword.setHorizontalAlignment(JPasswordField.LEADING);
         txtPassword.setLocation(105, 137);
-        txtPassword.setForeground(new Color(225,223,186));
+        txtPassword.setForeground(new Color(27, 28, 30));
         txtPassword.setBackground(new Color(127,126,144));
         txtPassword.setSize(155, 40);
         txtPassword.addMouseListener(this);
+        txtPassword.setCaretColor(new Color(27, 28, 30));
 
         //Logo for Password next to Password txt box
         ImageIcon iconPassword = new ImageIcon("src\\Pics\\key.png");
@@ -89,11 +90,12 @@ public class Login extends JFrame implements MouseListener{
         txtUsername.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         txtUsername.setHorizontalAlignment(JTextField.LEADING);
         txtUsername.setLocation(105, 58);
-        txtUsername.setForeground(new Color(225,223,186));
+        txtUsername.setForeground(new Color(27, 28, 30));
         txtUsername.setBackground(new Color(127,126,144));
         txtUsername.setSize(155, 40);
         txtUsername.setBorder(null);
         txtUsername.addMouseListener(this);
+        txtUsername.setCaretColor(new Color(27, 28, 30));
 
         //Rentizen Logo in left panel
         picLogo.setSize(350, 310);
@@ -146,7 +148,7 @@ public class Login extends JFrame implements MouseListener{
    
             try (// load content of file based on specific delimiter
             Scanner sc = new Scanner(new FileReader("src\\Text Files\\userDetails.txt"))
-                            .useDelimiter(",\\s*")) {
+                            .useDelimiter(", \\s*")) {
                 String str;
       
                 // checking end of file
