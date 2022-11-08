@@ -162,26 +162,20 @@ public class Login extends JFrame implements MouseListener{
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
-            // convert any arraylist to array
-            String[] array
-                = listOfStrings.toArray(new String[0]);
-
             //Validation
-            for(int i = 0; i < array.length; i++) {
-                if(user.equals(array[i])) {
-                    if(pwd.equals(array[i+1])) {
-                        System.out.println("Login Successful");
-                        this.setVisible(false);
-                        User user1 = new User(user, pwd, array[i+2], array[i+3], array[i-1]);
-                        App hP = new App(user1);
-                        hP.setVisible(true);
-                        break;
-                    } else {
-                        System.out.println("Login Denied Pwd");
-                    }
+            if(listOfStrings.contains(user)) {
+                int index = listOfStrings.indexOf(user);
+                if(pwd.equals(listOfStrings.get(index + 1))) {
+                    System.out.println("Login Successful");
+                    this.setVisible(false);
+                    User user1 = new User(user, pwd, listOfStrings.get(index + 2), listOfStrings.get(index + 3), listOfStrings.get(index - 1));
+                    App hP = new App(user1);
+                    hP.setVisible(true);
                 } else {
-                    System.out.println("Login Denied User");
+                    System.out.println("Login Denied Pwd");
                 }
+            } else {
+                System.out.println("Login Denied User");
             }
             
         } else if(e.getSource() == txtUsername) {

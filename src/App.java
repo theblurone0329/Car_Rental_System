@@ -2398,33 +2398,13 @@ public class App extends JFrame implements MouseListener{
             btnHomeCus.setBorder(null);
             btnHomeCus.addMouseListener(this);
 
-            //Report icon
-            ImageIcon reportsCus = new ImageIcon("src\\Pics\\report.png");
-            btnReportsCus.setIcon(reportsCus);
-            btnReportsCus.setBackground(new Color(127, 126, 144));
-            btnReportsCus.setFocusable(false);
-            btnReportsCus.setSize(64, 64);
-            btnReportsCus.setLocation(490, 2);
-            btnReportsCus.setBorder(null);
-            btnReportsCus.addMouseListener(this);
-
-            //Register icon
-            ImageIcon registerCus = new ImageIcon("src\\Pics\\form.png");
-            btnRegistrationCus.setIcon(registerCus);
-            btnRegistrationCus.setBackground(new Color(127, 126, 144));
-            btnRegistrationCus.setFocusable(false);
-            btnRegistrationCus.setSize(64, 64);
-            btnRegistrationCus.setLocation(170, 3);
-            btnRegistrationCus.setBorder(null);
-            btnRegistrationCus.addMouseListener(this);
-
             //Booking icon
             ImageIcon bookingCus = new ImageIcon("src\\Pics\\online-booking.png");
             btnBookingCus.setIcon(bookingCus);
             btnBookingCus.setBackground(new Color(127, 126, 144));
             btnBookingCus.setFocusable(false);
             btnBookingCus.setSize(64, 64);
-            btnBookingCus.setLocation(20, 7);
+            btnBookingCus.setLocation(120, 7);
             btnBookingCus.setBorder(null);
             btnBookingCus.addMouseListener(this);
 
@@ -2434,7 +2414,7 @@ public class App extends JFrame implements MouseListener{
             btnProfileCus.setBackground(new Color(127, 126, 144));
             btnProfileCus.setFocusable(false);
             btnProfileCus.setSize(64, 64);
-            btnProfileCus.setLocation(635, 3);
+            btnProfileCus.setLocation(535, 3);
             btnProfileCus.setBorder(null);
             btnProfileCus.addMouseListener(this);
 
@@ -2528,8 +2508,6 @@ public class App extends JFrame implements MouseListener{
             pnl1Cus.add(pnl3Cus);
             pnl2Cus.add(btnHomeCus);
             pnl2Cus.add(btnBookingCus);
-            pnl2Cus.add(btnRegistrationCus);
-            pnl2Cus.add(btnReportsCus);
             pnl2Cus.add(btnProfileCus);
             
             //Adding Components to Main Frame
@@ -2682,8 +2660,65 @@ public class App extends JFrame implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        if(e.getSource() == btnProfileCus) {
+            pnlProfile.setVisible(true);
+            cusHome.setVisible(false);
+            pnlVMP.setVisible(false);
+            pnlAdd.setVisible(false);
+            pnlViewAllCar.setVisible(false);
+            pnlRBP.setVisible(false);
+            pnlR.setVisible(false);
+            pnlAC.setVisible(false);
+            pnlEP.setVisible(false);
+            pnlCP.setVisible(false);
+            pnlMR.setVisible(false);
+            pnlBigOCP.setVisible(false);
+            pnlBR.setVisible(false);
+            pnlB.setVisible(false);
+            pnlHour.setVisible(false);
+            pnlDate.setVisible(false);
+            pnlRCA.setVisible(false);
+        } //Home Button
+        else if(e.getSource() == btnHomeCus) {
+            cusHome.setVisible(true);
+            pnlProfile.setVisible(false);
+            pnlAdd.setVisible(false);
+            pnlVMP.setVisible(false);
+            pnlViewAllCar.setVisible(false);
+            pnlRBP.setVisible(false);
+            pnlR.setVisible(false);
+            pnlAC.setVisible(false);
+            pnlEP.setVisible(false);
+            pnlCP.setVisible(false);
+            pnlMR.setVisible(false);
+            pnlBigOCP.setVisible(false);
+            pnlBR.setVisible(false);
+            pnlB.setVisible(false);
+            pnlHour.setVisible(false);
+            pnlDate.setVisible(false);
+            pnlRCA.setVisible(false);
+        } //Booking Button
+        else if(e.getSource() == btnBookingCus) {
+            pnlViewAllCar.setVisible(true);
+            pnlVMP.setVisible(false);
+            cusHome.setVisible(false);
+            pnlAdd.setVisible(false);
+            pnlProfile.setVisible(false);
+            pnlRBP.setVisible(false);
+            pnlR.setVisible(false);
+            pnlAC.setVisible(false);
+            pnlEP.setVisible(false);
+            pnlCP.setVisible(false);
+            pnlMR.setVisible(false);
+            pnlBigOCP.setVisible(false);
+            pnlBR.setVisible(false);
+            pnlB.setVisible(false);
+            pnlHour.setVisible(false);
+            pnlDate.setVisible(false);
+            pnlRCA.setVisible(false);
+        }
         // Profile Button
-        if(e.getSource() == btnProfile) {
+        else if(e.getSource() == btnProfile) {
             pnlProfile.setVisible(true);
             adminHome.setVisible(false);
             pnlVMP.setVisible(false);
@@ -3012,24 +3047,48 @@ public class App extends JFrame implements MouseListener{
             txtCarSeatAC.setText("");
 
         } else if(e.getSource() == btnRegisterR) {
-            String[] array = {txtUsernameR.getText(), txtPasswordR.getText(), txtEmailR.getText(), txtPhoneNumR.getText(), "\n"};
-            try
-            {
-                FileWriter fw = new FileWriter("src\\Text Files\\userDetails.txt", true);
-                BufferedWriter bw = new BufferedWriter(fw);
-                PrintWriter pw = new PrintWriter(bw);    
-
-                for (int i = 0; i < array.length ; i++)
-                {
-                    pw.write(array[i] + ", ");
+            // arraylist to store strings
+            List<String> listOfStrings
+            = new ArrayList<String>();
+   
+            try (// load content of file based on specific delimiter
+            Scanner sc = new Scanner(new FileReader("src\\Text Files\\userDetails.txt"))
+                            .useDelimiter(", \\s*")) {
+                String str;
+      
+                // checking end of file
+                while (sc.hasNext()) {
+                    str = sc.next();
+                
+                    // adding each string to arraylist
+                    listOfStrings.add(str);
                 }
-                pw.close();
+            } catch (FileNotFoundException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
             }
-            catch (Exception f)
-            {
-                f.printStackTrace();
-                System.out.println("No such file exists.");
-            }
+            if (listOfStrings.contains(txtUsernameR.getText())) {
+                JOptionPane.showMessageDialog(null, "Username has been taken! Try another!", "Username Taken!!!", JOptionPane.WARNING_MESSAGE);
+            } else {
+                String[] array = {txtUsernameR.getText(), txtPasswordR.getText(), txtEmailR.getText(), txtPhoneNumR.getText(), "\n"};
+                try
+                {
+                    FileWriter fw = new FileWriter("src\\Text Files\\userDetails.txt", true);
+                    BufferedWriter bw = new BufferedWriter(fw);
+                    PrintWriter pw = new PrintWriter(bw);    
+    
+                    for (int i = 0; i < array.length ; i++)
+                    {
+                        pw.write(array[i] + ", ");
+                    }
+                    pw.close();
+                }
+                catch (Exception f)
+                {
+                    f.printStackTrace();
+                    System.out.println("No such file exists.");
+                }
+            } 
         } else if(e.getSource() == txtUsernameR) {
             txtUsernameR.setText("");
         } else if(e.getSource() == txtPasswordR) {
@@ -3131,35 +3190,31 @@ public class App extends JFrame implements MouseListener{
                     // TODO Auto-generated catch block
                     e1.printStackTrace();
                 }
-                for (int i = 0; i < listOfStrings.size(); i++) {
-                    if (lblUsernameEP.getText().equals(listOfStrings.get(i))) {
-                        
-                        listOfStrings.set(i+1, passwordCP.getText());
+                int index = listOfStrings.indexOf(lblUsernameEP.getText());
+                listOfStrings.set(index+1, passwordCP.getText());
 
-                        for(int k = 4; k < listOfStrings.size(); k+=5){
-                            listOfStrings.set(k, "\n");
-                        }
-                        // convert any arraylist to array
-                        String[] array = listOfStrings.toArray(new String[0]);
+                for(int k = 4; k < listOfStrings.size(); k+=5){
+                    listOfStrings.set(k, "\n");
+                }
+                // convert any arraylist to array
+                String[] array = listOfStrings.toArray(new String[0]);
 
-                        try
-                        {
-                            FileWriter fw = new FileWriter("src\\Text Files\\userDetails.txt");
-                            BufferedWriter bw = new BufferedWriter(fw);
-                            PrintWriter pw = new PrintWriter(bw);    
+                try
+                {
+                    FileWriter fw = new FileWriter("src\\Text Files\\userDetails.txt");
+                    BufferedWriter bw = new BufferedWriter(fw);
+                    PrintWriter pw = new PrintWriter(bw);    
 
-                            for (int j = 0; j < array.length ; j++)
-                            {
-                                pw.write(array[j] + ", ");
-                            }
-                            pw.close();
-                        }
-                        catch (Exception f)
-                        {
-                            f.printStackTrace();
-                            System.out.println("No such file exists.");
-                        }
+                    for (int j = 0; j < array.length ; j++)
+                    {
+                        pw.write(array[j] + ", ");
                     }
+                    pw.close();
+                }
+                catch (Exception f)
+                {
+                    f.printStackTrace();
+                    System.out.println("No such file exists.");
                 }
                 JOptionPane.showMessageDialog(null, "Password has been changed!", "Password Change Successful", JOptionPane.INFORMATION_MESSAGE);
                 pnlCP.setVisible(false);
