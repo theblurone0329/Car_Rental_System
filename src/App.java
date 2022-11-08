@@ -236,6 +236,7 @@ public class App extends JFrame implements MouseListener{
     private JLabel pwdPicCP = new JLabel();
     private JSeparator separator1CP = new JSeparator();
     private JSeparator separator2CP = new JSeparator();
+    private JButton btnCancelCP = new JButton();
     private JButton btnChangeCP = new JButton();
 
     //View Monthly Report
@@ -1260,12 +1261,22 @@ public class App extends JFrame implements MouseListener{
             pwdPicCP.setSize(256, 256);
             pwdPicCP.setLocation(420, 60);
 
+            btnCancelCP.setText("Cancel");
+            btnCancelCP.setSize(140, 44);
+            btnCancelCP.setLocation(370, 320);
+            btnCancelCP.setForeground(new Color(225,223,186));
+            btnCancelCP.setBackground(new Color(27, 28, 30));
+            Border borderCP = new LineBorder(new Color(225,223,186), 1, true);
+            btnCancelCP.setBorder(borderCP);
+            btnCancelCP.setFont(new Font("TW Cen MT", Font.BOLD, 15));
+            btnCancelCP.setFocusable(false);
+            btnCancelCP.addMouseListener(this);
+
             btnChangeCP.setText("Change Password");
             btnChangeCP.setSize(140, 44);
-            btnChangeCP.setLocation(290, 300);
+            btnChangeCP.setLocation(220, 320);
             btnChangeCP.setForeground(new Color(225,223,186));
             btnChangeCP.setBackground(new Color(27, 28, 30));
-            Border borderCP = new LineBorder(new Color(225,223,186), 1, true);
             btnChangeCP.setBorder(borderCP);
             btnChangeCP.setFont(new Font("TW Cen MT", Font.BOLD, 15));
             btnChangeCP.setFocusable(false);
@@ -1284,7 +1295,7 @@ public class App extends JFrame implements MouseListener{
             confirmPwdCP.setForeground(new Color(225,223,186));
             confirmPwdCP.setBackground(new Color(27, 28, 30));
             confirmPwdCP.setSize(180,30);
-            confirmPwdCP.setLocation(125, 210);
+            confirmPwdCP.setLocation(95, 210);
             confirmPwdCP.setBorder(null);
             confirmPwdCP.addMouseListener(this);
             confirmPwdCP.setEditable(true);
@@ -1292,7 +1303,7 @@ public class App extends JFrame implements MouseListener{
             separator2CP.setForeground(new Color(225,223,186));
             separator2CP.setBackground(new Color(27, 28, 30));
             separator2CP.setSize(180, 17);
-            separator2CP.setLocation(125, 243);
+            separator2CP.setLocation(95, 243);
 
             //First Password box
             passwordCP.setText("Password");
@@ -1300,7 +1311,7 @@ public class App extends JFrame implements MouseListener{
             passwordCP.setForeground(new Color(225,223,186));
             passwordCP.setBackground(new Color(27, 28, 30));
             passwordCP.setSize(180,30);
-            passwordCP.setLocation(125, 110);
+            passwordCP.setLocation(95, 110);
             passwordCP.setBorder(null);
             passwordCP.addMouseListener(this);
             passwordCP.setEditable(true);
@@ -1308,7 +1319,7 @@ public class App extends JFrame implements MouseListener{
             separator1CP.setForeground(new Color(225,223,186));
             separator1CP.setBackground(new Color(27, 28, 30));
             separator1CP.setSize(180, 17);
-            separator1CP.setLocation(125, 143);
+            separator1CP.setLocation(95, 143);
 
             pnlCP.setBackground(new Color(27, 28, 30));
             pnlCP.setLayout(null);
@@ -1321,6 +1332,7 @@ public class App extends JFrame implements MouseListener{
             pnlCP.add(separator2CP);
             pnlCP.add(pageTitleCP);
             pnlCP.add(btnChangeCP);
+            pnlCP.add(btnCancelCP);
             pnlCP.add(pwdPicCP);
         }
 
@@ -3054,6 +3066,9 @@ public class App extends JFrame implements MouseListener{
             passwordCP.setText("");
         } else if(e.getSource() == confirmPwdCP) {
             confirmPwdCP.setText("");
+        } else if(e.getSource() == btnCancelCP) {
+            pnlCP.setVisible(false);
+            pnlEP.setVisible(true);
         }
      }
 
