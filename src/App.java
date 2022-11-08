@@ -41,9 +41,10 @@ public class App extends JFrame implements MouseListener{
     }
 
     //Home Page
-    private JPanel pnl1 = new JPanel();
-    private JPanel pnl2 = new JPanel();
-    private JPanel pnl3 = new JPanel();
+    private JPanel adminHome = new JPanel();
+    private JPanel pnl1Admin = new JPanel();
+    private JPanel pnl2Admin = new JPanel();
+    private JPanel pnl3Admin = new JPanel();
     private JPanel pnlProfile = new JPanel();
     private JLabel picCar = new JLabel();
     private JLabel picProgBar_0 = new JLabel();
@@ -350,7 +351,9 @@ public class App extends JFrame implements MouseListener{
     private JPanel returnedPnlRCA = new JPanel();
     private Border borderRCA = new LineBorder(new Color(225,223,186), 1, true);
 
-
+    /**
+     * @param user
+     */
     App(User user) {
 
         //Return Car Admin Page
@@ -569,7 +572,7 @@ public class App extends JFrame implements MouseListener{
             pnlRCA.add(returnedTitleRCA);
             pnlRCA.add(onRentTitleRCA);
         }
-
+        
         //Booking Page
         {
             //Panel view when btnHourB clicked
@@ -790,7 +793,7 @@ public class App extends JFrame implements MouseListener{
             pnlB.add(pnlDate);
             pnlB.add(pnlHour);
         }
-
+        
         //View Booking Request Page
         {
             txtUserIDBR.setText("U12");
@@ -2093,29 +2096,29 @@ public class App extends JFrame implements MouseListener{
             pnlViewAllCar.setLayout(null);
             pnlViewAllCar.setVisible(false);
 
-            pnlBigCar.add(car1);
-            pnlBigCar.add(carName1);
-            pnlBigCar.add(btn1);
-            pnlBigCar.add(seats1);
-            pnlBigCar.add(price1);
-            pnlBigCar.add(pnl1Car);
-            pnlBigCar.add(car2);
-            pnlBigCar.add(carName2);
-            pnlBigCar.add(btn2);
-            pnlBigCar.add(seats2);
-            pnlBigCar.add(price2);
-            pnlBigCar.add(pnl2Car);
-            pnlBigCar.add(separator);
-            pnlBigCar.add(seats);
-            pnlBigCar.add(txtSeats);
-            pnlBigCar.add(separator2);
-            pnlBigCar.add(search);
+            pnlViewAllCar.add(car1);
+            pnlViewAllCar.add(carName1);
+            pnlViewAllCar.add(btn1);
+            pnlViewAllCar.add(seats1);
+            pnlViewAllCar.add(price1);
+            pnlViewAllCar.add(pnl1Car);
+            pnlViewAllCar.add(car2);
+            pnlViewAllCar.add(carName2);
+            pnlViewAllCar.add(btn2);
+            pnlViewAllCar.add(seats2);
+            pnlViewAllCar.add(price2);
+            pnlViewAllCar.add(pnl2Car);
+            pnlViewAllCar.add(separator);
+            pnlViewAllCar.add(seats);
+            pnlViewAllCar.add(txtSeats);
+            pnlViewAllCar.add(separator2);
+            pnlViewAllCar.add(search);
 
-            JScrollPane paneVAC = new JScrollPane(pnlBigCar, 
-                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
-                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-            paneVAC.setVisible(true);
-            pnlViewAllCar.add(paneVAC);
+            //JScrollPane paneVAC = new JScrollPane(pnlBigCar, 
+                //JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
+                //JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            //paneVAC.setVisible(true);
+            //pnlViewAllCar.add(paneVAC);
         }
 
         //View Monthly Report Page
@@ -2371,7 +2374,7 @@ public class App extends JFrame implements MouseListener{
             pnlProfile.add(border2);
         }
 
-        //Home Page
+        //Admin Home Page
         {
             //Home icon
             ImageIcon home = new ImageIcon("src\\Pics\\home.png");
@@ -2481,19 +2484,19 @@ public class App extends JFrame implements MouseListener{
             picCar.setLocation(5, 70);
 
             //Rent Progress Panel
-            pnl3.setBackground(new Color(27, 28, 30));
-            pnl3.setBounds(110, 60, 500, 300);
-            pnl3.setLayout(null);
+            pnl3Admin.setBackground(new Color(27, 28, 30));
+            pnl3Admin.setBounds(110, 60, 500, 300);
+            pnl3Admin.setLayout(null);
 
             //Bottom Panel / Menu
-            pnl2.setBackground(new Color(127, 126, 144));
-            pnl2.setLayout(null);
-            pnl2.setBounds(0, 420, 805, 108);
+            pnl2Admin.setBackground(new Color(127, 126, 144));
+            pnl2Admin.setLayout(null);
+            pnl2Admin.setBounds(0, 420, 805, 108);
 
             //Top Panel
-            pnl1.setBackground(new Color(27, 28, 30));
-            pnl1.setLayout(null);
-            pnl1.setBounds(0, 0, 805, 420);
+            pnl1Admin.setBackground(new Color(27, 28, 30));
+            pnl1Admin.setLayout(null);
+            pnl1Admin.setBounds(0, 0, 805, 420);
 
             //Frame
             ImageIcon icon = new ImageIcon("src\\Pics\\Company Logo.png");
@@ -2504,52 +2507,57 @@ public class App extends JFrame implements MouseListener{
             this.setSize(725, 528);
             this.setResizable(false);
             this.setVisible(true);
+
+            adminHome.setLayout(null);
+            adminHome.setSize(725, 528);
+            adminHome.setVisible(true);
             
             //Add Stuff
-            pnl3.add(status);
-            pnl3.add(picProgBar_100);
-            pnl3.add(picProgBar_75);
-            pnl3.add(picProgBar_50);
-            pnl3.add(picProgBar_25);
-            pnl3.add(picProgBar_0);
-            pnl3.add(picCar);
-            pnl1.add(message);
-            pnl1.add(message2);
-            pnl1.add(pnl3);
-            pnl2.add(btnHome);
-            pnl2.add(btnBooking);
-            pnl2.add(btnRegistration);
-            pnl2.add(btnReports);
-            pnl2.add(btnProfile);
+            pnl3Admin.add(status);
+            pnl3Admin.add(picProgBar_100);
+            pnl3Admin.add(picProgBar_75);
+            pnl3Admin.add(picProgBar_50);
+            pnl3Admin.add(picProgBar_25);
+            pnl3Admin.add(picProgBar_0);
+            pnl3Admin.add(picCar);
+            pnl1Admin.add(message);
+            pnl1Admin.add(message2);
+            pnl1Admin.add(pnl3Admin);
+            pnl2Admin.add(btnHome);
+            pnl2Admin.add(btnBooking);
+            pnl2Admin.add(btnRegistration);
+            pnl2Admin.add(btnReports);
+            pnl2Admin.add(btnProfile);
             
             //Adding Components to Main Frame
-            this.add(pnl2);
-            this.add(pnl1);
-            
-            //Pages
-            this.add(pnlRCA);
-            this.add(pnlB);
-            this.add(pnlBR);
-            this.add(pnlBigOCP);
-            this.add(pnlMR);
-            this.add(pnlCP);
-            this.add(pnlEP);
-            this.add(pnlAC);
-            this.add(pnlR);
-            this.add(pnlRBP);
-            this.add(pnlViewAllCar);
-            this.add(pnlVMP);
-            this.add(pnlAdd);
-            this.add(pnlProfile);
-            
-            message.setVisible(false);
-            message2.setVisible(false);
+            adminHome.add(pnl1Admin);
+        }    
 
-            picProgBar_100.setVisible(false);
-            picProgBar_75.setVisible(false);
-            picProgBar_50.setVisible(false);
-            picProgBar_25.setVisible(false);
-            }    
+        //Pages
+        this.add(pnl2Admin);
+        this.add(adminHome);
+        this.add(pnlRCA);
+        this.add(pnlB);
+        this.add(pnlBR);
+        this.add(pnlBigOCP);
+        this.add(pnlMR);
+        this.add(pnlCP);
+        this.add(pnlEP);
+        this.add(pnlAC);
+        this.add(pnlR);
+        this.add(pnlRBP);
+        this.add(pnlViewAllCar);
+        this.add(pnlVMP);
+        this.add(pnlAdd);
+        this.add(pnlProfile);
+        
+        message.setVisible(false);
+        message2.setVisible(false);
+
+        picProgBar_100.setVisible(false);
+        picProgBar_75.setVisible(false);
+        picProgBar_50.setVisible(false);
+        picProgBar_25.setVisible(false);
     }
 
     @Override
@@ -2557,7 +2565,7 @@ public class App extends JFrame implements MouseListener{
         // Profile Button
         if(e.getSource() == btnProfile) {
             pnlProfile.setVisible(true);
-            pnl1.setVisible(false);
+            adminHome.setVisible(false);
             pnlVMP.setVisible(false);
             pnlAdd.setVisible(false);
             pnlViewAllCar.setVisible(false);
@@ -2575,7 +2583,7 @@ public class App extends JFrame implements MouseListener{
             pnlRCA.setVisible(false);
         } //Home Button
         else if(e.getSource() == btnHome) {
-            pnl1.setVisible(true);
+            adminHome.setVisible(true);
             pnlProfile.setVisible(false);
             pnlAdd.setVisible(false);
             pnlVMP.setVisible(false);
@@ -2595,7 +2603,7 @@ public class App extends JFrame implements MouseListener{
         } //Registration Button 
         else if(e.getSource() == btnRegistration) {
             pnlAdd.setVisible(true);
-            pnl1.setVisible(false);
+            adminHome.setVisible(false);
             pnlVMP.setVisible(false);
             pnlProfile.setVisible(false);
             pnlViewAllCar.setVisible(false);
@@ -2615,7 +2623,7 @@ public class App extends JFrame implements MouseListener{
         else if(e.getSource() == btnReports) {
             pnlRBP.setVisible(true);
             pnlVMP.setVisible(false);
-            pnl1.setVisible(false);
+            adminHome.setVisible(false);
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
             pnlViewAllCar.setVisible(false);
@@ -2634,7 +2642,7 @@ public class App extends JFrame implements MouseListener{
         else if(e.getSource() == btnBooking) {
             pnlViewAllCar.setVisible(true);
             pnlVMP.setVisible(false);
-            pnl1.setVisible(false);
+            adminHome.setVisible(false);
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
             pnlRBP.setVisible(false);
@@ -2655,7 +2663,7 @@ public class App extends JFrame implements MouseListener{
             pnlR.setVisible(true);
             pnlViewAllCar.setVisible(false);
             pnlVMP.setVisible(false);
-            pnl1.setVisible(false);
+            adminHome.setVisible(false);
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
             pnlRBP.setVisible(false);
@@ -2675,7 +2683,7 @@ public class App extends JFrame implements MouseListener{
             pnlR.setVisible(false);
             pnlViewAllCar.setVisible(false);
             pnlVMP.setVisible(false);
-            pnl1.setVisible(false);
+            adminHome.setVisible(false);
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
             pnlRBP.setVisible(false);
@@ -2695,7 +2703,7 @@ public class App extends JFrame implements MouseListener{
             pnlR.setVisible(false);
             pnlViewAllCar.setVisible(false);
             pnlVMP.setVisible(false);
-            pnl1.setVisible(false);
+            adminHome.setVisible(false);
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
             pnlRBP.setVisible(false);
@@ -2716,7 +2724,7 @@ public class App extends JFrame implements MouseListener{
             pnlR.setVisible(false);
             pnlViewAllCar.setVisible(false);
             pnlVMP.setVisible(false);
-            pnl1.setVisible(false);
+            adminHome.setVisible(false);
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
             pnlRBP.setVisible(false);
@@ -2737,7 +2745,7 @@ public class App extends JFrame implements MouseListener{
             pnlR.setVisible(false);
             pnlViewAllCar.setVisible(false);
             pnlVMP.setVisible(false);
-            pnl1.setVisible(false);
+            adminHome.setVisible(false);
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
             pnlRBP.setVisible(false);
@@ -2758,7 +2766,7 @@ public class App extends JFrame implements MouseListener{
             pnlR.setVisible(false);
             pnlViewAllCar.setVisible(false);
             pnlVMP.setVisible(false);
-            pnl1.setVisible(false);
+            adminHome.setVisible(false);
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
             pnlRBP.setVisible(false);
@@ -2768,7 +2776,7 @@ public class App extends JFrame implements MouseListener{
             pnlDate.setVisible(false);
             pnlRCA.setVisible(false);
         } 
-        //Booking Button
+        //View Bookings Button
         else if(e.getSource() == btnBook) {
             pnlBR.setVisible(true);
             pnlBigOCP.setVisible(false);
@@ -2779,7 +2787,7 @@ public class App extends JFrame implements MouseListener{
             pnlR.setVisible(false);
             pnlViewAllCar.setVisible(false);
             pnlVMP.setVisible(false);
-            pnl1.setVisible(false);
+            adminHome.setVisible(false);
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
             pnlRBP.setVisible(false);
@@ -2799,7 +2807,7 @@ public class App extends JFrame implements MouseListener{
             pnlAC.setVisible(false);
             pnlR.setVisible(false);
             pnlVMP.setVisible(false);
-            pnl1.setVisible(false);
+            adminHome.setVisible(false);
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
             pnlRBP.setVisible(false);
@@ -2819,7 +2827,7 @@ public class App extends JFrame implements MouseListener{
             pnlAC.setVisible(false);
             pnlR.setVisible(false);
             pnlVMP.setVisible(false);
-            pnl1.setVisible(false);
+            adminHome.setVisible(false);
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
             pnlRBP.setVisible(false);
@@ -2838,7 +2846,7 @@ public class App extends JFrame implements MouseListener{
             pnlAC.setVisible(false);
             pnlR.setVisible(false);
             pnlVMP.setVisible(false);
-            pnl1.setVisible(false);
+            adminHome.setVisible(false);
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
             pnlRBP.setVisible(false);
@@ -2846,35 +2854,9 @@ public class App extends JFrame implements MouseListener{
             pnlDate.setVisible(false);
         }else if(e.getSource() == btnHourB) {
             pnlHour.setVisible(true);
-            pnlViewAllCar.setVisible(false);
-            pnlBR.setVisible(false);
-            pnlBigOCP.setVisible(false);
-            pnlMR.setVisible(false);
-            pnlCP.setVisible(false);
-            pnlEP.setVisible(false);
-            pnlAC.setVisible(false);
-            pnlR.setVisible(false);
-            pnlVMP.setVisible(false);
-            pnl1.setVisible(false);
-            pnlAdd.setVisible(false);
-            pnlProfile.setVisible(false);
-            pnlRBP.setVisible(false);
             pnlDate.setVisible(false);
         } else if(e.getSource() == btnDateB) {
             pnlDate.setVisible(true);
-            pnlViewAllCar.setVisible(false);
-            pnlBR.setVisible(false);
-            pnlBigOCP.setVisible(false);
-            pnlMR.setVisible(false);
-            pnlCP.setVisible(false);
-            pnlEP.setVisible(false);
-            pnlAC.setVisible(false);
-            pnlR.setVisible(false);
-            pnlVMP.setVisible(false);
-            pnl1.setVisible(false);
-            pnlAdd.setVisible(false);
-            pnlProfile.setVisible(false);
-            pnlRBP.setVisible(false);
             pnlHour.setVisible(false);
         }
         //Button add in add car page
@@ -2949,6 +2931,9 @@ public class App extends JFrame implements MouseListener{
             String start = "";
             String end = "";
 
+            /*if () {
+
+            }*/
             if(pnlHour.isVisible()) {
                 start = txtStartHourB.getText();
                 end = txtEndHourB.getText();
