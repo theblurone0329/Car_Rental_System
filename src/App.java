@@ -808,12 +808,12 @@ public class App extends JFrame implements MouseListener{
         
         //View Booking Request Page
         {
-            txtUserIDBR.setText("U12");
-            txtUserIDBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
-            txtUserIDBR.setForeground(new Color(225,223,186));
-            txtUserIDBR.setBackground(new Color(27, 28, 30));
-            txtUserIDBR.setLocation(260, 235);
-            txtUserIDBR.setSize(150, 26);
+            // txtUserIDBR.setText("U12");
+            // txtUserIDBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
+            // txtUserIDBR.setForeground(new Color(225,223,186));
+            // txtUserIDBR.setBackground(new Color(27, 28, 30));
+            // txtUserIDBR.setLocation(260, 235);
+            // txtUserIDBR.setSize(150, 26);
 
             txtUserNameBR.setText("Adrian_Fu");
             txtUserNameBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
@@ -822,14 +822,14 @@ public class App extends JFrame implements MouseListener{
             txtUserNameBR.setLocation(260, 262);
             txtUserNameBR.setSize(150, 26);
 
-            txtPhoneNumBR.setText("0111234566");
-            txtPhoneNumBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
-            txtPhoneNumBR.setForeground(new Color(225,223,186));
-            txtPhoneNumBR.setBackground(new Color(27, 28, 30));
-            txtPhoneNumBR.setLocation(260, 289);
-            txtPhoneNumBR.setSize(150, 26);
+            // txtPhoneNumBR.setText("0111234566");
+            // txtPhoneNumBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
+            // txtPhoneNumBR.setForeground(new Color(225,223,186));
+            // txtPhoneNumBR.setBackground(new Color(27, 28, 30));
+            // txtPhoneNumBR.setLocation(260, 289);
+            // txtPhoneNumBR.setSize(150, 26);
 
-            txtCarInfoBR.setText("Honda City, VHJ 1023");
+            txtCarInfoBR.setText("Honda City");
             txtCarInfoBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             txtCarInfoBR.setForeground(new Color(225,223,186));
             txtCarInfoBR.setBackground(new Color(27, 28, 30));
@@ -850,12 +850,12 @@ public class App extends JFrame implements MouseListener{
             txtReturnDateBR.setLocation(260, 370);
             txtReturnDateBR.setSize(150, 26);
 
-            lblUserIDBR.setText("User ID: ");
-            lblUserIDBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
-            lblUserIDBR.setForeground(new Color(225,223,186));
-            lblUserIDBR.setBackground(new Color(27, 28, 30));
-            lblUserIDBR.setLocation(110, 235);
-            lblUserIDBR.setSize(150, 26);
+            // lblUserIDBR.setText("User ID: ");
+            // lblUserIDBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
+            // lblUserIDBR.setForeground(new Color(225,223,186));
+            // lblUserIDBR.setBackground(new Color(27, 28, 30));
+            // lblUserIDBR.setLocation(110, 235);
+            // lblUserIDBR.setSize(150, 26);
 
             lblUserNameBR.setText("Username: ");
             lblUserNameBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
@@ -864,14 +864,14 @@ public class App extends JFrame implements MouseListener{
             lblUserNameBR.setLocation(110, 262);
             lblUserNameBR.setSize(150, 26);
 
-            lblPhoneNumBR.setText("Phone Number: ");
-            lblPhoneNumBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
-            lblPhoneNumBR.setForeground(new Color(225,223,186));
-            lblPhoneNumBR.setBackground(new Color(27, 28, 30));
-            lblPhoneNumBR.setLocation(110, 289);
-            lblPhoneNumBR.setSize(150, 26);
+            // lblPhoneNumBR.setText("Phone Number: ");
+            // lblPhoneNumBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
+            // lblPhoneNumBR.setForeground(new Color(225,223,186));
+            // lblPhoneNumBR.setBackground(new Color(27, 28, 30));
+            // lblPhoneNumBR.setLocation(110, 289);
+            // lblPhoneNumBR.setSize(150, 26);
 
-            lblCarInfoBR.setText("Car Information: ");
+            lblCarInfoBR.setText("Car Model: ");
             lblCarInfoBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             lblCarInfoBR.setForeground(new Color(225,223,186));
             lblCarInfoBR.setBackground(new Color(27, 28, 30));
@@ -918,20 +918,69 @@ public class App extends JFrame implements MouseListener{
 
 
             //Table
-            String[] columnsReturn = {"Return ID", "Username", "Status", "Return Date"};
-            String[][] rowsReturn = {{"R01", "Hamid_Karim_123", "Returned", "04-10-2022"}, 
-                                {"R02", "Adrian_Fu", "Not Returned", "N/A"},
-                                {"R02", "Adrian_Fu", "Not Returned", "N/A"},
-                                {"R02", "Adrian_Fu", "Not Returned", "N/A"}, 
-                                {"R02", "Adrian_Fu", "Not Returned", "N/A"}};
+            
+            // String[] columnsReturn = {"Return ID", "Username", "Status", "Return Date"};
+            // String[][] rowsReturn = {{"R01", "Hamid_Karim_123", "Returned", "04-10-2022"}, 
+            //                     {"R02", "Adrian_Fu", "Not Returned", "N/A"},
+            //                     {"R02", "Adrian_Fu", "Not Returned", "N/A"},
+            //                     {"R02", "Adrian_Fu", "Not Returned", "N/A"}, 
+            //                     {"R02", "Adrian_Fu", "Not Returned", "N/A"}};
 
-            tableBR = new JTable(rowsReturn, columnsReturn){
-                public boolean isCellEditable(int rows, int columns) {
-                    return false;
+            // tableBR = new JTable(rowsReturn, columnsReturn){
+            //     public boolean isCellEditable(int rows, int columns) {
+            //         return false;
+            //     }
+            // };
+
+            Object columns[] = {"Username", "Model", "Start Date", "Return Date", "Status"};
+    
+            DefaultTableModel modelBR = new DefaultTableModel(columns,0);
+            tableBR = new JTable();
+            tableBR.setModel(modelBR);
+    
+            List<String> listOfStrings
+            = new ArrayList<String>();
+    
+            try (// load content of file based on specific delimiter
+            Scanner sc = new Scanner(new FileReader("src\\Text Files\\Booking.txt"))
+                            .useDelimiter(", \\s*")) {
+                String str;
+      
+                // checking end of file
+                while (sc.hasNext()) {
+                    str = sc.next();
+                
+                    // adding each string to arraylist
+                    listOfStrings.add(str);
                 }
-            };
+            } catch (FileNotFoundException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+            // convert any arraylist to array
+            try {
+                String[] array = listOfStrings.toArray(new String[0]);
+                modelBR = (DefaultTableModel)tableBR.getModel();
+                for(int i = 0; i < array.length; i++) {
+                    if("Pending".equals(array[i+6])) {
+                        String line = array[i]+"\t"+array[i+1]+"\t"+array[i+2]+"\t"+array[i+3]+"\t"+array[i+6];
+                        String[] dataRow = line.split("\t");
+                        modelBR.addRow(dataRow);
 
-            tableBR.setPreferredScrollableViewportSize(new Dimension(450, 151));
+                        //code for getselected row, display at labels below. but i dont know how to to do the mouse event thing.
+                        //tried the e.getsource and mouse listener thing not workinggg hahahhaa.
+                        // int rowIndex = tableBR.getSelectedRow();
+                        // lblUserNameBR.setText(modelBR.getValueAt(rowIndex, 1).toString());
+                        // lblCarInfoBR.setText(modelBR.getValueAt(rowIndex, 2).toString());
+                        // lblRentDateBR.setText(modelBR.getValueAt(rowIndex,3).toString());
+                        // lblReturnDateBR.setText(modelBR.getValueAt(rowIndex, 4).toString());
+                }
+            }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+            tableBR.setPreferredScrollableViewportSize(new Dimension(390, 151));
             tableBR.setFillsViewportHeight(true);
             tableBR.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
             tableBR.setBackground(new Color(27, 28, 30));
@@ -940,11 +989,12 @@ public class App extends JFrame implements MouseListener{
             tableBR.setFont(new Font("Segoe UI", Font.PLAIN, 13));
             tableBR.setRowHeight(30);
             
-            paneBR = new JScrollPane(tableBR);
+            paneBR = new JScrollPane(tableBR, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             paneBR.setVisible(true);
 
-            tableBRPnl.setSize(450, 145);
+            tableBRPnl.setSize(390, 145);
             tableBRPnl.setLocation(130, 60);
+            tableBRPnl.setBorder(BorderFactory.createLineBorder(new Color(225,223,186)));
             tableBRPnl.add(paneBR);
 
             //Object[] rowReturns = new Object[4];
@@ -993,6 +1043,7 @@ public class App extends JFrame implements MouseListener{
             pnlBR.add(btnCancelBR);
             pnlBR.add(btnAcceptBR);
             pnlBR.add(btnDeclineBR);
+            
         }
 
         //View Car Page

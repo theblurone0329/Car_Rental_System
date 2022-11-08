@@ -1,3 +1,4 @@
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -9,11 +10,17 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.*;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class ViewBookingRequest extends JFrame implements MouseListener{
     public static void main(String[] args) {
@@ -155,18 +162,54 @@ public class ViewBookingRequest extends JFrame implements MouseListener{
 
 
         //Table
-        String[] columnsReturn = {"Return ID", "Username", "Status", "Return Date"};
-        String[][] rowsReturn = {{"R01", "Hamid_Karim_123", "Returned", "04-10-2022"}, 
-                            {"R02", "Adrian_Fu", "Not Returned", "N/A"},
-                            {"R02", "Adrian_Fu", "Not Returned", "N/A"},
-                            {"R02", "Adrian_Fu", "Not Returned", "N/A"}, 
-                            {"R02", "Adrian_Fu", "Not Returned", "N/A"}};
 
-        tableBR = new JTable(rowsReturn, columnsReturn){
-            public boolean isCellEditable(int rows, int columns) {
-                return false;
+        // String[] columnsReturn = {"Return ID", "Username", "Status", "Return Date"};
+        // String[][] rowsReturn = {{"R01", "Hamid_Karim_123", "Returned", "04-10-2022"}, 
+        //                     {"R02", "Adrian_Fu", "Not Returned", "N/A"},
+        //                     {"R02", "Adrian_Fu", "Not Returned", "N/A"},
+        //                     {"R02", "Adrian_Fu", "Not Returned", "N/A"}, 
+        //                     {"R02", "Adrian_Fu", "Not Returned", "N/A"}};
+
+        // tableBR = new JTable(rowsReturn, columnsReturn){
+        //     public boolean isCellEditable(int rows, int columns) {
+        //         return false;
+        //     }
+        // };
+        Object columns[] = {"Username", "Model", "Start Date", "Return Date", "Status"};
+        DefaultTableModel modelBR = new DefaultTableModel(columns,0);
+        tableBR = new JTable();
+        tableBR.setModel(modelBR);
+
+        List<String> listOfStrings
+        = new ArrayList<String>();
+
+        try (// load content of file based on specific delimiter
+        Scanner sc = new Scanner(new FileReader("src\\Text Files\\Booking.txt"))
+                        .useDelimiter(", \\s*")) {
+            String str;
+  
+            // checking end of file
+            while (sc.hasNext()) {
+                str = sc.next();
+            
+                // adding each string to arraylist
+                listOfStrings.add(str);
             }
-        };
+        } catch (FileNotFoundException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        // convert any arraylist to array
+        String[] array
+            = listOfStrings.toArray(new String[0]);
+
+            modelBR = (DefaultTableModel)tableBR.getModel();
+        for(int i = 0; i < array.length; i++) {
+            if("Pending".equals(array[i+6])) {
+                String line = array[i]+"\t"+array[i+1]+"\t"+array[i+2]+"\t"+array[i+3]+"\t"+array[i+6];
+                String[] dataRow = line.split("\t");
+                modelBR.addRow(dataRow);
+            } 
 
         tableBR.setPreferredScrollableViewportSize(new Dimension(450, 151));
         tableBR.setFillsViewportHeight(true);
@@ -176,10 +219,11 @@ public class ViewBookingRequest extends JFrame implements MouseListener{
         tableBR.setFont(new Font("Segoe UI", Font.PLAIN, 13));
         tableBR.setRowHeight(30);
         
-        paneBR = new JScrollPane(tableBR);
+        paneBR = new JScrollPane(tableBR, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
         tableBRPnl.setSize(450, 145);
         tableBRPnl.setLocation(130, 60);
+        tableBRPnl.setBorder(BorderFactory.createLineBorder(new Color(225,223,186)));
         tableBRPnl.add(paneBR);
 
         //Object[] rowReturns = new Object[4];
@@ -232,6 +276,7 @@ public class ViewBookingRequest extends JFrame implements MouseListener{
         this.add(btnCancelBR);
         this.add(btnAcceptBR);
         this.add(btnDeclineBR);
+        }
     }
 
     @Override

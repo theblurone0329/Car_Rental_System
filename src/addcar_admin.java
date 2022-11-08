@@ -329,7 +329,43 @@ public class addcar_admin extends JFrame implements MouseListener{
             txtCarPlateNum.setText("");
             txtCarSeat.setText("");
         }
+        // Object headers[] = { "Car Brand", "CarModel", "Car Plate Number","Car Year","Car Seats"};
+            
+        // //setup table with column, 0 row 
+        // DefaultTableModel model = new DefaultTableModel(headers,0);
+        // tableAC = new JTable();
+        // tableAC.setModel(model);
+
+        // File file = new File("src\\Text Files\\Car.txt");
+        // //import Car.txt data into table 
+        // try {
+        //     BufferedReader br = new BufferedReader(new FileReader(file));
+        //     DefaultTableModel model1 = (DefaultTableModel)tableAC.getModel();
+        //     Object[] tableLines = br.lines().toArray();
+        //     for(int i = 0; i< tableLines.length;i++){
+        //         String line = tableLines[i].toString().trim();
+        //         String[] dataRow = line.split("\t");
+        //         model1.addRow(dataRow);
+        //     }
+        // } catch (FileNotFoundException ex) {
+        //     Logger.getLogger(addcar_admin.class.getName()).log(Level.SEVERE, null, ex);
+        // }
+
+        // tableAC.setPreferredScrollableViewportSize(new Dimension(359, 347));
+        // tableAC.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        // tableAC.setFillsViewportHeight(true);
+        // tableAC.setBackground(new Color(27, 28, 30));
+        // tableAC.setForeground(new Color(225,223,186));
+        // tableAC.setGridColor(new Color(225,223,186));
+        // tableAC.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+        // tableAC.setRowHeight(30);
         
+        // paneAC = new JScrollPane(tableAC, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        // paneAC.setVisible(true);
+
+        // tablePnlAC.setBounds(320, 20, 390, 347);
+        // tablePnlAC.setBorder(BorderFactory.createLineBorder(new Color(225,223,186)));
+        // tablePnlAC.add(paneAC);
     }
 
     @Override
