@@ -40,13 +40,12 @@ public class App extends JFrame implements MouseListener{
 
     }
 
-    //Home Page
-    private JPanel adminHome = new JPanel();
-    private JPanel pnl1Admin = new JPanel();
-    private JPanel pnl2Admin = new JPanel();
-    private JPanel pnl3Admin = new JPanel();
-    private JPanel pnlProfile = new JPanel();
-    private JLabel picCar = new JLabel();
+    //Customer Home Page
+    private JPanel cusHome = new JPanel();
+    private JPanel pnl1Cus = new JPanel();
+    private JPanel pnl2Cus = new JPanel();
+    private JPanel pnl3Cus = new JPanel();
+    private JLabel picCarCus = new JLabel();
     private JLabel picProgBar_0 = new JLabel();
     private JLabel picProgBar_25 = new JLabel();
     private JLabel picProgBar_50 = new JLabel();
@@ -55,6 +54,18 @@ public class App extends JFrame implements MouseListener{
     private JLabel status = new JLabel();
     private JLabel message = new JLabel();
     private JLabel message2 = new JLabel();
+    private JButton btnBookingCus = new JButton();
+    private JButton btnRegistrationCus = new JButton();
+    private JButton btnReportsCus = new JButton();
+    private JButton btnProfileCus = new JButton();
+    private JButton btnHomeCus = new JButton();
+
+    //Admin Home Page
+    private JPanel adminHome = new JPanel();
+    private JPanel pnl1Admin = new JPanel();
+    private JPanel pnl2Admin = new JPanel();
+    private JPanel pnl3Admin = new JPanel();
+    private JLabel picCar = new JLabel();
     private JButton btnBooking = new JButton();
     private JButton btnRegistration = new JButton();
     private JButton btnReports = new JButton();
@@ -62,6 +73,7 @@ public class App extends JFrame implements MouseListener{
     private JButton btnHome = new JButton();
 
     //Profile
+    private JPanel pnlProfile = new JPanel();
     private JLabel lblUsername = new JLabel();
     private JLabel lblEmail = new JLabel();
     private JLabel lblPhoneNum = new JLabel();
@@ -2374,57 +2386,57 @@ public class App extends JFrame implements MouseListener{
             pnlProfile.add(border2);
         }
 
-        //Admin Home Page
+        //Customer Home Page
         {
             //Home icon
-            ImageIcon home = new ImageIcon("src\\Pics\\home.png");
-            btnHome.setIcon(home);
-            btnHome.setBackground(new Color(127, 126, 144));
-            btnHome.setFocusable(false);
-            btnHome.setSize(64, 64);
-            btnHome.setLocation(330, 2);
-            btnHome.setBorder(null);
-            btnHome.addMouseListener(this);
+            ImageIcon homeCus = new ImageIcon("src\\Pics\\home.png");
+            btnHomeCus.setIcon(homeCus);
+            btnHomeCus.setBackground(new Color(127, 126, 144));
+            btnHomeCus.setFocusable(false);
+            btnHomeCus.setSize(64, 64);
+            btnHomeCus.setLocation(330, 2);
+            btnHomeCus.setBorder(null);
+            btnHomeCus.addMouseListener(this);
 
             //Report icon
-            ImageIcon reports = new ImageIcon("src\\Pics\\report.png");
-            btnReports.setIcon(reports);
-            btnReports.setBackground(new Color(127, 126, 144));
-            btnReports.setFocusable(false);
-            btnReports.setSize(64, 64);
-            btnReports.setLocation(490, 2);
-            btnReports.setBorder(null);
-            btnReports.addMouseListener(this);
+            ImageIcon reportsCus = new ImageIcon("src\\Pics\\report.png");
+            btnReportsCus.setIcon(reportsCus);
+            btnReportsCus.setBackground(new Color(127, 126, 144));
+            btnReportsCus.setFocusable(false);
+            btnReportsCus.setSize(64, 64);
+            btnReportsCus.setLocation(490, 2);
+            btnReportsCus.setBorder(null);
+            btnReportsCus.addMouseListener(this);
 
             //Register icon
-            ImageIcon register = new ImageIcon("src\\Pics\\form.png");
-            btnRegistration.setIcon(register);
-            btnRegistration.setBackground(new Color(127, 126, 144));
-            btnRegistration.setFocusable(false);
-            btnRegistration.setSize(64, 64);
-            btnRegistration.setLocation(170, 3);
-            btnRegistration.setBorder(null);
-            btnRegistration.addMouseListener(this);
+            ImageIcon registerCus = new ImageIcon("src\\Pics\\form.png");
+            btnRegistrationCus.setIcon(registerCus);
+            btnRegistrationCus.setBackground(new Color(127, 126, 144));
+            btnRegistrationCus.setFocusable(false);
+            btnRegistrationCus.setSize(64, 64);
+            btnRegistrationCus.setLocation(170, 3);
+            btnRegistrationCus.setBorder(null);
+            btnRegistrationCus.addMouseListener(this);
 
             //Booking icon
-            ImageIcon booking = new ImageIcon("src\\Pics\\online-booking.png");
-            btnBooking.setIcon(booking);
-            btnBooking.setBackground(new Color(127, 126, 144));
-            btnBooking.setFocusable(false);
-            btnBooking.setSize(64, 64);
-            btnBooking.setLocation(20, 7);
-            btnBooking.setBorder(null);
-            btnBooking.addMouseListener(this);
+            ImageIcon bookingCus = new ImageIcon("src\\Pics\\online-booking.png");
+            btnBookingCus.setIcon(bookingCus);
+            btnBookingCus.setBackground(new Color(127, 126, 144));
+            btnBookingCus.setFocusable(false);
+            btnBookingCus.setSize(64, 64);
+            btnBookingCus.setLocation(20, 7);
+            btnBookingCus.setBorder(null);
+            btnBookingCus.addMouseListener(this);
 
             //Profile icon
-            ImageIcon profile = new ImageIcon("src\\Pics\\account.png");
-            btnProfile.setIcon(profile);
-            btnProfile.setBackground(new Color(127, 126, 144));
-            btnProfile.setFocusable(false);
-            btnProfile.setSize(64, 64);
-            btnProfile.setLocation(635, 3);
-            btnProfile.setBorder(null);
-            btnProfile.addMouseListener(this);
+            ImageIcon profileCus = new ImageIcon("src\\Pics\\account.png");
+            btnProfileCus.setIcon(profileCus);
+            btnProfileCus.setBackground(new Color(127, 126, 144));
+            btnProfileCus.setFocusable(false);
+            btnProfileCus.setSize(64, 64);
+            btnProfileCus.setLocation(635, 3);
+            btnProfileCus.setBorder(null);
+            btnProfileCus.addMouseListener(this);
 
             //Message 2
             message2.setText("Head to the booking page to book!");
@@ -2478,6 +2490,105 @@ public class App extends JFrame implements MouseListener{
             picProgBar_100.setLocation(240, 30);
 
             // Car Picture
+            ImageIcon carCus = new ImageIcon("src\\Pics\\Tesla_Model_S_Logo.png");
+            picCarCus.setIcon(carCus);
+            picCarCus.setSize(236, 125);
+            picCarCus.setLocation(5, 70);
+
+            //Rent Progress Panel
+            pnl3Cus.setBackground(new Color(27, 28, 30));
+            pnl3Cus.setBounds(110, 60, 500, 300);
+            pnl3Cus.setLayout(null);
+
+            //Bottom Panel / Menu
+            pnl2Cus.setBackground(new Color(127, 126, 144));
+            pnl2Cus.setLayout(null);
+            pnl2Cus.setBounds(0, 420, 805, 108);
+            pnl2Cus.setVisible(false);
+
+            //Top Panel
+            pnl1Cus.setBackground(new Color(27, 28, 30));
+            pnl1Cus.setLayout(null);
+            pnl1Cus.setBounds(0, 0, 805, 420);
+
+            cusHome.setLayout(null);
+            cusHome.setSize(725, 528);
+            cusHome.setVisible(false);
+            
+            //Add Stuff
+            pnl3Cus.add(status);
+            pnl3Cus.add(picProgBar_100);
+            pnl3Cus.add(picProgBar_75);
+            pnl3Cus.add(picProgBar_50);
+            pnl3Cus.add(picProgBar_25);
+            pnl3Cus.add(picProgBar_0);
+            pnl3Cus.add(picCarCus);
+            pnl1Cus.add(message);
+            pnl1Cus.add(message2);
+            pnl1Cus.add(pnl3Cus);
+            pnl2Cus.add(btnHomeCus);
+            pnl2Cus.add(btnBookingCus);
+            pnl2Cus.add(btnRegistrationCus);
+            pnl2Cus.add(btnReportsCus);
+            pnl2Cus.add(btnProfileCus);
+            
+            //Adding Components to Main Frame
+            cusHome.add(pnl1Cus);
+        }
+
+        //Admin Home Page
+        {
+            //Home icon
+            ImageIcon home = new ImageIcon("src\\Pics\\home.png");
+            btnHome.setIcon(home);
+            btnHome.setBackground(new Color(127, 126, 144));
+            btnHome.setFocusable(false);
+            btnHome.setSize(64, 64);
+            btnHome.setLocation(330, 2);
+            btnHome.setBorder(null);
+            btnHome.addMouseListener(this);
+
+            //Report icon
+            ImageIcon reports = new ImageIcon("src\\Pics\\report.png");
+            btnReports.setIcon(reports);
+            btnReports.setBackground(new Color(127, 126, 144));
+            btnReports.setFocusable(false);
+            btnReports.setSize(64, 64);
+            btnReports.setLocation(490, 2);
+            btnReports.setBorder(null);
+            btnReports.addMouseListener(this);
+
+            //Register icon
+            ImageIcon register = new ImageIcon("src\\Pics\\form.png");
+            btnRegistration.setIcon(register);
+            btnRegistration.setBackground(new Color(127, 126, 144));
+            btnRegistration.setFocusable(false);
+            btnRegistration.setSize(64, 64);
+            btnRegistration.setLocation(170, 3);
+            btnRegistration.setBorder(null);
+            btnRegistration.addMouseListener(this);
+
+            //Booking icon
+            ImageIcon booking = new ImageIcon("src\\Pics\\online-booking.png");
+            btnBooking.setIcon(booking);
+            btnBooking.setBackground(new Color(127, 126, 144));
+            btnBooking.setFocusable(false);
+            btnBooking.setSize(64, 64);
+            btnBooking.setLocation(20, 7);
+            btnBooking.setBorder(null);
+            btnBooking.addMouseListener(this);
+
+            //Profile icon
+            ImageIcon profile = new ImageIcon("src\\Pics\\account.png");
+            btnProfile.setIcon(profile);
+            btnProfile.setBackground(new Color(127, 126, 144));
+            btnProfile.setFocusable(false);
+            btnProfile.setSize(64, 64);
+            btnProfile.setLocation(635, 3);
+            btnProfile.setBorder(null);
+            btnProfile.addMouseListener(this);
+
+            // Car Picture
             ImageIcon car = new ImageIcon("src\\Pics\\Tesla_Model_S_Logo.png");
             picCar.setIcon(car);
             picCar.setSize(236, 125);
@@ -2492,11 +2603,17 @@ public class App extends JFrame implements MouseListener{
             pnl2Admin.setBackground(new Color(127, 126, 144));
             pnl2Admin.setLayout(null);
             pnl2Admin.setBounds(0, 420, 805, 108);
+            pnl2Admin.setVisible(false);
 
             //Top Panel
             pnl1Admin.setBackground(new Color(27, 28, 30));
             pnl1Admin.setLayout(null);
             pnl1Admin.setBounds(0, 0, 805, 420);
+            
+            //Main Panel
+            adminHome.setLayout(null);
+            adminHome.setSize(725, 528);
+            adminHome.setVisible(false);
 
             //Frame
             ImageIcon icon = new ImageIcon("src\\Pics\\Company Logo.png");
@@ -2507,21 +2624,8 @@ public class App extends JFrame implements MouseListener{
             this.setSize(725, 528);
             this.setResizable(false);
             this.setVisible(true);
-
-            adminHome.setLayout(null);
-            adminHome.setSize(725, 528);
-            adminHome.setVisible(true);
             
             //Add Stuff
-            pnl3Admin.add(status);
-            pnl3Admin.add(picProgBar_100);
-            pnl3Admin.add(picProgBar_75);
-            pnl3Admin.add(picProgBar_50);
-            pnl3Admin.add(picProgBar_25);
-            pnl3Admin.add(picProgBar_0);
-            pnl3Admin.add(picCar);
-            pnl1Admin.add(message);
-            pnl1Admin.add(message2);
             pnl1Admin.add(pnl3Admin);
             pnl2Admin.add(btnHome);
             pnl2Admin.add(btnBooking);
@@ -2534,6 +2638,8 @@ public class App extends JFrame implements MouseListener{
         }    
 
         //Pages
+        this.add(pnl2Cus);
+        this.add(cusHome);
         this.add(pnl2Admin);
         this.add(adminHome);
         this.add(pnlRCA);
@@ -2558,6 +2664,20 @@ public class App extends JFrame implements MouseListener{
         picProgBar_75.setVisible(false);
         picProgBar_50.setVisible(false);
         picProgBar_25.setVisible(false);
+
+        String role = user.getRole();
+        if(role.equals("Admin")) {
+            pnl2Admin.setVisible(true);
+            adminHome.setVisible(true);
+            pnl2Cus.setVisible(false);
+            cusHome.setVisible(false);
+        } else {
+            pnl2Admin.setVisible(false);
+            adminHome.setVisible(false);
+            pnl2Cus.setVisible(true);
+            cusHome.setVisible(true);
+            System.out.println("Cus");
+        }
     }
 
     @Override

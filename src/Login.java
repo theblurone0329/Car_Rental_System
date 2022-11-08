@@ -172,7 +172,7 @@ public class Login extends JFrame implements MouseListener{
                     if(pwd.equals(array[i+1])) {
                         System.out.println("Login Successful");
                         this.setVisible(false);
-                        User user1 = new User(user, pwd, array[i+2], array[i+3]);
+                        User user1 = new User(user, pwd, array[i+2], array[i+3], array[i-1]);
                         App hP = new App(user1);
                         hP.setVisible(true);
                         break;
