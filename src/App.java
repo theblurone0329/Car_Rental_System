@@ -105,6 +105,7 @@ public class App extends JFrame implements MouseListener{
     private Border borderVMP = new LineBorder(new Color(225,223,186), 1, true);
 
     //View All Car Page
+    private JPanel pnlBigCar = new JPanel();
     private JLabel pnl1Car = new JLabel();
     private JLabel pnl2Car = new JLabel();
     private JLabel pnl3Car = new JLabel();
@@ -1332,7 +1333,7 @@ public class App extends JFrame implements MouseListener{
             carPicEP.setLocation(300, 140);
 
             //Icon for Username
-            ImageIcon userEP = new ImageIcon("src\\Pics\\user.png");
+            ImageIcon userEP = new ImageIcon("src\\Pics\\user_1.png");
             icnUsernameEP.setIcon(userEP);
             icnUsernameEP.setSize(32, 32);
             icnUsernameEP.setLocation(70, 93);
@@ -1696,7 +1697,7 @@ public class App extends JFrame implements MouseListener{
             icnPasswordR.setLocation(360, 97);
 
             //Icon for Username
-            ImageIcon icnUserR = new ImageIcon("src\\Pics\\user.png");
+            ImageIcon icnUserR = new ImageIcon("src\\Pics\\user_1.png");
             icnUsernameR.setIcon(icnUserR);
             icnUsernameR.setSize(32, 32);
             icnUsernameR.setLocation(85, 97);
@@ -2070,33 +2071,39 @@ public class App extends JFrame implements MouseListener{
             pnl1Car.setSize(394, 160);
             pnl1Car.setLocation(155, 120);
 
+            pnlBigCar.setSize(725, 420);
+            pnlBigCar.setBackground(new Color(27, 28, 30));
+            pnlBigCar.setLayout(null);
+            pnlBigCar.setVisible(false);
+
             pnlViewAllCar.setSize(725, 420);
             pnlViewAllCar.setBackground(new Color(27, 28, 30));
             pnlViewAllCar.setLayout(null);
             pnlViewAllCar.setVisible(false);
 
-            pnlViewAllCar.add(car1);
-            pnlViewAllCar.add(carName1);
-            pnlViewAllCar.add(btn1);
-            pnlViewAllCar.add(seats1);
-            pnlViewAllCar.add(price1);
-            pnlViewAllCar.add(pnl1Car);
-            pnlViewAllCar.add(car2);
-            pnlViewAllCar.add(carName2);
-            pnlViewAllCar.add(btn2);
-            pnlViewAllCar.add(seats2);
-            pnlViewAllCar.add(price2);
-            pnlViewAllCar.add(pnl2Car);
-            pnlViewAllCar.add(separator);
-            pnlViewAllCar.add(seats);
-            pnlViewAllCar.add(txtSeats);
-            pnlViewAllCar.add(separator2);
-            pnlViewAllCar.add(search);
+            pnlBigCar.add(car1);
+            pnlBigCar.add(carName1);
+            pnlBigCar.add(btn1);
+            pnlBigCar.add(seats1);
+            pnlBigCar.add(price1);
+            pnlBigCar.add(pnl1Car);
+            pnlBigCar.add(car2);
+            pnlBigCar.add(carName2);
+            pnlBigCar.add(btn2);
+            pnlBigCar.add(seats2);
+            pnlBigCar.add(price2);
+            pnlBigCar.add(pnl2Car);
+            pnlBigCar.add(separator);
+            pnlBigCar.add(seats);
+            pnlBigCar.add(txtSeats);
+            pnlBigCar.add(separator2);
+            pnlBigCar.add(search);
 
-            //JScrollPane pane = new JScrollPane(panel1, 
-                //JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
-                //JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-            //this.add(pane);
+            JScrollPane paneVAC = new JScrollPane(pnlBigCar, 
+                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
+                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            paneVAC.setVisible(true);
+            pnlViewAllCar.add(paneVAC);
         }
 
         //View Monthly Report Page
@@ -2283,7 +2290,7 @@ public class App extends JFrame implements MouseListener{
             icnEmail.setSize(32, 32);
             icnEmail.setLocation(85, 147);
 
-            ImageIcon icnUser = new ImageIcon("src\\Pics\\user.png");
+            ImageIcon icnUser = new ImageIcon("src\\Pics\\user_1.png");
             icnUsername.setIcon(icnUser);
             icnUsername.setSize(32, 32);
             icnUsername.setLocation(85, 87);
@@ -3010,6 +3017,7 @@ public class App extends JFrame implements MouseListener{
                 for (int i = 0; i < listOfStrings.size(); i++) {
                     if (lblUsernameEP.getText().equals(listOfStrings.get(i))) {
                         
+                        listOfStrings.set(i+1, passwordCP.getText());
 
                         for(int k = 4; k < listOfStrings.size(); k+=5){
                             listOfStrings.set(k, "\n");
