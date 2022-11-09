@@ -585,7 +585,7 @@ public class App extends JFrame implements MouseListener{
             pnlRCA.add(onRentTitleRCA);
         }
         
-        //Booking Page
+        //Booking Page ✅
         {
             //Panel view when btnHourB clicked
             pnlHour.setSize(340, 200);
@@ -806,7 +806,7 @@ public class App extends JFrame implements MouseListener{
             pnlB.add(pnlHour);
         }
         
-        //View Booking Request Page
+        //View Booking Request Page ✅
         {
             // txtUserIDBR.setText("U12");
             // txtUserIDBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
@@ -1046,7 +1046,7 @@ public class App extends JFrame implements MouseListener{
             
         }
 
-        //View Car Page
+        //View Car Page ✅
         {
             //Car Name
             carNameOCP.setText("Tesla Model S");
@@ -1320,7 +1320,7 @@ public class App extends JFrame implements MouseListener{
             pnlMR.add(tablePnlMR);
         }
 
-        //Change Password Page
+        //Change Password Page ✅
         {
             ImageIcon pwdCP = new ImageIcon("src\\Pics\\password.png");
             pwdPicCP.setIcon(pwdCP);
@@ -1402,7 +1402,7 @@ public class App extends JFrame implements MouseListener{
             pnlCP.add(pwdPicCP);
         }
 
-        //Edit Profile Page
+        //Edit Profile Page ✅
         {
             //Car Picture
             ImageIcon carEP = new ImageIcon("src\\Pics\\sport-car.png");
@@ -1474,7 +1474,7 @@ public class App extends JFrame implements MouseListener{
 
             //Txt for Phone No.
             lblPhoneNumEP.setText(user.getPhoneNum());
-            lblPhoneNumEP.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+            lblPhoneNumEP.setFont(new Font("Segoe UI", Font.PLAIN, 16));
             lblPhoneNumEP.setForeground(new Color(225,223,186));
             lblPhoneNumEP.setBackground(new Color(27, 28, 30));
             lblPhoneNumEP.setSize(180,30);
@@ -1489,7 +1489,7 @@ public class App extends JFrame implements MouseListener{
 
             //Txt for Email
             lblEmailEP.setText(user.getEmail());
-            lblEmailEP.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+            lblEmailEP.setFont(new Font("Segoe UI", Font.PLAIN, 16));
             lblEmailEP.setForeground(new Color(225,223,186));
             lblEmailEP.setBackground(new Color(27, 28, 30));
             lblEmailEP.setSize(180,30);
@@ -1504,7 +1504,7 @@ public class App extends JFrame implements MouseListener{
 
             //Txt for Username
             lblUsernameEP.setText(user.getUsername());
-            lblUsernameEP.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+            lblUsernameEP.setFont(new Font("Segoe UI", Font.PLAIN, 16));
             lblUsernameEP.setForeground(new Color(225,223,186));
             lblUsernameEP.setBackground(new Color(27, 28, 30));
             lblUsernameEP.setSize(180,30);
@@ -1540,7 +1540,7 @@ public class App extends JFrame implements MouseListener{
             pnlEP.add(carPicEP);
         }
 
-        //Add Car Admin Page
+        //Add Car Admin Page ✅
         {
             //columns
             Object headers[] = { "Car Brand", "CarModel", "Car Plate Number","Car Year","Car Seats"};
@@ -1754,7 +1754,7 @@ public class App extends JFrame implements MouseListener{
             pnlAC.add(tablePnlAC);
         }
 
-        //Registration Page
+        //Registration Page ✅
         {
             //Icons for Phone No.
             ImageIcon icnPhoneR = new ImageIcon("src\\Pics\\smartphone.png");
@@ -1898,7 +1898,7 @@ public class App extends JFrame implements MouseListener{
             pnlR.add(car2R);
         }
 
-        //View Report or Booking Page
+        //View Report or Booking Page ✅
         {
             separator2RBP.setForeground(new Color(225,223,186));
             separator2RBP.setBackground(new Color(27, 28, 30));
@@ -2284,7 +2284,7 @@ public class App extends JFrame implements MouseListener{
             pnlVMP.add(tablePnl);
         }
 
-        //Add Page
+        //Add Page ✅
         {
             separator1.setForeground(new Color(225,223,186));
             separator1.setBackground(new Color(27, 28, 30));
@@ -2347,7 +2347,7 @@ public class App extends JFrame implements MouseListener{
             pnlAdd.add(separator1);
         }
 
-        //Profile Page
+        //Profile Page ✅
         {
             //Titles for each section
             titleProfile.setText("User Profile");
@@ -2437,7 +2437,7 @@ public class App extends JFrame implements MouseListener{
             pnlProfile.add(border2);
         }
 
-        //Customer Home Page
+        //Customer Home Page ✅
         {
             //Home icon
             ImageIcon homeCus = new ImageIcon("src\\Pics\\home.png");
@@ -2565,7 +2565,7 @@ public class App extends JFrame implements MouseListener{
             cusHome.add(pnl1Cus);
         }
 
-        //Admin Home Page
+        //Admin Home Page ✅
         {
             //Home icon
             ImageIcon home = new ImageIcon("src\\Pics\\home.png");
@@ -3235,6 +3235,58 @@ public class App extends JFrame implements MouseListener{
             lblUsernameEP.setText(lblUsername.getText());
             lblEmailEP.setText(lblEmail.getText());
             lblPhoneNumEP.setText(lblPhoneNum.getText());
+        } else if(e.getSource() == btnChangeEP) {
+            // arraylist to store strings
+            List<String> listOfStrings
+            = new ArrayList<String>();
+
+            try (// load content of file based on specific delimiter
+            Scanner sc = new Scanner(new FileReader("src\\Text Files\\userDetails.txt"))
+                            .useDelimiter(",\\s*")) {
+                String str;
+    
+                // checking end of file
+                while (sc.hasNext()) {
+                    str = sc.next();
+                
+                    // adding each string to arraylist
+                    listOfStrings.add(str);
+                }
+            } catch (FileNotFoundException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+            int index = listOfStrings.indexOf(lblUsername.getText());
+            listOfStrings.set(index, lblUsernameEP.getText());
+            listOfStrings.set(index+2, lblEmailEP.getText());
+            listOfStrings.set(index+3, lblPhoneNumEP.getText());
+
+            for(int k = 5; k < listOfStrings.size(); k+=5){
+                listOfStrings.set(k, "\n");
+            }
+            // convert any arraylist to array
+            String[] array = listOfStrings.toArray(new String[0]);
+
+            try
+            {
+                FileWriter fw = new FileWriter("src\\Text Files\\userDetails.txt");
+                BufferedWriter bw = new BufferedWriter(fw);
+                PrintWriter pw = new PrintWriter(bw);    
+
+                for (int j = 0; j < array.length ; j++)
+                {
+                    pw.write(array[j] + ", ");
+                }
+                pw.close();
+            }
+            catch (Exception f)
+            {
+                f.printStackTrace();
+                System.out.println("No such file exists.");
+            }
+            JOptionPane.showMessageDialog(null, "Profile Details have been changed!", "Profile Change Successful", JOptionPane.INFORMATION_MESSAGE);
+            pnlEP.setVisible(false);
+            pnlProfile.setVisible(true);
         } else if(e.getSource() == btnChangeCP) {
 
             if(passwordCP.getText().equals(confirmPwdCP.getText())) {
@@ -3258,10 +3310,10 @@ public class App extends JFrame implements MouseListener{
                     // TODO Auto-generated catch block
                     e1.printStackTrace();
                 }
-                int index = listOfStrings.indexOf(lblUsernameEP.getText());
+                int index = listOfStrings.indexOf(lblUsername.getText());
                 listOfStrings.set(index+1, passwordCP.getText());
 
-                for(int k = 4; k < listOfStrings.size(); k+=5){
+                for(int k = 5; k < listOfStrings.size(); k+=5){
                     listOfStrings.set(k, "\n");
                 }
                 // convert any arraylist to array

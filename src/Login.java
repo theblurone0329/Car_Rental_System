@@ -17,7 +17,6 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 
 public class Login extends JFrame implements MouseListener{
-
     public static void main(String[] args) {
         new Login();
     }
