@@ -3091,12 +3091,29 @@ public class App extends JFrame implements MouseListener{
             }
 
         } else if(e.getSource()==btnCancelAC){
+            adminHome.setVisible(true);
+            pnlProfile.setVisible(false);
+            pnlAdd.setVisible(false);
+            pnlVMP.setVisible(false);
+            pnlViewAllCar.setVisible(false);
+            pnlRBP.setVisible(false);
+            pnlR.setVisible(false);
+            pnlAC.setVisible(false);
+            pnlEP.setVisible(false);
+            pnlCP.setVisible(false);
+            pnlMR.setVisible(false);
+            pnlBigOCP.setVisible(false);
+            pnlBR.setVisible(false);
+            pnlB.setVisible(false);
+            pnlHour.setVisible(false);
+            pnlDate.setVisible(false);
+            pnlRCA.setVisible(false);
+        }else if(e.getSource()==btnClearAC){
             txtCarBrandAC.setText("");
             txtCarModelAC.setText("");
             txtCarYearAC.setText("");
             txtCarPlateNumAC.setText("");
             txtCarSeatAC.setText("");
-
         } else if(e.getSource() == btnRegisterR) {
             // arraylist to store strings
             List<String> listOfStrings
