@@ -980,7 +980,7 @@ public class App extends JFrame implements MouseListener{
                 e.printStackTrace();
             }
             
-            tableBR.setPreferredScrollableViewportSize(new Dimension(390, 151));
+            tableBR.setPreferredScrollableViewportSize(new Dimension(375, 130));
             tableBR.setFillsViewportHeight(true);
             tableBR.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
             tableBR.setBackground(new Color(27, 28, 30));
@@ -992,8 +992,8 @@ public class App extends JFrame implements MouseListener{
             paneBR = new JScrollPane(tableBR, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             paneBR.setVisible(true);
 
-            tableBRPnl.setSize(390, 145);
-            tableBRPnl.setLocation(130, 60);
+            tableBRPnl.setBounds(140, 60, 395, 165);
+            //tableBRPnl.setLocation(130, 60);
             tableBRPnl.setBorder(BorderFactory.createLineBorder(new Color(225,223,186)));
             tableBRPnl.add(paneBR);
 
