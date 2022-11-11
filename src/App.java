@@ -972,7 +972,7 @@ public class App extends JFrame implements MouseListener{
                 e.printStackTrace();
             }
             
-            tableBR.setPreferredScrollableViewportSize(new Dimension(375, 130));
+            tableBR.setPreferredScrollableViewportSize(new Dimension(375, 1130));
             tableBR.setFillsViewportHeight(true);
             tableBR.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
             tableBR.setBackground(new Color(27, 28, 30));
@@ -1550,7 +1550,7 @@ public class App extends JFrame implements MouseListener{
                 Object[] tableLines = br.lines().toArray();
                 for(int i = 0; i< tableLines.length;i++){
                     String line = tableLines[i].toString().trim();
-                    String[] dataRow = line.split("\t");
+                    String[] dataRow = line.split(" , ");
                     model1.addRow(dataRow);
                 }
             } catch (FileNotFoundException ex) {
@@ -2702,11 +2702,11 @@ public class App extends JFrame implements MouseListener{
 
         //code for getselected row, display at labels below. but i dont know how to to do the mouse event thing.
         //tried the e.getsource and mouse listener thing not workinggg hahahhaa.
-        int rowIndex = tableBR.getSelectedRow();
+        /*int rowIndex = tableBR.getSelectedRow();
         lblUserNameBR.setText(modelBR.getValueAt(rowIndex, 1).toString());
         lblCarInfoBR.setText(modelBR.getValueAt(rowIndex, 2).toString());
         lblRentDateBR.setText(modelBR.getValueAt(rowIndex,3).toString());
-        lblReturnDateBR.setText(modelBR.getValueAt(rowIndex, 4).toString());
+        lblReturnDateBR.setText(modelBR.getValueAt(rowIndex, 4).toString());*/
     }
 
     @Override
@@ -3072,7 +3072,49 @@ public class App extends JFrame implements MouseListener{
             String plate = txtCarPlateNumAC.getText();
             String year = txtCarYearAC.getText();
             String seat = txtCarSeatAC.getText();
-            //add new car into Car.txt and new row into table
+            // arraylist to store strings
+            List<String> listOfStrings
+            = new ArrayList<String>();
+   
+            try (// load content of file based on specific delimiter
+            Scanner sc = new Scanner(new FileReader("src\\Text Files\\Car.txt"))
+                            .useDelimiter(", \\s*")) {
+                String str;
+      
+                // checking end of file
+                while (sc.hasNext()) {
+                    str = sc.next();
+                
+                    // adding each string to arraylist
+                    listOfStrings.add(str);
+                }
+            } catch (FileNotFoundException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+            try
+                {
+                    String[] row = {"\n"+brand,model,plate,year,seat};
+                    FileWriter fw = new FileWriter("src\\Text Files\\Car.txt", true);
+                    BufferedWriter bw = new BufferedWriter(fw);
+                    PrintWriter pw = new PrintWriter(bw);    
+    
+                    for (int i = 0; i < row.length ; i++)
+                    {
+                        pw.write(row[i] + " , ");
+                    }
+                    pw.close();
+                    DefaultTableModel updatedModel = (DefaultTableModel)tableAC.getModel();
+                    updatedModel.addRow(row);
+                    JOptionPane.showMessageDialog(null, "Car Added Successfully!", "Successful", JOptionPane.INFORMATION_MESSAGE);   
+                
+                }
+                catch (Exception f)
+                {
+                    f.printStackTrace();
+                    System.out.println("No such file exists.");
+                }
+            /*add new car into Car.txt and new row into table
             try {
                 FileWriter fw = new FileWriter("src\\Text Files\\Car.txt",true);
                 PrintWriter pw = new PrintWriter(fw);
@@ -3088,7 +3130,7 @@ public class App extends JFrame implements MouseListener{
                 }
             } catch (IOException ex) {
                 Logger.getLogger(addcar_admin.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            }*/
 
         } else if(e.getSource()==btnCancelAC){
             adminHome.setVisible(true);
