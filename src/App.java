@@ -966,14 +966,6 @@ public class App extends JFrame implements MouseListener{
                         String line = array[i]+"\t"+array[i+1]+"\t"+array[i+2]+"\t"+array[i+3]+"\t"+array[i+6];
                         String[] dataRow = line.split("\t");
                         modelBR.addRow(dataRow);
-
-                        //code for getselected row, display at labels below. but i dont know how to to do the mouse event thing.
-                        //tried the e.getsource and mouse listener thing not workinggg hahahhaa.
-                        // int rowIndex = tableBR.getSelectedRow();
-                        // lblUserNameBR.setText(modelBR.getValueAt(rowIndex, 1).toString());
-                        // lblCarInfoBR.setText(modelBR.getValueAt(rowIndex, 2).toString());
-                        // lblRentDateBR.setText(modelBR.getValueAt(rowIndex,3).toString());
-                        // lblReturnDateBR.setText(modelBR.getValueAt(rowIndex, 4).toString());
                 }
             }
             } catch (Exception e) {
@@ -2154,6 +2146,14 @@ public class App extends JFrame implements MouseListener{
             pnlBigCar.setLayout(null);
             pnlBigCar.setVisible(true);
 
+            pnlViewAllCar.setSize(725, 420);
+            pnlViewAllCar.setBackground(new Color(27, 28, 30));
+            pnlViewAllCar.setLayout(null);
+            pnlViewAllCar.setVisible(false);
+
+            JScrollPane paneVAC = new JScrollPane(pnlBigCar, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            paneVAC.setVisible(true);
+
             pnlBigCar.add(car1);
             pnlBigCar.add(carName1);
             pnlBigCar.add(btn1);
@@ -2171,16 +2171,6 @@ public class App extends JFrame implements MouseListener{
             pnlBigCar.add(txtSeats);
             pnlBigCar.add(separator2);
             pnlBigCar.add(search);
-
-            JScrollPane paneVAC = new JScrollPane(pnlBigCar, 
-                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, 
-                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-            paneVAC.setVisible(true);
-
-            pnlViewAllCar.setSize(725, 420);
-            pnlViewAllCar.setBackground(new Color(27, 28, 30));
-            pnlViewAllCar.setLayout(null);
-            pnlViewAllCar.setVisible(false);
 
             pnlViewAllCar.add(paneVAC);
         }
@@ -2709,6 +2699,14 @@ public class App extends JFrame implements MouseListener{
             cusHome.setVisible(true);
             System.out.println("Cus");
         }
+
+        //code for getselected row, display at labels below. but i dont know how to to do the mouse event thing.
+        //tried the e.getsource and mouse listener thing not workinggg hahahhaa.
+        int rowIndex = tableBR.getSelectedRow();
+        lblUserNameBR.setText(modelBR.getValueAt(rowIndex, 1).toString());
+        lblCarInfoBR.setText(modelBR.getValueAt(rowIndex, 2).toString());
+        lblRentDateBR.setText(modelBR.getValueAt(rowIndex,3).toString());
+        lblReturnDateBR.setText(modelBR.getValueAt(rowIndex, 4).toString());
     }
 
     @Override
