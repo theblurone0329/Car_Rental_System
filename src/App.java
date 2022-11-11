@@ -806,7 +806,7 @@ public class App extends JFrame implements MouseListener{
             pnlB.add(pnlHour);
         }
         
-        //View Booking Request Page ✅
+        //View Booking Request Page 
         {
             // txtUserIDBR.setText("U12");
             // txtUserIDBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
@@ -962,7 +962,7 @@ public class App extends JFrame implements MouseListener{
                 String[] array = listOfStrings.toArray(new String[0]);
                 modelBR = (DefaultTableModel)tableBR.getModel();
                 for(int i = 0; i < array.length; i++) {
-                    if("Pending".equals(array[i+6])) {
+                    if(array[i+6].equals("Pending")) {
                         String line = array[i]+"\t"+array[i+1]+"\t"+array[i+2]+"\t"+array[i+3]+"\t"+array[i+6];
                         String[] dataRow = line.split("\t");
                         modelBR.addRow(dataRow);
@@ -2152,36 +2152,37 @@ public class App extends JFrame implements MouseListener{
             pnlBigCar.setSize(725, 420);
             pnlBigCar.setBackground(new Color(27, 28, 30));
             pnlBigCar.setLayout(null);
-            pnlBigCar.setVisible(false);
+            pnlBigCar.setVisible(true);
+
+            pnlBigCar.add(car1);
+            pnlBigCar.add(carName1);
+            pnlBigCar.add(btn1);
+            pnlBigCar.add(seats1);
+            pnlBigCar.add(price1);
+            pnlBigCar.add(pnl1Car);
+            pnlBigCar.add(car2);
+            pnlBigCar.add(carName2);
+            pnlBigCar.add(btn2);
+            pnlBigCar.add(seats2);
+            pnlBigCar.add(price2);
+            pnlBigCar.add(pnl2Car);
+            pnlBigCar.add(separator);
+            pnlBigCar.add(seats);
+            pnlBigCar.add(txtSeats);
+            pnlBigCar.add(separator2);
+            pnlBigCar.add(search);
+
+            JScrollPane paneVAC = new JScrollPane(pnlBigCar, 
+                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, 
+                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            paneVAC.setVisible(true);
 
             pnlViewAllCar.setSize(725, 420);
             pnlViewAllCar.setBackground(new Color(27, 28, 30));
             pnlViewAllCar.setLayout(null);
             pnlViewAllCar.setVisible(false);
 
-            pnlViewAllCar.add(car1);
-            pnlViewAllCar.add(carName1);
-            pnlViewAllCar.add(btn1);
-            pnlViewAllCar.add(seats1);
-            pnlViewAllCar.add(price1);
-            pnlViewAllCar.add(pnl1Car);
-            pnlViewAllCar.add(car2);
-            pnlViewAllCar.add(carName2);
-            pnlViewAllCar.add(btn2);
-            pnlViewAllCar.add(seats2);
-            pnlViewAllCar.add(price2);
-            pnlViewAllCar.add(pnl2Car);
-            pnlViewAllCar.add(separator);
-            pnlViewAllCar.add(seats);
-            pnlViewAllCar.add(txtSeats);
-            pnlViewAllCar.add(separator2);
-            pnlViewAllCar.add(search);
-
-            //JScrollPane paneVAC = new JScrollPane(pnlBigCar, 
-                //JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
-                //JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-            //paneVAC.setVisible(true);
-            //pnlViewAllCar.add(paneVAC);
+            pnlViewAllCar.add(paneVAC);
         }
 
         //View Monthly Report Page
@@ -2205,6 +2206,7 @@ public class App extends JFrame implements MouseListener{
             table.setRowHeight(30);
             
             pane = new JScrollPane(table);
+            pane.setVisible(true);
 
             tablePnl.setBounds(50, 155, 597, 300);
             tablePnl.setBorder(BorderFactory.createLineBorder(new Color(225,223,186)));
