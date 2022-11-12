@@ -55,8 +55,6 @@ public class App extends JFrame implements MouseListener{
     private JLabel message = new JLabel();
     private JLabel message2 = new JLabel();
     private JButton btnBookingCus = new JButton();
-    private JButton btnRegistrationCus = new JButton();
-    private JButton btnReportsCus = new JButton();
     private JButton btnProfileCus = new JButton();
     private JButton btnHomeCus = new JButton();
 
@@ -122,34 +120,18 @@ public class App extends JFrame implements MouseListener{
     private JLabel pnl1Car = new JLabel();
     private JLabel pnl2Car = new JLabel();
     private JLabel pnl3Car = new JLabel();
-    private JLabel pnl4Car = new JLabel();
-    private JLabel pnl5Car = new JLabel();
-    private JLabel pnlBorder1 = new JLabel();
-    private JLabel pnlBorder2 = new JLabel();
-    private JLabel pnlBorder3 = new JLabel();
-    private JLabel pnlBorder4 = new JLabel();
-    private JLabel pnlBorder5 = new JLabel();
     private JLabel car1 = new JLabel();
     private JLabel car2 = new JLabel();
     private JLabel car3 = new JLabel();
-    private JLabel car4 = new JLabel();
-    private JLabel car5 = new JLabel();
     private JLabel carName1 = new JLabel();
     private JLabel carName2 = new JLabel();
     private JLabel carName3 = new JLabel();
-    private JLabel carName4 = new JLabel();
-    private JLabel carName5 = new JLabel();
     private JLabel seats1 = new JLabel();
     private JLabel seats2 = new JLabel();
     private JLabel seats3 = new JLabel();
-    private JLabel seats4 = new JLabel();
-    private JLabel seats5 = new JLabel();
     private JLabel price1 = new JLabel();
     private JLabel price2 = new JLabel();
     private JLabel price3 = new JLabel();
-    private JLabel price4 = new JLabel();
-    private JLabel price5 = new JLabel();
-    private JLabel price = new JLabel();
     private JLabel seats = new JLabel();
     private JTextField txtSeats = new JTextField();
     private JButton btn1 = new JButton();
@@ -366,7 +348,7 @@ public class App extends JFrame implements MouseListener{
     /**
      * @param user
      */
-    App(User user) {
+    App(User user) throws FileNotFoundException {
 
         //Return Car Admin Page
         {
@@ -961,13 +943,14 @@ public class App extends JFrame implements MouseListener{
             try {
                 String[] array = listOfStrings.toArray(new String[0]);
                 modelBR = (DefaultTableModel)tableBR.getModel();
-                for(int i = 0; i < array.length; i++) {
-                    if(array[i+6].equals("Pending")) {
-                        String line = array[i]+"\t"+array[i+1]+"\t"+array[i+2]+"\t"+array[i+3]+"\t"+array[i+6];
+                for(int i = 5; i < array.length; i+=6) {
+                    if(array[i].equals("Pending")) {
+                        String line = array[i-5]+"\t"+array[i-4]+"\t"+array[i-3]+"\t"+array[i-2]+"\t"+array[i-1];
                         String[] dataRow = line.split("\t");
                         modelBR.addRow(dataRow);
+                    }
+                    
                 }
-            }
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -1542,21 +1525,35 @@ public class App extends JFrame implements MouseListener{
             tableAC = new JTable();
             tableAC.setModel(model);
 
-            File file = new File("src\\Text Files\\Car.txt");
-            //import Car.txt data into table 
-            try {
-                BufferedReader br = new BufferedReader(new FileReader(file));
-                DefaultTableModel model1 = (DefaultTableModel)tableAC.getModel();
-                Object[] tableLines = br.lines().toArray();
-                for(int i = 0; i< tableLines.length;i++){
-                    String line = tableLines[i].toString().trim();
-                    String[] dataRow = line.split(" , ");
-                    model1.addRow(dataRow);
+            //File file = new File("src\\Text Files\\Car.txt");
+            // arraylist to store strings
+            List<String> listOfStrings
+            = new ArrayList<String>();
+   
+            try (// load content of file based on specific delimiter
+            Scanner sc = new Scanner(new FileReader("src\\Text Files\\Car.txt"))
+                            .useDelimiter(", \\s*")) {
+                String str;
+      
+                // checking end of file
+                while (sc.hasNext()) {
+                    str = sc.next();
+                
+                    // adding each string to arraylist
+                    listOfStrings.add(str);
                 }
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(addcar_admin.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (FileNotFoundException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
             }
-
+            //BufferedReader br = new BufferedReader(new FileReader(file));
+            DefaultTableModel model1 = (DefaultTableModel)tableAC.getModel();
+            for(int i = 5; i<listOfStrings.size(); i+=5) {
+                Object[] tableLines = {listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), listOfStrings.get(i-1)};
+                listOfStrings.remove(i);
+                model1.addRow(tableLines);
+            }
+        
             tableAC.setPreferredScrollableViewportSize(new Dimension(359, 347));
             tableAC.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
             tableAC.setFillsViewportHeight(true);
@@ -3094,14 +3091,14 @@ public class App extends JFrame implements MouseListener{
             }
             try
                 {
-                    String[] row = {"\n"+brand,model,plate,year,seat};
+                    String[] row = {brand,model,plate,year,seat, "\n"};
                     FileWriter fw = new FileWriter("src\\Text Files\\Car.txt", true);
                     BufferedWriter bw = new BufferedWriter(fw);
                     PrintWriter pw = new PrintWriter(bw);    
     
                     for (int i = 0; i < row.length ; i++)
                     {
-                        pw.write(row[i] + " , ");
+                        pw.write(row[i] + ", ");
                     }
                     pw.close();
                     DefaultTableModel updatedModel = (DefaultTableModel)tableAC.getModel();

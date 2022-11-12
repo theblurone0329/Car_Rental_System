@@ -168,8 +168,15 @@ public class Login extends JFrame implements MouseListener{
                     System.out.println("Login Successful");
                     this.setVisible(false);
                     User user1 = new User(user, pwd, listOfStrings.get(index + 2), listOfStrings.get(index + 3), listOfStrings.get(index - 1));
-                    App hP = new App(user1);
-                    hP.setVisible(true);
+                    App hP;
+                    try {
+                        hP = new App(user1);
+                        hP.setVisible(true);
+                    } catch (FileNotFoundException e1) {
+                        // TODO Auto-generated catch block
+                        e1.printStackTrace();
+                    }
+                    
                 } else {
                     System.out.println("Login Denied Pwd");
                 }
