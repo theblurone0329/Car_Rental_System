@@ -3,9 +3,11 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.*;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -3385,6 +3387,88 @@ public class App extends JFrame implements MouseListener{
             txtCarModel.setText(brand+" "+model);
             txtCarYear.setText(year);
             txtCarSeats.setText(carSeat);
+        } else if(e.getSource() == btnCancelBR){
+            txtUserNameBR.setText("");
+            txtCarInfoBR.setText("");
+            txtStartTimeBR.setText("");
+            txtEndTimeBR.setText("");
+            txtRentDateBR.setText("");
+            txtReturnDateBR.setText("");
+        } else if(e.getSource()== btnAcceptBR){
+            String username = txtUserNameBR.getText();
+            String CarInfo = txtCarInfoBR.getText();
+            String StartTime = txtStartTimeBR.getText();
+            String EndTime = txtEndTimeBR.getText();
+            String RentDate = txtRentDateBR.getText();
+            String ReturnDate = txtReturnDateBR.getText();
+            //username.equals(sc.next())&&(CarInfo.equals(sc.next()))&&(StartTime.equals(sc.next()))&&(EndTime.equals(sc.next()))&&(RentDate.equals(sc.next()))&&(ReturnDate.equals(sc.next()))&&(sc.next().equals("Pending"))
+    
+            if(username.trim().equals("") || CarInfo.trim().equals("") || StartTime.trim().equals("")|| EndTime.trim().equals("") || RentDate.trim().equals("")|| ReturnDate.trim().equals("")){
+                JOptionPane.showMessageDialog(null, "Blank entry detected! please select a row. ", "ERROR", JOptionPane.WARNING_MESSAGE);   
+            }else{
+                List<String> listOfStrings
+                = new ArrayList<String>();
+
+                String tempFile = "temp.txt";
+                File newFile = new File(tempFile);
+        
+                try (// load content of file based on specific delimiter
+ 
+                Scanner sc = new Scanner(new FileReader("src\\Text Files\\Booking.txt"))
+                                .useDelimiter(", \\s*")) {
+                    String str;
+          
+                    // checking end of file
+                    while (sc.hasNext()) {
+                        str = sc.next();
+                    
+                        // adding each string to arraylist
+                        listOfStrings.add(str);
+                    }
+                } catch (FileNotFoundException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
+                for(int i = 7; i<listOfStrings.size(); i+=7) {
+                    try {
+                        FileWriter fw = new FileWriter(tempFile,true);
+                        BufferedWriter bw = new BufferedWriter(fw);
+                        PrintWriter pw = new PrintWriter(bw); 
+                        if((listOfStrings.get(i-7).equals(username))&&
+                        (listOfStrings.get(i-6).equals(CarInfo))&&
+                        (listOfStrings.get(i-5).equals(StartTime))&&
+                        (listOfStrings.get(i-4).equals(EndTime))&&
+                        (listOfStrings.get(i-3).equals(RentDate))&&
+                        (listOfStrings.get(i-2).equals(ReturnDate))&&
+                        (listOfStrings.get(i-1).equals("Pending"))) {
+                        
+                        String [] newLine = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), "Accepted"};
+                        for (int j = 0; j < newLine.length ; j++)
+                        {
+                            pw.println(newLine[j] + ", ");
+                        }
+                    }else{
+                        String [] newLine = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), "Pending"};
+                        for (int j = 0; j < newLine.length ; j++)
+                        {
+                            pw.println(newLine[j] + ", ");
+                        }
+                    }
+                    pw.flush();
+                    pw.close();
+                    String filePath = "Booking.txt";
+                    File fileToDelete = new File(filePath);
+                    fileToDelete.delete();
+                    File dumpFile = new File(filePath);
+                    newFile.renameTo(dumpFile);
+                    }
+                    catch (IOException e1) {
+                        // TODO Auto-generated catch block
+                        e1.printStackTrace();
+                    }
+                        
+            }
+        }
         }
      }
 

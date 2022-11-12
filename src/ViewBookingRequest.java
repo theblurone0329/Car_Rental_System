@@ -281,7 +281,15 @@ public class ViewBookingRequest extends JFrame implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
+        if(e.getSource()==btnCancelBR){
+            txtUserNameBR.setText("");
+            txtCarInfoBR.setText("");
+            // txtStartTimeBR.setText("");
+            // txtEndTimeBR.setText("");
+            txtRentDateBR.setText("");
+            txtReturnDateBR.setText("");
+        }
+
         
     }
 
