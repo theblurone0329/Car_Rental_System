@@ -3414,64 +3414,67 @@ public class App extends JFrame implements MouseListener{
 
                 String tempFile = "temp.txt";
                 File newFile = new File(tempFile);
-        
+                
                 try (// load content of file based on specific delimiter
- 
-                Scanner sc = new Scanner(new FileReader("src\\Text Files\\Booking.txt"))
-                                .useDelimiter(", \\s*")) {
-                    String str;
+
+                    FileWriter fw = new FileWriter(tempFile,true);
+                    BufferedWriter bw = new BufferedWriter(fw);
+                    PrintWriter pw = new PrintWriter(bw); 
+
+                    Scanner sc = new Scanner(new FileReader("src\\Text Files\\Booking.txt"))
+                                    .useDelimiter(", \\s*")) {
           
                     // checking end of file
                     while (sc.hasNext()) {
-                        str = sc.next();
-                    
+                        String str = sc.next();
+                
                         // adding each string to arraylist
                         listOfStrings.add(str);
                     }
-                } catch (FileNotFoundException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }
-                for(int i = 7; i<listOfStrings.size(); i+=7) {
-                    try {
-                        FileWriter fw = new FileWriter(tempFile,true);
-                        BufferedWriter bw = new BufferedWriter(fw);
-                        PrintWriter pw = new PrintWriter(bw); 
+                    for(int i = 7; i<listOfStrings.size(); i+=7) {  //forced to do this way to get distinct data, cus we dont hv unique id for rental.
                         if((listOfStrings.get(i-7).equals(username))&&
                         (listOfStrings.get(i-6).equals(CarInfo))&&
                         (listOfStrings.get(i-5).equals(StartTime))&&
                         (listOfStrings.get(i-4).equals(EndTime))&&
                         (listOfStrings.get(i-3).equals(RentDate))&&
                         (listOfStrings.get(i-2).equals(ReturnDate))&&
-                        (listOfStrings.get(i-1).equals("Pending"))) {
-                        
-                        String [] newLine = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), "Accepted"};
-                        for (int j = 0; j < newLine.length ; j++)
-                        {
-                            pw.println(newLine[j] + ", ");
+                        (listOfStrings.get(i-1).equals("Pending")) ){
+                            String[] array = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), "Accepted","\n"};
+                            listOfStrings.remove(i);
+                            for(int j=0;j < array.length; j++){
+                                pw.write(array[j]+", ");
+                            }
                         }
-                    }else{
-                        String [] newLine = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), "Pending"};
-                        for (int j = 0; j < newLine.length ; j++)
-                        {
-                            pw.println(newLine[j] + ", ");
-                        }
+                        else{
+                            String[] array = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), listOfStrings.get(i-1),"\n"};
+                            listOfStrings.remove(i);
+                            for(int j=0;j < array.length; j++){
+                                pw.write(array[j]+", ");
+                            }
+                            }
                     }
+                    sc.close();
                     pw.flush();
                     pw.close();
-                    String filePath = "Booking.txt";
-                    File fileToDelete = new File(filePath);
-                    fileToDelete.delete();
-                    File dumpFile = new File(filePath);
-                    newFile.renameTo(dumpFile);
+                    try {
+                        String filePath = "src\\Text Files\\Booking.txt";
+                        File fileToDelete = new File(filePath);
+                        fileToDelete.delete();
+                        File dumpFile = new File(filePath);
+                        newFile.renameTo(dumpFile);
+                        JOptionPane.showMessageDialog(null, "The booking accepted!", "Booking Successfull", JOptionPane.INFORMATION_MESSAGE);
+                    } catch (Exception e2) {
+                        e2.printStackTrace();
                     }
-                    catch (IOException e1) {
-                        // TODO Auto-generated catch block
-                        e1.printStackTrace();
-                    }
+
+                } catch (Exception e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
+                }
                         
-            }
-        }
+            
+        
         }
      }
 
