@@ -2,19 +2,14 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.*;
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -116,22 +111,19 @@ public class App extends JFrame implements MouseListener{
     private Border borderVMP = new LineBorder(new Color(225,223,186), 1, true);
 
     //View All Car Page
-    private JPanel pnlBigCar = new JPanel();
-    private JLabel pnl1Car = new JLabel();
-    private JLabel pnl2Car = new JLabel();
-    private JLabel pnl3Car = new JLabel();
-    private JLabel car1 = new JLabel();
-    private JLabel car2 = new JLabel();
-    private JLabel car3 = new JLabel();
-    private JLabel carName1 = new JLabel();
-    private JLabel carName2 = new JLabel();
-    private JLabel carName3 = new JLabel();
-    private JLabel seats1 = new JLabel();
-    private JLabel seats2 = new JLabel();
-    private JLabel seats3 = new JLabel();
-    private JLabel price1 = new JLabel();
-    private JLabel price2 = new JLabel();
-    private JLabel price3 = new JLabel();
+    private JButton btnViewACP = new JButton();
+    private JButton btnLearnMoreACP = new JButton();
+    private JLabel lblCarModel = new JLabel();
+    private JLabel lblCarYear = new JLabel();
+    private JLabel lblCarSeats = new JLabel();
+    private JLabel lblCarPrice = new JLabel();
+    private JLabel txtCarModel = new JLabel();
+    private JLabel txtCarYear = new JLabel();
+    private JLabel txtCarSeats = new JLabel();
+    private JLabel txtCarPrice = new JLabel();
+    private JPanel tablePnlACP = new JPanel();
+    private JScrollPane paneACP = new JScrollPane();
+    private JTable tableA = new JTable();
     private JLabel seats = new JLabel();
     private JTextField txtSeats = new JTextField();
     private JButton btn1 = new JButton();
@@ -146,8 +138,7 @@ public class App extends JFrame implements MouseListener{
     ImageIcon pnl = new ImageIcon("src\\Pics\\pnl.png");
     ImageIcon pricePic = new ImageIcon("src\\Pics\\price-tag (1).png");
     ImageIcon seat = new ImageIcon("src\\Pics\\car-seat (1).png");
-    private Border borderCar = new LineBorder(new Color(27, 28, 30), 4, true);
-
+    
     //RBP Page
     private JPanel pnlRBP = new JPanel();
     private JPanel pnlLeftRBP = new JPanel();
@@ -276,13 +267,15 @@ public class App extends JFrame implements MouseListener{
     private JSeparator separator1BR = new JSeparator();
     private JLabel lblUserIDBR = new JLabel();
     private JLabel lblUserNameBR = new JLabel();
-    private JLabel lblPhoneNumBR = new JLabel();
+    private JLabel lblStartTimeBR = new JLabel();
+    private JLabel lblEndTimeBR = new JLabel();
     private JLabel lblCarInfoBR = new JLabel();
     private JLabel lblRentDateBR = new JLabel();
     private JLabel lblReturnDateBR = new JLabel();
     private JLabel txtUserIDBR = new JLabel();
     private JLabel txtUserNameBR = new JLabel();
-    private JLabel txtPhoneNumBR = new JLabel();
+    private JLabel txtStartTimeBR = new JLabel();
+    private JLabel txtEndTimeBR = new JLabel();
     private JLabel txtCarInfoBR = new JLabel();
     private JLabel txtRentDateBR = new JLabel();
     private JLabel txtReturnDateBR = new JLabel();
@@ -730,7 +723,7 @@ public class App extends JFrame implements MouseListener{
             separator1B.setLocation(120, 137);
     
             //Car Model txt Box
-            txtCarModelB.setText("Tesla Model S");
+            txtCarModelB.setText("Car Model");
             txtCarModelB.setFont(new Font("Segoe UI", Font.PLAIN, 14));
             txtCarModelB.setForeground(new Color(225,223,186));
             txtCarModelB.setBackground(new Color(27, 28, 30));
@@ -790,88 +783,88 @@ public class App extends JFrame implements MouseListener{
         
         //View Booking Request Page 
         {
-            // txtUserIDBR.setText("U12");
-            // txtUserIDBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
-            // txtUserIDBR.setForeground(new Color(225,223,186));
-            // txtUserIDBR.setBackground(new Color(27, 28, 30));
-            // txtUserIDBR.setLocation(260, 235);
-            // txtUserIDBR.setSize(150, 26);
-
             txtUserNameBR.setText("Adrian_Fu");
             txtUserNameBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             txtUserNameBR.setForeground(new Color(225,223,186));
             txtUserNameBR.setBackground(new Color(27, 28, 30));
-            txtUserNameBR.setLocation(260, 262);
+            txtUserNameBR.setLocation(260, 230);
             txtUserNameBR.setSize(150, 26);
 
-            // txtPhoneNumBR.setText("0111234566");
-            // txtPhoneNumBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
-            // txtPhoneNumBR.setForeground(new Color(225,223,186));
-            // txtPhoneNumBR.setBackground(new Color(27, 28, 30));
-            // txtPhoneNumBR.setLocation(260, 289);
-            // txtPhoneNumBR.setSize(150, 26);
+            txtStartTimeBR.setText("07:00");
+            txtStartTimeBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
+            txtStartTimeBR.setForeground(new Color(225,223,186));
+            txtStartTimeBR.setBackground(new Color(27, 28, 30));
+            txtStartTimeBR.setLocation(260, 296);
+            txtStartTimeBR.setSize(150, 26);
+
+            txtStartTimeBR.setText("17:00");
+            txtStartTimeBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
+            txtStartTimeBR.setForeground(new Color(225,223,186));
+            txtStartTimeBR.setBackground(new Color(27, 28, 30));
+            txtStartTimeBR.setLocation(260, 329);
+            txtStartTimeBR.setSize(150, 26);
 
             txtCarInfoBR.setText("Honda City");
             txtCarInfoBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             txtCarInfoBR.setForeground(new Color(225,223,186));
             txtCarInfoBR.setBackground(new Color(27, 28, 30));
-            txtCarInfoBR.setLocation(260, 316);
+            txtCarInfoBR.setLocation(260, 263);
             txtCarInfoBR.setSize(150, 26);
 
             txtRentDateBR.setText("12-09-2022");
             txtRentDateBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             txtRentDateBR.setForeground(new Color(225,223,186));
             txtRentDateBR.setBackground(new Color(27, 28, 30));
-            txtRentDateBR.setLocation(260, 343);
+            txtRentDateBR.setLocation(260, 362);
             txtRentDateBR.setSize(150, 26);
 
             txtReturnDateBR.setText("13-09-2022");
             txtReturnDateBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             txtReturnDateBR.setForeground(new Color(225,223,186));
             txtReturnDateBR.setBackground(new Color(27, 28, 30));
-            txtReturnDateBR.setLocation(260, 370);
+            txtReturnDateBR.setLocation(260, 393);
             txtReturnDateBR.setSize(150, 26);
-
-            // lblUserIDBR.setText("User ID: ");
-            // lblUserIDBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
-            // lblUserIDBR.setForeground(new Color(225,223,186));
-            // lblUserIDBR.setBackground(new Color(27, 28, 30));
-            // lblUserIDBR.setLocation(110, 235);
-            // lblUserIDBR.setSize(150, 26);
 
             lblUserNameBR.setText("Username: ");
             lblUserNameBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             lblUserNameBR.setForeground(new Color(225,223,186));
             lblUserNameBR.setBackground(new Color(27, 28, 30));
-            lblUserNameBR.setLocation(110, 262);
+            lblUserNameBR.setLocation(110, 230);
             lblUserNameBR.setSize(150, 26);
 
-            // lblPhoneNumBR.setText("Phone Number: ");
-            // lblPhoneNumBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
-            // lblPhoneNumBR.setForeground(new Color(225,223,186));
-            // lblPhoneNumBR.setBackground(new Color(27, 28, 30));
-            // lblPhoneNumBR.setLocation(110, 289);
-            // lblPhoneNumBR.setSize(150, 26);
+            lblStartTimeBR.setText("Start Time: ");
+            lblStartTimeBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
+            lblStartTimeBR.setForeground(new Color(225,223,186));
+            lblStartTimeBR.setBackground(new Color(27, 28, 30));
+            lblStartTimeBR.setLocation(110, 296);
+            lblStartTimeBR.setSize(150, 26);
+
+            lblEndTimeBR.setText("End Time: ");
+            lblEndTimeBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
+            lblEndTimeBR.setForeground(new Color(225,223,186));
+            lblEndTimeBR.setBackground(new Color(27, 28, 30));
+            lblEndTimeBR.setLocation(110, 329);
+            lblEndTimeBR.setSize(150, 26);
 
             lblCarInfoBR.setText("Car Model: ");
             lblCarInfoBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             lblCarInfoBR.setForeground(new Color(225,223,186));
             lblCarInfoBR.setBackground(new Color(27, 28, 30));
-            lblCarInfoBR.setLocation(110, 316);
+            lblCarInfoBR.setLocation(110, 263);
             lblCarInfoBR.setSize(150, 26);
 
             lblRentDateBR.setText("Rental Date: ");
             lblRentDateBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             lblRentDateBR.setForeground(new Color(225,223,186));
             lblRentDateBR.setBackground(new Color(27, 28, 30));
-            lblRentDateBR.setLocation(110, 343);
+            lblRentDateBR.setLocation(110, 362);
             lblRentDateBR.setSize(150, 26);
 
             lblReturnDateBR.setText("Return Date: ");
             lblReturnDateBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             lblReturnDateBR.setForeground(new Color(225,223,186));
             lblReturnDateBR.setBackground(new Color(27, 28, 30));
-            lblReturnDateBR.setLocation(110, 370);
+            lblReturnDateBR.setLocation(110, 393);
             lblReturnDateBR.setSize(150, 26);
 
             btnCancelBR.setText("Cancel");
@@ -898,24 +891,8 @@ public class App extends JFrame implements MouseListener{
             btnAcceptBR.setSize(80, 26);
             btnAcceptBR.setBorder(borderBR);
 
+            Object columns[] = {"Username", "Model", "Start Time", "End Time", "Start Date", "Return Date", "Status"};
 
-            //Table
-            
-            // String[] columnsReturn = {"Return ID", "Username", "Status", "Return Date"};
-            // String[][] rowsReturn = {{"R01", "Hamid_Karim_123", "Returned", "04-10-2022"}, 
-            //                     {"R02", "Adrian_Fu", "Not Returned", "N/A"},
-            //                     {"R02", "Adrian_Fu", "Not Returned", "N/A"},
-            //                     {"R02", "Adrian_Fu", "Not Returned", "N/A"}, 
-            //                     {"R02", "Adrian_Fu", "Not Returned", "N/A"}};
-
-            // tableBR = new JTable(rowsReturn, columnsReturn){
-            //     public boolean isCellEditable(int rows, int columns) {
-            //         return false;
-            //     }
-            // };
-
-            Object columns[] = {"Username", "Model", "Start Date", "Return Date", "Status"};
-    
             DefaultTableModel modelBR = new DefaultTableModel(columns,0);
             tableBR = new JTable();
             tableBR.setModel(modelBR);
@@ -939,23 +916,18 @@ public class App extends JFrame implements MouseListener{
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
-            // convert any arraylist to array
-            try {
-                String[] array = listOfStrings.toArray(new String[0]);
-                modelBR = (DefaultTableModel)tableBR.getModel();
-                for(int i = 5; i < array.length; i+=6) {
-                    if(array[i].equals("Pending")) {
-                        String line = array[i-5]+"\t"+array[i-4]+"\t"+array[i-3]+"\t"+array[i-2]+"\t"+array[i-1];
-                        String[] dataRow = line.split("\t");
-                        modelBR.addRow(dataRow);
-                    }
-                    
+            //BufferedReader br = new BufferedReader(new FileReader(file));
+            DefaultTableModel modelBR1 = (DefaultTableModel)tableBR.getModel();
+            for(int i = 7; i<listOfStrings.size(); i+=7) {
+                if(listOfStrings.get(i-1).equals("Pending")) {
+                    Object[] tableLines = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), listOfStrings.get(i-1)};
+                    listOfStrings.remove(i);
+                    modelBR1.addRow(tableLines);
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+                
             }
             
-            tableBR.setPreferredScrollableViewportSize(new Dimension(375, 1130));
+            tableBR.setPreferredScrollableViewportSize(new Dimension(535, 165));
             tableBR.setFillsViewportHeight(true);
             tableBR.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
             tableBR.setBackground(new Color(27, 28, 30));
@@ -964,11 +936,10 @@ public class App extends JFrame implements MouseListener{
             tableBR.setFont(new Font("Segoe UI", Font.PLAIN, 13));
             tableBR.setRowHeight(30);
             
-            paneBR = new JScrollPane(tableBR, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            paneBR = new JScrollPane(tableBR, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             paneBR.setVisible(true);
 
-            tableBRPnl.setBounds(140, 60, 395, 165);
-            //tableBRPnl.setLocation(130, 60);
+            tableBRPnl.setBounds(90, 60, 555, 165);
             tableBRPnl.setBorder(BorderFactory.createLineBorder(new Color(225,223,186)));
             tableBRPnl.add(paneBR);
 
@@ -1005,13 +976,15 @@ public class App extends JFrame implements MouseListener{
             pnlBR.add(tableBRPnl);
             pnlBR.add(lblUserIDBR);
             pnlBR.add(lblUserNameBR);
-            pnlBR.add(lblPhoneNumBR);
+            pnlBR.add(lblStartTimeBR);
+            pnlBR.add(lblEndTimeBR);
             pnlBR.add(lblCarInfoBR);
             pnlBR.add(lblRentDateBR);
             pnlBR.add(lblReturnDateBR);
             pnlBR.add(txtUserIDBR);
             pnlBR.add(txtUserNameBR);
-            pnlBR.add(txtPhoneNumBR);
+            pnlBR.add(txtStartTimeBR);
+            pnlBR.add(txtEndTimeBR);
             pnlBR.add(txtCarInfoBR);
             pnlBR.add(txtRentDateBR);
             pnlBR.add(txtReturnDateBR);
@@ -1525,7 +1498,6 @@ public class App extends JFrame implements MouseListener{
             tableAC = new JTable();
             tableAC.setModel(model);
 
-            //File file = new File("src\\Text Files\\Car.txt");
             // arraylist to store strings
             List<String> listOfStrings
             = new ArrayList<String>();
@@ -1569,8 +1541,6 @@ public class App extends JFrame implements MouseListener{
             tablePnlAC.setBounds(320, 20, 390, 347);
             tablePnlAC.setBorder(BorderFactory.createLineBorder(new Color(225,223,186)));
             tablePnlAC.add(paneAC);
-
-            //Object[] rowReturns = new Object[4];
 
             //Add Button
             btnAddAC.setText("Add");
@@ -1981,6 +1951,144 @@ public class App extends JFrame implements MouseListener{
 
         //View All Car Page
         {
+            //columns
+            Object headersA[] = {"Car Brand", "CarModel", "Car Year", "Car Seats"};
+            
+            //setup table with column, 0 row 
+            DefaultTableModel modelA = new DefaultTableModel(headersA,0);
+            tableA = new JTable();
+            tableA.setModel(modelA);
+
+            // arraylist to store strings
+            List<String> listOfStrings
+            = new ArrayList<String>();
+   
+            try (// load content of file based on specific delimiter
+            Scanner sc = new Scanner(new FileReader("src\\Text Files\\Car.txt"))
+                            .useDelimiter(", \\s*")) {
+                String str;
+      
+                // checking end of file
+                while (sc.hasNext()) {
+                    str = sc.next();
+                
+                    // adding each string to arraylist
+                    listOfStrings.add(str);
+                }
+            } catch (FileNotFoundException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+            //BufferedReader br = new BufferedReader(new FileReader(file));
+            DefaultTableModel modelA1 = (DefaultTableModel)tableA.getModel();
+            for(int i = 5; i<listOfStrings.size(); i+=5) {
+                Object[] tableLines = {listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-2), listOfStrings.get(i-1)};
+                listOfStrings.remove(i);
+                modelA1.addRow(tableLines);
+            }
+        
+            tableA.setPreferredScrollableViewportSize(new Dimension(359, 317));
+            tableA.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+            tableA.setFillsViewportHeight(true);
+            tableA.setBackground(new Color(27, 28, 30));
+            tableA.setForeground(new Color(225,223,186));
+            tableA.setGridColor(new Color(225,223,186));
+            tableA.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+            tableA.setRowHeight(30);
+            
+            paneACP = new JScrollPane(tableA, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            paneACP.setVisible(true);
+
+            tablePnlACP.setBounds(300, 90, 390, 317);
+            tablePnlACP.setBorder(BorderFactory.createLineBorder(new Color(225,223,186)));
+            tablePnlACP.add(paneACP);
+
+            //Cancel Button
+            btnViewACP.setText("View");
+            btnViewACP.setSize(90, 37);
+            btnViewACP.setLocation(25, 340);
+            btnViewACP.setForeground(new Color(225,223,186));
+            btnViewACP.setBackground(new Color(27, 28, 30));
+            btnViewACP.setBorder(borderAC);
+            btnViewACP.setFont(new Font("TW Cen MT", Font.BOLD, 15));
+            btnViewACP.setFocusable(false);
+            btnViewACP.addMouseListener(this);
+            
+            //Clear Button
+            btnLearnMoreACP.setText("Learn More");
+            btnLearnMoreACP.setSize(90, 37);
+            btnLearnMoreACP.setLocation(125, 340);
+            btnLearnMoreACP.setForeground(new Color(225,223,186));
+            btnLearnMoreACP.setBackground(new Color(27, 28, 30));
+            btnLearnMoreACP.setBorder(borderAC);
+            btnLearnMoreACP.setFont(new Font("TW Cen MT", Font.BOLD, 15));
+            btnLearnMoreACP.setFocusable(false);
+            btnLearnMoreACP.addMouseListener(this);
+
+            lblCarModel.setText("Car Model: ");
+            lblCarModel.setSize(120, 30);
+            lblCarModel.setBorder(null);
+            lblCarModel.setForeground(new Color(225,223,186));
+            lblCarModel.setBackground(new Color(27, 28, 30));
+            lblCarModel.setFont(new Font("TW Cen MT", Font.BOLD, 18));
+            lblCarModel.setLocation(25, 100);
+
+            lblCarYear.setText("Car Year: ");
+            lblCarYear.setSize(120, 30);
+            lblCarYear.setBorder(null);
+            lblCarYear.setForeground(new Color(225,223,186));
+            lblCarYear.setBackground(new Color(27, 28, 30));
+            lblCarYear.setFont(new Font("TW Cen MT", Font.BOLD, 18));
+            lblCarYear.setLocation(25, 160);
+
+            lblCarSeats.setText("Car Seats: ");
+            lblCarSeats.setSize(120, 30);
+            lblCarSeats.setBorder(null);
+            lblCarSeats.setForeground(new Color(225,223,186));
+            lblCarSeats.setBackground(new Color(27, 28, 30));
+            lblCarSeats.setFont(new Font("TW Cen MT", Font.BOLD, 18));
+            lblCarSeats.setLocation(25, 220);
+
+            lblCarPrice.setText("Price/Hr: ");
+            lblCarPrice.setSize(120, 30);
+            lblCarPrice.setBorder(null);
+            lblCarPrice.setForeground(new Color(225,223,186));
+            lblCarPrice.setBackground(new Color(27, 28, 30));
+            lblCarPrice.setFont(new Font("TW Cen MT", Font.BOLD, 18));
+            lblCarPrice.setLocation(25, 280);
+
+            txtCarModel.setText(" ");
+            txtCarModel.setSize(120, 30);
+            txtCarModel.setBorder(null);
+            txtCarModel.setForeground(new Color(225,223,186));
+            txtCarModel.setBackground(new Color(27, 28, 30));
+            txtCarModel.setFont(new Font("TW Cen MT", Font.BOLD, 18));
+            txtCarModel.setLocation(150, 100);
+
+            txtCarYear.setText(" ");
+            txtCarYear.setSize(120, 30);
+            txtCarYear.setBorder(null);
+            txtCarYear.setForeground(new Color(225,223,186));
+            txtCarYear.setBackground(new Color(27, 28, 30));
+            txtCarYear.setFont(new Font("TW Cen MT", Font.BOLD, 18));
+            txtCarYear.setLocation(150, 160);
+
+            txtCarSeats.setText(" ");
+            txtCarSeats.setSize(120, 30);
+            txtCarSeats.setBorder(null);
+            txtCarSeats.setForeground(new Color(225,223,186));
+            txtCarSeats.setBackground(new Color(27, 28, 30));
+            txtCarSeats.setFont(new Font("TW Cen MT", Font.BOLD, 18));
+            txtCarSeats.setLocation(150, 220);
+
+            txtCarPrice.setText("Price/Hr: ");
+            txtCarPrice.setSize(120, 30);
+            txtCarPrice.setBorder(null);
+            txtCarPrice.setForeground(new Color(225,223,186));
+            txtCarPrice.setBackground(new Color(27, 28, 30));
+            txtCarPrice.setFont(new Font("TW Cen MT", Font.BOLD, 18));
+            txtCarPrice.setLocation(150, 280);
+
             ImageIcon searchPic = new ImageIcon("src\\Pics\\magnifier.png");
             search.setIcon(searchPic);
             search.setSize(32, 32);
@@ -2014,162 +2122,27 @@ public class App extends JFrame implements MouseListener{
             separator.setSize(725, 17);
             separator.setLocation(0, 80);
 
-            //Third Car Panel
-            btn3.setText("Learn More!");
-            btn3.setForeground(new Color(27, 28, 30));
-            btn3.setBackground(new Color(127, 126, 144));
-            btn3.setFont(new Font("TW Cen MT", Font.BOLD, 18));
-            btn3.setFocusable(false);
-            btn3.setSize(110, 35);
-            btn3.setLocation(405, 575);
-            btn3.setBorder(borderCar);
-            btn3.addMouseListener(this);
-            
-            price3.setIcon(pricePic);
-            price3.setText("RM 24/hr");
-            price3.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-            price3.setForeground(new Color(27, 28, 30));
-            price3.setSize(140, 32);
-            price3.setLocation(410, 500);
-
-            seats3.setIcon(seat);
-            seats3.setText("4");
-            seats3.setFont(new Font("Segoe UI", Font.PLAIN, 20));
-            seats3.setForeground(new Color(27, 28, 30));
-            seats3.setSize(50, 32);
-            seats3.setLocation(410, 535);
-
-            carName3.setText("Tesla Model S");
-            carName3.setForeground(new Color(27, 28, 30));
-            carName3.setBackground(new Color(127, 126, 144));
-            carName3.setFont(new Font("Segoe UI", Font.BOLD, 26));
-            carName3.setSize(180, 30);
-            carName3.setLocation(190, 571);
-
-            ImageIcon car3Pic = new ImageIcon("src\\Pics\\Tesla_Model_S_Logo.png");
-            car3.setIcon(car3Pic);
-            car3.setSize(241, 121);
-            car3.setLocation(170, 470);
-
-            pnl3Car.setIcon(pnl);
-            pnl3Car.setSize(394, 160);
-            pnl3Car.setLocation(155, 470);
-
-            //Second Car Panel
-            btn2.setText("Learn More!");
-            btn2.setForeground(new Color(27, 28, 30));
-            btn2.setBackground(new Color(127, 126, 144));
-            btn2.setFont(new Font("TW Cen MT", Font.BOLD, 18));
-            btn2.setFocusable(false);
-            btn2.setSize(110, 35);
-            btn2.setLocation(405, 420);
-            btn2.setBorder(borderCar);
-            btn2.addMouseListener(this);
-            
-            price2.setIcon(pricePic);
-            price2.setText("RM 24/hr");
-            price2.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-            price2.setForeground(new Color(27, 28, 30));
-            price2.setSize(140, 32);
-            price2.setLocation(410, 345);
-
-            seats2.setIcon(seat);
-            seats2.setText("4");
-            seats2.setFont(new Font("Segoe UI", Font.PLAIN, 20));
-            seats2.setForeground(new Color(27, 28, 30));
-            seats2.setSize(50, 32);
-            seats2.setLocation(410, 380);
-
-            carName2.setText("Tesla Model S");
-            carName2.setForeground(new Color(27, 28, 30));
-            carName2.setBackground(new Color(127, 126, 144));
-            carName2.setFont(new Font("Segoe UI", Font.BOLD, 26));
-            carName2.setSize(180, 30);
-            carName2.setLocation(190, 416);
-
-            ImageIcon car2Pic = new ImageIcon("src\\Pics\\Tesla_Model_S_Logo.png");
-            car2.setIcon(car2Pic);
-            car2.setSize(241, 121);
-            car2.setLocation(170, 285);
-
-            pnl2Car.setIcon(pnl);
-            pnl2Car.setSize(394, 160);
-            pnl2Car.setLocation(155, 315);
-
-            //First Car Panel
-            btn1.setText("Learn More!");
-            btn1.setForeground(new Color(27, 28, 30));
-            btn1.setBackground(new Color(127, 126, 144));
-            btn1.setFont(new Font("TW Cen MT", Font.BOLD, 18));
-            btn1.setFocusable(false);
-            btn1.setSize(110, 35);
-            btn1.setLocation(405, 225);
-            btn1.setBorder(borderCar);
-            btn1.addMouseListener(this);
-            
-            price1.setIcon(pricePic);
-            price1.setText("RM 24/hr");
-            price1.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-            price1.setForeground(new Color(27, 28, 30));
-            price1.setSize(140, 32);
-            price1.setLocation(410, 150);
-
-            seats1.setIcon(seat);
-            seats1.setText("4");
-            seats1.setFont(new Font("Segoe UI", Font.PLAIN, 20));
-            seats1.setForeground(new Color(27, 28, 30));
-            seats1.setSize(50, 32);
-            seats1.setLocation(410, 185);
-
-            carName1.setText("Tesla Model S");
-            carName1.setForeground(new Color(27, 28, 30));
-            carName1.setBackground(new Color(127, 126, 144));
-            carName1.setFont(new Font("Segoe UI", Font.BOLD, 26));
-            carName1.setSize(180, 30);
-            carName1.setLocation(190, 221);
-
-            ImageIcon car1Pic = new ImageIcon("src\\Pics\\Tesla_Model_S_Logo.png");
-            car1.setIcon(car1Pic);
-            car1.setSize(241, 121);
-            car1.setLocation(170, 90);
-
-            ImageIcon pnl = new ImageIcon("src\\Pics\\pnl.png");
-            pnl1Car.setIcon(pnl);
-            pnl1Car.setSize(394, 160);
-            pnl1Car.setLocation(155, 120);
-
-            pnlBigCar.setSize(725, 420);
-            pnlBigCar.setBackground(new Color(27, 28, 30));
-            pnlBigCar.setLayout(null);
-            pnlBigCar.setVisible(true);
-
             pnlViewAllCar.setSize(725, 420);
             pnlViewAllCar.setBackground(new Color(27, 28, 30));
             pnlViewAllCar.setLayout(null);
             pnlViewAllCar.setVisible(false);
 
-            JScrollPane paneVAC = new JScrollPane(pnlBigCar, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-            paneVAC.setVisible(true);
-
-            pnlBigCar.add(car1);
-            pnlBigCar.add(carName1);
-            pnlBigCar.add(btn1);
-            pnlBigCar.add(seats1);
-            pnlBigCar.add(price1);
-            pnlBigCar.add(pnl1Car);
-            pnlBigCar.add(car2);
-            pnlBigCar.add(carName2);
-            pnlBigCar.add(btn2);
-            pnlBigCar.add(seats2);
-            pnlBigCar.add(price2);
-            pnlBigCar.add(pnl2Car);
-            pnlBigCar.add(separator);
-            pnlBigCar.add(seats);
-            pnlBigCar.add(txtSeats);
-            pnlBigCar.add(separator2);
-            pnlBigCar.add(search);
-
-            pnlViewAllCar.add(paneVAC);
+            pnlViewAllCar.add(separator);
+            pnlViewAllCar.add(seats);
+            pnlViewAllCar.add(txtSeats);
+            pnlViewAllCar.add(separator2);
+            pnlViewAllCar.add(search);
+            pnlViewAllCar.add(tablePnlACP);
+            pnlViewAllCar.add(lblCarModel);
+            pnlViewAllCar.add(lblCarYear);
+            pnlViewAllCar.add(lblCarSeats);
+            pnlViewAllCar.add(lblCarPrice);
+            pnlViewAllCar.add(txtCarModel);
+            pnlViewAllCar.add(txtCarYear);
+            pnlViewAllCar.add(txtCarSeats);
+            pnlViewAllCar.add(txtCarPrice);
+            pnlViewAllCar.add(btnViewACP);
+            pnlViewAllCar.add(btnLearnMoreACP);
         }
 
         //View Monthly Report Page
@@ -3019,7 +2992,8 @@ public class App extends JFrame implements MouseListener{
             pnlDate.setVisible(false);
             pnlRCA.setVisible(false);
         } //Back Button in View one Car Page
-        else if(e.getSource() == btnBookOCP) {
+        else if(e.getSource() == btnLearnMoreACP) {
+            txtCarModelB.setText(txtCarModel.getText());
             pnlB.setVisible(true);
             pnlViewAllCar.setVisible(false);
             pnlBR.setVisible(false);
@@ -3388,6 +3362,15 @@ public class App extends JFrame implements MouseListener{
         } else if(e.getSource() == btnCancelCP) {
             pnlCP.setVisible(false);
             pnlEP.setVisible(true);
+        } else if(e.getSource() == btnViewACP) {
+            String brand = tableA.getModel().getValueAt(tableA.getSelectedRow(), 0).toString();
+            String model = tableA.getModel().getValueAt(tableA.getSelectedRow(), 1).toString();
+            String year = tableA.getModel().getValueAt(tableA.getSelectedRow(), 2).toString();
+            String carSeat = tableA.getModel().getValueAt(tableA.getSelectedRow(), 3).toString();
+
+            txtCarModel.setText(brand+" "+model);
+            txtCarYear.setText(year);
+            txtCarSeats.setText(carSeat);
         }
      }
 
