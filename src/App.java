@@ -876,6 +876,7 @@ public class App extends JFrame implements MouseListener{
             btnCancelBR.setLocation(500, 270);
             btnCancelBR.setSize(80, 26);
             btnCancelBR.setBorder(borderBR);
+            btnCancelBR.addMouseListener(this);
 
             btnDeclineBR.setText("Decline");
             btnDeclineBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
@@ -884,6 +885,7 @@ public class App extends JFrame implements MouseListener{
             btnDeclineBR.setLocation(500, 305);
             btnDeclineBR.setSize(80, 26);
             btnDeclineBR.setBorder(borderBR);
+            btnDeclineBR.addMouseListener(this);
 
             btnAcceptBR.setText("Accept");
             btnAcceptBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
@@ -892,6 +894,7 @@ public class App extends JFrame implements MouseListener{
             btnAcceptBR.setLocation(500, 340);
             btnAcceptBR.setSize(80, 26);
             btnAcceptBR.setBorder(borderBR);
+            btnAcceptBR.addMouseListener(this);
 
             Object columns[] = {"Username", "Model", "Start Time", "End Time", "Start Date", "Return Date", "Status"};
 
