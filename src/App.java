@@ -797,12 +797,12 @@ public class App extends JFrame implements MouseListener{
             txtStartTimeBR.setLocation(260, 296);
             txtStartTimeBR.setSize(150, 26);
 
-            txtStartTimeBR.setText("17:00");
-            txtStartTimeBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
-            txtStartTimeBR.setForeground(new Color(225,223,186));
-            txtStartTimeBR.setBackground(new Color(27, 28, 30));
-            txtStartTimeBR.setLocation(260, 329);
-            txtStartTimeBR.setSize(150, 26);
+            txtEndTimeBR.setText("17:00");
+            txtEndTimeBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
+            txtEndTimeBR.setForeground(new Color(225,223,186));
+            txtEndTimeBR.setBackground(new Color(27, 28, 30));
+            txtEndTimeBR.setLocation(260, 329);
+            txtEndTimeBR.setSize(150, 26);
 
             txtCarInfoBR.setText("Honda City");
             txtCarInfoBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
@@ -924,8 +924,22 @@ public class App extends JFrame implements MouseListener{
                     listOfStrings.remove(i);
                     modelBR1.addRow(tableLines);
                 }
-                
             }
+            tableBR.setFocusable(false);
+            tableBR.addMouseListener(new MouseAdapter() {
+               public void mouseClicked(MouseEvent me) {
+                  if (me.getClickCount() == 1) {     // to detect click row event
+                     JTable target = (JTable)me.getSource();
+                     int rowIndex = target.getSelectedRow();
+                     txtUserNameBR.setText(tableBR.getValueAt(rowIndex, 0).toString());
+                     txtCarInfoBR.setText(tableBR.getValueAt(rowIndex, 1).toString());
+                     txtStartTimeBR.setText(tableBR.getValueAt(rowIndex, 2).toString());
+                     txtEndTimeBR.setText(tableBR.getValueAt(rowIndex, 3).toString());
+                     txtRentDateBR.setText(tableBR.getValueAt(rowIndex,4).toString());
+                     txtReturnDateBR.setText(tableBR.getValueAt(rowIndex, 5).toString());
+                  }
+               }
+            });
             
             tableBR.setPreferredScrollableViewportSize(new Dimension(535, 165));
             tableBR.setFillsViewportHeight(true);
