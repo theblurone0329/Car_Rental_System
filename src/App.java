@@ -785,42 +785,42 @@ public class App extends JFrame implements MouseListener{
         
         //View Booking Request Page 
         {
-            txtUserNameBR.setText("Adrian_Fu");
+            txtUserNameBR.setText("");
             txtUserNameBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             txtUserNameBR.setForeground(new Color(225,223,186));
             txtUserNameBR.setBackground(new Color(27, 28, 30));
             txtUserNameBR.setLocation(260, 230);
             txtUserNameBR.setSize(150, 26);
 
-            txtStartTimeBR.setText("07:00");
+            txtStartTimeBR.setText("");
             txtStartTimeBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             txtStartTimeBR.setForeground(new Color(225,223,186));
             txtStartTimeBR.setBackground(new Color(27, 28, 30));
             txtStartTimeBR.setLocation(260, 296);
             txtStartTimeBR.setSize(150, 26);
 
-            txtEndTimeBR.setText("17:00");
+            txtEndTimeBR.setText("");
             txtEndTimeBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             txtEndTimeBR.setForeground(new Color(225,223,186));
             txtEndTimeBR.setBackground(new Color(27, 28, 30));
             txtEndTimeBR.setLocation(260, 329);
             txtEndTimeBR.setSize(150, 26);
 
-            txtCarInfoBR.setText("Honda City");
+            txtCarInfoBR.setText("");
             txtCarInfoBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             txtCarInfoBR.setForeground(new Color(225,223,186));
             txtCarInfoBR.setBackground(new Color(27, 28, 30));
             txtCarInfoBR.setLocation(260, 263);
             txtCarInfoBR.setSize(150, 26);
 
-            txtRentDateBR.setText("12-09-2022");
+            txtRentDateBR.setText("");
             txtRentDateBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             txtRentDateBR.setForeground(new Color(225,223,186));
             txtRentDateBR.setBackground(new Color(27, 28, 30));
             txtRentDateBR.setLocation(260, 362);
             txtRentDateBR.setSize(150, 26);
 
-            txtReturnDateBR.setText("13-09-2022");
+            txtReturnDateBR.setText("");
             txtReturnDateBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             txtReturnDateBR.setForeground(new Color(225,223,186));
             txtReturnDateBR.setBackground(new Color(27, 28, 30));
@@ -983,24 +983,24 @@ public class App extends JFrame implements MouseListener{
 
             //Object[] rowReturns = new Object[4];
 
-            separator1BR.setForeground(new Color(225,223,186));
-            separator1BR.setBackground(new Color(27, 28, 30));
-            separator1BR.setSize(160, 17);
-            separator1BR.setLocation(160, 46);
+            // separator1BR.setForeground(new Color(225,223,186));
+            // separator1BR.setBackground(new Color(27, 28, 30));
+            // separator1BR.setSize(160, 17);
+            // separator1BR.setLocation(160, 46);
 
-            txtSearchBR.setSize(160, 30);
-            txtSearchBR.setLocation(160, 16);
-            txtSearchBR.setForeground(new Color(225,223,186));
-            txtSearchBR.setBackground(new Color(27, 28, 30));
-            txtSearchBR.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-            txtSearchBR.setCaretColor(new Color(225,223,186));
+            // txtSearchBR.setSize(160, 30);
+            // txtSearchBR.setLocation(160, 16);
+            // txtSearchBR.setForeground(new Color(225,223,186));
+            // txtSearchBR.setBackground(new Color(27, 28, 30));
+            // txtSearchBR.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+            // txtSearchBR.setCaretColor(new Color(225,223,186));
             
-            lblSearchBR.setText("Search User ID: ");
-            lblSearchBR.setSize(130, 37);
-            lblSearchBR.setLocation(30, 10);
-            lblSearchBR.setForeground(new Color(225,223,186));
-            lblSearchBR.setBackground(new Color(27, 28, 30));
-            lblSearchBR.setFont(new Font("TW Cen MT", Font.PLAIN, 18));
+            // lblSearchBR.setText("Search User ID: ");
+            // lblSearchBR.setSize(130, 37);
+            // lblSearchBR.setLocation(30, 10);
+            // lblSearchBR.setForeground(new Color(225,223,186));
+            // lblSearchBR.setBackground(new Color(27, 28, 30));
+            // lblSearchBR.setFont(new Font("TW Cen MT", Font.PLAIN, 18));
 
             //Frame
             pnlBR.setBackground(new Color(27, 28, 30));
@@ -1008,9 +1008,9 @@ public class App extends JFrame implements MouseListener{
             pnlBR.setSize(725, 420);
             pnlBR.setVisible(false);
 
-            pnlBR.add(lblSearchBR);
-            pnlBR.add(txtSearchBR);
-            pnlBR.add(separator1BR);
+            // pnlBR.add(lblSearchBR);
+            // pnlBR.add(txtSearchBR);
+            // pnlBR.add(separator1BR);
             pnlBR.add(tableBRPnl);
             pnlBR.add(lblUserIDBR);
             pnlBR.add(lblUserNameBR);
@@ -1619,7 +1619,7 @@ public class App extends JFrame implements MouseListener{
             separator5AC.setSize(120, 17);
             separator5AC.setLocation(35, 335);
 
-            txtCarSeatAC.setText("eg: 4");
+            txtCarSeatAC.setText("");
             txtCarSeatAC.setSize(120, 30);
             txtCarSeatAC.setBorder(null);
             txtCarSeatAC.setForeground(new Color(225,223,186));
@@ -1641,7 +1641,7 @@ public class App extends JFrame implements MouseListener{
             separator4AC.setSize(120, 17);
             separator4AC.setLocation(35, 270);
 
-            txtCarYearAC.setText("eg: 2017");
+            txtCarYearAC.setText("");
             txtCarYearAC.setSize(120, 30);
             txtCarYearAC.setBorder(null);
             txtCarYearAC.setForeground(new Color(225,223,186));
@@ -1663,7 +1663,7 @@ public class App extends JFrame implements MouseListener{
             separator3AC.setSize(120, 17);
             separator3AC.setLocation(35, 205);
 
-            txtCarPlateNumAC.setText("eg: SA 0923 B");
+            txtCarPlateNumAC.setText("");
             txtCarPlateNumAC.setSize(120, 30);
             txtCarPlateNumAC.setBorder(null);
             txtCarPlateNumAC.setForeground(new Color(225,223,186));
@@ -1685,7 +1685,7 @@ public class App extends JFrame implements MouseListener{
             separator2AC.setSize(120, 17);
             separator2AC.setLocation(35, 140);
 
-            txtCarModelAC.setText("eg: Corolla Altis");
+            txtCarModelAC.setText("");
             txtCarModelAC.setSize(120, 30);
             txtCarModelAC.setBorder(null);
             txtCarModelAC.setForeground(new Color(225,223,186));
@@ -1707,7 +1707,7 @@ public class App extends JFrame implements MouseListener{
             separator1AC.setSize(120, 17);
             separator1AC.setLocation(35, 80);
 
-            txtCarBrandAC.setText("eg: Toyota");
+            txtCarBrandAC.setText("");
             txtCarBrandAC.setSize(120, 30);
             txtCarBrandAC.setBorder(null);
             txtCarBrandAC.setForeground(new Color(225,223,186));
@@ -3423,7 +3423,6 @@ public class App extends JFrame implements MouseListener{
             String EndTime = txtEndTimeBR.getText();
             String RentDate = txtRentDateBR.getText();
             String ReturnDate = txtReturnDateBR.getText();
-            //username.equals(sc.next())&&(CarInfo.equals(sc.next()))&&(StartTime.equals(sc.next()))&&(EndTime.equals(sc.next()))&&(RentDate.equals(sc.next()))&&(ReturnDate.equals(sc.next()))&&(sc.next().equals("Pending"))
     
             if(username.trim().equals("") || CarInfo.trim().equals("") || StartTime.trim().equals("")|| EndTime.trim().equals("") || RentDate.trim().equals("")|| ReturnDate.trim().equals("")){
                 JOptionPane.showMessageDialog(null, "Blank entry detected! please select a row. ", "ERROR", JOptionPane.WARNING_MESSAGE);   
@@ -3440,7 +3439,7 @@ public class App extends JFrame implements MouseListener{
                     BufferedWriter bw = new BufferedWriter(fw);
                     PrintWriter pw = new PrintWriter(bw); 
 
-                    Scanner sc = new Scanner(new FileReader("src\\Text Files\\Accepted.txt"))
+                    Scanner sc = new Scanner(new FileReader("src\\Text Files\\Booking.txt"))
                                     .useDelimiter(", \\s*")) {
           
                     // checking end of file
@@ -3490,10 +3489,81 @@ public class App extends JFrame implements MouseListener{
                     // TODO Auto-generated catch block
                     e1.printStackTrace();
                 }
+                } 
+        }else if(e.getSource()==btnDeclineBR){
+            String username = txtUserNameBR.getText();
+            String CarInfo = txtCarInfoBR.getText();
+            String StartTime = txtStartTimeBR.getText();
+            String EndTime = txtEndTimeBR.getText();
+            String RentDate = txtRentDateBR.getText();
+            String ReturnDate = txtReturnDateBR.getText();
+    
+            if(username.trim().equals("") || CarInfo.trim().equals("") || StartTime.trim().equals("")|| EndTime.trim().equals("") || RentDate.trim().equals("")|| ReturnDate.trim().equals("")){
+                JOptionPane.showMessageDialog(null, "Blank entry detected! please select a row. ", "ERROR", JOptionPane.WARNING_MESSAGE);   
+            }else{
+                List<String> listOfStrings
+                = new ArrayList<String>();
+
+                String tempFile = "temp.txt";
+                File newFile = new File(tempFile);
+                
+                try (// load content of file based on specific delimiter
+
+                    FileWriter fw = new FileWriter(tempFile,true);
+                    BufferedWriter bw = new BufferedWriter(fw);
+                    PrintWriter pw = new PrintWriter(bw); 
+
+                    Scanner sc = new Scanner(new FileReader("src\\Text Files\\Booking.txt"))
+                                    .useDelimiter(", \\s*")) {
+          
+                    // checking end of file
+                    while (sc.hasNext()) {
+                        String str = sc.next();
+                
+                        // adding each string to arraylist
+                        listOfStrings.add(str);
+                    }
+                    for(int i = 7; i<listOfStrings.size(); i+=7) {  //forced to do this way to get distinct data, cus we dont hv unique id for rental.
+                        if((listOfStrings.get(i-7).equals(username))&&
+                        (listOfStrings.get(i-6).equals(CarInfo))&&
+                        (listOfStrings.get(i-5).equals(StartTime))&&
+                        (listOfStrings.get(i-4).equals(EndTime))&&
+                        (listOfStrings.get(i-3).equals(RentDate))&&
+                        (listOfStrings.get(i-2).equals(ReturnDate))&&
+                        (listOfStrings.get(i-1).equals("Pending")) ){
+                            String[] array = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), "Declined","\n"};
+                            listOfStrings.remove(i);
+                            for(int j=0;j < array.length; j++){
+                                pw.write(array[j]+", ");
+                            }
+                        }
+                        else{
+                            String[] array = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), listOfStrings.get(i-1),"\n"};
+                            listOfStrings.remove(i);
+                            for(int j=0;j < array.length; j++){
+                                pw.write(array[j]+", ");
+                            }
+                            }
+                    }
+                    sc.close();
+                    pw.flush();
+                    pw.close();
+                    try {
+                        String filePath = "src\\Text Files\\Booking.txt";
+                        File fileToDelete = new File(filePath);
+                        fileToDelete.delete();
+                        File dumpFile = new File(filePath);
+                        newFile.renameTo(dumpFile);
+                        JOptionPane.showMessageDialog(null, "The booking declined!", "Booking Unsuccessful", JOptionPane.INFORMATION_MESSAGE);
+                    } catch (Exception e2) {
+                        e2.printStackTrace();
+                    }
+
+                } catch (Exception e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
                 }
-                        
-            
-        
+                }
         }
      }
 
