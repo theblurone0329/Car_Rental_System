@@ -926,8 +926,27 @@ public class App extends JFrame implements MouseListener{
             for(int i = 7; i<listOfStrings.size(); i+=7) {
                 if(listOfStrings.get(i-1).equals("Pending")) {
                     Object[] tableLines = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), listOfStrings.get(i-1)};
-                    listOfStrings.remove(i);
                     modelBR1.addRow(tableLines);
+                    listOfStrings.remove(i);
+                } else if(listOfStrings.get(i-1).equals("Accepted")) {
+                    String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), "Accepted","\n"};
+                    try
+                    {
+                        FileWriter fw1 = new FileWriter("src\\Text Files\\Accepted.txt");
+                        BufferedWriter bw1 = new BufferedWriter(fw1);
+                        PrintWriter pw1 = new PrintWriter(bw1);    
+        
+                        listOfStrings.remove(i);
+                        for(int j = 0; j < arrayAccepted.length; j++){
+                            pw1.write(arrayAccepted[j] + ", ");
+                        }
+                        pw1.close();
+                    }
+                    catch (Exception f)
+                    {
+                        f.printStackTrace();
+                        System.out.println("No such file exists.");
+                    }
                 }
             }
             tableBR.setFocusable(false);
@@ -946,7 +965,7 @@ public class App extends JFrame implements MouseListener{
                }
             });
             
-            tableBR.setPreferredScrollableViewportSize(new Dimension(535, 165));
+            tableBR.setPreferredScrollableViewportSize(new Dimension(535, 125));
             tableBR.setFillsViewportHeight(true);
             tableBR.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
             tableBR.setBackground(new Color(27, 28, 30));
@@ -958,7 +977,7 @@ public class App extends JFrame implements MouseListener{
             paneBR = new JScrollPane(tableBR, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             paneBR.setVisible(true);
 
-            tableBRPnl.setBounds(90, 60, 555, 165);
+            tableBRPnl.setBounds(90, 60, 555, 125);
             tableBRPnl.setBorder(BorderFactory.createLineBorder(new Color(225,223,186)));
             tableBRPnl.add(paneBR);
 
@@ -3421,7 +3440,7 @@ public class App extends JFrame implements MouseListener{
                     BufferedWriter bw = new BufferedWriter(fw);
                     PrintWriter pw = new PrintWriter(bw); 
 
-                    Scanner sc = new Scanner(new FileReader("src\\Text Files\\Booking.txt"))
+                    Scanner sc = new Scanner(new FileReader("src\\Text Files\\Accepted.txt"))
                                     .useDelimiter(", \\s*")) {
           
                     // checking end of file
