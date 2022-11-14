@@ -1528,7 +1528,7 @@ public class App extends JFrame implements MouseListener{
         //Add Car Admin Page ✅
         {
             //columns
-            Object headers[] = { "Car Brand", "CarModel", "Car Plate Number","Car Year","Car Seats"};
+            Object headers[] = { "Car Brand", "CarModel", "Car Plate Number","Car Year","Car Seats", "Price/Hr"};
             
             //setup table with column, 0 row 
             DefaultTableModel model = new DefaultTableModel(headers,0);
