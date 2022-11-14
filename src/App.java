@@ -1566,26 +1566,27 @@ public class App extends JFrame implements MouseListener{
                 model1.addRow(tableLines);
             }
         
-            tableAC.setPreferredScrollableViewportSize(new Dimension(449, 347));
+            tableAC.setPreferredScrollableViewportSize(new Dimension(450, 300));
             tableAC.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
             tableAC.setFillsViewportHeight(true);
             tableAC.setBackground(new Color(27, 28, 30));
             tableAC.setForeground(new Color(225,223,186));
             tableAC.setGridColor(new Color(225,223,186));
             tableAC.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+            tableAC.setLocation(0, 0);
             tableAC.setRowHeight(30);
             
             paneAC = new JScrollPane(tableAC, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
             paneAC.setVisible(true);
 
-            tablePnlAC.setBounds(160, 20, 449, 347);
+            tablePnlAC.setBounds(210, 40, 475, 300);
             tablePnlAC.setBorder(BorderFactory.createLineBorder(new Color(225,223,186)));
             tablePnlAC.add(paneAC);
 
             //Add Button
             btnAddAC.setText("Add");
             btnAddAC.setSize(90, 37);
-            btnAddAC.setLocation(420, 375);
+            btnAddAC.setLocation(415, 365);
             btnAddAC.setForeground(new Color(225,223,186));
             btnAddAC.setBackground(new Color(27, 28, 30));
             btnAddAC.setBorder(borderAC);
@@ -1596,7 +1597,7 @@ public class App extends JFrame implements MouseListener{
             //Cancel Button
             btnCancelAC.setText("Cancel");
             btnCancelAC.setSize(90, 37);
-            btnCancelAC.setLocation(320, 375);
+            btnCancelAC.setLocation(315, 365);
             btnCancelAC.setForeground(new Color(225,223,186));
             btnCancelAC.setBackground(new Color(27, 28, 30));
             btnCancelAC.setBorder(borderAC);
@@ -1607,7 +1608,7 @@ public class App extends JFrame implements MouseListener{
             //Clear Button
             btnClearAC.setText("Clear");
             btnClearAC.setSize(90, 37);
-            btnClearAC.setLocation(220, 375);
+            btnClearAC.setLocation(215, 365);
             btnClearAC.setForeground(new Color(225,223,186));
             btnClearAC.setBackground(new Color(27, 28, 30));
             btnClearAC.setBorder(borderAC);
