@@ -7,7 +7,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -316,20 +315,20 @@ public class App extends JFrame implements MouseListener{
 
     //Return Car Admin Page
     private JPanel pnlRCA = new JPanel();
-    private JLabel usernameRCA = new JLabel();
-    private JLabel carModelRCA = new JLabel();
-    private JLabel timeRCA = new JLabel();
-    private JLabel dateRCA = new JLabel();
+    private JLabel returnIDRCA = new JLabel();
+    private JLabel cusUsernameRCA = new JLabel();
+    private JLabel returnStatusRCA = new JLabel();
+    private JLabel returnDateRCA = new JLabel();
     private JLabel onRentTitleRCA = new JLabel();
     private JLabel returnedTitleRCA = new JLabel();
     private JTable onRentRCA = new JTable();
     private JTable returnedRCA = new JTable(); 
-    private JTextField txtUsernameRCA = new JTextField();
-    private JTextField txtCarModelRCA = new JTextField();
-    private JTextField txtTimeRCA = new JTextField();
-    private JTextField txtDateRCA = new JTextField();
+    private JTextField txtReturnIDRCA = new JTextField();
+    private JTextField txtCusUsernameRCA = new JTextField();
+    private JTextField txtReturnStatusRCA = new JTextField();
+    private JTextField txtReturnDateRCA = new JTextField();
     private JButton btnResetRCA = new JButton();
-    private JButton btnProceedRCA = new JButton();
+    private JButton btnSearchRCA = new JButton();
     private JSeparator separator1RCA = new JSeparator();
     private JSeparator separator2RCA = new JSeparator();
     private JSeparator separator3RCA = new JSeparator();
@@ -347,7 +346,7 @@ public class App extends JFrame implements MouseListener{
 
         //Return Car Admin Page
         {
-            {//Returned Table
+            //Returned Table
             returnedTitleRCA.setText("RETURNED CARS");
             returnedTitleRCA.setFont(new Font("TW Cen MT", Font.BOLD, 16));
             returnedTitleRCA.setSize(200, 22);
@@ -355,53 +354,18 @@ public class App extends JFrame implements MouseListener{
             returnedTitleRCA.setBackground(new Color(27, 28, 30));
             returnedTitleRCA.setLocation(420, 198);
 
-            // String[] columnsReturn = {"Return ID", "Username", "Status", "Return Date"};
-            // String[][] rowsReturn = {{"R01", "Hamid_Karim_123", "Returned", "04-10-2022"}, 
-            //                     {"R02", "Adrian_Fu", "Not Returned", "N/A"},
-            //                     {"R02", "Adrian_Fu", "Not Returned", "N/A"},
-            //                     {"R02", "Adrian_Fu", "Not Returned", "N/A"}, 
-            //                     {"R02", "Adrian_Fu", "Not Returned", "N/A"}};
+            String[] columnsReturn = {"Return ID", "Username", "Status", "Return Date"};
+            String[][] rowsReturn = {{"R01", "Hamid_Karim_123", "Returned", "04-10-2022"}, 
+                                {"R02", "Adrian_Fu", "Not Returned", "N/A"},
+                                {"R02", "Adrian_Fu", "Not Returned", "N/A"},
+                                {"R02", "Adrian_Fu", "Not Returned", "N/A"}, 
+                                {"R02", "Adrian_Fu", "Not Returned", "N/A"}};
 
-            // returnedRCA = new JTable(rowsReturn, columnsReturn){
-            //     public boolean isCellEditable(int rows, int columns) {
-            //         return false;
-            //     }
-            // };
-            Object columns[] = {"Username", "Model", "Start Time", "End Time", "Start Date", "Return Date", "Status"};
-
-            DefaultTableModel modelRCA = new DefaultTableModel(columns,0);
-            returnedRCA = new JTable();
-            returnedRCA.setCellSelectionEnabled(false); //bcs this table just for display
-            returnedRCA.setDefaultEditor(Object.class, null);
-            returnedRCA.setModel(modelRCA);
-    
-            List<String> listOfStrings
-            = new ArrayList<String>();
-    
-            try (// load content of file based on specific delimiter
-            Scanner sc = new Scanner(new FileReader("src\\Text Files\\Booking.txt"))
-                            .useDelimiter(", \\s*")) {
-                String str;
-      
-                // checking end of file
-                while (sc.hasNext()) {
-                    str = sc.next();
-                
-                    // adding each string to arraylist
-                    listOfStrings.add(str);
+            returnedRCA = new JTable(rowsReturn, columnsReturn){
+                public boolean isCellEditable(int rows, int columns) {
+                    return false;
                 }
-            } catch (FileNotFoundException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-            }
-            //BufferedReader br = new BufferedReader(new FileReader(file));
-            DefaultTableModel modelRCA1 = (DefaultTableModel)returnedRCA.getModel();
-            for(int i = 7; i<listOfStrings.size(); i+=7) {
-                if(listOfStrings.get(i-1).equals("Pending")) {//"Returned"
-                    Object[] tableLines = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), listOfStrings.get(i-1)};
-                    modelRCA1.addRow(tableLines);
-                    listOfStrings.remove(i);
-            }
+            };
 
             returnedRCA.setPreferredScrollableViewportSize(new Dimension(400, 155));
             returnedRCA.setFillsViewportHeight(true);
@@ -412,15 +376,12 @@ public class App extends JFrame implements MouseListener{
             returnedRCA.setFont(new Font("Segoe UI", Font.PLAIN, 13));
             returnedRCA.setRowHeight(30);
             
-            paneRCA1 = new JScrollPane(returnedRCA, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            paneRCA1 = new JScrollPane(returnedRCA);
             paneRCA1.setVisible(true);
 
             returnedPnlRCA.setSize(400, 155);
             returnedPnlRCA.setLocation(280, 220);
-            returnedPnlRCA.setBorder(BorderFactory.createLineBorder(new Color(225,223,186)));
             returnedPnlRCA.add(paneRCA1);
-        }
-    }
 
             //Object[] rowReturns = new Object[4];
 
@@ -432,66 +393,18 @@ public class App extends JFrame implements MouseListener{
             onRentTitleRCA.setBackground(new Color(27, 28, 30));
             onRentTitleRCA.setLocation(420, 13);
 
-            // String[] columnsRent = {"Return ID", "Username", "Status", "Return Date"};
-            // String[][] rowsRent = {{"R01", "Hamid_Karim_123", "Returned", "04-10-2022"}, 
-            //                     {"R02", "Adrian_Fu", "Not Returned", "N/A"},
-            //                     {"R02", "Adrian_Fu", "Not Returned", "N/A"},
-            //                     {"R02", "Adrian_Fu", "Not Returned", "N/A"}, 
-            //                     {"R02", "Adrian_Fu", "Not Returned", "N/A"}};
+            String[] columnsRent = {"Return ID", "Username", "Status", "Return Date"};
+            String[][] rowsRent = {{"R01", "Hamid_Karim_123", "Returned", "04-10-2022"}, 
+                                {"R02", "Adrian_Fu", "Not Returned", "N/A"},
+                                {"R02", "Adrian_Fu", "Not Returned", "N/A"},
+                                {"R02", "Adrian_Fu", "Not Returned", "N/A"}, 
+                                {"R02", "Adrian_Fu", "Not Returned", "N/A"}};
 
-            // onRentRCA = new JTable(rowsRent, columnsRent){
-            //     public boolean isCellEditable(int rows, int columns) {
-            //         return false;
-            //     }
-            // };
-
-			Object columns[] = {"Username", "Model", "Start Time", "End Time", "Start Date", "Return Date", "Status"};
-
-            DefaultTableModel modelORCA = new DefaultTableModel(columns,0);
-            onRentRCA = new JTable();
-            onRentRCA.setModel(modelORCA);
-    
-            List<String> listOfStrings
-            = new ArrayList<String>();
-    
-            try (// load content of file based on specific delimiter
-            Scanner sc = new Scanner(new FileReader("src\\Text Files\\Booking.txt"))
-                            .useDelimiter(", \\s*")) {
-                String str;
-      
-                // checking end of file
-                while (sc.hasNext()) {
-                    str = sc.next();
-                
-                    // adding each string to arraylist
-                    listOfStrings.add(str);
+            onRentRCA = new JTable(rowsRent, columnsRent){
+                public boolean isCellEditable(int rows, int columns) {
+                    return false;
                 }
-            } catch (FileNotFoundException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-            }
-            //BufferedReader br = new BufferedReader(new FileReader(file));
-            DefaultTableModel modelORCA1 = (DefaultTableModel)onRentRCA.getModel();
-            for(int i = 7; i<listOfStrings.size(); i+=7) {
-                if(listOfStrings.get(i-1).equals("Pending")) {//"Returning"
-                    Object[] tableLines = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), listOfStrings.get(i-1)};
-                    modelORCA1.addRow(tableLines);
-                    listOfStrings.remove(i);
-            }
-            onRentRCA.setFocusable(false);
-            onRentRCA.addMouseListener(new MouseAdapter() {
-               public void mouseClicked(MouseEvent me) {
-                  if (me.getClickCount() == 1) {     // to detect click row event
-                     JTable target = (JTable)me.getSource();
-                     int rowIndex = target.getSelectedRow();
-                     txtUsernameRCA.setText(onRentRCA.getValueAt(rowIndex, 0).toString());
-                     txtCarModelRCA.setText(onRentRCA.getValueAt(rowIndex, 1).toString());
-                     txtTimeRCA.setText(onRentRCA.getValueAt(rowIndex, 2).toString()+" - "+onRentRCA.getValueAt(rowIndex, 3).toString());
-                     txtDateRCA.setText(onRentRCA.getValueAt(rowIndex, 4).toString()+" - "+onRentRCA.getValueAt(rowIndex, 5).toString());
-                  }
-               }
-            });
-
+            };
 
             onRentRCA.setPreferredScrollableViewportSize(new Dimension(400, 151));
             onRentRCA.setFillsViewportHeight(true);
@@ -502,27 +415,25 @@ public class App extends JFrame implements MouseListener{
             onRentRCA.setFont(new Font("Segoe UI", Font.PLAIN, 13));
             onRentRCA.setRowHeight(30);
             
-            paneRCA2 = new JScrollPane(onRentRCA, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            paneRCA2 = new JScrollPane(onRentRCA);
             paneRCA2.setVisible(true);
 
-            // onRentPnlRCA.setSize(400, 155);
-            // onRentPnlRCA.setLocation(280, 35);
-            onRentPnlRCA.setBounds(280,35,400,155);
-            onRentPnlRCA.setBorder(BorderFactory.createLineBorder(new Color(225,223,186)));
+            onRentPnlRCA.setSize(400, 155);
+            onRentPnlRCA.setLocation(280, 35);
             onRentPnlRCA.add(paneRCA2);
 
             //Object[] rowRents = new Object[4];
 
             //Search Button
-            btnProceedRCA.setText("Proceed");
-            btnProceedRCA.setSize(90, 37);
-            btnProceedRCA.setLocation(130, 320);
-            btnProceedRCA.setForeground(new Color(225,223,186));
-            btnProceedRCA.setBackground(new Color(27, 28, 30));
-            btnProceedRCA.setBorder(borderRCA);
-            btnProceedRCA.setFont(new Font("TW Cen MT", Font.BOLD, 15));
-            btnProceedRCA.setFocusable(false);
-            btnProceedRCA.addMouseListener(this);
+            btnSearchRCA.setText("Search");
+            btnSearchRCA.setSize(90, 37);
+            btnSearchRCA.setLocation(130, 320);
+            btnSearchRCA.setForeground(new Color(225,223,186));
+            btnSearchRCA.setBackground(new Color(27, 28, 30));
+            btnSearchRCA.setBorder(borderRCA);
+            btnSearchRCA.setFont(new Font("TW Cen MT", Font.BOLD, 15));
+            btnSearchRCA.setFocusable(false);
+            btnSearchRCA.addMouseListener(this);
 
             //Reset Button
             btnResetRCA.setText("Reset");
@@ -541,21 +452,21 @@ public class App extends JFrame implements MouseListener{
             separator1RCA.setSize(180, 17);
             separator1RCA.setLocation(35, 85);
 
-            txtUsernameRCA.setText("");
-            txtUsernameRCA.setSize(180, 30);
-            txtUsernameRCA.setBorder(null);
-            txtUsernameRCA.setForeground(new Color(225,223,186));
-            txtUsernameRCA.setBackground(new Color(27, 28, 30));
-            txtUsernameRCA.setFont(new Font("TW Cen MT", Font.BOLD, 15));
-            txtUsernameRCA.setLocation(35,55);
+            txtReturnIDRCA.setText("eg: R01");
+            txtReturnIDRCA.setSize(180, 30);
+            txtReturnIDRCA.setBorder(null);
+            txtReturnIDRCA.setForeground(new Color(225,223,186));
+            txtReturnIDRCA.setBackground(new Color(27, 28, 30));
+            txtReturnIDRCA.setFont(new Font("TW Cen MT", Font.BOLD, 15));
+            txtReturnIDRCA.setLocation(35,55);
 
-            usernameRCA.setText("Username");
-            usernameRCA.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-            usernameRCA.setForeground(new Color(225,223,186));
-            usernameRCA.setBackground(new Color(27, 28, 30));
-            usernameRCA.setBorder(null);
-            usernameRCA.setSize(180, 30);
-            usernameRCA.setLocation(15, 25);
+            returnIDRCA.setText("Return ID");
+            returnIDRCA.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+            returnIDRCA.setForeground(new Color(225,223,186));
+            returnIDRCA.setBackground(new Color(27, 28, 30));
+            returnIDRCA.setBorder(null);
+            returnIDRCA.setSize(180, 30);
+            returnIDRCA.setLocation(15, 25);
 
             //Components for Customer Username
             separator2RCA.setForeground(new Color(225,223,186));
@@ -563,21 +474,21 @@ public class App extends JFrame implements MouseListener{
             separator2RCA.setSize(180, 17);
             separator2RCA.setLocation(35, 155);
 
-            txtCarModelRCA.setText("");
-            txtCarModelRCA.setSize(180, 30);
-            txtCarModelRCA.setBorder(null);
-            txtCarModelRCA.setForeground(new Color(225,223,186));
-            txtCarModelRCA.setBackground(new Color(27, 28, 30));
-            txtCarModelRCA.setFont(new Font("TW Cen MT", Font.BOLD, 15));
-            txtCarModelRCA.setLocation(35,125);
+            txtCusUsernameRCA.setText("eg: Hamid_Karim_123");
+            txtCusUsernameRCA.setSize(180, 30);
+            txtCusUsernameRCA.setBorder(null);
+            txtCusUsernameRCA.setForeground(new Color(225,223,186));
+            txtCusUsernameRCA.setBackground(new Color(27, 28, 30));
+            txtCusUsernameRCA.setFont(new Font("TW Cen MT", Font.BOLD, 15));
+            txtCusUsernameRCA.setLocation(35,125);
 
-           carModelRCA.setText("Car Model");
-           carModelRCA.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-           carModelRCA.setForeground(new Color(225,223,186));
-           carModelRCA.setBackground(new Color(27, 28, 30));
-           carModelRCA.setBorder(null);
-           carModelRCA.setSize(180, 30);
-           carModelRCA.setLocation(15, 95);
+            cusUsernameRCA.setText("Customer Username");
+            cusUsernameRCA.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+            cusUsernameRCA.setForeground(new Color(225,223,186));
+            cusUsernameRCA.setBackground(new Color(27, 28, 30));
+            cusUsernameRCA.setBorder(null);
+            cusUsernameRCA.setSize(180, 30);
+            cusUsernameRCA.setLocation(15, 95);
 
             //Components for Return Status
             separator3RCA.setForeground(new Color(225,223,186));
@@ -585,21 +496,21 @@ public class App extends JFrame implements MouseListener{
             separator3RCA.setSize(180, 17);
             separator3RCA.setLocation(35, 225);
 
-            txtTimeRCA.setText("");
-            txtTimeRCA.setSize(180, 30);
-            txtTimeRCA.setBorder(null);
-            txtTimeRCA.setForeground(new Color(225,223,186));
-            txtTimeRCA.setBackground(new Color(27, 28, 30));
-            txtTimeRCA.setFont(new Font("TW Cen MT", Font.BOLD, 15));
-            txtTimeRCA.setLocation(35,195);
+            txtReturnStatusRCA.setText("eg: Returned / Not Returned");
+            txtReturnStatusRCA.setSize(180, 30);
+            txtReturnStatusRCA.setBorder(null);
+            txtReturnStatusRCA.setForeground(new Color(225,223,186));
+            txtReturnStatusRCA.setBackground(new Color(27, 28, 30));
+            txtReturnStatusRCA.setFont(new Font("TW Cen MT", Font.BOLD, 15));
+            txtReturnStatusRCA.setLocation(35,195);
 
-            timeRCA.setText("Return Time");
-            timeRCA.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-            timeRCA.setForeground(new Color(225,223,186));
-            timeRCA.setBackground(new Color(27, 28, 30));
-            timeRCA.setBorder(null);
-            timeRCA.setSize(180, 30);
-            timeRCA.setLocation(15, 165);
+            returnStatusRCA.setText("Return Status");
+            returnStatusRCA.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+            returnStatusRCA.setForeground(new Color(225,223,186));
+            returnStatusRCA.setBackground(new Color(27, 28, 30));
+            returnStatusRCA.setBorder(null);
+            returnStatusRCA.setSize(180, 30);
+            returnStatusRCA.setLocation(15, 165);
 
             //Components for Return Date
             separator4RCA.setForeground(new Color(225,223,186));
@@ -607,21 +518,21 @@ public class App extends JFrame implements MouseListener{
             separator4RCA.setSize(180, 17);
             separator4RCA.setLocation(35, 295);
 
-            txtDateRCA.setText("");
-            txtDateRCA.setSize(180, 30);
-            txtDateRCA.setBorder(null);
-            txtDateRCA.setForeground(new Color(225,223,186));
-            txtDateRCA.setBackground(new Color(27, 28, 30));
-            txtDateRCA.setFont(new Font("TW Cen MT", Font.BOLD, 15));
-            txtDateRCA.setLocation(35,265);
+            txtReturnDateRCA.setText("eg: 2022-10-04");
+            txtReturnDateRCA.setSize(180, 30);
+            txtReturnDateRCA.setBorder(null);
+            txtReturnDateRCA.setForeground(new Color(225,223,186));
+            txtReturnDateRCA.setBackground(new Color(27, 28, 30));
+            txtReturnDateRCA.setFont(new Font("TW Cen MT", Font.BOLD, 15));
+            txtReturnDateRCA.setLocation(35,265);
 
-            dateRCA.setText("Return Date");
-            dateRCA.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-            dateRCA.setForeground(new Color(225,223,186));
-            dateRCA.setBackground(new Color(27, 28, 30));
-            dateRCA.setBorder(null);
-            dateRCA.setSize(180, 30);
-            dateRCA.setLocation(15, 235);
+            returnDateRCA.setText("Return Date");
+            returnDateRCA.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+            returnDateRCA.setForeground(new Color(225,223,186));
+            returnDateRCA.setBackground(new Color(27, 28, 30));
+            returnDateRCA.setBorder(null);
+            returnDateRCA.setSize(180, 30);
+            returnDateRCA.setLocation(15, 235);
             
             //Frame
             pnlRCA.setBackground(new Color(27, 28, 30));
@@ -630,26 +541,25 @@ public class App extends JFrame implements MouseListener{
             pnlRCA.setVisible(false);
             
             //Adding Components to Frame
-            pnlRCA.add(usernameRCA);
-            pnlRCA.add(carModelRCA);
-            pnlRCA.add(timeRCA);
-            pnlRCA.add(dateRCA);
-            pnlRCA.add(txtUsernameRCA);
-            pnlRCA.add(txtCarModelRCA);
-            pnlRCA.add(txtTimeRCA);
-            pnlRCA.add(txtDateRCA);
+            pnlRCA.add(returnIDRCA);
+            pnlRCA.add(cusUsernameRCA);
+            pnlRCA.add(returnStatusRCA);
+            pnlRCA.add(returnDateRCA);
+            pnlRCA.add(txtReturnIDRCA);
+            pnlRCA.add(txtCusUsernameRCA);
+            pnlRCA.add(txtReturnDateRCA);
+            pnlRCA.add(txtReturnStatusRCA);
             pnlRCA.add(separator1RCA);
             pnlRCA.add(separator2RCA);
             pnlRCA.add(separator3RCA);
             pnlRCA.add(separator4RCA);
             pnlRCA.add(btnResetRCA);
-            pnlRCA.add(btnProceedRCA);
+            pnlRCA.add(btnSearchRCA);
             pnlRCA.add(onRentPnlRCA);
             pnlRCA.add(returnedPnlRCA);
             pnlRCA.add(returnedTitleRCA);
             pnlRCA.add(onRentTitleRCA);
         }
-    }
         
         //Booking Page ✅
         {
@@ -740,7 +650,7 @@ public class App extends JFrame implements MouseListener{
             separator3B.setLocation(40, 163);
     
             //End Date txt Box
-            txtEndDateB.setText("10-09-2022");
+            txtEndDateB.setText("2022-09-10");
             txtEndDateB.setFont(new Font("Segoe UI", Font.PLAIN, 14));
             txtEndDateB.setForeground(new Color(225,223,186));
             txtEndDateB.setBackground(new Color(27, 28, 30));
@@ -757,7 +667,7 @@ public class App extends JFrame implements MouseListener{
             separator2B.setLocation(40, 83);
     
             //Start Date Txt Box
-            txtStartDateB.setText("09-09-2022");
+            txtStartDateB.setText("2022-09-09");
             txtStartDateB.setFont(new Font("Segoe UI", Font.PLAIN, 14));
             txtStartDateB.setForeground(new Color(225,223,186));
             txtStartDateB.setBackground(new Color(27, 28, 30));
@@ -874,42 +784,42 @@ public class App extends JFrame implements MouseListener{
         
         //View Booking Request Page 
         {
-            txtUserNameBR.setText("");
+            txtUserNameBR.setText("Adrian_Fu");
             txtUserNameBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             txtUserNameBR.setForeground(new Color(225,223,186));
             txtUserNameBR.setBackground(new Color(27, 28, 30));
             txtUserNameBR.setLocation(260, 230);
             txtUserNameBR.setSize(150, 26);
 
-            txtStartTimeBR.setText("");
+            txtStartTimeBR.setText("07:00");
             txtStartTimeBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             txtStartTimeBR.setForeground(new Color(225,223,186));
             txtStartTimeBR.setBackground(new Color(27, 28, 30));
             txtStartTimeBR.setLocation(260, 296);
             txtStartTimeBR.setSize(150, 26);
 
-            txtEndTimeBR.setText("");
+            txtEndTimeBR.setText("17:00");
             txtEndTimeBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             txtEndTimeBR.setForeground(new Color(225,223,186));
             txtEndTimeBR.setBackground(new Color(27, 28, 30));
             txtEndTimeBR.setLocation(260, 329);
             txtEndTimeBR.setSize(150, 26);
 
-            txtCarInfoBR.setText("");
+            txtCarInfoBR.setText("Honda City");
             txtCarInfoBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             txtCarInfoBR.setForeground(new Color(225,223,186));
             txtCarInfoBR.setBackground(new Color(27, 28, 30));
             txtCarInfoBR.setLocation(260, 263);
             txtCarInfoBR.setSize(150, 26);
 
-            txtRentDateBR.setText("");
+            txtRentDateBR.setText("12-09-2022");
             txtRentDateBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             txtRentDateBR.setForeground(new Color(225,223,186));
             txtRentDateBR.setBackground(new Color(27, 28, 30));
             txtRentDateBR.setLocation(260, 362);
             txtRentDateBR.setSize(150, 26);
 
-            txtReturnDateBR.setText("");
+            txtReturnDateBR.setText("13-09-2022");
             txtReturnDateBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
             txtReturnDateBR.setForeground(new Color(225,223,186));
             txtReturnDateBR.setBackground(new Color(27, 28, 30));
@@ -1072,24 +982,24 @@ public class App extends JFrame implements MouseListener{
 
             //Object[] rowReturns = new Object[4];
 
-            // separator1BR.setForeground(new Color(225,223,186));
-            // separator1BR.setBackground(new Color(27, 28, 30));
-            // separator1BR.setSize(160, 17);
-            // separator1BR.setLocation(160, 46);
+            separator1BR.setForeground(new Color(225,223,186));
+            separator1BR.setBackground(new Color(27, 28, 30));
+            separator1BR.setSize(160, 17);
+            separator1BR.setLocation(160, 46);
 
-            // txtSearchBR.setSize(160, 30);
-            // txtSearchBR.setLocation(160, 16);
-            // txtSearchBR.setForeground(new Color(225,223,186));
-            // txtSearchBR.setBackground(new Color(27, 28, 30));
-            // txtSearchBR.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-            // txtSearchBR.setCaretColor(new Color(225,223,186));
+            txtSearchBR.setSize(160, 30);
+            txtSearchBR.setLocation(160, 16);
+            txtSearchBR.setForeground(new Color(225,223,186));
+            txtSearchBR.setBackground(new Color(27, 28, 30));
+            txtSearchBR.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+            txtSearchBR.setCaretColor(new Color(225,223,186));
             
-            // lblSearchBR.setText("Search User ID: ");
-            // lblSearchBR.setSize(130, 37);
-            // lblSearchBR.setLocation(30, 10);
-            // lblSearchBR.setForeground(new Color(225,223,186));
-            // lblSearchBR.setBackground(new Color(27, 28, 30));
-            // lblSearchBR.setFont(new Font("TW Cen MT", Font.PLAIN, 18));
+            lblSearchBR.setText("Search User ID: ");
+            lblSearchBR.setSize(130, 37);
+            lblSearchBR.setLocation(30, 10);
+            lblSearchBR.setForeground(new Color(225,223,186));
+            lblSearchBR.setBackground(new Color(27, 28, 30));
+            lblSearchBR.setFont(new Font("TW Cen MT", Font.PLAIN, 18));
 
             //Frame
             pnlBR.setBackground(new Color(27, 28, 30));
@@ -1097,9 +1007,9 @@ public class App extends JFrame implements MouseListener{
             pnlBR.setSize(725, 420);
             pnlBR.setVisible(false);
 
-            // pnlBR.add(lblSearchBR);
-            // pnlBR.add(txtSearchBR);
-            // pnlBR.add(separator1BR);
+            pnlBR.add(lblSearchBR);
+            pnlBR.add(txtSearchBR);
+            pnlBR.add(separator1BR);
             pnlBR.add(tableBRPnl);
             pnlBR.add(lblUserIDBR);
             pnlBR.add(lblUserNameBR);
@@ -1708,7 +1618,7 @@ public class App extends JFrame implements MouseListener{
             separator5AC.setSize(120, 17);
             separator5AC.setLocation(35, 335);
 
-            txtCarSeatAC.setText("");
+            txtCarSeatAC.setText("eg: 4");
             txtCarSeatAC.setSize(120, 30);
             txtCarSeatAC.setBorder(null);
             txtCarSeatAC.setForeground(new Color(225,223,186));
@@ -1730,7 +1640,7 @@ public class App extends JFrame implements MouseListener{
             separator4AC.setSize(120, 17);
             separator4AC.setLocation(35, 270);
 
-            txtCarYearAC.setText("");
+            txtCarYearAC.setText("eg: 2017");
             txtCarYearAC.setSize(120, 30);
             txtCarYearAC.setBorder(null);
             txtCarYearAC.setForeground(new Color(225,223,186));
@@ -1752,7 +1662,7 @@ public class App extends JFrame implements MouseListener{
             separator3AC.setSize(120, 17);
             separator3AC.setLocation(35, 205);
 
-            txtCarPlateNumAC.setText("");
+            txtCarPlateNumAC.setText("eg: SA 0923 B");
             txtCarPlateNumAC.setSize(120, 30);
             txtCarPlateNumAC.setBorder(null);
             txtCarPlateNumAC.setForeground(new Color(225,223,186));
@@ -1774,7 +1684,7 @@ public class App extends JFrame implements MouseListener{
             separator2AC.setSize(120, 17);
             separator2AC.setLocation(35, 140);
 
-            txtCarModelAC.setText("");
+            txtCarModelAC.setText("eg: Corolla Altis");
             txtCarModelAC.setSize(120, 30);
             txtCarModelAC.setBorder(null);
             txtCarModelAC.setForeground(new Color(225,223,186));
@@ -1796,7 +1706,7 @@ public class App extends JFrame implements MouseListener{
             separator1AC.setSize(120, 17);
             separator1AC.setLocation(35, 80);
 
-            txtCarBrandAC.setText("");
+            txtCarBrandAC.setText("eg: Toyota");
             txtCarBrandAC.setSize(120, 30);
             txtCarBrandAC.setBorder(null);
             txtCarBrandAC.setForeground(new Color(225,223,186));
@@ -3317,6 +3227,7 @@ public class App extends JFrame implements MouseListener{
             String model = txtCarModelB.getText();
             String start = "";
             String end = "";
+            String today = java.time.LocalDate.now().toString();    
 
             /*if () {
 
@@ -3324,7 +3235,7 @@ public class App extends JFrame implements MouseListener{
             if(pnlHour.isVisible()) {
                 start = txtStartHourB.getText();
                 end = txtEndHourB.getText();
-                String[] array = {lblUsernameEP.getText(), model, start, end, "N/A", "N/A", "Pending", "\n"};
+                String[] array = {lblUsernameEP.getText(), model, start, end, today, today, "Pending", "\n"};
                 try
                 {
                     FileWriter fw = new FileWriter("src\\Text Files\\Booking.txt", true);
@@ -3512,6 +3423,7 @@ public class App extends JFrame implements MouseListener{
             String EndTime = txtEndTimeBR.getText();
             String RentDate = txtRentDateBR.getText();
             String ReturnDate = txtReturnDateBR.getText();
+            //username.equals(sc.next())&&(CarInfo.equals(sc.next()))&&(StartTime.equals(sc.next()))&&(EndTime.equals(sc.next()))&&(RentDate.equals(sc.next()))&&(ReturnDate.equals(sc.next()))&&(sc.next().equals("Pending"))
     
             if(username.trim().equals("") || CarInfo.trim().equals("") || StartTime.trim().equals("")|| EndTime.trim().equals("") || RentDate.trim().equals("")|| ReturnDate.trim().equals("")){
                 JOptionPane.showMessageDialog(null, "Blank entry detected! please select a row. ", "ERROR", JOptionPane.WARNING_MESSAGE);   
@@ -3528,7 +3440,7 @@ public class App extends JFrame implements MouseListener{
                     BufferedWriter bw = new BufferedWriter(fw);
                     PrintWriter pw = new PrintWriter(bw); 
 
-                    Scanner sc = new Scanner(new FileReader("src\\Text Files\\Booking.txt"))
+                    Scanner sc = new Scanner(new FileReader("src\\Text Files\\Accepted.txt"))
                                     .useDelimiter(", \\s*")) {
           
                     // checking end of file
@@ -3578,86 +3490,10 @@ public class App extends JFrame implements MouseListener{
                     // TODO Auto-generated catch block
                     e1.printStackTrace();
                 }
-                } 
-        }else if(e.getSource()==btnDeclineBR){
-            String username = txtUserNameBR.getText();
-            String CarInfo = txtCarInfoBR.getText();
-            String StartTime = txtStartTimeBR.getText();
-            String EndTime = txtEndTimeBR.getText();
-            String RentDate = txtRentDateBR.getText();
-            String ReturnDate = txtReturnDateBR.getText();
-    
-            if(username.trim().equals("") || CarInfo.trim().equals("") || StartTime.trim().equals("")|| EndTime.trim().equals("") || RentDate.trim().equals("")|| ReturnDate.trim().equals("")){
-                JOptionPane.showMessageDialog(null, "Blank entry detected! please select a row. ", "ERROR", JOptionPane.WARNING_MESSAGE);   
-            }else{
-                List<String> listOfStrings
-                = new ArrayList<String>();
-
-                String tempFile = "temp.txt";
-                File newFile = new File(tempFile);
-                
-                try (// load content of file based on specific delimiter
-
-                    FileWriter fw = new FileWriter(tempFile,true);
-                    BufferedWriter bw = new BufferedWriter(fw);
-                    PrintWriter pw = new PrintWriter(bw); 
-
-                    Scanner sc = new Scanner(new FileReader("src\\Text Files\\Booking.txt"))
-                                    .useDelimiter(", \\s*")) {
-          
-                    // checking end of file
-                    while (sc.hasNext()) {
-                        String str = sc.next();
-                
-                        // adding each string to arraylist
-                        listOfStrings.add(str);
-                    }
-                    for(int i = 7; i<listOfStrings.size(); i+=7) {  //forced to do this way to get distinct data, cus we dont hv unique id for rental.
-                        if((listOfStrings.get(i-7).equals(username))&&
-                        (listOfStrings.get(i-6).equals(CarInfo))&&
-                        (listOfStrings.get(i-5).equals(StartTime))&&
-                        (listOfStrings.get(i-4).equals(EndTime))&&
-                        (listOfStrings.get(i-3).equals(RentDate))&&
-                        (listOfStrings.get(i-2).equals(ReturnDate))&&
-                        (listOfStrings.get(i-1).equals("Pending")) ){
-                            String[] array = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), "Declined","\n"};
-                            listOfStrings.remove(i);
-                            for(int j=0;j < array.length; j++){
-                                pw.write(array[j]+", ");
-                            }
-                        }
-                        else{
-                            String[] array = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), listOfStrings.get(i-1),"\n"};
-                            listOfStrings.remove(i);
-                            for(int j=0;j < array.length; j++){
-                                pw.write(array[j]+", ");
-                            }
-                            }
-                    }
-                    sc.close();
-                    pw.flush();
-                    pw.close();
-                    try {
-                        String filePath = "src\\Text Files\\Booking.txt";
-                        File fileToDelete = new File(filePath);
-                        fileToDelete.delete();
-                        File dumpFile = new File(filePath);
-                        newFile.renameTo(dumpFile);
-                        JOptionPane.showMessageDialog(null, "The booking declined!", "Booking Unsuccessful", JOptionPane.INFORMATION_MESSAGE);
-                    } catch (Exception e2) {
-                        e2.printStackTrace();
-                    }
-
-                } catch (Exception e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
                 }
-                }
-        }else if(e.getSource()==btnResetRCA){
-            txtUsernameRCA.setText("");
-            txtCarModelRCA.setText("");
-            txtTimeRCA.setText("");
-            txtDateRCA.setText("");
+                        
+            
+        
         }
      }
 
