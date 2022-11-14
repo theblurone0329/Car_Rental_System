@@ -180,11 +180,13 @@ public class App extends JFrame implements MouseListener{
     private JLabel carPlateNumAC = new JLabel();
     private JLabel carYearAC = new JLabel();
     private JLabel carSeatAC = new JLabel();
+    private JLabel carPriceAC = new JLabel();
     private JTextField txtCarBrandAC = new JTextField();
     private JTextField txtCarModelAC = new JTextField();
     private JTextField txtCarPlateNumAC = new JTextField();
     private JTextField txtCarYearAC = new JTextField();
     private JTextField txtCarSeatAC = new JTextField();
+    private JTextField txtCarPriceAC = new JTextField();
     private JButton btnClearAC = new JButton();
     private JButton btnCancelAC = new JButton();
     private JButton btnAddAC = new JButton(); 
@@ -195,6 +197,7 @@ public class App extends JFrame implements MouseListener{
     private JSeparator separator3AC = new JSeparator();
     private JSeparator separator4AC = new JSeparator();
     private JSeparator separator5AC = new JSeparator();
+    private JSeparator separator6AC = new JSeparator();
     private JScrollPane paneAC = new JScrollPane();
     private Border borderAC = new LineBorder(new Color(225,223,186), 1, true);
 
@@ -1557,13 +1560,13 @@ public class App extends JFrame implements MouseListener{
             }
             //BufferedReader br = new BufferedReader(new FileReader(file));
             DefaultTableModel model1 = (DefaultTableModel)tableAC.getModel();
-            for(int i = 5; i<listOfStrings.size(); i+=5) {
-                Object[] tableLines = {listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), listOfStrings.get(i-1)};
+            for(int i = 6; i<listOfStrings.size(); i+=6) {
+                Object[] tableLines = {listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), listOfStrings.get(i-1)};
                 listOfStrings.remove(i);
                 model1.addRow(tableLines);
             }
         
-            tableAC.setPreferredScrollableViewportSize(new Dimension(359, 347));
+            tableAC.setPreferredScrollableViewportSize(new Dimension(449, 347));
             tableAC.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
             tableAC.setFillsViewportHeight(true);
             tableAC.setBackground(new Color(27, 28, 30));
@@ -1572,17 +1575,17 @@ public class App extends JFrame implements MouseListener{
             tableAC.setFont(new Font("Segoe UI", Font.PLAIN, 13));
             tableAC.setRowHeight(30);
             
-            paneAC = new JScrollPane(tableAC, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            paneAC = new JScrollPane(tableAC, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
             paneAC.setVisible(true);
 
-            tablePnlAC.setBounds(320, 20, 390, 347);
+            tablePnlAC.setBounds(160, 20, 449, 347);
             tablePnlAC.setBorder(BorderFactory.createLineBorder(new Color(225,223,186)));
             tablePnlAC.add(paneAC);
 
             //Add Button
             btnAddAC.setText("Add");
             btnAddAC.setSize(90, 37);
-            btnAddAC.setLocation(200, 300);
+            btnAddAC.setLocation(420, 375);
             btnAddAC.setForeground(new Color(225,223,186));
             btnAddAC.setBackground(new Color(27, 28, 30));
             btnAddAC.setBorder(borderAC);
@@ -1593,7 +1596,7 @@ public class App extends JFrame implements MouseListener{
             //Cancel Button
             btnCancelAC.setText("Cancel");
             btnCancelAC.setSize(90, 37);
-            btnCancelAC.setLocation(200, 250);
+            btnCancelAC.setLocation(320, 375);
             btnCancelAC.setForeground(new Color(225,223,186));
             btnCancelAC.setBackground(new Color(27, 28, 30));
             btnCancelAC.setBorder(borderAC);
@@ -1604,13 +1607,34 @@ public class App extends JFrame implements MouseListener{
             //Clear Button
             btnClearAC.setText("Clear");
             btnClearAC.setSize(90, 37);
-            btnClearAC.setLocation(200, 200);
+            btnClearAC.setLocation(220, 375);
             btnClearAC.setForeground(new Color(225,223,186));
             btnClearAC.setBackground(new Color(27, 28, 30));
             btnClearAC.setBorder(borderAC);
             btnClearAC.setFont(new Font("TW Cen MT", Font.BOLD, 15));
             btnClearAC.setFocusable(false);
             btnClearAC.addMouseListener(this);
+
+            separator6AC.setForeground(new Color(225,223,186));
+            separator6AC.setBackground(new Color(27, 28, 30));
+            separator6AC.setSize(120, 17);
+            separator6AC.setLocation(35, 400);
+
+            txtCarPriceAC.setText("eg: 25");
+            txtCarPriceAC.setSize(120, 30);
+            txtCarPriceAC.setBorder(null);
+            txtCarPriceAC.setForeground(new Color(225,223,186));
+            txtCarPriceAC.setBackground(new Color(27, 28, 30));
+            txtCarPriceAC.setFont(new Font("TW Cen MT", Font.BOLD, 14));
+            txtCarPriceAC.setLocation(35,370);
+
+            carPriceAC.setText("Price/Hr");
+            carPriceAC.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+            carPriceAC.setForeground(new Color(225,223,186));
+            carPriceAC.setBackground(new Color(27, 28, 30));
+            carPriceAC.setBorder(null);
+            carPriceAC.setSize(180, 30);
+            carPriceAC.setLocation(15, 345);
 
             //Car seat text box and label 
             separator5AC.setForeground(new Color(225,223,186));
@@ -1744,6 +1768,9 @@ public class App extends JFrame implements MouseListener{
             pnlAC.add(carSeatAC);
             pnlAC.add(txtCarSeatAC);
             pnlAC.add(separator5AC);
+            pnlAC.add(carPriceAC);
+            pnlAC.add(txtCarPriceAC);
+            pnlAC.add(separator6AC);
             pnlAC.add(btnClearAC);
             pnlAC.add(btnCancelAC);
             pnlAC.add(btnAddAC);
@@ -3080,6 +3107,7 @@ public class App extends JFrame implements MouseListener{
             String plate = txtCarPlateNumAC.getText();
             String year = txtCarYearAC.getText();
             String seat = txtCarSeatAC.getText();
+            String priceHr = txtCarPriceAC.getText();
             // arraylist to store strings
             List<String> listOfStrings
             = new ArrayList<String>();
@@ -3102,7 +3130,7 @@ public class App extends JFrame implements MouseListener{
             }
             try
                 {
-                    String[] row = {brand,model,plate,year,seat, "\n"};
+                    String[] row = {brand,model,plate,year,seat,priceHr, "\n"};
                     FileWriter fw = new FileWriter("src\\Text Files\\Car.txt", true);
                     BufferedWriter bw = new BufferedWriter(fw);
                     PrintWriter pw = new PrintWriter(bw);    
