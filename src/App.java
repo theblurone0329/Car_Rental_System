@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -58,13 +59,22 @@ public class App extends JFrame implements MouseListener{
     private JPanel adminHome = new JPanel();
     private JPanel pnl1Admin = new JPanel();
     private JPanel pnl2Admin = new JPanel();
-    private JPanel pnl3Admin = new JPanel();
-    private JLabel picCar = new JLabel();
     private JButton btnBooking = new JButton();
     private JButton btnRegistration = new JButton();
     private JButton btnReports = new JButton();
     private JButton btnProfile = new JButton();
     private JButton btnHome = new JButton();
+    private JPanel pnlLeftRBP = new JPanel();
+    private JPanel pnlRightRBP = new JPanel();
+    private JPanel pnlDownRBP = new JPanel();
+    private JLabel txtReport = new JLabel();
+    private JLabel txtBook = new JLabel();
+    private JLabel txtReturnCar = new JLabel();
+    private JButton btnReport  = new JButton();
+    private JButton btnBook = new JButton();
+    private JButton btnReturnCar = new JButton();
+    private JSeparator separator1RBP = new JSeparator(SwingConstants.VERTICAL);
+    private JSeparator separator2RBP = new JSeparator();
 
     //Profile
     private JPanel pnlProfile = new JPanel();
@@ -133,20 +143,6 @@ public class App extends JFrame implements MouseListener{
     ImageIcon pnl = new ImageIcon("src\\Pics\\pnl.png");
     ImageIcon pricePic = new ImageIcon("src\\Pics\\price-tag (1).png");
     ImageIcon seat = new ImageIcon("src\\Pics\\car-seat (1).png");
-    
-    //RBP Page
-    private JPanel pnlRBP = new JPanel();
-    private JPanel pnlLeftRBP = new JPanel();
-    private JPanel pnlRightRBP = new JPanel();
-    private JPanel pnlDownRBP = new JPanel();
-    private JLabel txtReport = new JLabel();
-    private JLabel txtBook = new JLabel();
-    private JLabel txtReturnCar = new JLabel();
-    private JButton btnReport  = new JButton();
-    private JButton btnBook = new JButton();
-    private JButton btnReturnCar = new JButton();
-    private JSeparator separator1RBP = new JSeparator(SwingConstants.VERTICAL);
-    private JSeparator separator2RBP = new JSeparator();
 
     //Registration Page
     private JPanel pnlR = new JPanel();
@@ -330,10 +326,230 @@ public class App extends JFrame implements MouseListener{
     private JPanel returnedPnlRCA = new JPanel();
     private Border borderRCA = new LineBorder(new Color(225,223,186), 1, true);
 
+    //Billing Page
+    private JPanel pnlBill = new JPanel();
+    private JLabel titleBill = new JLabel();
+    private JLabel titlePaymentDetails = new JLabel();
+    private JLabel titleRentalDetails = new JLabel();
+    private JLabel carInfoBill = new JLabel();
+    private JLabel rentalDurationBill = new JLabel();
+    private JLabel priceBill = new JLabel();
+    private JLabel usernameBill = new JLabel();
+    private JLabel phoneNumBill = new JLabel();
+    private JLabel paymentMethodBill = new JLabel();
+    private JLabel txtcarInfoBill = new JLabel();
+    private JLabel txtrentalDurationBill = new JLabel();
+    private JLabel txtpriceBill = new JLabel();
+    private JLabel txtusernameBill = new JLabel();
+    private JLabel txtphoneNumBill = new JLabel();
+    private ButtonGroup btnGroupBill = new ButtonGroup();
+    private JRadioButton CashBill = new JRadioButton();
+    private JRadioButton OnlineBill = new JRadioButton();
+    private JSeparator separatorBill = new JSeparator();
+    private JSeparator separatorBill1 = new JSeparator();
+    private JButton btnCancelBill = new JButton();
+    private JButton btnProceedBill = new JButton();
+    private Border borderBill = new LineBorder(new Color(225,223,186), 1, true);
+
     /**
      * @param user
      */
     App(User user) throws FileNotFoundException {
+
+        //Billing Page
+        {
+            titleRentalDetails.setText("Rental Details");
+            titleRentalDetails.setSize(150, 30);
+            titleRentalDetails.setBorder(null);
+            titleRentalDetails.setForeground(new Color(225,223,186));
+            titleRentalDetails.setBackground(new Color(27, 28, 30));
+            titleRentalDetails.setFont(new Font("TW Cen MT", Font.BOLD, 18));
+            titleRentalDetails.setLocation(50, 30);
+
+            separatorBill1.setForeground(new Color(225,223,186));
+            separatorBill1.setBackground(new Color(27, 28, 30));
+            separatorBill1.setSize(725, 17);
+            separatorBill1.setLocation(0, 70);
+
+            carInfoBill.setText("Car Information: ");
+            carInfoBill.setSize(150, 30);
+            carInfoBill.setBorder(null);
+            carInfoBill.setForeground(new Color(225,223,186));
+            carInfoBill.setBackground(new Color(27, 28, 30));
+            carInfoBill.setFont(new Font("TW Cen MT", Font.BOLD, 16));
+            carInfoBill.setLocation(25, 80);
+
+            rentalDurationBill.setText("Rental Duration: ");
+            rentalDurationBill.setSize(150, 30);
+            rentalDurationBill.setBorder(null);
+            rentalDurationBill.setForeground(new Color(225,223,186));
+            rentalDurationBill.setBackground(new Color(27, 28, 30));
+            rentalDurationBill.setFont(new Font("TW Cen MT", Font.BOLD, 16));
+            rentalDurationBill.setLocation(25, 110);
+
+            priceBill.setText("Price: ");
+            priceBill.setSize(100, 30);
+            priceBill.setBorder(null);
+            priceBill.setForeground(new Color(225,223,186));
+            priceBill.setBackground(new Color(27, 28, 30));
+            priceBill.setFont(new Font("TW Cen MT", Font.BOLD, 16));
+            priceBill.setLocation(25, 140);
+
+            txtcarInfoBill.setText("Car Information");
+            txtcarInfoBill.setSize(150, 30);
+            txtcarInfoBill.setBorder(null);
+            txtcarInfoBill.setForeground(new Color(225,223,186));
+            txtcarInfoBill.setBackground(new Color(27, 28, 30));
+            txtcarInfoBill.setFont(new Font("TW Cen MT", Font.BOLD, 16));
+            txtcarInfoBill.setLocation(180, 80);
+
+            txtrentalDurationBill.setText("Rental Duration");
+            txtrentalDurationBill.setSize(150, 30);
+            txtrentalDurationBill.setBorder(null);
+            txtrentalDurationBill.setForeground(new Color(225,223,186));
+            txtrentalDurationBill.setBackground(new Color(27, 28, 30));
+            txtrentalDurationBill.setFont(new Font("TW Cen MT", Font.BOLD, 16));
+            txtrentalDurationBill.setLocation(180, 110);
+
+            txtpriceBill.setText("Price");
+            txtpriceBill.setSize(100, 30);
+            txtpriceBill.setBorder(null);
+            txtpriceBill.setForeground(new Color(225,223,186));
+            txtpriceBill.setBackground(new Color(27, 28, 30));
+            txtpriceBill.setFont(new Font("TW Cen MT", Font.BOLD, 16));
+            txtpriceBill.setLocation(180, 140);
+
+            titlePaymentDetails.setText("Payment Details");
+            titlePaymentDetails.setSize(150, 30);
+            titlePaymentDetails.setBorder(null);
+            titlePaymentDetails.setForeground(new Color(225,223,186));
+            titlePaymentDetails.setBackground(new Color(27, 28, 30));
+            titlePaymentDetails.setFont(new Font("TW Cen MT", Font.BOLD, 18));
+            titlePaymentDetails.setLocation(50, 180);
+
+            separatorBill.setForeground(new Color(225,223,186));
+            separatorBill.setBackground(new Color(27, 28, 30));
+            separatorBill.setSize(725, 17);
+            separatorBill.setLocation(0, 220);
+
+            usernameBill.setText("Username: ");
+            usernameBill.setSize(150, 30);
+            usernameBill.setBorder(null);
+            usernameBill.setForeground(new Color(225,223,186));
+            usernameBill.setBackground(new Color(27, 28, 30));
+            usernameBill.setFont(new Font("TW Cen MT", Font.BOLD, 16));
+            usernameBill.setLocation(25, 230);
+
+            phoneNumBill.setText("Phone Number: ");
+            phoneNumBill.setSize(150, 30);
+            phoneNumBill.setBorder(null);
+            phoneNumBill.setForeground(new Color(225,223,186));
+            phoneNumBill.setBackground(new Color(27, 28, 30));
+            phoneNumBill.setFont(new Font("TW Cen MT", Font.BOLD, 16));
+            phoneNumBill.setLocation(25, 260);
+
+            paymentMethodBill.setText("Payment Method: ");
+            paymentMethodBill.setSize(150, 30);
+            paymentMethodBill.setBorder(null);
+            paymentMethodBill.setForeground(new Color(225,223,186));
+            paymentMethodBill.setBackground(new Color(27, 28, 30));
+            paymentMethodBill.setFont(new Font("TW Cen MT", Font.BOLD, 16));
+            paymentMethodBill.setLocation(25, 290);
+
+            txtusernameBill.setText("Username");
+            txtusernameBill.setSize(150, 30);
+            txtusernameBill.setBorder(null);
+            txtusernameBill.setForeground(new Color(225,223,186));
+            txtusernameBill.setBackground(new Color(27, 28, 30));
+            txtusernameBill.setFont(new Font("TW Cen MT", Font.BOLD, 16));
+            txtusernameBill.setLocation(180, 230);
+
+            txtphoneNumBill.setText("Phone Number");
+            txtphoneNumBill.setSize(150, 30);
+            txtphoneNumBill.setBorder(null);
+            txtphoneNumBill.setForeground(new Color(225,223,186));
+            txtphoneNumBill.setBackground(new Color(27, 28, 30));
+            txtphoneNumBill.setFont(new Font("TW Cen MT", Font.BOLD, 16));
+            txtphoneNumBill.setLocation(180, 260);
+
+            CashBill.setText("Cash");
+            CashBill.setSize(150, 30);
+            CashBill.setBorder(null);
+            CashBill.setForeground(new Color(225,223,186));
+            CashBill.setBackground(new Color(27, 28, 30));
+            CashBill.setFont(new Font("TW Cen MT", Font.BOLD, 16));
+            CashBill.setLocation(180, 290);
+            CashBill.setFocusable(false);
+
+            OnlineBill.setText("Online Banking");
+            OnlineBill.setSize(150, 30);
+            OnlineBill.setBorder(null);
+            OnlineBill.setForeground(new Color(225,223,186));
+            OnlineBill.setBackground(new Color(27, 28, 30));
+            OnlineBill.setFont(new Font("TW Cen MT", Font.BOLD, 16));
+            OnlineBill.setLocation(180, 310);
+            OnlineBill.setFocusable(false);
+
+            btnGroupBill.add(CashBill);
+            btnGroupBill.add(OnlineBill);
+
+            //Cancel Button
+            btnCancelBill.setText("Cancel");
+            btnCancelBill.setSize(90, 37);
+            btnCancelBill.setLocation(425, 305);
+            btnCancelBill.setForeground(new Color(225,223,186));
+            btnCancelBill.setBackground(new Color(27, 28, 30));
+            btnCancelBill.setBorder(borderBill);
+            btnCancelBill.setFont(new Font("TW Cen MT", Font.BOLD, 15));
+            btnCancelBill.setFocusable(false);
+            btnCancelBill.addMouseListener(this);
+            
+            //Clear Button
+            btnProceedBill.setText("Proceed");
+            btnProceedBill.setSize(90, 37);
+            btnProceedBill.setLocation(525, 305);
+            btnProceedBill.setForeground(new Color(225,223,186));
+            btnProceedBill.setBackground(new Color(27, 28, 30));
+            btnProceedBill.setBorder(borderBill);
+            btnProceedBill.setFont(new Font("TW Cen MT", Font.BOLD, 15));
+            btnProceedBill.setFocusable(false);
+            btnProceedBill.addMouseListener(this);
+        
+            //Page Title
+            titleBill.setText("Rental Checkout");
+            titleBill.setFont(new Font("TW Cen MT", Font.PLAIN, 28));
+            titleBill.setForeground(new Color(225,223,186));
+            titleBill.setBackground(new Color(27, 28, 30));
+            titleBill.setSize(200, 27);
+            titleBill.setLocation(280, 10);
+
+            //Panel
+            pnlBill.setLayout(null);
+            pnlBill.setBackground(new Color(27, 28, 30));
+            pnlBill.setSize(725, 420);
+            pnlBill.setVisible(false);
+
+            pnlBill.add(titleBill);
+            pnlBill.add(titleRentalDetails);
+            pnlBill.add(titlePaymentDetails);
+            pnlBill.add(carInfoBill);
+            pnlBill.add(rentalDurationBill);
+            pnlBill.add(priceBill);
+            pnlBill.add(usernameBill);
+            pnlBill.add(phoneNumBill);
+            pnlBill.add(paymentMethodBill);
+            pnlBill.add(txtcarInfoBill);
+            pnlBill.add(txtrentalDurationBill);
+            pnlBill.add(txtpriceBill);
+            pnlBill.add(txtusernameBill);
+            pnlBill.add(txtphoneNumBill);
+            pnlBill.add(CashBill);
+            pnlBill.add(OnlineBill);
+            pnlBill.add(separatorBill);
+            pnlBill.add(separatorBill1);
+            pnlBill.add(btnCancelBill);
+            pnlBill.add(btnProceedBill);
+        }
 
         //Return Car Admin Page
         {
@@ -703,6 +919,7 @@ public class App extends JFrame implements MouseListener{
             pnlRCA.add(onRentTitleRCA);
         }
     }   
+
         //Booking Page ✅
         {
             //Panel view when btnHourB clicked
@@ -2078,98 +2295,6 @@ public class App extends JFrame implements MouseListener{
             pnlR.add(car2R);
         }
 
-        //View Report or Booking Page ✅
-        {
-            separator2RBP.setForeground(new Color(225,223,186));
-            separator2RBP.setBackground(new Color(27, 28, 30));
-            separator2RBP.setSize(724, 30);
-            separator2RBP.setLocation(0, 211);
-
-            separator1RBP.setForeground(new Color(225,223,186));
-            separator1RBP.setBackground(new Color(27, 28, 30));
-            separator1RBP.setSize(10, 420);
-            separator1RBP.setLocation(363, 0);
-
-            txtReturnCar.setText("View Rented Cars");
-            txtReturnCar.setSize(150, 37);
-            txtReturnCar.setLocation(300, 124);
-            txtReturnCar.setBackground(new Color(27, 28, 30));
-            txtReturnCar.setForeground(new Color(225,223,186));
-            txtReturnCar.setFont(new Font("TW Cent", Font.PLAIN, 16));
-
-            txtReport.setText("View Reports");
-            txtReport.setSize(150, 37);
-            txtReport.setLocation(133, 124);
-            txtReport.setBackground(new Color(27, 28, 30));
-            txtReport.setForeground(new Color(225,223,186));
-            txtReport.setFont(new Font("TW Cent", Font.PLAIN, 16));
-
-            txtBook.setText("View Booking Request");
-            txtBook.setSize(180, 37);
-            txtBook.setLocation(103, 124);
-            txtBook.setBackground(new Color(27, 28, 30));
-            txtBook.setForeground(new Color(225,223,186));
-            txtBook.setFont(new Font("TW Cent", Font.PLAIN, 16));
-
-            ImageIcon carPic = new ImageIcon("src\\Pics\\electric-car.png");
-            btnReturnCar.setIcon(carPic);
-            btnReturnCar.setSize(64, 64);
-            btnReturnCar.setBackground(new Color(27, 28, 30));
-            btnReturnCar.setLocation(330, 60);
-            btnReturnCar.setFocusable(false);
-            btnReturnCar.setBorder(null);
-            btnReturnCar.addMouseListener(this);
-
-            ImageIcon cus = new ImageIcon("src\\Pics\\online-booking2.png");
-            btnBook.setIcon(cus);
-            btnBook.setSize(64, 64);
-            btnBook.setBackground(new Color(27, 28, 30));
-            btnBook.setLocation(150, 60);
-            btnBook.setFocusable(false);
-            btnBook.setBorder(null);
-            btnBook.addMouseListener(this);
-
-            ImageIcon car = new ImageIcon("src\\Pics\\clipboard.png");
-            btnReport.setIcon(car);
-            btnReport.setSize(64, 64);
-            btnReport.setBackground(new Color(27, 28, 30));
-            btnReport.setLocation(150, 60);
-            btnReport.setFocusable(false);
-            btnReport.setBorder(null);
-            btnReport.addMouseListener(this);
-
-            pnlDownRBP.setBackground(new Color(27, 28, 30));
-            pnlDownRBP.setBounds(0, 212, 724, 210);
-            pnlDownRBP.setLayout(null);
-
-            pnlRightRBP.setBackground(new Color(27, 28, 30));
-            pnlRightRBP.setBounds(364, 0, 362, 210);
-            pnlRightRBP.setLayout(null);
-
-            pnlLeftRBP.setBackground(new Color(27, 28, 30));
-            pnlLeftRBP.setBounds(0, 0, 362, 210);
-            pnlLeftRBP.setLayout(null);
-
-            pnlRightRBP.add(txtBook);
-            pnlRightRBP.add(btnBook);
-            pnlLeftRBP.add(txtReport);
-            pnlLeftRBP.add(btnReport);
-            pnlDownRBP.add(txtReturnCar);
-            pnlDownRBP.add(btnReturnCar);
-
-            //Panel
-            pnlRBP.setBackground(new Color(27, 28, 30));
-            pnlRBP.setLayout(null);
-            pnlRBP.setSize(725, 420);
-            pnlRBP.setVisible(false);
-
-            pnlRBP.add(pnlLeftRBP);
-            pnlRBP.add(pnlRightRBP);
-            pnlRBP.add(pnlDownRBP);
-            pnlRBP.add(separator1RBP);
-            pnlRBP.add(separator2RBP);
-        }
-
         //View All Car Page ✅
         {
             //columns
@@ -2763,27 +2888,93 @@ public class App extends JFrame implements MouseListener{
             btnProfile.setBorder(null);
             btnProfile.addMouseListener(this);
 
-            // Car Picture
-            ImageIcon car = new ImageIcon("src\\Pics\\Tesla_Model_S_Logo.png");
-            picCar.setIcon(car);
-            picCar.setSize(236, 125);
-            picCar.setLocation(5, 70);
+            separator2RBP.setForeground(new Color(225,223,186));
+            separator2RBP.setBackground(new Color(27, 28, 30));
+            separator2RBP.setSize(724, 30);
+            separator2RBP.setLocation(0, 211);
 
-            //Rent Progress Panel
-            pnl3Admin.setBackground(new Color(27, 28, 30));
-            pnl3Admin.setBounds(110, 60, 500, 300);
-            pnl3Admin.setLayout(null);
+            separator1RBP.setForeground(new Color(225,223,186));
+            separator1RBP.setBackground(new Color(27, 28, 30));
+            separator1RBP.setSize(10, 420);
+            separator1RBP.setLocation(363, 0);
+
+            txtReturnCar.setText("View Rented Cars");
+            txtReturnCar.setSize(150, 37);
+            txtReturnCar.setLocation(300, 124);
+            txtReturnCar.setBackground(new Color(27, 28, 30));
+            txtReturnCar.setForeground(new Color(225,223,186));
+            txtReturnCar.setFont(new Font("TW Cent", Font.PLAIN, 16));
+
+            txtReport.setText("View Reports");
+            txtReport.setSize(150, 37);
+            txtReport.setLocation(133, 124);
+            txtReport.setBackground(new Color(27, 28, 30));
+            txtReport.setForeground(new Color(225,223,186));
+            txtReport.setFont(new Font("TW Cent", Font.PLAIN, 16));
+
+            txtBook.setText("View Booking Request");
+            txtBook.setSize(180, 37);
+            txtBook.setLocation(103, 124);
+            txtBook.setBackground(new Color(27, 28, 30));
+            txtBook.setForeground(new Color(225,223,186));
+            txtBook.setFont(new Font("TW Cent", Font.PLAIN, 16));
+
+            ImageIcon carPic = new ImageIcon("src\\Pics\\electric-car.png");
+            btnReturnCar.setIcon(carPic);
+            btnReturnCar.setSize(64, 64);
+            btnReturnCar.setBackground(new Color(27, 28, 30));
+            btnReturnCar.setLocation(330, 60);
+            btnReturnCar.setFocusable(false);
+            btnReturnCar.setBorder(null);
+            btnReturnCar.addMouseListener(this);
+
+            ImageIcon cus = new ImageIcon("src\\Pics\\online-booking2.png");
+            btnBook.setIcon(cus);
+            btnBook.setSize(64, 64);
+            btnBook.setBackground(new Color(27, 28, 30));
+            btnBook.setLocation(150, 60);
+            btnBook.setFocusable(false);
+            btnBook.setBorder(null);
+            btnBook.addMouseListener(this);
+
+            ImageIcon car = new ImageIcon("src\\Pics\\clipboard.png");
+            btnReport.setIcon(car);
+            btnReport.setSize(64, 64);
+            btnReport.setBackground(new Color(27, 28, 30));
+            btnReport.setLocation(150, 60);
+            btnReport.setFocusable(false);
+            btnReport.setBorder(null);
+            btnReport.addMouseListener(this);
+
+            pnlDownRBP.setBackground(new Color(27, 28, 30));
+            pnlDownRBP.setBounds(0, 212, 724, 210);
+            pnlDownRBP.setLayout(null);
+
+            pnlRightRBP.setBackground(new Color(27, 28, 30));
+            pnlRightRBP.setBounds(364, 0, 362, 210);
+            pnlRightRBP.setLayout(null);
+
+            pnlLeftRBP.setBackground(new Color(27, 28, 30));
+            pnlLeftRBP.setBounds(0, 0, 362, 210);
+            pnlLeftRBP.setLayout(null);
+
+            pnlRightRBP.add(txtBook);
+            pnlRightRBP.add(btnBook);
+            pnlLeftRBP.add(txtReport);
+            pnlLeftRBP.add(btnReport);
+            pnlDownRBP.add(txtReturnCar);
+            pnlDownRBP.add(btnReturnCar);
 
             //Bottom Panel / Menu
             pnl2Admin.setBackground(new Color(127, 126, 144));
             pnl2Admin.setLayout(null);
-            pnl2Admin.setBounds(0, 420, 805, 108);
+            pnl2Admin.setBounds(0, 420, 725, 108);
             pnl2Admin.setVisible(false);
 
             //Top Panel
             pnl1Admin.setBackground(new Color(27, 28, 30));
             pnl1Admin.setLayout(null);
-            pnl1Admin.setBounds(0, 0, 805, 420);
+            pnl1Admin.setBounds(0, 0, 725, 420);
             
             //Main Panel
             adminHome.setLayout(null);
@@ -2801,7 +2992,12 @@ public class App extends JFrame implements MouseListener{
             this.setVisible(true);
             
             //Add Stuff
-            pnl1Admin.add(pnl3Admin);
+            pnl1Admin.add(pnlLeftRBP);
+            pnl1Admin.add(pnlRightRBP);
+            pnl1Admin.add(pnlDownRBP);
+            pnl1Admin.add(separator1RBP);
+            pnl1Admin.add(separator2RBP);
+
             pnl2Admin.add(btnHome);
             pnl2Admin.add(btnBooking);
             pnl2Admin.add(btnRegistration);
@@ -2826,11 +3022,11 @@ public class App extends JFrame implements MouseListener{
         this.add(pnlEP);
         this.add(pnlAC);
         this.add(pnlR);
-        this.add(pnlRBP);
         this.add(pnlViewAllCar);
         this.add(pnlVMP);
         this.add(pnlAdd);
         this.add(pnlProfile);
+        this.add(pnlBill);
         
         message.setVisible(false);
         message2.setVisible(false);
@@ -2874,7 +3070,7 @@ public class App extends JFrame implements MouseListener{
             pnlVMP.setVisible(false);
             pnlAdd.setVisible(false);
             pnlViewAllCar.setVisible(false);
-            pnlRBP.setVisible(false);
+            pnlBill.setVisible(false);
             pnlR.setVisible(false);
             pnlAC.setVisible(false);
             pnlEP.setVisible(false);
@@ -2893,7 +3089,7 @@ public class App extends JFrame implements MouseListener{
             pnlAdd.setVisible(false);
             pnlVMP.setVisible(false);
             pnlViewAllCar.setVisible(false);
-            pnlRBP.setVisible(false);
+            pnlBill.setVisible(false);
             pnlR.setVisible(false);
             pnlAC.setVisible(false);
             pnlEP.setVisible(false);
@@ -2912,7 +3108,7 @@ public class App extends JFrame implements MouseListener{
             cusHome.setVisible(false);
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
-            pnlRBP.setVisible(false);
+            pnlBill.setVisible(false);
             pnlR.setVisible(false);
             pnlAC.setVisible(false);
             pnlEP.setVisible(false);
@@ -2932,7 +3128,7 @@ public class App extends JFrame implements MouseListener{
             pnlVMP.setVisible(false);
             pnlAdd.setVisible(false);
             pnlViewAllCar.setVisible(false);
-            pnlRBP.setVisible(false);
+            pnlBill.setVisible(false);
             pnlR.setVisible(false);
             pnlAC.setVisible(false);
             pnlEP.setVisible(false);
@@ -2951,7 +3147,7 @@ public class App extends JFrame implements MouseListener{
             pnlAdd.setVisible(false);
             pnlVMP.setVisible(false);
             pnlViewAllCar.setVisible(false);
-            pnlRBP.setVisible(false);
+            pnlBill.setVisible(false);
             pnlR.setVisible(false);
             pnlAC.setVisible(false);
             pnlEP.setVisible(false);
@@ -2970,7 +3166,7 @@ public class App extends JFrame implements MouseListener{
             pnlVMP.setVisible(false);
             pnlProfile.setVisible(false);
             pnlViewAllCar.setVisible(false);
-            pnlRBP.setVisible(false);
+            pnlBill.setVisible(false);
             pnlR.setVisible(false);
             pnlAC.setVisible(false);
             pnlEP.setVisible(false);
@@ -2984,7 +3180,7 @@ public class App extends JFrame implements MouseListener{
             pnlRCA.setVisible(false);
         } //Reports Button
         else if(e.getSource() == btnReports) {
-            pnlRBP.setVisible(true);
+            pnlBill.setVisible(true);
             pnlVMP.setVisible(false);
             adminHome.setVisible(false);
             pnlAdd.setVisible(false);
@@ -3008,7 +3204,7 @@ public class App extends JFrame implements MouseListener{
             adminHome.setVisible(false);
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
-            pnlRBP.setVisible(false);
+            pnlBill.setVisible(false);
             pnlR.setVisible(false);
             pnlAC.setVisible(false);
             pnlEP.setVisible(false);
@@ -3029,7 +3225,7 @@ public class App extends JFrame implements MouseListener{
             adminHome.setVisible(false);
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
-            pnlRBP.setVisible(false);
+            pnlBill.setVisible(false);
             pnlAC.setVisible(false);
             pnlEP.setVisible(false);
             pnlCP.setVisible(false);
@@ -3049,7 +3245,7 @@ public class App extends JFrame implements MouseListener{
             adminHome.setVisible(false);
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
-            pnlRBP.setVisible(false);
+            pnlBill.setVisible(false);
             pnlEP.setVisible(false);
             pnlCP.setVisible(false);
             pnlMR.setVisible(false);
@@ -3069,7 +3265,7 @@ public class App extends JFrame implements MouseListener{
             adminHome.setVisible(false);
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
-            pnlRBP.setVisible(false);
+            pnlBill.setVisible(false);
             pnlCP.setVisible(false);
             pnlMR.setVisible(false);
             pnlBigOCP.setVisible(false);
@@ -3090,7 +3286,7 @@ public class App extends JFrame implements MouseListener{
             adminHome.setVisible(false);
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
-            pnlRBP.setVisible(false);
+            pnlBill.setVisible(false);
             pnlMR.setVisible(false);
             pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
@@ -3111,7 +3307,7 @@ public class App extends JFrame implements MouseListener{
             adminHome.setVisible(false);
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
-            pnlRBP.setVisible(false);
+            pnlBill.setVisible(false);
             pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
             pnlB.setVisible(false);
@@ -3132,7 +3328,7 @@ public class App extends JFrame implements MouseListener{
             adminHome.setVisible(false);
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
-            pnlRBP.setVisible(false);
+            pnlBill.setVisible(false);
             pnlBR.setVisible(false);
             pnlB.setVisible(false);
             pnlHour.setVisible(false);
@@ -3153,7 +3349,7 @@ public class App extends JFrame implements MouseListener{
             adminHome.setVisible(false);
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
-            pnlRBP.setVisible(false);
+            pnlBill.setVisible(false);
             pnlB.setVisible(false);
             pnlHour.setVisible(false);
             pnlDate.setVisible(false);
@@ -3173,7 +3369,7 @@ public class App extends JFrame implements MouseListener{
             adminHome.setVisible(false);
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
-            pnlRBP.setVisible(false);
+            pnlBill.setVisible(false);
             pnlB.setVisible(false);
             pnlHour.setVisible(false);
             pnlDate.setVisible(false);
@@ -3194,7 +3390,7 @@ public class App extends JFrame implements MouseListener{
             adminHome.setVisible(false);
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
-            pnlRBP.setVisible(false);
+            pnlBill.setVisible(false);
             pnlHour.setVisible(false);
             pnlDate.setVisible(false);
             pnlRCA.setVisible(false);
@@ -3213,7 +3409,7 @@ public class App extends JFrame implements MouseListener{
             adminHome.setVisible(false);
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
-            pnlRBP.setVisible(false);
+            pnlBill.setVisible(false);
             pnlHour.setVisible(false);
             pnlDate.setVisible(false);
         }else if(e.getSource() == btnHourB) {
@@ -3273,31 +3469,13 @@ public class App extends JFrame implements MouseListener{
                     f.printStackTrace();
                     System.out.println("No such file exists.");
                 }
-            /*add new car into Car.txt and new row into table
-            try {
-                FileWriter fw = new FileWriter("src\\Text Files\\Car.txt",true);
-                PrintWriter pw = new PrintWriter(fw);
-                if(brand.trim().equals("") || model.trim().equals("") || plate.trim().equals("")|| year.trim().equals("") || seat.trim().equals("")){
-                    JOptionPane.showMessageDialog(null, "Blank entry detected! ", "ERROR", JOptionPane.WARNING_MESSAGE);   
-                }else{
-                    pw.print(brand+"\t"+model+"\t"+plate+"\t"+year+"\t"+seat+"\n");
-                    pw.close();
-                    DefaultTableModel updatedModel = (DefaultTableModel)tableAC.getModel();
-                    String[] row = {brand,model,plate,year,seat};
-                    updatedModel.addRow(row);
-                    JOptionPane.showMessageDialog(null, "Car Added Successfully!", "Successful", JOptionPane.INFORMATION_MESSAGE);   
-                }
-            } catch (IOException ex) {
-                Logger.getLogger(addcar_admin.class.getName()).log(Level.SEVERE, null, ex);
-            }*/
-
         } else if(e.getSource()==btnCancelAC){
             adminHome.setVisible(true);
             pnlProfile.setVisible(false);
             pnlAdd.setVisible(false);
             pnlVMP.setVisible(false);
             pnlViewAllCar.setVisible(false);
-            pnlRBP.setVisible(false);
+            pnlBill.setVisible(false);
             pnlR.setVisible(false);
             pnlAC.setVisible(false);
             pnlEP.setVisible(false);
