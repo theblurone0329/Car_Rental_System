@@ -11,6 +11,7 @@ import java.util.Scanner;
 public class Functions {
     
     private String today = java.time.LocalDate.now().toString(); 
+    private int j = 1;
 
     public static void main(String[] args) {
         String today = java.time.LocalDate.now().toString(); 
@@ -49,7 +50,7 @@ public class Functions {
             if(listOfStrings.get(i).equals(today)) {
                 listOfStrings.set(i+1, "Returning");
             } else {
-                System.out.println(listOfStrings.get(i));
+                j = 0;
             }
         }
 
