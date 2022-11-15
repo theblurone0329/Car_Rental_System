@@ -311,7 +311,6 @@ public class App extends JFrame implements MouseListener{
     private JPanel pnlRCA = new JPanel();
     private JLabel usernameRCA = new JLabel();
     private JLabel carModelRCA = new JLabel();
-    private JLabel timeRCA = new JLabel();
     private JLabel dateRCA = new JLabel();
     private JLabel onRentTitleRCA = new JLabel();
     private JLabel returnedTitleRCA = new JLabel();
@@ -319,14 +318,12 @@ public class App extends JFrame implements MouseListener{
     private JTable returnedRCA = new JTable(); 
     private JTextField txtUsernameRCA = new JTextField();
     private JTextField txtCarModelRCA = new JTextField();
-    private JTextField txtTimeRCA = new JTextField();
     private JTextField txtDateRCA = new JTextField();
     private JButton btnResetRCA = new JButton();
     private JButton btnProceedRCA = new JButton();
     private JSeparator separator1RCA = new JSeparator();
     private JSeparator separator2RCA = new JSeparator();
     private JSeparator separator3RCA = new JSeparator();
-    private JSeparator separator4RCA = new JSeparator();
     private JScrollPane paneRCA1 = new JScrollPane();
     private JScrollPane paneRCA2 = new JScrollPane();
     private JPanel onRentPnlRCA = new JPanel();
@@ -348,19 +345,7 @@ public class App extends JFrame implements MouseListener{
             returnedTitleRCA.setBackground(new Color(27, 28, 30));
             returnedTitleRCA.setLocation(420, 198);
 
-            // String[] columnsReturn = {"Return ID", "Username", "Status", "Return Date"};
-            // String[][] rowsReturn = {{"R01", "Hamid_Karim_123", "Returned", "04-10-2022"}, 
-            //                     {"R02", "Adrian_Fu", "Not Returned", "N/A"},
-            //                     {"R02", "Adrian_Fu", "Not Returned", "N/A"},
-            //                     {"R02", "Adrian_Fu", "Not Returned", "N/A"}, 
-            //                     {"R02", "Adrian_Fu", "Not Returned", "N/A"}};
-
-            // returnedRCA = new JTable(rowsReturn, columnsReturn){
-            //     public boolean isCellEditable(int rows, int columns) {
-            //         return false;
-            //     }
-            // };
-            Object columns[] = {"Username", "Model", "Start Time", "End Time", "Start Date", "Return Date", "Status"};
+            Object columns[] = {"Username", "Model", "Return Date", "Status"};
             DefaultTableModel modelRCA = new DefaultTableModel(columns,0);
             returnedRCA = new JTable();
             returnedRCA.setCellSelectionEnabled(false); //bcs this table just for display
@@ -391,11 +376,11 @@ public class App extends JFrame implements MouseListener{
             DefaultTableModel modelRCA1 = (DefaultTableModel)returnedRCA.getModel();
             for(int i = 7; i<listOfStrings.size(); i+=7) {
                 if(listOfStrings.get(i-1).equals("Returned")) {
-                    Object[] tableLines = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), listOfStrings.get(i-1)};
+                    Object[] tableLines = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-2), listOfStrings.get(i-1)};
                     modelRCA1.addRow(tableLines);
                     listOfStrings.remove(i);
             } else if(listOfStrings.get(i-1).equals("Accepted")) {
-                String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), "Accepted","\n"};
+                String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-2), "Accepted","\n"};
                 try
                 {
                     FileWriter fw1 = new FileWriter("src\\Text Files\\Ongoing.txt");
@@ -415,7 +400,7 @@ public class App extends JFrame implements MouseListener{
                 }
                 continue;
             } else if(listOfStrings.get(i-1).equals("Pending")) {
-                String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), "Pending","\n"};
+                String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-2), "Pending","\n"};
                 try
                 {
                     FileWriter fw2 = new FileWriter("src\\Text Files\\Ongoing.txt");
@@ -435,7 +420,7 @@ public class App extends JFrame implements MouseListener{
                 }
                 continue;
             } else if(listOfStrings.get(i-1).equals("Declined")) {
-                String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), "Declined","\n"};
+                String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-2), "Declined","\n"};
                 try
                 {
                     FileWriter fw3 = new FileWriter("src\\Text Files\\Declined.txt");
@@ -456,7 +441,7 @@ public class App extends JFrame implements MouseListener{
                 continue;
             }
             
-            returnedRCA.setPreferredScrollableViewportSize(new Dimension(400, 155));
+            returnedRCA.setPreferredScrollableViewportSize(new Dimension(300, 130));
             returnedRCA.setFillsViewportHeight(true);
             returnedRCA.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
             returnedRCA.setBackground(new Color(27, 28, 30));
@@ -468,8 +453,7 @@ public class App extends JFrame implements MouseListener{
             paneRCA1 = new JScrollPane(returnedRCA, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             paneRCA1.setVisible(true);
 
-            returnedPnlRCA.setSize(400, 155);
-            returnedPnlRCA.setLocation(280, 220);
+            returnedPnlRCA.setBounds(315, 220, 305, 155);
             returnedPnlRCA.setBorder(BorderFactory.createLineBorder(new Color(225,223,186)));
             returnedPnlRCA.add(paneRCA1);
         }
@@ -484,20 +468,7 @@ public class App extends JFrame implements MouseListener{
             onRentTitleRCA.setBackground(new Color(27, 28, 30));
             onRentTitleRCA.setLocation(420, 13);
 
-            // String[] columnsRent = {"Return ID", "Username", "Status", "Return Date"};
-            // String[][] rowsRent = {{"R01", "Hamid_Karim_123", "Returned", "04-10-2022"}, 
-            //                     {"R02", "Adrian_Fu", "Not Returned", "N/A"},
-            //                     {"R02", "Adrian_Fu", "Not Returned", "N/A"},
-            //                     {"R02", "Adrian_Fu", "Not Returned", "N/A"}, 
-            //                     {"R02", "Adrian_Fu", "Not Returned", "N/A"}};
-
-            // onRentRCA = new JTable(rowsRent, columnsRent){
-            //     public boolean isCellEditable(int rows, int columns) {
-            //         return false;
-            //     }
-            // };
-
-            Object columns[] = {"Username", "Model", "Start Time", "End Time", "Start Date", "Return Date", "Status"};
+            Object columns[] = {"Username", "Model", "Return Date", "Status"};
 
             DefaultTableModel modelORCA = new DefaultTableModel(columns,0);
             onRentRCA = new JTable();
@@ -526,11 +497,11 @@ public class App extends JFrame implements MouseListener{
             DefaultTableModel modelORCA1 = (DefaultTableModel)onRentRCA.getModel();
             for(int i = 7; i<listOfStrings.size(); i+=7) {
                 if(listOfStrings.get(i-1).equals("Returning")) {
-                    Object[] tableLines = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), listOfStrings.get(i-1)};
+                    Object[] tableLines = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-2), listOfStrings.get(i-1)};
                     modelORCA1.addRow(tableLines);
                     listOfStrings.remove(i);
             } else if(listOfStrings.get(i-1).equals("Accepted")) {
-                String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), "Accepted","\n"};
+                String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-2), "Accepted","\n"};
                 try
                 {
                     FileWriter fw1 = new FileWriter("src\\Text Files\\Ongoing.txt");
@@ -550,7 +521,7 @@ public class App extends JFrame implements MouseListener{
                 }
                 continue;
             } else if(listOfStrings.get(i-1).equals("Pending")) {
-                String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), "Pending","\n"};
+                String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-2), "Pending","\n"};
                 try
                 {
                     FileWriter fw2 = new FileWriter("src\\Text Files\\Ongoing.txt");
@@ -570,7 +541,7 @@ public class App extends JFrame implements MouseListener{
                 }
                 continue;
             } else if(listOfStrings.get(i-1).equals("Declined")) {
-                String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), "Declined","\n"};
+                String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-2), "Declined","\n"};
                 try
                 {
                     FileWriter fw3 = new FileWriter("src\\Text Files\\Declined.txt");
@@ -598,12 +569,11 @@ public class App extends JFrame implements MouseListener{
                      int rowIndex = target.getSelectedRow();
                      txtUsernameRCA.setText(onRentRCA.getValueAt(rowIndex, 0).toString());
                      txtCarModelRCA.setText(onRentRCA.getValueAt(rowIndex, 1).toString());
-                     txtTimeRCA.setText(onRentRCA.getValueAt(rowIndex, 2).toString()+" - "+onRentRCA.getValueAt(rowIndex, 3).toString());
-                     txtDateRCA.setText(onRentRCA.getValueAt(rowIndex, 4).toString()+" - "+onRentRCA.getValueAt(rowIndex, 5).toString());
+                     txtDateRCA.setText(onRentRCA.getValueAt(rowIndex, 2).toString());
                   }
                }
             });
-            onRentRCA.setPreferredScrollableViewportSize(new Dimension(400, 151));
+            onRentRCA.setPreferredScrollableViewportSize(new Dimension(300, 130));
             onRentRCA.setFillsViewportHeight(true);
             onRentRCA.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
             onRentRCA.setBackground(new Color(27, 28, 30));
@@ -615,9 +585,7 @@ public class App extends JFrame implements MouseListener{
             paneRCA2 = new JScrollPane(onRentRCA, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             paneRCA2.setVisible(true);
 
-            // onRentPnlRCA.setSize(400, 155);
-            // onRentPnlRCA.setLocation(280, 35);
-            onRentPnlRCA.setBounds(280,35,400,155);
+            onRentPnlRCA.setBounds(305,35,315,155);
             onRentPnlRCA.setBorder(BorderFactory.createLineBorder(new Color(225,223,186)));
             onRentPnlRCA.add(paneRCA2);
 
@@ -649,7 +617,7 @@ public class App extends JFrame implements MouseListener{
             separator1RCA.setForeground(new Color(225,223,186));
             separator1RCA.setBackground(new Color(27, 28, 30));
             separator1RCA.setSize(180, 17);
-            separator1RCA.setLocation(35, 85);
+            separator1RCA.setLocation(35, 105);
 
             txtUsernameRCA.setText("");
             txtUsernameRCA.setSize(180, 30);
@@ -657,7 +625,7 @@ public class App extends JFrame implements MouseListener{
             txtUsernameRCA.setForeground(new Color(225,223,186));
             txtUsernameRCA.setBackground(new Color(27, 28, 30));
             txtUsernameRCA.setFont(new Font("TW Cen MT", Font.BOLD, 15));
-            txtUsernameRCA.setLocation(35,55);
+            txtUsernameRCA.setLocation(35,75);
 
             usernameRCA.setText("Username");
             usernameRCA.setFont(new Font("Segoe UI", Font.PLAIN, 16));
@@ -665,13 +633,13 @@ public class App extends JFrame implements MouseListener{
             usernameRCA.setBackground(new Color(27, 28, 30));
             usernameRCA.setBorder(null);
             usernameRCA.setSize(180, 30);
-            usernameRCA.setLocation(15, 25);
+            usernameRCA.setLocation(15, 45);
 
             //Components for Customer Username
             separator2RCA.setForeground(new Color(225,223,186));
             separator2RCA.setBackground(new Color(27, 28, 30));
             separator2RCA.setSize(180, 17);
-            separator2RCA.setLocation(35, 155);
+            separator2RCA.setLocation(35, 175);
 
             txtCarModelRCA.setText("");
             txtCarModelRCA.setSize(180, 30);
@@ -679,7 +647,7 @@ public class App extends JFrame implements MouseListener{
             txtCarModelRCA.setForeground(new Color(225,223,186));
             txtCarModelRCA.setBackground(new Color(27, 28, 30));
             txtCarModelRCA.setFont(new Font("TW Cen MT", Font.BOLD, 15));
-            txtCarModelRCA.setLocation(35,125);
+            txtCarModelRCA.setLocation(35,145);
 
             carModelRCA.setText("Car Model");
             carModelRCA.setFont(new Font("Segoe UI", Font.PLAIN, 16));
@@ -687,35 +655,13 @@ public class App extends JFrame implements MouseListener{
             carModelRCA.setBackground(new Color(27, 28, 30));
             carModelRCA.setBorder(null);
             carModelRCA.setSize(180, 30);
-            carModelRCA.setLocation(15, 95);
+            carModelRCA.setLocation(15,115);
 
-            //Components for Return Status
+            //Components for Return Date
             separator3RCA.setForeground(new Color(225,223,186));
             separator3RCA.setBackground(new Color(27, 28, 30));
             separator3RCA.setSize(180, 17);
-            separator3RCA.setLocation(35, 225);
-
-            txtTimeRCA.setText("");
-            txtTimeRCA.setSize(180, 30);
-            txtTimeRCA.setBorder(null);
-            txtTimeRCA.setForeground(new Color(225,223,186));
-            txtTimeRCA.setBackground(new Color(27, 28, 30));
-            txtTimeRCA.setFont(new Font("TW Cen MT", Font.BOLD, 15));
-            txtTimeRCA.setLocation(35,195);
-
-            timeRCA.setText("Return Time");
-            timeRCA.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-            timeRCA.setForeground(new Color(225,223,186));
-            timeRCA.setBackground(new Color(27, 28, 30));
-            timeRCA.setBorder(null);
-            timeRCA.setSize(180, 30);
-            timeRCA.setLocation(15, 165);
-
-            //Components for Return Date
-            separator4RCA.setForeground(new Color(225,223,186));
-            separator4RCA.setBackground(new Color(27, 28, 30));
-            separator4RCA.setSize(180, 17);
-            separator4RCA.setLocation(35, 295);
+            separator3RCA.setLocation(35, 245);
 
             txtDateRCA.setText("");
             txtDateRCA.setSize(180, 30);
@@ -723,7 +669,7 @@ public class App extends JFrame implements MouseListener{
             txtDateRCA.setForeground(new Color(225,223,186));
             txtDateRCA.setBackground(new Color(27, 28, 30));
             txtDateRCA.setFont(new Font("TW Cen MT", Font.BOLD, 15));
-            txtDateRCA.setLocation(35,265);
+            txtDateRCA.setLocation(35,215);
 
             dateRCA.setText("Return Date");
             dateRCA.setFont(new Font("Segoe UI", Font.PLAIN, 16));
@@ -731,7 +677,7 @@ public class App extends JFrame implements MouseListener{
             dateRCA.setBackground(new Color(27, 28, 30));
             dateRCA.setBorder(null);
             dateRCA.setSize(180, 30);
-            dateRCA.setLocation(15, 235);
+            dateRCA.setLocation(15, 185);
             
             //Frame
             pnlRCA.setBackground(new Color(27, 28, 30));
@@ -742,16 +688,13 @@ public class App extends JFrame implements MouseListener{
             //Adding Components to Frame
             pnlRCA.add(usernameRCA);
             pnlRCA.add(carModelRCA);
-            pnlRCA.add(timeRCA);
             pnlRCA.add(dateRCA);
             pnlRCA.add(txtUsernameRCA);
             pnlRCA.add(txtCarModelRCA);
-            pnlRCA.add(txtTimeRCA);
             pnlRCA.add(txtDateRCA);
             pnlRCA.add(separator1RCA);
             pnlRCA.add(separator2RCA);
             pnlRCA.add(separator3RCA);
-            pnlRCA.add(separator4RCA);
             pnlRCA.add(btnResetRCA);
             pnlRCA.add(btnProceedRCA);
             pnlRCA.add(onRentPnlRCA);
@@ -3696,7 +3639,6 @@ public class App extends JFrame implements MouseListener{
         }else if(e.getSource()==btnResetRCA){
             txtUsernameRCA.setText("");
             txtCarModelRCA.setText("");
-            txtTimeRCA.setText("");
             txtDateRCA.setText("");
         }
      }

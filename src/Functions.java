@@ -72,4 +72,16 @@ public class Functions {
             e.printStackTrace();
         }
     }
+
+    public void toBooking() {
+
+    }
+
+    public void toCar() {
+
+    }
+
+    public void toUserDetails() {
+        
+    }
 }
