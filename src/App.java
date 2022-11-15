@@ -351,6 +351,7 @@ public class App extends JFrame implements MouseListener{
     private JButton btnProceedBill = new JButton();
     private Border borderBill = new LineBorder(new Color(225,223,186), 1, true);
 
+    Functions functions = new Functions();
     /**
      * @param user
      */
@@ -3447,9 +3448,12 @@ public class App extends JFrame implements MouseListener{
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
+            String[] row = {brand,model,plate,year,seat,priceHr, "\n"};
+            functions.toCar(row);
+            DefaultTableModel updatedModel = (DefaultTableModel)tableAC.getModel();
+                    updatedModel.addRow(row);
             try
                 {
-                    String[] row = {brand,model,plate,year,seat,priceHr, "\n"};
                     FileWriter fw = new FileWriter("src\\Text Files\\Car.txt", true);
                     BufferedWriter bw = new BufferedWriter(fw);
                     PrintWriter pw = new PrintWriter(bw);    
@@ -3459,8 +3463,7 @@ public class App extends JFrame implements MouseListener{
                         pw.write(row[i] + ", ");
                     }
                     pw.close();
-                    DefaultTableModel updatedModel = (DefaultTableModel)tableAC.getModel();
-                    updatedModel.addRow(row);
+                    
                     JOptionPane.showMessageDialog(null, "Car Added Successfully!", "Successful", JOptionPane.INFORMATION_MESSAGE);   
                 
                 }
@@ -3518,23 +3521,7 @@ public class App extends JFrame implements MouseListener{
                 JOptionPane.showMessageDialog(null, "Username has been taken! Try another!", "Username Taken!!!", JOptionPane.WARNING_MESSAGE);
             } else {
                 String[] array = {txtUsernameR.getText(), txtPasswordR.getText(), txtEmailR.getText(), txtPhoneNumR.getText(), "\n"};
-                try
-                {
-                    FileWriter fw = new FileWriter("src\\Text Files\\userDetails.txt", true);
-                    BufferedWriter bw = new BufferedWriter(fw);
-                    PrintWriter pw = new PrintWriter(bw);    
-    
-                    for (int i = 0; i < array.length ; i++)
-                    {
-                        pw.write(array[i] + ", ");
-                    }
-                    pw.close();
-                }
-                catch (Exception f)
-                {
-                    f.printStackTrace();
-                    System.out.println("No such file exists.");
-                }
+                functions.toUserDetails(array);
             } 
         } else if(e.getSource() == txtUsernameR) {
             txtUsernameR.setText("");
@@ -3565,50 +3552,16 @@ public class App extends JFrame implements MouseListener{
                 start = txtStartHourB.getText();
                 end = txtEndHourB.getText();
                 String[] array = {lblUsernameEP.getText(), model, start, end, today, today, "Pending", "\n"};
-                try
-                {
-                    FileWriter fw = new FileWriter("src\\Text Files\\Booking.txt", true);
-                    BufferedWriter bw = new BufferedWriter(fw);
-                    PrintWriter pw = new PrintWriter(bw);    
-
-                    for (int i = 0; i < array.length ; i++)
-                    {
-                        pw.write(array[i] + ", ");
-                    }
-                    pw.close();
-                    JOptionPane.showMessageDialog(null, "Booking Made Successful. Awaiting approval", "Booking Succesful", JOptionPane.INFORMATION_MESSAGE);
-                    pnlB.setVisible(false);
-                    pnlViewAllCar.setVisible(true);
-                }
-                catch (Exception f)
-                {
-                    f.printStackTrace();
-                    System.out.println("No such file exists.");
-                }
+                functions.toBooking(array);
+                pnlB.setVisible(false);
+                pnlViewAllCar.setVisible(true);
             } else if(pnlDate.isVisible()) {
                 start = txtStartDateB.getText();
                 end = txtEndDateB.getText();
                 String[] array = {lblUsernameEP.getText(), model, "N/A", "N/A", start, end, "Pending", "\n"};
-                try
-                {
-                    FileWriter fw = new FileWriter("src\\Text Files\\Booking.txt", true);
-                    BufferedWriter bw = new BufferedWriter(fw);
-                    PrintWriter pw = new PrintWriter(bw);    
-
-                    for (int i = 0; i < array.length ; i++)
-                    {
-                        pw.write(array[i] + ", ");
-                    }
-                    pw.close();
-                    JOptionPane.showMessageDialog(null, "Booking Made Successful. Awaiting approval", "Booking Succesful", JOptionPane.INFORMATION_MESSAGE);
-                    pnlB.setVisible(false);
-                    pnlViewAllCar.setVisible(true);
-                }
-                catch (Exception f)
-                {
-                    f.printStackTrace();
-                    System.out.println("No such file exists.");
-                }
+                functions.toBooking(array);
+                pnlB.setVisible(false);
+                pnlViewAllCar.setVisible(true);
             }
 
         } else if(e.getSource() == btnDefaultEP) {
