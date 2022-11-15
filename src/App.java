@@ -338,9 +338,124 @@ public class App extends JFrame implements MouseListener{
      */
     App(User user) throws FileNotFoundException {
 
-        //Return Car Admin Page
+        //Return Car Admin Page 
         {
             //Returned Table
+            Object columnsRCA[] = {"Username", "Return Date", "Status"};
+
+            DefaultTableModel modelRCA = new DefaultTableModel(columnsRCA,0);
+            returnedRCA = new JTable();
+            returnedRCA.setModel(modelRCA);
+    
+            List<String> listOfStrings
+            = new ArrayList<String>();
+    
+            try (// load content of file based on specific delimiter
+            Scanner sc = new Scanner(new FileReader("src\\Text Files\\Booking.txt"))
+                            .useDelimiter(", \\s*")) {
+                String str;
+      
+                // checking end of file
+                while (sc.hasNext()) {
+                    str = sc.next();
+                
+                    // adding each string to arraylist
+                    listOfStrings.add(str);
+                }
+            } catch (FileNotFoundException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+            //BufferedReader br = new BufferedReader(new FileReader(file));
+            DefaultTableModel modelRCA1 = (DefaultTableModel)returnedRCA.getModel();
+            for(int i = 7; i<listOfStrings.size(); i+=7) {
+                if(listOfStrings.get(i-1).equals("Returned")) {
+                    Object[] tableLines = {listOfStrings.get(i-7), listOfStrings.get(i-2), listOfStrings.get(i-1)};
+                    modelRCA1.addRow(tableLines);
+                    listOfStrings.remove(i);
+                } else if(listOfStrings.get(i-1).equals("Returning")) {
+                    String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), "Returning","\n"};
+                    try
+                    {
+                        FileWriter fw3 = new FileWriter("src\\Text Files\\Ongoing.txt");
+                        BufferedWriter bw3 = new BufferedWriter(fw3);
+                        PrintWriter pw3 = new PrintWriter(bw3);    
+        
+                        listOfStrings.remove(i);
+                        for(int j = 0; j < arrayAccepted.length; j++){
+                            pw3.write(arrayAccepted[j] + ", ");
+                        }
+                        pw3.close();
+                    }
+                    catch (Exception f)
+                    {
+                        f.printStackTrace();
+                        System.out.println("No such file exists.");
+                    }
+                    continue;
+                } else if(listOfStrings.get(i-1).equals("Declined")) {
+                    String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), "Declined","\n"};
+                    try
+                    {
+                        FileWriter fw3 = new FileWriter("src\\Text Files\\Declined.txt");
+                        BufferedWriter bw3 = new BufferedWriter(fw3);
+                        PrintWriter pw3 = new PrintWriter(bw3);    
+        
+                        listOfStrings.remove(i);
+                        for(int j = 0; j < arrayAccepted.length; j++){
+                            pw3.write(arrayAccepted[j] + ", ");
+                        }
+                        pw3.close();
+                    }
+                    catch (Exception f)
+                    {
+                        f.printStackTrace();
+                        System.out.println("No such file exists.");
+                    }
+                    continue;
+                } else if(listOfStrings.get(i-1).equals("Accepted")) {
+                    String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), "Accepted","\n"};
+                    try
+                    {
+                        FileWriter fw1 = new FileWriter("src\\Text Files\\Ongoing.txt");
+                        BufferedWriter bw1 = new BufferedWriter(fw1);
+                        PrintWriter pw1 = new PrintWriter(bw1);    
+        
+                        listOfStrings.remove(i);
+                        for(int j = 0; j < arrayAccepted.length; j++){
+                            pw1.write(arrayAccepted[j] + ", ");
+                        }
+                        pw1.close();
+                    }
+                    catch (Exception f)
+                    {
+                        f.printStackTrace();
+                        System.out.println("No such file exists.");
+                    }
+                    continue;
+                } else if(listOfStrings.get(i-1).equals("Pending")) {
+                    String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), "Accepted","\n"};
+                    try
+                    {
+                        FileWriter fw1 = new FileWriter("src\\Text Files\\Ongoing.txt");
+                        BufferedWriter bw1 = new BufferedWriter(fw1);
+                        PrintWriter pw1 = new PrintWriter(bw1);    
+        
+                        listOfStrings.remove(i);
+                        for(int j = 0; j < arrayAccepted.length; j++){
+                            pw1.write(arrayAccepted[j] + ", ");
+                        }
+                        pw1.close();
+                    }
+                    catch (Exception f)
+                    {
+                        f.printStackTrace();
+                        System.out.println("No such file exists.");
+                    }
+                    continue;
+                }
+            }
+
             returnedTitleRCA.setText("RETURNED CARS");
             returnedTitleRCA.setFont(new Font("TW Cen MT", Font.BOLD, 16));
             returnedTitleRCA.setSize(200, 22);
@@ -348,20 +463,7 @@ public class App extends JFrame implements MouseListener{
             returnedTitleRCA.setBackground(new Color(27, 28, 30));
             returnedTitleRCA.setLocation(420, 198);
 
-            String[] columnsReturn = {"Return ID", "Username", "Status", "Return Date"};
-            String[][] rowsReturn = {{"R01", "Hamid_Karim_123", "Returned", "04-10-2022"}, 
-                                {"R02", "Adrian_Fu", "Not Returned", "N/A"},
-                                {"R02", "Adrian_Fu", "Not Returned", "N/A"},
-                                {"R02", "Adrian_Fu", "Not Returned", "N/A"}, 
-                                {"R02", "Adrian_Fu", "Not Returned", "N/A"}};
-
-            returnedRCA = new JTable(rowsReturn, columnsReturn){
-                public boolean isCellEditable(int rows, int columns) {
-                    return false;
-                }
-            };
-
-            returnedRCA.setPreferredScrollableViewportSize(new Dimension(400, 155));
+            returnedRCA.setPreferredScrollableViewportSize(new Dimension(230, 130));
             returnedRCA.setFillsViewportHeight(true);
             returnedRCA.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
             returnedRCA.setBackground(new Color(27, 28, 30));
@@ -370,14 +472,12 @@ public class App extends JFrame implements MouseListener{
             returnedRCA.setFont(new Font("Segoe UI", Font.PLAIN, 13));
             returnedRCA.setRowHeight(30);
             
-            paneRCA1 = new JScrollPane(returnedRCA);
+            paneRCA1 = new JScrollPane(returnedRCA, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             paneRCA1.setVisible(true);
 
-            returnedPnlRCA.setSize(400, 155);
-            returnedPnlRCA.setLocation(280, 220);
+            returnedPnlRCA.setSize(230, 155);
+            returnedPnlRCA.setLocation(360, 220);
             returnedPnlRCA.add(paneRCA1);
-
-            //Object[] rowReturns = new Object[4];
 
             //On Rent Table
             onRentTitleRCA.setText("CARS ON RENT");
@@ -387,20 +487,122 @@ public class App extends JFrame implements MouseListener{
             onRentTitleRCA.setBackground(new Color(27, 28, 30));
             onRentTitleRCA.setLocation(420, 13);
 
-            String[] columnsRent = {"Return ID", "Username", "Status", "Return Date"};
-            String[][] rowsRent = {{"R01", "Hamid_Karim_123", "Returned", "04-10-2022"}, 
-                                {"R02", "Adrian_Fu", "Not Returned", "N/A"},
-                                {"R02", "Adrian_Fu", "Not Returned", "N/A"},
-                                {"R02", "Adrian_Fu", "Not Returned", "N/A"}, 
-                                {"R02", "Adrian_Fu", "Not Returned", "N/A"}};
+            Object columnsRCA1[] = {"Username", "Return Date", "Status"};
 
-            onRentRCA = new JTable(rowsRent, columnsRent){
-                public boolean isCellEditable(int rows, int columns) {
-                    return false;
+            DefaultTableModel modelRCA2 = new DefaultTableModel(columnsRCA1,0);
+            onRentRCA = new JTable();
+            onRentRCA.setModel(modelRCA2);
+    
+            List<String> listOfStrings1
+            = new ArrayList<String>();
+    
+            try (// load content of file based on specific delimiter
+            Scanner sc = new Scanner(new FileReader("src\\Text Files\\Booking.txt"))
+                            .useDelimiter(", \\s*")) {
+                String str;
+      
+                // checking end of file
+                while (sc.hasNext()) {
+                    str = sc.next();
+                
+                    // adding each string to arraylist
+                    listOfStrings1.add(str);
                 }
-            };
+            } catch (FileNotFoundException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+            //BufferedReader br = new BufferedReader(new FileReader(file));
+            DefaultTableModel modelRCA3 = (DefaultTableModel)onRentRCA.getModel();
+            for(int i = 7; i<listOfStrings1.size(); i+=7) {
+                if(listOfStrings1.get(i-1).equals("Returning")) {
+                    Object[] tableLines = {listOfStrings1.get(i-7), listOfStrings1.get(i-2), listOfStrings1.get(i-1)};
+                    modelRCA3.addRow(tableLines);
+                    listOfStrings1.remove(i);
+                } else if(listOfStrings1.get(i-1).equals("Returned")) {
+                    String[] arrayAccepted = {listOfStrings1.get(i-7), listOfStrings1.get(i-6), "Returned","\n"};
+                    try
+                    {
+                        FileWriter fw3 = new FileWriter("src\\Text Files\\Ongoing.txt");
+                        BufferedWriter bw3 = new BufferedWriter(fw3);
+                        PrintWriter pw3 = new PrintWriter(bw3);    
+        
+                        listOfStrings.remove(i);
+                        for(int j = 0; j < arrayAccepted.length; j++){
+                            pw3.write(arrayAccepted[j] + ", ");
+                        }
+                        pw3.close();
+                    }
+                    catch (Exception f)
+                    {
+                        f.printStackTrace();
+                        System.out.println("No such file exists.");
+                    }
+                    continue;
+                } else if(listOfStrings1.get(i-1).equals("Declined")) {
+                    String[] arrayAccepted = {listOfStrings1.get(i-7), listOfStrings1.get(i-6), "Declined","\n"};
+                    try
+                    {
+                        FileWriter fw3 = new FileWriter("src\\Text Files\\Declined.txt");
+                        BufferedWriter bw3 = new BufferedWriter(fw3);
+                        PrintWriter pw3 = new PrintWriter(bw3);    
+        
+                        listOfStrings.remove(i);
+                        for(int j = 0; j < arrayAccepted.length; j++){
+                            pw3.write(arrayAccepted[j] + ", ");
+                        }
+                        pw3.close();
+                    }
+                    catch (Exception f)
+                    {
+                        f.printStackTrace();
+                        System.out.println("No such file exists.");
+                    }
+                    continue;
+                } else if(listOfStrings1.get(i-1).equals("Accepted")) {
+                    String[] arrayAccepted = {listOfStrings1.get(i-7), listOfStrings1.get(i-6), "Accepted","\n"};
+                    try
+                    {
+                        FileWriter fw1 = new FileWriter("src\\Text Files\\Ongoing.txt");
+                        BufferedWriter bw1 = new BufferedWriter(fw1);
+                        PrintWriter pw1 = new PrintWriter(bw1);    
+        
+                        listOfStrings.remove(i);
+                        for(int j = 0; j < arrayAccepted.length; j++){
+                            pw1.write(arrayAccepted[j] + ", ");
+                        }
+                        pw1.close();
+                    }
+                    catch (Exception f)
+                    {
+                        f.printStackTrace();
+                        System.out.println("No such file exists.");
+                    }
+                    continue;
+                } else if(listOfStrings1.get(i-1).equals("Pending")) {
+                    String[] arrayAccepted = {listOfStrings1.get(i-7), listOfStrings1.get(i-6), "Accepted","\n"};
+                    try
+                    {
+                        FileWriter fw1 = new FileWriter("src\\Text Files\\Ongoing.txt");
+                        BufferedWriter bw1 = new BufferedWriter(fw1);
+                        PrintWriter pw1 = new PrintWriter(bw1);    
+        
+                        listOfStrings1.remove(i);
+                        for(int j = 0; j < arrayAccepted.length; j++){
+                            pw1.write(arrayAccepted[j] + ", ");
+                        }
+                        pw1.close();
+                    }
+                    catch (Exception f)
+                    {
+                        f.printStackTrace();
+                        System.out.println("No such file exists.");
+                    }
+                    continue;
+                }
+            }
 
-            onRentRCA.setPreferredScrollableViewportSize(new Dimension(400, 151));
+            onRentRCA.setPreferredScrollableViewportSize(new Dimension(230, 130));
             onRentRCA.setFillsViewportHeight(true);
             onRentRCA.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
             onRentRCA.setBackground(new Color(27, 28, 30));
@@ -409,11 +611,11 @@ public class App extends JFrame implements MouseListener{
             onRentRCA.setFont(new Font("Segoe UI", Font.PLAIN, 13));
             onRentRCA.setRowHeight(30);
             
-            paneRCA2 = new JScrollPane(onRentRCA);
+            paneRCA2 = new JScrollPane(onRentRCA, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             paneRCA2.setVisible(true);
 
-            onRentPnlRCA.setSize(400, 155);
-            onRentPnlRCA.setLocation(280, 35);
+            onRentPnlRCA.setSize(250, 155);
+            onRentPnlRCA.setLocation(340, 35);
             onRentPnlRCA.add(paneRCA2);
 
             //Object[] rowRents = new Object[4];
@@ -776,7 +978,7 @@ public class App extends JFrame implements MouseListener{
             pnlB.add(pnlHour);
         }
         
-        //View Booking Request Page 
+        //View Booking Request Page ✅
         {
             txtUserNameBR.setText(" ");
             txtUserNameBR.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
@@ -1216,7 +1418,7 @@ public class App extends JFrame implements MouseListener{
             pnlBigOCP.add(availableTxtOCP);
         }
 
-        //View Monthly Report 
+        //View Monthly Report
         {
             //Table
             String[] columnsReturn = {"First", "Second", "Third", "Fourth"};
@@ -2022,7 +2224,7 @@ public class App extends JFrame implements MouseListener{
             pnlRBP.add(separator2RBP);
         }
 
-        //View All Car Page
+        //View All Car Page ✅
         {
             //columns
             Object headersA[] = {"Car Brand", "CarModel", "Car Year", "Car Seats", "Price/Hr"};
