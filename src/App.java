@@ -591,72 +591,7 @@ public class App extends JFrame implements MouseListener{
             }
             //BufferedReader br = new BufferedReader(new FileReader(file));
             DefaultTableModel modelRCA1 = (DefaultTableModel)returnedRCA.getModel();
-            for(int i = 7; i<listOfStrings.size(); i+=7) {
-                if(listOfStrings.get(i-1).equals("Returned")) {
-                    Object[] tableLines = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-2), listOfStrings.get(i-1)};
-                    modelRCA1.addRow(tableLines);
-                    listOfStrings.remove(i);
-            } else if(listOfStrings.get(i-1).equals("Accepted")) {
-                String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-2), "Accepted","\n"};
-                try
-                {
-                    FileWriter fw1 = new FileWriter("src\\Text Files\\Ongoing.txt");
-                    BufferedWriter bw1 = new BufferedWriter(fw1);
-                    PrintWriter pw1 = new PrintWriter(bw1);    
-    
-                    listOfStrings.remove(i);
-                    for(int j = 0; j < arrayAccepted.length; j++){
-                        pw1.write(arrayAccepted[j] + ", ");
-                    }
-                    pw1.close();
-                }
-                catch (Exception f)
-                {
-                    f.printStackTrace();
-                    System.out.println("No such file exists.");
-                }
-                continue;
-            } else if(listOfStrings.get(i-1).equals("Pending")) {
-                String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-2), "Pending","\n"};
-                try
-                {
-                    FileWriter fw2 = new FileWriter("src\\Text Files\\Ongoing.txt");
-                    BufferedWriter bw2 = new BufferedWriter(fw2);
-                    PrintWriter pw2 = new PrintWriter(bw2);    
-    
-                    listOfStrings.remove(i);
-                    for(int j = 0; j < arrayAccepted.length; j++){
-                        pw2.write(arrayAccepted[j] + ", ");
-                    }
-                    pw2.close();
-                }
-                catch (Exception f)
-                {
-                    f.printStackTrace();
-                    System.out.println("No such file exists.");
-                }
-                continue;
-            } else if(listOfStrings.get(i-1).equals("Declined")) {
-                String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-2), "Declined","\n"};
-                try
-                {
-                    FileWriter fw3 = new FileWriter("src\\Text Files\\Declined.txt");
-                    BufferedWriter bw3 = new BufferedWriter(fw3);
-                    PrintWriter pw3 = new PrintWriter(bw3);    
-    
-                    listOfStrings.remove(i);
-                    for(int j = 0; j < arrayAccepted.length; j++){
-                        pw3.write(arrayAccepted[j] + ", ");
-                    }
-                    pw3.close();
-                }
-                catch (Exception f)
-                {
-                    f.printStackTrace();
-                    System.out.println("No such file exists.");
-                }
-                continue;
-            }
+            functions.toReturnedTable(listOfStrings, modelRCA1);
             
             returnedRCA.setPreferredScrollableViewportSize(new Dimension(300, 130));
             returnedRCA.setFillsViewportHeight(true);
@@ -677,7 +612,7 @@ public class App extends JFrame implements MouseListener{
     }
             //Object[] rowReturns = new Object[4];
 
-            //On Rent Table
+            {{//On Rent Table
             onRentTitleRCA.setText("CARS ON RENT");
             onRentTitleRCA.setFont(new Font("TW Cen MT", Font.BOLD, 16));
             onRentTitleRCA.setSize(200, 22);
@@ -712,72 +647,8 @@ public class App extends JFrame implements MouseListener{
             }
             //BufferedReader br = new BufferedReader(new FileReader(file));
             DefaultTableModel modelORCA1 = (DefaultTableModel)onRentRCA.getModel();
-            for(int i = 7; i<listOfStrings.size(); i+=7) {
-                if(listOfStrings.get(i-1).equals("Returning")) {
-                    Object[] tableLines = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-2), listOfStrings.get(i-1)};
-                    modelORCA1.addRow(tableLines);
-                    listOfStrings.remove(i);
-            } else if(listOfStrings.get(i-1).equals("Accepted")) {
-                String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-2), "Accepted","\n"};
-                try
-                {
-                    FileWriter fw1 = new FileWriter("src\\Text Files\\Ongoing.txt");
-                    BufferedWriter bw1 = new BufferedWriter(fw1);
-                    PrintWriter pw1 = new PrintWriter(bw1);    
-    
-                    listOfStrings.remove(i);
-                    for(int j = 0; j < arrayAccepted.length; j++){
-                        pw1.write(arrayAccepted[j] + ", ");
-                    }
-                    pw1.close();
-                }
-                catch (Exception f)
-                {
-                    f.printStackTrace();
-                    System.out.println("No such file exists.");
-                }
-                continue;
-            } else if(listOfStrings.get(i-1).equals("Pending")) {
-                String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-2), "Pending","\n"};
-                try
-                {
-                    FileWriter fw2 = new FileWriter("src\\Text Files\\Ongoing.txt");
-                    BufferedWriter bw2 = new BufferedWriter(fw2);
-                    PrintWriter pw2 = new PrintWriter(bw2);    
-    
-                    listOfStrings.remove(i);
-                    for(int j = 0; j < arrayAccepted.length; j++){
-                        pw2.write(arrayAccepted[j] + ", ");
-                    }
-                    pw2.close();
-                }
-                catch (Exception f)
-                {
-                    f.printStackTrace();
-                    System.out.println("No such file exists.");
-                }
-                continue;
-            } else if(listOfStrings.get(i-1).equals("Declined")) {
-                String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-2), "Declined","\n"};
-                try
-                {
-                    FileWriter fw3 = new FileWriter("src\\Text Files\\Declined.txt");
-                    BufferedWriter bw3 = new BufferedWriter(fw3);
-                    PrintWriter pw3 = new PrintWriter(bw3);    
-    
-                    listOfStrings.remove(i);
-                    for(int j = 0; j < arrayAccepted.length; j++){
-                        pw3.write(arrayAccepted[j] + ", ");
-                    }
-                    pw3.close();
-                }
-                catch (Exception f)
-                {
-                    f.printStackTrace();
-                    System.out.println("No such file exists.");
-                }
-                continue;
-            }
+            functions.toOnRentable(listOfStrings, modelORCA1);
+
             onRentRCA.setFocusable(false);
             onRentRCA.addMouseListener(new MouseAdapter() {
                public void mouseClicked(MouseEvent me) {
@@ -1934,11 +1805,7 @@ public class App extends JFrame implements MouseListener{
             }
             //BufferedReader br = new BufferedReader(new FileReader(file));
             DefaultTableModel model1 = (DefaultTableModel)tableAC.getModel();
-            for(int i = 6; i<listOfStrings.size(); i+=6) {
-                Object[] tableLines = {listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), listOfStrings.get(i-1)};
-                listOfStrings.remove(i);
-                model1.addRow(tableLines);
-            }
+            functions.toAddCarTable(listOfStrings, model1);
         
             tableAC.setPreferredScrollableViewportSize(new Dimension(450, 300));
             tableAC.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -3496,6 +3363,7 @@ public class App extends JFrame implements MouseListener{
             txtCarYearAC.setText("");
             txtCarPlateNumAC.setText("");
             txtCarSeatAC.setText("");
+            txtCarPriceAC.setText("");
         } else if(e.getSource() == btnRegisterR) {
             // arraylist to store strings
             List<String> listOfStrings
