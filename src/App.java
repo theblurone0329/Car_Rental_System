@@ -1153,73 +1153,9 @@ public class App extends JFrame implements MouseListener{
             }
             //BufferedReader br = new BufferedReader(new FileReader(file));
             DefaultTableModel modelBR1 = (DefaultTableModel)tableBR.getModel();
-            for(int i = 7; i<listOfStrings.size(); i+=7) {
-                if(listOfStrings.get(i-1).equals("Pending")) {
-                    Object[] tableLines = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), listOfStrings.get(i-1)};
-                    modelBR1.addRow(tableLines);
-                    listOfStrings.remove(i);
-                } else if(listOfStrings.get(i-1).equals("Accepted")) {
-                    String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), "Accepted","\n"};
-                    try
-                    {
-                        FileWriter fw1 = new FileWriter("src\\Text Files\\Ongoing.txt");
-                        BufferedWriter bw1 = new BufferedWriter(fw1);
-                        PrintWriter pw1 = new PrintWriter(bw1);    
-        
-                        listOfStrings.remove(i);
-                        for(int j = 0; j < arrayAccepted.length; j++){
-                            pw1.write(arrayAccepted[j] + ", ");
-                        }
-                        pw1.close();
-                    }
-                    catch (Exception f)
-                    {
-                        f.printStackTrace();
-                        System.out.println("No such file exists.");
-                    }
-                    continue;
-                } else if(listOfStrings.get(i-1).equals("Returning")) {
-                    String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), "Returning","\n"};
-                    try
-                    {
-                        FileWriter fw2 = new FileWriter("src\\Text Files\\Ongoing.txt");
-                        BufferedWriter bw2 = new BufferedWriter(fw2);
-                        PrintWriter pw2 = new PrintWriter(bw2);    
-        
-                        listOfStrings.remove(i);
-                        for(int j = 0; j < arrayAccepted.length; j++){
-                            pw2.write(arrayAccepted[j] + ", ");
-                        }
-                        pw2.close();
-                    }
-                    catch (Exception f)
-                    {
-                        f.printStackTrace();
-                        System.out.println("No such file exists.");
-                    }
-                    continue;
-                } else if(listOfStrings.get(i-1).equals("Declined")) {
-                    String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), "Declined","\n"};
-                    try
-                    {
-                        FileWriter fw3 = new FileWriter("src\\Text Files\\Declined.txt");
-                        BufferedWriter bw3 = new BufferedWriter(fw3);
-                        PrintWriter pw3 = new PrintWriter(bw3);    
-        
-                        listOfStrings.remove(i);
-                        for(int j = 0; j < arrayAccepted.length; j++){
-                            pw3.write(arrayAccepted[j] + ", ");
-                        }
-                        pw3.close();
-                    }
-                    catch (Exception f)
-                    {
-                        f.printStackTrace();
-                        System.out.println("No such file exists.");
-                    }
-                    continue;
-                }
-            }
+            
+            functions.toBookingRequestTable(listOfStrings, modelBR1);
+            
             tableBR.setFocusable(false);
             tableBR.addMouseListener(new MouseAdapter() {
                public void mouseClicked(MouseEvent me) {
@@ -2195,11 +2131,8 @@ public class App extends JFrame implements MouseListener{
             }
             //BufferedReader br = new BufferedReader(new FileReader(file));
             DefaultTableModel modelA1 = (DefaultTableModel)tableA.getModel();
-            for(int i = 6; i<listOfStrings.size(); i+=6) {
-                Object[] tableLines = {listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-3), listOfStrings.get(i-2), listOfStrings.get(i-1)};
-                listOfStrings.remove(i);
-                modelA1.addRow(tableLines);
-            }
+
+            functions.toAddCarTable(listOfStrings, modelA1);
 
             tableA.addMouseListener(new MouseAdapter() {
                 public void mouseClicked(MouseEvent me) {
