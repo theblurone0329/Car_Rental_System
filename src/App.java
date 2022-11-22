@@ -38,22 +38,9 @@ public class App extends JFrame implements MouseListener{
     }
 
     //Customer Home Page
-    private JPanel cusHome = new JPanel();
-    private JPanel pnl1Cus = new JPanel();
     private JPanel pnl2Cus = new JPanel();
-    private JPanel pnl3Cus = new JPanel();
-    private JLabel picCarCus = new JLabel();
-    private JLabel picProgBar_0 = new JLabel();
-    private JLabel picProgBar_25 = new JLabel();
-    private JLabel picProgBar_50 = new JLabel();
-    private JLabel picProgBar_75 = new JLabel();
-    private JLabel picProgBar_100 = new JLabel();
-    private JLabel status = new JLabel();
-    private JLabel message = new JLabel();
-    private JLabel message2 = new JLabel();
     private JButton btnBookingCus = new JButton();
     private JButton btnProfileCus = new JButton();
-    private JButton btnHomeCus = new JButton();
 
     //Admin Home Page
     private JPanel adminHome = new JPanel();
@@ -2449,134 +2436,6 @@ public class App extends JFrame implements MouseListener{
             pnlProfile.add(border2);
         }
 
-        //Customer Home Page ✅
-        {
-            //Home icon
-            ImageIcon homeCus = new ImageIcon("src\\Pics\\home.png");
-            btnHomeCus.setIcon(homeCus);
-            btnHomeCus.setBackground(new Color(127, 126, 144));
-            btnHomeCus.setFocusable(false);
-            btnHomeCus.setSize(64, 64);
-            btnHomeCus.setLocation(330, 2);
-            btnHomeCus.setBorder(null);
-            btnHomeCus.addMouseListener(this);
-
-            //Booking icon
-            ImageIcon bookingCus = new ImageIcon("src\\Pics\\online-booking.png");
-            btnBookingCus.setIcon(bookingCus);
-            btnBookingCus.setBackground(new Color(127, 126, 144));
-            btnBookingCus.setFocusable(false);
-            btnBookingCus.setSize(64, 64);
-            btnBookingCus.setLocation(120, 7);
-            btnBookingCus.setBorder(null);
-            btnBookingCus.addMouseListener(this);
-
-            //Profile icon
-            ImageIcon profileCus = new ImageIcon("src\\Pics\\account.png");
-            btnProfileCus.setIcon(profileCus);
-            btnProfileCus.setBackground(new Color(127, 126, 144));
-            btnProfileCus.setFocusable(false);
-            btnProfileCus.setSize(64, 64);
-            btnProfileCus.setLocation(535, 3);
-            btnProfileCus.setBorder(null);
-            btnProfileCus.addMouseListener(this);
-
-            //Message 2
-            message2.setText("Head to the booking page to book!");
-            message2.setForeground(new Color(225,223,186));
-            message2.setBackground(new Color(54,41,44));
-            message2.setFont(new Font("TW Cent", Font.BOLD, 26));
-            message2.setSize(500, 35);
-            message2.setLocation(160, 225);
-
-            //Message
-            message.setText("You have no bookings!");
-            message.setForeground(new Color(225,223,186));
-            message.setBackground(new Color(54,41,44));
-            message.setFont(new Font("TW Cent", Font.BOLD, 26));
-            message.setSize(400, 35);
-            message.setLocation(220, 190);
-
-            //Status text
-            status.setText("Status: Rent Request Pending");
-            status.setForeground(new Color(225,223,186));
-            status.setBackground(new Color(54,41,44));
-            status.setFont(new Font("Segoe UI", Font.BOLD, 16));
-            status.setSize(230, 35);
-            status.setLocation(13, 190);
-
-            //Progress Bar Images
-            ImageIcon prog0 = new ImageIcon("src\\Pics\\1.png");
-            ImageIcon prog25 = new ImageIcon("src\\Pics\\5.png");
-            ImageIcon prog50 = new ImageIcon("src\\Pics\\2.png");
-            ImageIcon prog75 = new ImageIcon("src\\Pics\\3.png");
-            ImageIcon prog100 = new ImageIcon("src\\Pics\\4.png");
-
-            picProgBar_0.setIcon(prog0);
-            picProgBar_0.setSize(246, 243);
-            picProgBar_0.setLocation(240, 30);
-
-            picProgBar_25.setIcon(prog25);
-            picProgBar_25.setSize(246, 243);
-            picProgBar_25.setLocation(240, 30);
-
-            picProgBar_50.setIcon(prog50);
-            picProgBar_50.setSize(246, 243);
-            picProgBar_50.setLocation(240, 30);
-
-            picProgBar_75.setIcon(prog75);
-            picProgBar_75.setSize(246, 243);
-            picProgBar_75.setLocation(240, 30);
-
-            picProgBar_100.setIcon(prog100);
-            picProgBar_100.setSize(246, 243);
-            picProgBar_100.setLocation(240, 30);
-
-            // Car Picture
-            ImageIcon carCus = new ImageIcon("src\\Pics\\Tesla_Model_S_Logo.png");
-            picCarCus.setIcon(carCus);
-            picCarCus.setSize(236, 125);
-            picCarCus.setLocation(5, 70);
-
-            //Rent Progress Panel
-            pnl3Cus.setBackground(new Color(27, 28, 30));
-            pnl3Cus.setBounds(110, 60, 500, 300);
-            pnl3Cus.setLayout(null);
-
-            //Bottom Panel / Menu
-            pnl2Cus.setBackground(new Color(127, 126, 144));
-            pnl2Cus.setLayout(null);
-            pnl2Cus.setBounds(0, 420, 805, 108);
-            pnl2Cus.setVisible(false);
-
-            //Top Panel
-            pnl1Cus.setBackground(new Color(27, 28, 30));
-            pnl1Cus.setLayout(null);
-            pnl1Cus.setBounds(0, 0, 805, 420);
-
-            cusHome.setLayout(null);
-            cusHome.setSize(725, 528);
-            cusHome.setVisible(false);
-            
-            //Add Stuff
-            pnl3Cus.add(status);
-            pnl3Cus.add(picProgBar_100);
-            pnl3Cus.add(picProgBar_75);
-            pnl3Cus.add(picProgBar_50);
-            pnl3Cus.add(picProgBar_25);
-            pnl3Cus.add(picProgBar_0);
-            pnl3Cus.add(picCarCus);
-            pnl1Cus.add(message);
-            pnl1Cus.add(message2);
-            pnl1Cus.add(pnl3Cus);
-            pnl2Cus.add(btnHomeCus);
-            pnl2Cus.add(btnBookingCus);
-            pnl2Cus.add(btnProfileCus);
-            
-            //Adding Components to Main Frame
-            cusHome.add(pnl1Cus);
-        }
-
         //Admin Home Page ✅
         {
             //Home icon
@@ -2751,7 +2610,6 @@ public class App extends JFrame implements MouseListener{
 
         //Pages
         this.add(pnl2Cus);
-        this.add(cusHome);
         this.add(pnl2Admin);
         this.add(adminHome);
         this.add(pnlRCA);
@@ -2768,26 +2626,17 @@ public class App extends JFrame implements MouseListener{
         this.add(pnlAdd);
         this.add(pnlProfile);
         this.add(pnlBill);
-        
-        message.setVisible(false);
-        message2.setVisible(false);
-
-        picProgBar_100.setVisible(false);
-        picProgBar_75.setVisible(false);
-        picProgBar_50.setVisible(false);
-        picProgBar_25.setVisible(false);
 
         String role = user.getRole();
         if(role.equals("Admin")) {
             pnl2Admin.setVisible(true);
             adminHome.setVisible(true);
             pnl2Cus.setVisible(false);
-            cusHome.setVisible(false);
         } else {
             pnl2Admin.setVisible(false);
             adminHome.setVisible(false);
             pnl2Cus.setVisible(true);
-            cusHome.setVisible(true);
+            pnlViewAllCar.setVisible(true);
         }
 
         Functions function = new Functions();
@@ -2806,7 +2655,6 @@ public class App extends JFrame implements MouseListener{
     public void mouseClicked(MouseEvent e) {
         if(e.getSource() == btnProfileCus) {
             pnlProfile.setVisible(true);
-            cusHome.setVisible(false);
             pnlVMP.setVisible(false);
             pnlAdd.setVisible(false);
             pnlViewAllCar.setVisible(false);
@@ -2822,30 +2670,11 @@ public class App extends JFrame implements MouseListener{
             pnlHour.setVisible(false);
             pnlDate.setVisible(false);
             pnlRCA.setVisible(false);
-        } //Home Button
-        else if(e.getSource() == btnHomeCus) {
-            cusHome.setVisible(true);
-            pnlProfile.setVisible(false);
-            pnlAdd.setVisible(false);
-            pnlVMP.setVisible(false);
-            pnlViewAllCar.setVisible(false);
             pnlBill.setVisible(false);
-            pnlR.setVisible(false);
-            pnlAC.setVisible(false);
-            pnlEP.setVisible(false);
-            pnlCP.setVisible(false);
-            pnlMR.setVisible(false);
-            pnlBigOCP.setVisible(false);
-            pnlBR.setVisible(false);
-            pnlB.setVisible(false);
-            pnlHour.setVisible(false);
-            pnlDate.setVisible(false);
-            pnlRCA.setVisible(false);
         } //Booking Button
         else if(e.getSource() == btnBookingCus) {
             pnlViewAllCar.setVisible(true);
             pnlVMP.setVisible(false);
-            cusHome.setVisible(false);
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
             pnlBill.setVisible(false);
@@ -2860,6 +2689,7 @@ public class App extends JFrame implements MouseListener{
             pnlHour.setVisible(false);
             pnlDate.setVisible(false);
             pnlRCA.setVisible(false);
+            pnlBill.setVisible(false);
         }
         // Profile Button
         else if(e.getSource() == btnProfile) {
@@ -2880,6 +2710,7 @@ public class App extends JFrame implements MouseListener{
             pnlHour.setVisible(false);
             pnlDate.setVisible(false);
             pnlRCA.setVisible(false);
+            pnlBill.setVisible(false);
         } //Home Button
         else if(e.getSource() == btnHome) {
             adminHome.setVisible(true);
@@ -2899,6 +2730,7 @@ public class App extends JFrame implements MouseListener{
             pnlHour.setVisible(false);
             pnlDate.setVisible(false);
             pnlRCA.setVisible(false);
+            pnlBill.setVisible(false);
         } //Registration Button 
         else if(e.getSource() == btnRegistration) {
             pnlAdd.setVisible(true);
@@ -2918,6 +2750,7 @@ public class App extends JFrame implements MouseListener{
             pnlHour.setVisible(false);
             pnlDate.setVisible(false);
             pnlRCA.setVisible(false);
+            pnlBill.setVisible(false);
         } //Reports Button
         else if(e.getSource() == btnReports) {
             pnlBill.setVisible(true);
@@ -2937,6 +2770,7 @@ public class App extends JFrame implements MouseListener{
             pnlHour.setVisible(false);
             pnlDate.setVisible(false);
             pnlRCA.setVisible(false);
+            pnlBill.setVisible(false);
         } //Booking Button
         else if(e.getSource() == btnBooking) {
             pnlViewAllCar.setVisible(true);
@@ -2956,6 +2790,7 @@ public class App extends JFrame implements MouseListener{
             pnlHour.setVisible(false);
             pnlDate.setVisible(false);
             pnlRCA.setVisible(false);
+            pnlBill.setVisible(false);
         } //Register Customer Page Button
         //Registration Button
         else if(e.getSource() == btnAddCus) {
@@ -2976,6 +2811,7 @@ public class App extends JFrame implements MouseListener{
             pnlHour.setVisible(false);
             pnlDate.setVisible(false);
             pnlRCA.setVisible(false);
+            pnlBill.setVisible(false);
         } //Add Car Button (Admin)
         else if(e.getSource() == btnAddCar) {
             pnlAC.setVisible(true);
@@ -2995,6 +2831,7 @@ public class App extends JFrame implements MouseListener{
             pnlHour.setVisible(false);
             pnlDate.setVisible(false);
             pnlRCA.setVisible(false);
+            pnlBill.setVisible(false);
         } //Edit Button in Profile Page
         else if(e.getSource() == btnEdit) {
             pnlEP.setVisible(true);
@@ -3014,6 +2851,7 @@ public class App extends JFrame implements MouseListener{
             pnlHour.setVisible(false);
             pnlDate.setVisible(false);
             pnlRCA.setVisible(false);
+            pnlBill.setVisible(false);
         } 
         //Change Password Button (Change Details Page)
         else if(e.getSource() == btnChangePwdEP) {
@@ -3034,6 +2872,7 @@ public class App extends JFrame implements MouseListener{
             pnlHour.setVisible(false);
             pnlDate.setVisible(false);
             pnlRCA.setVisible(false);
+            pnlBill.setVisible(false);
         } 
         //View Monthly Reports Button
         else if(e.getSource() == btnReport) {
@@ -3054,6 +2893,7 @@ public class App extends JFrame implements MouseListener{
             pnlHour.setVisible(false);
             pnlDate.setVisible(false);
             pnlRCA.setVisible(false);
+            pnlBill.setVisible(false);
         } 
         //View All Car Page (Learn More Button)
         else if(e.getSource() == btn1 || e.getSource() == btn2 || e.getSource() == btn3 || e.getSource() == btn4 || e.getSource() == btn5) {
@@ -3074,6 +2914,7 @@ public class App extends JFrame implements MouseListener{
             pnlHour.setVisible(false);
             pnlDate.setVisible(false);
             pnlRCA.setVisible(false);
+            pnlBill.setVisible(false);
         } 
         //View Bookings Button
         else if(e.getSource() == btnBook) {
@@ -3094,6 +2935,7 @@ public class App extends JFrame implements MouseListener{
             pnlHour.setVisible(false);
             pnlDate.setVisible(false);
             pnlRCA.setVisible(false);
+            pnlBill.setVisible(false);
         } 
         //Back Button in View one Car Page
         else if(e.getSource() == btnBackOCP) {
@@ -3114,6 +2956,7 @@ public class App extends JFrame implements MouseListener{
             pnlHour.setVisible(false);
             pnlDate.setVisible(false);
             pnlRCA.setVisible(false);
+            pnlBill.setVisible(false);
         } //Back Button in View one Car Page
         else if(e.getSource() == btnLearnMoreACP) {
             txtCarModelB.setText(txtCarModel.getText());
@@ -3134,6 +2977,7 @@ public class App extends JFrame implements MouseListener{
             pnlHour.setVisible(false);
             pnlDate.setVisible(false);
             pnlRCA.setVisible(false);
+            pnlBill.setVisible(false);
         } else if(e.getSource() == btnReturnCar) {
             pnlRCA.setVisible(true);
             pnlB.setVisible(false);
@@ -3152,6 +2996,7 @@ public class App extends JFrame implements MouseListener{
             pnlBill.setVisible(false);
             pnlHour.setVisible(false);
             pnlDate.setVisible(false);
+            pnlBill.setVisible(false);
         }else if(e.getSource() == btnHourB) {
             pnlHour.setVisible(true);
             pnlDate.setVisible(false);
@@ -3294,15 +3139,20 @@ public class App extends JFrame implements MouseListener{
                 String[] array = {lblUsernameEP.getText(), model, start, end, today, today, "Pending", "\n"};
                 functions.toBooking(array);
                 pnlB.setVisible(false);
-                pnlViewAllCar.setVisible(true);
+                pnlBill.setVisible(true);
             } else if(pnlDate.isVisible()) {
                 start = txtStartDateB.getText();
                 end = txtEndDateB.getText();
                 String[] array = {lblUsernameEP.getText(), model, "N/A", "N/A", start, end, "Pending", "\n"};
                 functions.toBooking(array);
                 pnlB.setVisible(false);
-                pnlViewAllCar.setVisible(true);
+                pnlBill.setVisible(true);
             }
+
+            btnBookingCus.setEnabled(false);
+            btnProfileCus.setEnabled(false);
+            btnBooking.setEnabled(false);
+            btnProfile.setEnabled(false);
 
         } else if(e.getSource() == btnDefaultEP) {
             lblUsernameEP.setText(lblUsername.getText());
