@@ -369,4 +369,68 @@ public class Functions {
 
     }
 
+    public List<String> fromUserDetails(List<String> listOfStrings) {
+
+        try (// load content of file based on specific delimiter
+        Scanner sc = new Scanner(new FileReader("src\\Text Files\\userDetails.txt"))
+                        .useDelimiter(", \\s*")) {
+            String str;
+  
+            // checking end of file
+            while (sc.hasNext()) {
+                str = sc.next();
+            
+                // adding each string to arraylist
+                listOfStrings.add(str);
+            }
+        } catch (FileNotFoundException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        return listOfStrings;
+    }
+
+    public List<String> fromBooking(List<String> listOfStrings) {
+
+        try (// load content of file based on specific delimiter
+        Scanner sc = new Scanner(new FileReader("src\\Text Files\\Booking.txt"))
+                        .useDelimiter(", \\s*")) {
+            String str;
+  
+            // checking end of file
+            while (sc.hasNext()) {
+                str = sc.next();
+            
+                // adding each string to arraylist
+                listOfStrings.add(str);
+            }
+
+        } catch (FileNotFoundException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        return listOfStrings;
+    }
+
+    public List<String> fromCar(List<String> listOfStrings) {
+        try (// load content of file based on specific delimiter
+        Scanner sc = new Scanner(new FileReader("src\\Text Files\\Car.txt"))
+                        .useDelimiter(", \\s*")) {
+            String str;
+  
+            // checking end of file
+            while (sc.hasNext()) {
+                str = sc.next();
+            
+                // adding each string to arraylist
+                listOfStrings.add(str);
+            }
+        } catch (FileNotFoundException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        return listOfStrings;
+    }
+
+
 }

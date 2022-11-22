@@ -572,26 +572,10 @@ public class App extends JFrame implements MouseListener{
             List<String> listOfStrings
             = new ArrayList<String>();
     
-            try (// load content of file based on specific delimiter
-            Scanner sc = new Scanner(new FileReader("src\\Text Files\\Booking.txt"))
-                            .useDelimiter(", \\s*")) {
-                String str;
-      
-                // checking end of file
-                while (sc.hasNext()) {
-                    str = sc.next();
-                
-                    // adding each string to arraylist
-                    listOfStrings.add(str);
-                }
-
-            } catch (FileNotFoundException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-            }
+            List<String> list = functions.fromBooking(listOfStrings);
             //BufferedReader br = new BufferedReader(new FileReader(file));
             DefaultTableModel modelRCA1 = (DefaultTableModel)returnedRCA.getModel();
-            functions.toReturnedTable(listOfStrings, modelRCA1);
+            functions.toReturnedTable(list, modelRCA1);
             
             returnedRCA.setPreferredScrollableViewportSize(new Dimension(300, 130));
             returnedRCA.setFillsViewportHeight(true);
@@ -629,25 +613,11 @@ public class App extends JFrame implements MouseListener{
             List<String> listOfStrings
             = new ArrayList<String>();
     
-            try (// load content of file based on specific delimiter
-            Scanner sc = new Scanner(new FileReader("src\\Text Files\\Booking.txt"))
-                            .useDelimiter(", \\s*")) {
-                String str;
-      
-                // checking end of file
-                while (sc.hasNext()) {
-                    str = sc.next();
-                
-                    // adding each string to arraylist
-                    listOfStrings.add(str);
-                }
-            } catch (FileNotFoundException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-            }
+            List<String> list = functions.fromBooking(listOfStrings);
+
             //BufferedReader br = new BufferedReader(new FileReader(file));
             DefaultTableModel modelORCA1 = (DefaultTableModel)onRentRCA.getModel();
-            functions.toOnRentable(listOfStrings, modelORCA1);
+            functions.toOnRentable(list, modelORCA1);
 
             onRentRCA.setFocusable(false);
             onRentRCA.addMouseListener(new MouseAdapter() {
@@ -1135,26 +1105,11 @@ public class App extends JFrame implements MouseListener{
             List<String> listOfStrings
             = new ArrayList<String>();
     
-            try (// load content of file based on specific delimiter
-            Scanner sc = new Scanner(new FileReader("src\\Text Files\\Booking.txt"))
-                            .useDelimiter(", \\s*")) {
-                String str;
-      
-                // checking end of file
-                while (sc.hasNext()) {
-                    str = sc.next();
-                
-                    // adding each string to arraylist
-                    listOfStrings.add(str);
-                }
-            } catch (FileNotFoundException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-            }
+            List<String> list = functions.fromBooking(listOfStrings);
             //BufferedReader br = new BufferedReader(new FileReader(file));
             DefaultTableModel modelBR1 = (DefaultTableModel)tableBR.getModel();
             
-            functions.toBookingRequestTable(listOfStrings, modelBR1);
+            functions.toBookingRequestTable(list, modelBR1);
             
             tableBR.setFocusable(false);
             tableBR.addMouseListener(new MouseAdapter() {
@@ -1723,25 +1678,10 @@ public class App extends JFrame implements MouseListener{
             List<String> listOfStrings
             = new ArrayList<String>();
    
-            try (// load content of file based on specific delimiter
-            Scanner sc = new Scanner(new FileReader("src\\Text Files\\Car.txt"))
-                            .useDelimiter(", \\s*")) {
-                String str;
-      
-                // checking end of file
-                while (sc.hasNext()) {
-                    str = sc.next();
-                
-                    // adding each string to arraylist
-                    listOfStrings.add(str);
-                }
-            } catch (FileNotFoundException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-            }
+            List<String> list = functions.fromCar(listOfStrings);
             //BufferedReader br = new BufferedReader(new FileReader(file));
             DefaultTableModel model1 = (DefaultTableModel)tableAC.getModel();
-            functions.toAddCarTable(listOfStrings, model1);
+            functions.toAddCarTable(list, model1);
         
             tableAC.setPreferredScrollableViewportSize(new Dimension(450, 300));
             tableAC.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -2848,7 +2788,6 @@ public class App extends JFrame implements MouseListener{
             adminHome.setVisible(false);
             pnl2Cus.setVisible(true);
             cusHome.setVisible(true);
-            System.out.println("Cus");
         }
 
         Functions function = new Functions();

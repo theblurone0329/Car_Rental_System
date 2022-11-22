@@ -1,9 +1,7 @@
 import java.awt.event.*;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import java.awt.Color;
 import java.awt.Font;
 
@@ -145,29 +143,16 @@ public class Login extends JFrame implements MouseListener{
             List<String> listOfStrings
             = new ArrayList<String>();
    
-            try (// load content of file based on specific delimiter
-            Scanner sc = new Scanner(new FileReader("src\\Text Files\\userDetails.txt"))
-                            .useDelimiter(", \\s*")) {
-                String str;
-      
-                // checking end of file
-                while (sc.hasNext()) {
-                    str = sc.next();
-                
-                    // adding each string to arraylist
-                    listOfStrings.add(str);
-                }
-            } catch (FileNotFoundException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-            }
+            Functions function = new Functions();
+            List<String> list = function.fromUserDetails(listOfStrings);
+
             //Validation
-            if(listOfStrings.contains(user)) {
-                int index = listOfStrings.indexOf(user);
-                if(pwd.equals(listOfStrings.get(index + 1))) {
+            if(list.contains(user)) {
+                int index = list.indexOf(user);
+                if(pwd.equals(list.get(index + 1))) {
                     System.out.println("Login Successful");
                     this.setVisible(false);
-                    User user1 = new User(user, pwd, listOfStrings.get(index + 2), listOfStrings.get(index + 3), listOfStrings.get(index - 1));
+                    User user1 = new User(user, pwd, list.get(index + 2), list.get(index + 3), list.get(index - 1));
                     App hP;
                     try {
                         hP = new App(user1);
