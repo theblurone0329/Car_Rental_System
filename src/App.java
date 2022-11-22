@@ -3586,6 +3586,74 @@ public class App extends JFrame implements MouseListener{
                     e1.printStackTrace();
                 }
                 }
+        }else if(e.getSource()==btnProceedRCA){
+            String Username = txtUsernameRCA.getText();
+            String Model = txtCarModelRCA.getText();
+            String ReturnDate = txtDateRCA.getText();
+    
+            if(Username.trim().equals("") || Model.trim().equals("") || ReturnDate.trim().equals("")){
+                JOptionPane.showMessageDialog(null, "Blank entry detected! please select a row. ", "ERROR", JOptionPane.WARNING_MESSAGE);   
+            }else{
+                List<String> listOfStrings
+                = new ArrayList<String>();
+
+                String tempFile = "temp.txt";
+                File newFile = new File(tempFile);
+                
+                try (// load content of file based on specific delimiter
+
+                    FileWriter fw = new FileWriter(tempFile,true);
+                    BufferedWriter bw = new BufferedWriter(fw);
+                    PrintWriter pw = new PrintWriter(bw); 
+
+                    Scanner sc = new Scanner(new FileReader("src\\Text Files\\Booking.txt"))
+                                    .useDelimiter(", \\s*")) {
+          
+                    // checking end of file
+                    while (sc.hasNext()) {
+                        String str = sc.next();
+                
+                        // adding each string to arraylist
+                        listOfStrings.add(str);
+                    }
+                    for(int i = 7; i<listOfStrings.size(); i+=7) {  //forced to do this way to get distinct data, cus we dont hv unique id for rental.
+                        if((listOfStrings.get(i-7).equals(Username))&&
+                        (listOfStrings.get(i-6).equals(Model))&&
+                        (listOfStrings.get(i-2).equals(ReturnDate))&&
+                        (listOfStrings.get(i-1).equals("Returning")) ){
+                            String[] array = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), "Returned","\n"};
+                            listOfStrings.remove(i);
+                            for(int j=0;j < array.length; j++){
+                                pw.write(array[j]+", ");
+                            }
+                        }
+                        else{
+                            String[] array = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), listOfStrings.get(i-1),"\n"};
+                            listOfStrings.remove(i);
+                            for(int j=0;j < array.length; j++){
+                                pw.write(array[j]+", ");
+                            }
+                            }
+                    }
+                    sc.close();
+                    pw.flush();
+                    pw.close();
+                    try {
+                        String filePath = "src\\Text Files\\Booking.txt";
+                        File fileToDelete = new File(filePath);
+                        fileToDelete.delete();
+                        File dumpFile = new File(filePath);
+                        newFile.renameTo(dumpFile);
+                        JOptionPane.showMessageDialog(null, "The car returned!", "Returning Successfull", JOptionPane.INFORMATION_MESSAGE);
+                    } catch (Exception e2) {
+                        e2.printStackTrace();
+                    }
+
+                } catch (Exception e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
+                }
         }
      }
 
