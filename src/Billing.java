@@ -236,6 +236,15 @@ public class Billing extends JFrame implements MouseListener{
         pnlBill.add(separatorBill1);
         pnlBill.add(btnCancelBill);
         pnlBill.add(btnProceedBill);
+
+        //Panel
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLayout(null);
+        this.setBackground(new Color(27, 28, 30));
+        this.setSize(725, 420);
+        this.setVisible(true);
+
+        this.add(pnlBill);
     }
 
     @Override

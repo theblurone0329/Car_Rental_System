@@ -22,7 +22,8 @@ public class Functions {
         func.returnStatus();
     }
 
-    
+    String[] array;
+
     Functions() {
 
     }
@@ -430,6 +431,31 @@ public class Functions {
             e1.printStackTrace();
         }
         return listOfStrings;
+    }
+
+    public int toHours(String s) {
+        String[] hourMin = s.split(":");
+        int hour = Integer.parseInt(hourMin[0]);
+        int mins = Integer.parseInt(hourMin[1]);
+        int minsInHours = mins / 60;
+        return hour + minsInHours;
+    }
+
+    public int fromDate(String start, String end) {
+        String[] startDate = start.split("-");
+        String[] endDate = end.split("-");
+        int startDay = Integer.parseInt(startDate[0]);
+        int endDay = Integer.parseInt(endDate[1]);
+        int numOfDays = endDay - startDay;
+        return numOfDays;
+    }
+
+    public void storeArray(String[] array) {
+        this.array = array;
+    }
+
+    public String[] returnArray() {
+        return array;
     }
 
 

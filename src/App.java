@@ -383,7 +383,7 @@ public class App extends JFrame implements MouseListener{
             priceBill.setFont(new Font("TW Cen MT", Font.BOLD, 16));
             priceBill.setLocation(25, 140);
 
-            txtcarInfoBill.setText("Car Information");
+            txtcarInfoBill.setText(txtCarModelB.getText());
             txtcarInfoBill.setSize(150, 30);
             txtcarInfoBill.setBorder(null);
             txtcarInfoBill.setForeground(new Color(225,223,186));
@@ -392,7 +392,7 @@ public class App extends JFrame implements MouseListener{
             txtcarInfoBill.setLocation(180, 80);
 
             txtrentalDurationBill.setText("Rental Duration");
-            txtrentalDurationBill.setSize(150, 30);
+            txtrentalDurationBill.setSize(350, 30);
             txtrentalDurationBill.setBorder(null);
             txtrentalDurationBill.setForeground(new Color(225,223,186));
             txtrentalDurationBill.setBackground(new Color(27, 28, 30));
@@ -444,7 +444,7 @@ public class App extends JFrame implements MouseListener{
             paymentMethodBill.setFont(new Font("TW Cen MT", Font.BOLD, 16));
             paymentMethodBill.setLocation(25, 290);
 
-            txtusernameBill.setText("Username");
+            txtusernameBill.setText(user.getUsername());
             txtusernameBill.setSize(150, 30);
             txtusernameBill.setBorder(null);
             txtusernameBill.setForeground(new Color(225,223,186));
@@ -452,7 +452,7 @@ public class App extends JFrame implements MouseListener{
             txtusernameBill.setFont(new Font("TW Cen MT", Font.BOLD, 16));
             txtusernameBill.setLocation(180, 230);
 
-            txtphoneNumBill.setText("Phone Number");
+            txtphoneNumBill.setText(user.getPhoneNum());
             txtphoneNumBill.setSize(150, 30);
             txtphoneNumBill.setBorder(null);
             txtphoneNumBill.setForeground(new Color(225,223,186));
@@ -2059,7 +2059,7 @@ public class App extends JFrame implements MouseListener{
             //BufferedReader br = new BufferedReader(new FileReader(file));
             DefaultTableModel modelA1 = (DefaultTableModel)tableA.getModel();
 
-            functions.toAddCarTable(listOfStrings, modelA1);
+            functions.toViewAllCarTable(listOfStrings, modelA1);
 
             tableA.addMouseListener(new MouseAdapter() {
                 public void mouseClicked(MouseEvent me) {
@@ -2074,7 +2074,7 @@ public class App extends JFrame implements MouseListener{
                 }
              });
         
-            tableA.setPreferredScrollableViewportSize(new Dimension(359, 292));
+            tableA.setPreferredScrollableViewportSize(new Dimension(379, 292));
             tableA.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
             tableA.setFillsViewportHeight(true);
             tableA.setBackground(new Color(27, 28, 30));
@@ -2086,7 +2086,7 @@ public class App extends JFrame implements MouseListener{
             paneACP = new JScrollPane(tableA, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             paneACP.setVisible(true);
 
-            tablePnlACP.setBounds(300, 60, 390, 317);
+            tablePnlACP.setBounds(280, 50, 410, 317);
             tablePnlACP.setBorder(BorderFactory.createLineBorder(new Color(225,223,186)));
             tablePnlACP.add(paneACP);
             
@@ -2436,6 +2436,38 @@ public class App extends JFrame implements MouseListener{
             pnlProfile.add(border2);
         }
 
+        //pnl2Cus 
+        {
+            //Booking icon
+            ImageIcon bookingCus = new ImageIcon("src\\Pics\\online-booking.png");
+            btnBookingCus.setIcon(bookingCus);
+            btnBookingCus.setBackground(new Color(127, 126, 144));
+            btnBookingCus.setFocusable(false);
+            btnBookingCus.setSize(64, 64);
+            btnBookingCus.setLocation(180, 7);
+            btnBookingCus.setBorder(null);
+            btnBookingCus.addMouseListener(this);
+
+            //Profile icon
+            ImageIcon profileCus = new ImageIcon("src\\Pics\\account.png");
+            btnProfileCus.setIcon(profileCus);
+            btnProfileCus.setBackground(new Color(127, 126, 144));
+            btnProfileCus.setFocusable(false);
+            btnProfileCus.setSize(64, 64);
+            btnProfileCus.setLocation(475, 3);
+            btnProfileCus.setBorder(null);
+            btnProfileCus.addMouseListener(this);
+
+            //Bottom Panel / Menu
+            pnl2Cus.setBackground(new Color(127, 126, 144));
+            pnl2Cus.setLayout(null);
+            pnl2Cus.setBounds(0, 420, 805, 108);
+            pnl2Cus.setVisible(false);
+
+            pnl2Cus.add(btnBookingCus);
+            pnl2Cus.add(btnProfileCus);
+        }
+        
         //Admin Home Page ✅
         {
             //Home icon
@@ -3124,36 +3156,63 @@ public class App extends JFrame implements MouseListener{
             txtStartDateB.setText("");
         } else if(e.getSource() == txtEndDateB) {
             txtEndDateB.setText("");
+        } else if(e.getSource() == btnProceedBill) {
+            String[] array = functions.returnArray();
+            functions.toBooking(array);
+        } else if(e.getSource() == btnCancelBill) {
+            pnlB.setVisible(true);
+            pnlBill.setVisible(false); 
         } else if(e.getSource() == btnBookB) {
             String model = txtCarModelB.getText();
             String start = "";
             String end = "";
             String today = java.time.LocalDate.now().toString();    
 
-            /*if () {
-
-            }*/
             if(pnlHour.isVisible()) {
                 start = txtStartHourB.getText();
                 end = txtEndHourB.getText();
                 String[] array = {lblUsernameEP.getText(), model, start, end, today, today, "Pending", "\n"};
-                functions.toBooking(array);
-                pnlB.setVisible(false);
-                pnlBill.setVisible(true);
+                functions.storeArray(array);
+                txtrentalDurationBill.setText(start + "-" + end + ", " + today); 
+                txtcarInfoBill.setText(model); 
+                double priceHr = Double.parseDouble(txtCarPrice.getText());
+                int startTime = functions.toHours(start);
+                int endTime = functions.toHours(end);
+                String finalPrice = Double.toString(priceHr * (endTime-startTime));
+                txtpriceBill.setText("RM " + finalPrice);
             } else if(pnlDate.isVisible()) {
                 start = txtStartDateB.getText();
                 end = txtEndDateB.getText();
                 String[] array = {lblUsernameEP.getText(), model, "N/A", "N/A", start, end, "Pending", "\n"};
-                functions.toBooking(array);
-                pnlB.setVisible(false);
-                pnlBill.setVisible(true);
-            }
+                functions.storeArray(array);
+                
+                txtrentalDurationBill.setText(start + "-" + end);
+                txtcarInfoBill.setText(model); 
+                double priceHr = Double.parseDouble(txtCarPrice.getText());
+                int numOfDays = functions.fromDate(start, end);
 
+                if (numOfDays == 0) {
+                    numOfDays = 1;
+                    String finalPrice = Double.toString(priceHr * (24 * numOfDays));
+                    txtpriceBill.setText("RM " + finalPrice);
+                } else {
+                    String finalPrice = Double.toString(priceHr * (24 * numOfDays));
+                    txtpriceBill.setText("RM " + finalPrice);
+                }
+                
+            }
             btnBookingCus.setEnabled(false);
             btnProfileCus.setEnabled(false);
             btnBooking.setEnabled(false);
             btnProfile.setEnabled(false);
 
+            btnBookingCus.addMouseListener(null);
+            btnProfileCus.addMouseListener(null);
+            btnBooking.addMouseListener(null);
+            btnProfile.addMouseListener(null);
+            pnlB.setVisible(false);
+            pnlBill.setVisible(true);
+            
         } else if(e.getSource() == btnDefaultEP) {
             lblUsernameEP.setText(lblUsername.getText());
             lblEmailEP.setText(lblEmail.getText());
