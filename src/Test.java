@@ -13,11 +13,13 @@ public class Test extends JFrame{
     private static String paymentMethod = "Online Banking";
 
     public static void main(String[] args) {
-        PrinterJob pj = PrinterJob.getPrinterJob();     
+        PrinterJob pj = PrinterJob.getPrinterJob();  
+        String today = java.time.LocalDate.now().toString();     
+        pj.setJobName("Receipt "+ today);
 
         
         totalAmount = Double.parseDouble(price);
-        pj.setPrintable(new BillPrintable(item, price, totalAmount.toString(), paymentMethod),getPageFormat(pj));
+        pj.setPrintable(new printReceipt(item, price, totalAmount.toString(), paymentMethod),getPageFormat(pj));
         try {
              pj.print();
           
@@ -37,7 +39,7 @@ public class Test extends JFrame{
         double bodyHeight = bHeight;  
         double headerHeight = 5.0;                  
         double footerHeight = 5.0;        
-        double width = cm_to_pp(8); 
+        double width = cm_to_pp(10); 
         double height = cm_to_pp(headerHeight+bodyHeight+footerHeight); 
         paper.setSize(width, height);
         paper.setImageableArea(0,10,width,height - cm_to_pp(1));  
