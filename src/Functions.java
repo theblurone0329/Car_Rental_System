@@ -210,7 +210,7 @@ public class Functions {
     }
     }
 
-    public void toOnRentable(List<String>listOfStrings, DefaultTableModel modelORCA1){
+    public void toOnRentTable(List<String>listOfStrings, DefaultTableModel modelORCA1){
         for(int i = 7; i<listOfStrings.size(); i+=7) {
             if(listOfStrings.get(i-1).equals("Returning")) {
                 Object[] tableLines = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-2), listOfStrings.get(i-1)};

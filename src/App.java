@@ -604,7 +604,7 @@ public class App extends JFrame implements MouseListener{
 
             //BufferedReader br = new BufferedReader(new FileReader(file));
             DefaultTableModel modelORCA1 = (DefaultTableModel)onRentRCA.getModel();
-            functions.toOnRentable(list, modelORCA1);
+            functions.toOnRentTable(list, modelORCA1);
 
             onRentRCA.setFocusable(false);
             onRentRCA.addMouseListener(new MouseAdapter() {
