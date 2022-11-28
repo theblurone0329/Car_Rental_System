@@ -158,8 +158,7 @@ public class App extends JFrame implements MouseListener{
     private JSeparator separator6AC = new JSeparator();
     private JScrollPane paneAC = new JScrollPane();
     private Border borderAC = new LineBorder(new Color(225,223,186), 1, true);
-
-    //Start here
+    
     //Edit Profile Page
     private JPanel pnlEP = new JPanel();
     private JTextField lblUsernameEP = new JTextField();
@@ -237,6 +236,7 @@ public class App extends JFrame implements MouseListener{
     private JSeparator separator5B = new JSeparator();
     private JLabel calendarPicB = new JLabel();
 
+    //Start here
     //Return Car Admin Page
     private JPanel pnlRCA = new JPanel();
     private JLabel usernameRCA = new JLabel();
