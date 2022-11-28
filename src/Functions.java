@@ -122,24 +122,43 @@ public class Functions {
 
     public void toUserDetails(String[] array) {
         try
-                {
-                    FileWriter fw = new FileWriter("src\\Text Files\\userDetails.txt", true);
-                    BufferedWriter bw = new BufferedWriter(fw);
-                    PrintWriter pw = new PrintWriter(bw);    
-    
-                    for (int i = 0; i < array.length ; i++)
-                    {
-                        pw.write(array[i] + ", ");
-                    }
-                    pw.close();
-                }
-                catch (Exception f)
-                {
-                    f.printStackTrace();
-                    System.out.println("No such file exists.");
-                }
+        {
+            FileWriter fw = new FileWriter("src\\Text Files\\userDetails.txt", true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);    
+
+            for (int i = 0; i < array.length ; i++)
+            {
+                pw.write(array[i] + ", ");
+            }
+            pw.close();
+        }
+        catch (Exception f)
+        {
+            f.printStackTrace();
+            System.out.println("No such file exists.");
+        }
     }
 
+    public void toUserDetailsRewrite(String[] array) {
+        try
+        {
+            FileWriter fw = new FileWriter("src\\Text Files\\userDetails.txt");
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);    
+
+            for (int i = 0; i < array.length ; i++)
+            {
+                pw.write(array[i] + ", ");
+            }
+            pw.close();
+        }
+        catch (Exception f)
+        {
+            f.printStackTrace();
+            System.out.println("No such file exists.");
+        }
+    }
     public void toReturnedTable(List<String> listOfStrings,DefaultTableModel modelRCA1){
         for(int i = 7; i<listOfStrings.size(); i+=7) {
             if(listOfStrings.get(i-1).equals("Returned")) {

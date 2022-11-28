@@ -35,180 +35,179 @@ public class viewCar extends JFrame implements MouseListener{
 
     viewCar() {
 
-        //Car Name
-        carName.setText("Tesla Model S");
-        carName.setFont(new Font("TW Cen MT", Font.BOLD, 35));
-        carName.setForeground(new Color(225,223,186));
-        carName.setBackground(new Color(27, 28, 30));
-        carName.setSize(300, 27);
-        carName.setLocation(390, 30);
+        //View Car Page ✅
+        {
+            //Car Name
+            carNameOCP.setText("Tesla Model S");
+            carNameOCP.setFont(new Font("TW Cen MT", Font.BOLD, 35));
+            carNameOCP.setForeground(new Color(225,223,186));
+            carNameOCP.setBackground(new Color(27, 28, 30));
+            carNameOCP.setSize(300, 27);
+            carNameOCP.setLocation(390, 30);
 
-        //Available text
-        availableTxt.setText("Not Available");
-        availableTxt.setFont(new Font("Segoe UI", Font.BOLD, 13));
-        availableTxt.setSize(150, 100);
-        availableTxt.setForeground(new Color(225,223,186));
-        availableTxt.setBackground(new Color(27, 28, 30));
-        availableTxt.setLocation(536, 190);
+            //Available text
+            availableTxtOCP.setText("Not Available");
+            availableTxtOCP.setFont(new Font("Segoe UI", Font.BOLD, 13));
+            availableTxtOCP.setSize(150, 100);
+            availableTxtOCP.setForeground(new Color(225,223,186));
+            availableTxtOCP.setBackground(new Color(27, 28, 30));
+            availableTxtOCP.setLocation(536, 190);
 
-        available.setText("Status: ");
-        available.setFont(new Font("Segoe UI", Font.BOLD, 13));
-        available.setSize(50, 100);
-        available.setForeground(new Color(225,223,186));
-        available.setBackground(new Color(27, 28, 30));
-        available.setLocation(486, 190);
+            availableOCP.setText("Status: ");
+            availableOCP.setFont(new Font("Segoe UI", Font.BOLD, 13));
+            availableOCP.setSize(50, 100);
+            availableOCP.setForeground(new Color(225,223,186));
+            availableOCP.setBackground(new Color(27, 28, 30));
+            availableOCP.setLocation(486, 190);
 
-        //Star Pic
-        ImageIcon starPic = new ImageIcon("src\\Pics\\star.png");
-        star.setIcon(starPic);
-        star.setSize(24, 24);
-        star.setLocation(403, 225);
+            //Star Pic
+            ImageIcon starPicOCP = new ImageIcon("src\\Pics\\star.png");
+            starOCP.setIcon(starPicOCP);
+            starOCP.setSize(24, 24);
+            starOCP.setLocation(403, 225);
 
-        //Car Rating txt
-        carRating.setText("4.7");
-        carRating.setFont(new Font("Segoe UI", Font.BOLD, 13));
-        carRating.setSize(50, 100);
-        carRating.setForeground(new Color(225,223,186));
-        carRating.setBackground(new Color(27, 28, 30));
-        carRating.setLocation(436, 190);
+            //Car Rating txt
+            carRatingOCP.setText("4.7");
+            carRatingOCP.setFont(new Font("Segoe UI", Font.BOLD, 13));
+            carRatingOCP.setSize(50, 100);
+            carRatingOCP.setForeground(new Color(225,223,186));
+            carRatingOCP.setBackground(new Color(27, 28, 30));
+            carRatingOCP.setLocation(436, 190);
 
-        //Back Button Text
-        back.setText("Back");
-        back.setSize(180, 30);
-        back.setFont(new Font("TW Cen MT", Font.BOLD, 18));
-        back.setForeground(new Color(225,223,186));
-        back.setLocation(565, 335);
+            //Back Button Text
+            backOCP.setText("Back");
+            backOCP.setSize(180, 30);
+            backOCP.setFont(new Font("TW Cen MT", Font.BOLD, 18));
+            backOCP.setForeground(new Color(225,223,186));
+            backOCP.setLocation(565, 335);
 
-        //Back Button
-        ImageIcon goback = new ImageIcon("src\\Pics\\turn-back.png");
-        btnBack.setIcon(goback);
-        btnBack.setForeground(new Color(225,223,186));
-        btnBack.setBackground(new Color(27, 28, 30));
-        btnBack.setFocusable(false);
-        btnBack.setSize(64, 64);
-        btnBack.setLocation(550, 270);
-        btnBack.setBorder(null);
-        btnBack.addMouseListener(this);
+            //Back Button
+            ImageIcon gobackOCP = new ImageIcon("src\\Pics\\turn-back.png");
+            btnBackOCP.setIcon(gobackOCP);
+            btnBackOCP.setForeground(new Color(225,223,186));
+            btnBackOCP.setBackground(new Color(27, 28, 30));
+            btnBackOCP.setFocusable(false);
+            btnBackOCP.setSize(64, 64);
+            btnBackOCP.setLocation(550, 270);
+            btnBackOCP.setBorder(null);
+            btnBackOCP.addMouseListener(this);
 
-        //Book button text 
-        book.setText("Book Now!");
-        book.setSize(180, 30);
-        book.setFont(new Font("TW Cen MT", Font.BOLD, 18));
-        book.setForeground(new Color(225,223,186));
-        book.setLocation(408, 335);
+            //Book button text 
+            bookOCP.setText("Book Now!");
+            bookOCP.setSize(180, 30);
+            bookOCP.setFont(new Font("TW Cen MT", Font.BOLD, 18));
+            bookOCP.setForeground(new Color(225,223,186));
+            bookOCP.setLocation(408, 335);
 
-        //Booking icon
-        ImageIcon booking = new ImageIcon("src\\Pics\\appointment.png");
-        btnBook.setIcon(booking);
-        btnBook.setForeground(new Color(225,223,186));
-        btnBook.setBackground(new Color(27, 28, 30));
-        btnBook.setFocusable(false);
-        btnBook.setSize(64, 64);
-        btnBook.setLocation(417, 270);
-        btnBook.setBorder(null);
-        btnBook.addMouseListener(this);
+            //Booking icon
+            ImageIcon bookingOCP = new ImageIcon("src\\Pics\\appointment.png");
+            btnBookOCP.setIcon(bookingOCP);
+            btnBookOCP.setForeground(new Color(225,223,186));
+            btnBookOCP.setBackground(new Color(27, 28, 30));
+            btnBookOCP.setFocusable(false);
+            btnBookOCP.setSize(64, 64);
+            btnBookOCP.setLocation(417, 270);
+            btnBookOCP.setBorder(null);
+            btnBookOCP.addMouseListener(this);
 
-        //Location txt
-        location1.setText("Jalan Teknologi 5, Taman Teknologi Malaysia, \n57000 Kuala Lumpur, \n\nWilayah Persekutuan Kuala Lumpur");
-        location1.setFont(new Font("Segoe UI", Font.BOLD, 12));
-        location1.setBackground(new Color(27, 28, 30));
-        location1.setForeground(new Color(225,223,186));
-        location1.setSize(250, 100);
-        location1.setLocation(423, 110);
-        location1.setLineWrap(true);
+            //Location txt
+            location1OCP.setText("Jalan Teknologi 5, Taman Teknologi Malaysia, \n57000 Kuala Lumpur, \n\nWilayah Persekutuan Kuala Lumpur");
+            location1OCP.setFont(new Font("Segoe UI", Font.BOLD, 12));
+            location1OCP.setBackground(new Color(27, 28, 30));
+            location1OCP.setForeground(new Color(225,223,186));
+            location1OCP.setSize(250, 100);
+            location1OCP.setLocation(423, 110);
+            location1OCP.setLineWrap(true);
 
-        //Location title
-        location.setText("Location: ");
-        location.setFont(new Font("TW Cen MT", Font.BOLD, 23));
-        location.setForeground(new Color(225,223,186));
-        location.setSize(180, 30);
-        location.setLocation(413, 75);
+            //Location title
+            locationOCP.setText("Location: ");
+            locationOCP.setFont(new Font("TW Cen MT", Font.BOLD, 23));
+            locationOCP.setForeground(new Color(225,223,186));
+            locationOCP.setSize(180, 30);
+            locationOCP.setLocation(413, 75);
 
-        //Seats icon
-        ImageIcon seat = new ImageIcon("src\\Pics\\car-seat.png");
-        seatPic.setIcon(seat);
-        seatPic.setSize(64, 64);
-        seatPic.setLocation(247, 245);
+            //Seats icon
+            ImageIcon seatOCP = new ImageIcon("src\\Pics\\car-seat.png");
+            seatPicOCP.setIcon(seatOCP);
+            seatPicOCP.setSize(64, 64);
+            seatPicOCP.setLocation(247, 245);
 
-        //Price icon
-        ImageIcon price = new ImageIcon("src\\Pics\\price-tag.png");
-        pricePic.setIcon(price);
-        pricePic.setSize(64, 64);
-        pricePic.setLocation(92, 245);
+            //Price icon
+            ImageIcon priceOCP = new ImageIcon("src\\Pics\\price-tag.png");
+            pricePicOCP.setIcon(priceOCP);
+            pricePicOCP.setSize(64, 64);
+            pricePicOCP.setLocation(92, 245);
 
-        //txt for Seats
-        seats.setText("seats");
-        seats.setFont(new Font("Segoe UI", Font.BOLD, 18));
-        seats.setForeground(new Color(27, 28, 30));
-        seats.setBackground(new Color(225,223,186));
-        seats.setSize(180,30);
-        seats.setLocation(265, 310);
-        seats.setBorder(null);
+            //txt for Seats
+            seatsOCP.setText("seats");
+            seatsOCP.setFont(new Font("Segoe UI", Font.BOLD, 18));
+            seatsOCP.setForeground(new Color(27, 28, 30));
+            seatsOCP.setBackground(new Color(225,223,186));
+            seatsOCP.setSize(180,30);
+            seatsOCP.setLocation(265, 310);
+            seatsOCP.setBorder(null);
 
-        //Number of seats
-        carSeats.setText("5");
-        carSeats.setFont(new Font("Segoe UI", Font.BOLD, 18));
-        carSeats.setForeground(new Color(27, 28, 30));
-        carSeats.setBackground(new Color(225,223,186));
-        carSeats.setSize(20,30);
-        carSeats.setLocation(248, 310);
-        carSeats.setBorder(null);
+            //Number of seats
+            carSeatsOCP.setText("5");
+            carSeatsOCP.setFont(new Font("Segoe UI", Font.BOLD, 18));
+            carSeatsOCP.setForeground(new Color(27, 28, 30));
+            carSeatsOCP.setBackground(new Color(225,223,186));
+            carSeatsOCP.setSize(20,30);
+            carSeatsOCP.setLocation(248, 310);
+            carSeatsOCP.setBorder(null);
 
-        //Price Per Hr txt
-        pricePerHr.setText("RM 25/hr");
-        pricePerHr.setFont(new Font("Segoe UI", Font.BOLD, 18));
-        pricePerHr.setForeground(new Color(27, 28, 30));
-        pricePerHr.setBackground(new Color(225,223,186));
-        pricePerHr.setSize(180,30);
-        pricePerHr.setLocation(87, 310);
-        pricePerHr.setBorder(null);
+            //Price Per Hr txt
+            pricePerHrOCP.setText("RM 25/hr");
+            pricePerHrOCP.setFont(new Font("Segoe UI", Font.BOLD, 18));
+            pricePerHrOCP.setForeground(new Color(27, 28, 30));
+            pricePerHrOCP.setBackground(new Color(225,223,186));
+            pricePerHrOCP.setSize(180,30);
+            pricePerHrOCP.setLocation(87, 310);
+            pricePerHrOCP.setBorder(null);
 
-        //Rounded Square graphic
-        ImageIcon pnl = new ImageIcon("src\\Pics\\smallPnl.png");
-        pnl1.setIcon(pnl);
-        pnl1.setSize(135, 134);
-        pnl1.setLocation(60, 230);
+            //Rounded Square graphic
+            ImageIcon pnlOCP = new ImageIcon("src\\Pics\\smallPnl.png");
+            pnl1OCP.setIcon(pnlOCP);
+            pnl1OCP.setSize(135, 134);
+            pnl1OCP.setLocation(60, 230);
 
-        pnl2.setIcon(pnl);
-        pnl2.setSize(135, 134);
-        pnl2.setLocation(210, 230);
+            pnl2OCP.setIcon(pnlOCP);
+            pnl2OCP.setSize(135, 134);
+            pnl2OCP.setLocation(210, 230);
 
-        //Car Pic
-        ImageIcon car = new ImageIcon("src\\Pics\\Tesla Model S.png");
-        carPic.setIcon(car);
-        carPic.setSize(412, 225);
-        carPic.setLocation(3, 25);
-        
-        //Frame
-        ImageIcon icon = new ImageIcon("src\\Pics\\Logo1.png");
-        this.getContentPane().setBackground(new Color(27, 28, 30));
-        this.setIconImage(icon.getImage());
-        this.setTitle("RentiZen");
-        this.setLayout(null);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(725, 420);
-        this.setVisible(true);
+            //Car Pic
+            ImageIcon carOCP = new ImageIcon("src\\Pics\\Tesla Model S.png");
+            carPicOCP.setIcon(carOCP);
+            carPicOCP.setSize(412, 225);
+            carPicOCP.setLocation(3, 25);
+            
+            //Frame
+            pnlBigOCP.setBackground(new Color(27, 28, 30));
+            pnlBigOCP.setLayout(null);
+            pnlBigOCP.setSize(725, 420);
+            pnlBigOCP.setVisible(false);
 
-        //Adding components to Frame
-        this.add(back);
-        this.add(book);
-        this.add(btnBook);
-        this.add(btnBack);
-        this.add(location1);
-        this.add(location);
-        this.add(seatPic);
-        this.add(pricePic);
-        this.add(pricePerHr);
-        this.add(carSeats);
-        this.add(seats);
-        this.add(carPic);
-        this.add(pnl1);
-        this.add(pnl2);
-        this.add(carRating);
-        this.add(star);
-        this.add(carName);
-        this.add(available);
-        this.add(availableTxt);
+            //Adding components to Frame
+            pnlBigOCP.add(backOCP);
+            pnlBigOCP.add(bookOCP);
+            pnlBigOCP.add(btnBookOCP);
+            pnlBigOCP.add(btnBackOCP);
+            pnlBigOCP.add(location1OCP);
+            pnlBigOCP.add(locationOCP);
+            pnlBigOCP.add(seatPicOCP);
+            pnlBigOCP.add(pricePicOCP);
+            pnlBigOCP.add(pricePerHrOCP);
+            pnlBigOCP.add(carSeatsOCP);
+            pnlBigOCP.add(seatsOCP);
+            pnlBigOCP.add(carPicOCP);
+            pnlBigOCP.add(pnl1OCP);
+            pnlBigOCP.add(pnl2OCP);
+            pnlBigOCP.add(carRatingOCP);
+            pnlBigOCP.add(starOCP);
+            pnlBigOCP.add(carNameOCP);
+            pnlBigOCP.add(availableOCP);
+            pnlBigOCP.add(availableTxtOCP);
+        }
     }
 
     @Override

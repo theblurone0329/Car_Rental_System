@@ -33,9 +33,6 @@ import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
 public class App extends JFrame implements MouseListener{
-    public static void main(String[] args) {
-
-    }
 
     //Customer Home Page
     private JPanel pnl2Cus = new JPanel();
@@ -205,41 +202,6 @@ public class App extends JFrame implements MouseListener{
     private JSeparator separator2CP = new JSeparator();
     private JButton btnCancelCP = new JButton();
     private JButton btnChangeCP = new JButton();
-
-    //View Monthly Report
-    private JPanel pnlMR = new JPanel();
-    private JButton btnClearMR = new JButton();
-    private JButton btnSearchMR = new JButton();
-    private JLabel totalIncomeMR = new JLabel();
-    private JLabel txtTotalIncomeMR = new JLabel();
-    private JRadioButton completedMR = new JRadioButton();
-    private JRadioButton uncompletedMR = new JRadioButton();
-    private JTable tableMR = new JTable();
-    private JScrollPane paneMR = new JScrollPane();
-    private JPanel tablePnlMR = new JPanel();
-    private Border borderMR = new LineBorder(new Color(225,223,186), 1, true);
-
-    //View Car Page
-    private JPanel pnlBigOCP = new JPanel();
-    private JLabel carPicOCP = new JLabel();
-    private JLabel pnl1OCP = new JLabel();
-    private JLabel pnl2OCP = new JLabel();
-    private JLabel pricePerHrOCP = new JLabel();
-    private JLabel carSeatsOCP = new JLabel();
-    private JLabel seatsOCP = new JLabel();
-    private JLabel availableOCP = new JLabel();
-    private JLabel availableTxtOCP = new JLabel();
-    private JLabel locationOCP = new JLabel();
-    private JTextArea location1OCP = new JTextArea();
-    private JLabel carNameOCP = new JLabel();
-    private JLabel carRatingOCP = new JLabel();
-    private JLabel pricePicOCP = new JLabel();
-    private JLabel seatPicOCP = new JLabel();
-    private JLabel backOCP = new JLabel();
-    private JLabel bookOCP = new JLabel();
-    private JLabel starOCP = new JLabel();
-    private JButton btnBookOCP = new JButton();
-    private JButton btnBackOCP = new JButton();
 
     //View Booking Request Page
     private JPanel pnlBR = new JPanel();
@@ -1155,280 +1117,6 @@ public class App extends JFrame implements MouseListener{
             pnlBR.add(btnAcceptBR);
             pnlBR.add(btnDeclineBR);
             
-        }
-
-        //View Car Page ✅
-        {
-            //Car Name
-            carNameOCP.setText("Tesla Model S");
-            carNameOCP.setFont(new Font("TW Cen MT", Font.BOLD, 35));
-            carNameOCP.setForeground(new Color(225,223,186));
-            carNameOCP.setBackground(new Color(27, 28, 30));
-            carNameOCP.setSize(300, 27);
-            carNameOCP.setLocation(390, 30);
-
-            //Available text
-            availableTxtOCP.setText("Not Available");
-            availableTxtOCP.setFont(new Font("Segoe UI", Font.BOLD, 13));
-            availableTxtOCP.setSize(150, 100);
-            availableTxtOCP.setForeground(new Color(225,223,186));
-            availableTxtOCP.setBackground(new Color(27, 28, 30));
-            availableTxtOCP.setLocation(536, 190);
-
-            availableOCP.setText("Status: ");
-            availableOCP.setFont(new Font("Segoe UI", Font.BOLD, 13));
-            availableOCP.setSize(50, 100);
-            availableOCP.setForeground(new Color(225,223,186));
-            availableOCP.setBackground(new Color(27, 28, 30));
-            availableOCP.setLocation(486, 190);
-
-            //Star Pic
-            ImageIcon starPicOCP = new ImageIcon("src\\Pics\\star.png");
-            starOCP.setIcon(starPicOCP);
-            starOCP.setSize(24, 24);
-            starOCP.setLocation(403, 225);
-
-            //Car Rating txt
-            carRatingOCP.setText("4.7");
-            carRatingOCP.setFont(new Font("Segoe UI", Font.BOLD, 13));
-            carRatingOCP.setSize(50, 100);
-            carRatingOCP.setForeground(new Color(225,223,186));
-            carRatingOCP.setBackground(new Color(27, 28, 30));
-            carRatingOCP.setLocation(436, 190);
-
-            //Back Button Text
-            backOCP.setText("Back");
-            backOCP.setSize(180, 30);
-            backOCP.setFont(new Font("TW Cen MT", Font.BOLD, 18));
-            backOCP.setForeground(new Color(225,223,186));
-            backOCP.setLocation(565, 335);
-
-            //Back Button
-            ImageIcon gobackOCP = new ImageIcon("src\\Pics\\turn-back.png");
-            btnBackOCP.setIcon(gobackOCP);
-            btnBackOCP.setForeground(new Color(225,223,186));
-            btnBackOCP.setBackground(new Color(27, 28, 30));
-            btnBackOCP.setFocusable(false);
-            btnBackOCP.setSize(64, 64);
-            btnBackOCP.setLocation(550, 270);
-            btnBackOCP.setBorder(null);
-            btnBackOCP.addMouseListener(this);
-
-            //Book button text 
-            bookOCP.setText("Book Now!");
-            bookOCP.setSize(180, 30);
-            bookOCP.setFont(new Font("TW Cen MT", Font.BOLD, 18));
-            bookOCP.setForeground(new Color(225,223,186));
-            bookOCP.setLocation(408, 335);
-
-            //Booking icon
-            ImageIcon bookingOCP = new ImageIcon("src\\Pics\\appointment.png");
-            btnBookOCP.setIcon(bookingOCP);
-            btnBookOCP.setForeground(new Color(225,223,186));
-            btnBookOCP.setBackground(new Color(27, 28, 30));
-            btnBookOCP.setFocusable(false);
-            btnBookOCP.setSize(64, 64);
-            btnBookOCP.setLocation(417, 270);
-            btnBookOCP.setBorder(null);
-            btnBookOCP.addMouseListener(this);
-
-            //Location txt
-            location1OCP.setText("Jalan Teknologi 5, Taman Teknologi Malaysia, \n57000 Kuala Lumpur, \n\nWilayah Persekutuan Kuala Lumpur");
-            location1OCP.setFont(new Font("Segoe UI", Font.BOLD, 12));
-            location1OCP.setBackground(new Color(27, 28, 30));
-            location1OCP.setForeground(new Color(225,223,186));
-            location1OCP.setSize(250, 100);
-            location1OCP.setLocation(423, 110);
-            location1OCP.setLineWrap(true);
-
-            //Location title
-            locationOCP.setText("Location: ");
-            locationOCP.setFont(new Font("TW Cen MT", Font.BOLD, 23));
-            locationOCP.setForeground(new Color(225,223,186));
-            locationOCP.setSize(180, 30);
-            locationOCP.setLocation(413, 75);
-
-            //Seats icon
-            ImageIcon seatOCP = new ImageIcon("src\\Pics\\car-seat.png");
-            seatPicOCP.setIcon(seatOCP);
-            seatPicOCP.setSize(64, 64);
-            seatPicOCP.setLocation(247, 245);
-
-            //Price icon
-            ImageIcon priceOCP = new ImageIcon("src\\Pics\\price-tag.png");
-            pricePicOCP.setIcon(priceOCP);
-            pricePicOCP.setSize(64, 64);
-            pricePicOCP.setLocation(92, 245);
-
-            //txt for Seats
-            seatsOCP.setText("seats");
-            seatsOCP.setFont(new Font("Segoe UI", Font.BOLD, 18));
-            seatsOCP.setForeground(new Color(27, 28, 30));
-            seatsOCP.setBackground(new Color(225,223,186));
-            seatsOCP.setSize(180,30);
-            seatsOCP.setLocation(265, 310);
-            seatsOCP.setBorder(null);
-
-            //Number of seats
-            carSeatsOCP.setText("5");
-            carSeatsOCP.setFont(new Font("Segoe UI", Font.BOLD, 18));
-            carSeatsOCP.setForeground(new Color(27, 28, 30));
-            carSeatsOCP.setBackground(new Color(225,223,186));
-            carSeatsOCP.setSize(20,30);
-            carSeatsOCP.setLocation(248, 310);
-            carSeatsOCP.setBorder(null);
-
-            //Price Per Hr txt
-            pricePerHrOCP.setText("RM 25/hr");
-            pricePerHrOCP.setFont(new Font("Segoe UI", Font.BOLD, 18));
-            pricePerHrOCP.setForeground(new Color(27, 28, 30));
-            pricePerHrOCP.setBackground(new Color(225,223,186));
-            pricePerHrOCP.setSize(180,30);
-            pricePerHrOCP.setLocation(87, 310);
-            pricePerHrOCP.setBorder(null);
-
-            //Rounded Square graphic
-            ImageIcon pnlOCP = new ImageIcon("src\\Pics\\smallPnl.png");
-            pnl1OCP.setIcon(pnlOCP);
-            pnl1OCP.setSize(135, 134);
-            pnl1OCP.setLocation(60, 230);
-
-            pnl2OCP.setIcon(pnlOCP);
-            pnl2OCP.setSize(135, 134);
-            pnl2OCP.setLocation(210, 230);
-
-            //Car Pic
-            ImageIcon carOCP = new ImageIcon("src\\Pics\\Tesla Model S.png");
-            carPicOCP.setIcon(carOCP);
-            carPicOCP.setSize(412, 225);
-            carPicOCP.setLocation(3, 25);
-            
-            //Frame
-            pnlBigOCP.setBackground(new Color(27, 28, 30));
-            pnlBigOCP.setLayout(null);
-            pnlBigOCP.setSize(725, 420);
-            pnlBigOCP.setVisible(false);
-
-            //Adding components to Frame
-            pnlBigOCP.add(backOCP);
-            pnlBigOCP.add(bookOCP);
-            pnlBigOCP.add(btnBookOCP);
-            pnlBigOCP.add(btnBackOCP);
-            pnlBigOCP.add(location1OCP);
-            pnlBigOCP.add(locationOCP);
-            pnlBigOCP.add(seatPicOCP);
-            pnlBigOCP.add(pricePicOCP);
-            pnlBigOCP.add(pricePerHrOCP);
-            pnlBigOCP.add(carSeatsOCP);
-            pnlBigOCP.add(seatsOCP);
-            pnlBigOCP.add(carPicOCP);
-            pnlBigOCP.add(pnl1OCP);
-            pnlBigOCP.add(pnl2OCP);
-            pnlBigOCP.add(carRatingOCP);
-            pnlBigOCP.add(starOCP);
-            pnlBigOCP.add(carNameOCP);
-            pnlBigOCP.add(availableOCP);
-            pnlBigOCP.add(availableTxtOCP);
-        }
-
-        //View Monthly Report
-        {
-            //Table
-            String[] columnsReturn = {"First", "Second", "Third", "Fourth"};
-            String[][] rowsReturn = {};
-
-            tableMR = new JTable(rowsReturn, columnsReturn){
-                public boolean isCellEditable(int rows, int columns) {
-                    return false;
-                }
-            };
-
-            tableMR.setPreferredScrollableViewportSize(new Dimension(597, 1500));
-            tableMR.setFillsViewportHeight(true);
-            tableMR.setBackground(new Color(27, 28, 30));
-            tableMR.setForeground(new Color(225,223,186));
-            tableMR.setGridColor(new Color(225,223,186));
-            tableMR.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-            tableMR.setRowHeight(30);
-            
-            paneMR = new JScrollPane(tableMR);
-
-            tablePnlMR.setBounds(50, 155, 597, 300);
-            tablePnlMR.setBorder(BorderFactory.createLineBorder(new Color(225,223,186)));
-            tablePnlMR.add(paneMR);
-
-            //Object[] rowReturns = new Object[4];
-
-            //Cancel Button
-            btnSearchMR.setText("Search");
-            btnSearchMR.setSize(85, 37);
-            btnSearchMR.setLocation(155, 100);
-            btnSearchMR.setForeground(new Color(225,223,186));
-            btnSearchMR.setBackground(new Color(27, 28, 30));
-            btnSearchMR.setBorder(borderMR);
-            btnSearchMR.setFont(new Font("TW Cen MT", Font.BOLD, 16));
-            btnSearchMR.setFocusable(false);
-            btnSearchMR.addMouseListener(this);
-            
-            //Clear Button
-            btnClearMR.setText("Clear");
-            btnClearMR.setSize(85, 37);
-            btnClearMR.setLocation(50, 100);
-            btnClearMR.setForeground(new Color(225,223,186));
-            btnClearMR.setBackground(new Color(27, 28, 30));
-            btnClearMR.setBorder(borderMR);
-            btnClearMR.setFont(new Font("TW Cen MT", Font.BOLD, 16));
-            btnClearMR.setFocusable(false);
-            btnClearMR.addMouseListener(this);
-
-            //Text Total income (Manipulate)
-            txtTotalIncomeMR.setText("RM 4,230.00");
-            txtTotalIncomeMR.setFont(new Font("TW Cen MT", Font.BOLD, 16));
-            txtTotalIncomeMR.setForeground(new Color(225,223,186));
-            txtTotalIncomeMR.setBackground(new Color(27, 28, 30));
-            txtTotalIncomeMR.setSize(193, 26);
-            txtTotalIncomeMR.setLocation(553, 60);
-
-            //Text total income
-            totalIncomeMR.setText("TOTAL INCOME (MONTH): ");
-            totalIncomeMR.setFont(new Font("TW Cen MT", Font.BOLD, 16));
-            totalIncomeMR.setForeground(new Color(225,223,186));
-            totalIncomeMR.setBackground(new Color(27, 28, 30));
-            totalIncomeMR.setSize(193, 26);
-            totalIncomeMR.setLocation(360, 60);
-
-            //Check Box for uncompleted
-            uncompletedMR.setText("Uncompleted");
-            uncompletedMR.setForeground(new Color(225,223,186));
-            uncompletedMR.setBackground(new Color(27, 28, 30));
-            uncompletedMR.setSize(110, 25);
-            uncompletedMR.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-            uncompletedMR.setLocation(60, 60);
-            uncompletedMR.setFocusable(false);
-
-            //Check Box for completed
-            completedMR.setText("Completed");
-            completedMR.setForeground(new Color(225,223,186));
-            completedMR.setBackground(new Color(27, 28, 30));
-            completedMR.setSize(98, 25);
-            completedMR.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-            completedMR.setLocation(60, 30);
-            completedMR.setFocusable(false);
-
-            //Panel 
-            pnlMR.setBackground(new Color(27, 28, 30));
-            pnlMR.setLayout(null);
-            pnlMR.setSize(725, 420);
-            pnlMR.setVisible(false);
-
-            //Adding components to Frame
-            pnlMR.add(completedMR);
-            pnlMR.add(uncompletedMR);
-            pnlMR.add(totalIncomeMR);
-            pnlMR.add(txtTotalIncomeMR);
-            pnlMR.add(btnClearMR);
-            pnlMR.add(btnSearchMR);
-            pnlMR.add(tablePnlMR);
         }
 
         //Change Password Page ✅
@@ -2647,8 +2335,6 @@ public class App extends JFrame implements MouseListener{
         this.add(pnlRCA);
         this.add(pnlB);
         this.add(pnlBR);
-        this.add(pnlBigOCP);
-        this.add(pnlMR);
         this.add(pnlCP);
         this.add(pnlEP);
         this.add(pnlAC);
@@ -2695,8 +2381,6 @@ public class App extends JFrame implements MouseListener{
             pnlAC.setVisible(false);
             pnlEP.setVisible(false);
             pnlCP.setVisible(false);
-            pnlMR.setVisible(false);
-            pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
             pnlB.setVisible(false);
             pnlHour.setVisible(false);
@@ -2714,8 +2398,6 @@ public class App extends JFrame implements MouseListener{
             pnlAC.setVisible(false);
             pnlEP.setVisible(false);
             pnlCP.setVisible(false);
-            pnlMR.setVisible(false);
-            pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
             pnlB.setVisible(false);
             pnlHour.setVisible(false);
@@ -2735,8 +2417,6 @@ public class App extends JFrame implements MouseListener{
             pnlAC.setVisible(false);
             pnlEP.setVisible(false);
             pnlCP.setVisible(false);
-            pnlMR.setVisible(false);
-            pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
             pnlB.setVisible(false);
             pnlHour.setVisible(false);
@@ -2755,8 +2435,6 @@ public class App extends JFrame implements MouseListener{
             pnlAC.setVisible(false);
             pnlEP.setVisible(false);
             pnlCP.setVisible(false);
-            pnlMR.setVisible(false);
-            pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
             pnlB.setVisible(false);
             pnlHour.setVisible(false);
@@ -2775,8 +2453,6 @@ public class App extends JFrame implements MouseListener{
             pnlAC.setVisible(false);
             pnlEP.setVisible(false);
             pnlCP.setVisible(false);
-            pnlMR.setVisible(false);
-            pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
             pnlB.setVisible(false);
             pnlHour.setVisible(false);
@@ -2795,8 +2471,6 @@ public class App extends JFrame implements MouseListener{
             pnlAC.setVisible(false);
             pnlEP.setVisible(false);
             pnlCP.setVisible(false);
-            pnlMR.setVisible(false);
-            pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
             pnlB.setVisible(false);
             pnlHour.setVisible(false);
@@ -2815,8 +2489,6 @@ public class App extends JFrame implements MouseListener{
             pnlAC.setVisible(false);
             pnlEP.setVisible(false);
             pnlCP.setVisible(false);
-            pnlMR.setVisible(false);
-            pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
             pnlB.setVisible(false);
             pnlHour.setVisible(false);
@@ -2836,8 +2508,6 @@ public class App extends JFrame implements MouseListener{
             pnlAC.setVisible(false);
             pnlEP.setVisible(false);
             pnlCP.setVisible(false);
-            pnlMR.setVisible(false);
-            pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
             pnlB.setVisible(false);
             pnlHour.setVisible(false);
@@ -2856,8 +2526,6 @@ public class App extends JFrame implements MouseListener{
             pnlBill.setVisible(false);
             pnlEP.setVisible(false);
             pnlCP.setVisible(false);
-            pnlMR.setVisible(false);
-            pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
             pnlB.setVisible(false);
             pnlHour.setVisible(false);
@@ -2876,8 +2544,6 @@ public class App extends JFrame implements MouseListener{
             pnlProfile.setVisible(false);
             pnlBill.setVisible(false);
             pnlCP.setVisible(false);
-            pnlMR.setVisible(false);
-            pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
             pnlB.setVisible(false);
             pnlHour.setVisible(false);
@@ -2897,8 +2563,6 @@ public class App extends JFrame implements MouseListener{
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
             pnlBill.setVisible(false);
-            pnlMR.setVisible(false);
-            pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
             pnlB.setVisible(false);
             pnlHour.setVisible(false);
@@ -2908,35 +2572,12 @@ public class App extends JFrame implements MouseListener{
         } 
         //View Monthly Reports Button
         else if(e.getSource() == btnReport) {
-            pnlMR.setVisible(true);
+            pnlVMP.setVisible(true);
             pnlCP.setVisible(false);
             pnlEP.setVisible(false);
             pnlAC.setVisible(false);
             pnlR.setVisible(false);
             pnlViewAllCar.setVisible(false);
-            pnlVMP.setVisible(false);
-            adminHome.setVisible(false);
-            pnlAdd.setVisible(false);
-            pnlProfile.setVisible(false);
-            pnlBill.setVisible(false);
-            pnlBigOCP.setVisible(false);
-            pnlBR.setVisible(false);
-            pnlB.setVisible(false);
-            pnlHour.setVisible(false);
-            pnlDate.setVisible(false);
-            pnlRCA.setVisible(false);
-            pnlBill.setVisible(false);
-        } 
-        //View All Car Page (Learn More Button)
-        else if(e.getSource() == btn1 || e.getSource() == btn2 || e.getSource() == btn3 || e.getSource() == btn4 || e.getSource() == btn5) {
-            pnlBigOCP.setVisible(true);
-            pnlMR.setVisible(false);
-            pnlCP.setVisible(false);
-            pnlEP.setVisible(false);
-            pnlAC.setVisible(false);
-            pnlR.setVisible(false);
-            pnlViewAllCar.setVisible(false);
-            pnlVMP.setVisible(false);
             adminHome.setVisible(false);
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
@@ -2947,12 +2588,10 @@ public class App extends JFrame implements MouseListener{
             pnlDate.setVisible(false);
             pnlRCA.setVisible(false);
             pnlBill.setVisible(false);
-        } 
+        }  
         //View Bookings Button
         else if(e.getSource() == btnBook) {
             pnlBR.setVisible(true);
-            pnlBigOCP.setVisible(false);
-            pnlMR.setVisible(false);
             pnlCP.setVisible(false);
             pnlEP.setVisible(false);
             pnlAC.setVisible(false);
@@ -2973,8 +2612,6 @@ public class App extends JFrame implements MouseListener{
         else if(e.getSource() == btnBackOCP) {
             pnlViewAllCar.setVisible(true);
             pnlBR.setVisible(false);
-            pnlBigOCP.setVisible(false);
-            pnlMR.setVisible(false);
             pnlCP.setVisible(false);
             pnlEP.setVisible(false);
             pnlAC.setVisible(false);
@@ -2995,8 +2632,6 @@ public class App extends JFrame implements MouseListener{
             pnlB.setVisible(true);
             pnlViewAllCar.setVisible(false);
             pnlBR.setVisible(false);
-            pnlBigOCP.setVisible(false);
-            pnlMR.setVisible(false);
             pnlCP.setVisible(false);
             pnlEP.setVisible(false);
             pnlAC.setVisible(false);
@@ -3015,8 +2650,6 @@ public class App extends JFrame implements MouseListener{
             pnlB.setVisible(false);
             pnlViewAllCar.setVisible(false);
             pnlBR.setVisible(false);
-            pnlBigOCP.setVisible(false);
-            pnlMR.setVisible(false);
             pnlCP.setVisible(false);
             pnlEP.setVisible(false);
             pnlAC.setVisible(false);
@@ -3099,8 +2732,6 @@ public class App extends JFrame implements MouseListener{
             pnlAC.setVisible(false);
             pnlEP.setVisible(false);
             pnlCP.setVisible(false);
-            pnlMR.setVisible(false);
-            pnlBigOCP.setVisible(false);
             pnlBR.setVisible(false);
             pnlB.setVisible(false);
             pnlHour.setVisible(false);
@@ -3222,53 +2853,29 @@ public class App extends JFrame implements MouseListener{
             List<String> listOfStrings
             = new ArrayList<String>();
 
-            try (// load content of file based on specific delimiter
-            Scanner sc = new Scanner(new FileReader("src\\Text Files\\userDetails.txt"))
-                            .useDelimiter(",\\s*")) {
-                String str;
-    
-                // checking end of file
-                while (sc.hasNext()) {
-                    str = sc.next();
-                
-                    // adding each string to arraylist
-                    listOfStrings.add(str);
+            listOfStrings = functions.fromUserDetails(listOfStrings);
+
+            if (listOfStrings.contains(lblUsernameEP.getText())) {
+                JOptionPane.showMessageDialog(null, "Username chosen exists. Please chosse another", "Username Issues", JOptionPane.WARNING_MESSAGE);
+                lblUsernameEP.setText("");
+            } else {
+                int index = listOfStrings.indexOf(lblUsername.getText());
+                listOfStrings.set(index, lblUsernameEP.getText());
+                listOfStrings.set(index+2, lblEmailEP.getText());
+                listOfStrings.set(index+3, lblPhoneNumEP.getText());
+
+                for(int k = 5; k < listOfStrings.size(); k+=5){
+                    listOfStrings.set(k, "\n");
                 }
-            } catch (FileNotFoundException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-            }
-            int index = listOfStrings.indexOf(lblUsername.getText());
-            listOfStrings.set(index, lblUsernameEP.getText());
-            listOfStrings.set(index+2, lblEmailEP.getText());
-            listOfStrings.set(index+3, lblPhoneNumEP.getText());
+                // convert any arraylist to array
+                String[] array = listOfStrings.toArray(new String[0]);
 
-            for(int k = 5; k < listOfStrings.size(); k+=5){
-                listOfStrings.set(k, "\n");
+                functions.toUserDetailsRewrite(array);
+                JOptionPane.showMessageDialog(null, "Profile Details have been changed!", "Profile Change Successful", JOptionPane.INFORMATION_MESSAGE);
+                pnlEP.setVisible(false);
+                pnlProfile.setVisible(true);
             }
-            // convert any arraylist to array
-            String[] array = listOfStrings.toArray(new String[0]);
-
-            try
-            {
-                FileWriter fw = new FileWriter("src\\Text Files\\userDetails.txt");
-                BufferedWriter bw = new BufferedWriter(fw);
-                PrintWriter pw = new PrintWriter(bw);    
-
-                for (int j = 0; j < array.length ; j++)
-                {
-                    pw.write(array[j] + ", ");
-                }
-                pw.close();
-            }
-            catch (Exception f)
-            {
-                f.printStackTrace();
-                System.out.println("No such file exists.");
-            }
-            JOptionPane.showMessageDialog(null, "Profile Details have been changed!", "Profile Change Successful", JOptionPane.INFORMATION_MESSAGE);
-            pnlEP.setVisible(false);
-            pnlProfile.setVisible(true);
+            
         } else if(e.getSource() == btnChangeCP) {
 
             if(passwordCP.getText().equals(confirmPwdCP.getText())) {
@@ -3276,22 +2883,8 @@ public class App extends JFrame implements MouseListener{
                 List<String> listOfStrings
                 = new ArrayList<String>();
     
-                try (// load content of file based on specific delimiter
-                Scanner sc = new Scanner(new FileReader("src\\Text Files\\userDetails.txt"))
-                                .useDelimiter(",\\s*")) {
-                    String str;
-        
-                    // checking end of file
-                    while (sc.hasNext()) {
-                        str = sc.next();
-                    
-                        // adding each string to arraylist
-                        listOfStrings.add(str);
-                    }
-                } catch (FileNotFoundException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }
+                listOfStrings = functions.fromUserDetails(listOfStrings);
+
                 int index = listOfStrings.indexOf(lblUsername.getText());
                 listOfStrings.set(index+1, passwordCP.getText());
 
@@ -3301,23 +2894,7 @@ public class App extends JFrame implements MouseListener{
                 // convert any arraylist to array
                 String[] array = listOfStrings.toArray(new String[0]);
 
-                try
-                {
-                    FileWriter fw = new FileWriter("src\\Text Files\\userDetails.txt");
-                    BufferedWriter bw = new BufferedWriter(fw);
-                    PrintWriter pw = new PrintWriter(bw);    
-
-                    for (int j = 0; j < array.length ; j++)
-                    {
-                        pw.write(array[j] + ", ");
-                    }
-                    pw.close();
-                }
-                catch (Exception f)
-                {
-                    f.printStackTrace();
-                    System.out.println("No such file exists.");
-                }
+                functions.toUserDetailsRewrite(array);
                 JOptionPane.showMessageDialog(null, "Password has been changed!", "Password Change Successful", JOptionPane.INFORMATION_MESSAGE);
                 pnlCP.setVisible(false);
                 pnlProfile.setVisible(true);
