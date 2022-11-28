@@ -25,7 +25,6 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
@@ -72,7 +71,6 @@ public class App extends JFrame implements MouseListener{
     private JLabel icnEmail = new JLabel();
     private JLabel icnPhoneNum = new JLabel();
     private JLabel titleProfile = new JLabel();
-
 
     //Add Page
     private JPanel pnlAdd = new JPanel();
@@ -236,7 +234,6 @@ public class App extends JFrame implements MouseListener{
     private JSeparator separator5B = new JSeparator();
     private JLabel calendarPicB = new JLabel();
 
-    //Start here
     //Return Car Admin Page
     private JPanel pnlRCA = new JPanel();
     private JLabel usernameRCA = new JLabel();
