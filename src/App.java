@@ -68,19 +68,11 @@ public class App extends JFrame implements MouseListener{
     private JButton btnEdit = new JButton();
     private JLabel border = new JLabel();
     private JLabel border2 = new JLabel();
-    private JLabel progBar0 = new JLabel();
-    private JLabel progBar25 = new JLabel();
-    private JLabel progBar50 = new JLabel();
-    private JLabel progBar75 = new JLabel();
-    private JLabel progBar100 = new JLabel();
-    private JLabel car_Profile = new JLabel();
-    private JButton btnView = new JButton();
     private JLabel icnUsername = new JLabel();
     private JLabel icnEmail = new JLabel();
     private JLabel icnPhoneNum = new JLabel();
     private JLabel titleProfile = new JLabel();
-    private JLabel titleService = new JLabel();
-    private JLabel txtView = new JLabel();
+
 
     //Add Page
     private JPanel pnlAdd = new JPanel();
@@ -118,15 +110,7 @@ public class App extends JFrame implements MouseListener{
     private JPanel tablePnlACP = new JPanel();
     private JScrollPane paneACP = new JScrollPane();
     private JTable tableA = new JTable();
-    private JButton btn1 = new JButton();
-    private JButton btn2 = new JButton();
-    private JButton btn3 = new JButton();
-    private JButton btn4 = new JButton();
-    private JButton btn5 = new JButton();
     private JPanel pnlViewAllCar = new JPanel();
-    ImageIcon pnl = new ImageIcon("src\\Pics\\pnl.png");
-    ImageIcon pricePic = new ImageIcon("src\\Pics\\price-tag (1).png");
-    ImageIcon seat = new ImageIcon("src\\Pics\\car-seat (1).png");
 
     //Registration Page
     private JPanel pnlR = new JPanel();
@@ -175,6 +159,7 @@ public class App extends JFrame implements MouseListener{
     private JScrollPane paneAC = new JScrollPane();
     private Border borderAC = new LineBorder(new Color(225,223,186), 1, true);
 
+    //Start here
     //Edit Profile Page
     private JPanel pnlEP = new JPanel();
     private JTextField lblUsernameEP = new JTextField();
@@ -2103,19 +2088,10 @@ public class App extends JFrame implements MouseListener{
             pnlProfile.setVisible(false);
 
             //Adding items to Panel Profile
-            pnlProfile.add(txtView);
-            pnlProfile.add(titleService);
             pnlProfile.add(titleProfile);
             pnlProfile.add(icnPhoneNum);
             pnlProfile.add(icnEmail);
             pnlProfile.add(icnUsername);
-            pnlProfile.add(btnView);
-            pnlProfile.add(car_Profile);
-            pnlProfile.add(progBar100);
-            pnlProfile.add(progBar0);
-            pnlProfile.add(progBar25);
-            pnlProfile.add(progBar50);
-            pnlProfile.add(progBar75);
             pnlProfile.add(btnEdit);
             pnlProfile.add(lblUsername);
             pnlProfile.add(lblEmail);
@@ -2607,26 +2583,7 @@ public class App extends JFrame implements MouseListener{
             pnlDate.setVisible(false);
             pnlRCA.setVisible(false);
             pnlBill.setVisible(false);
-        } 
-        //Back Button in View one Car Page
-        else if(e.getSource() == btnBackOCP) {
-            pnlViewAllCar.setVisible(true);
-            pnlBR.setVisible(false);
-            pnlCP.setVisible(false);
-            pnlEP.setVisible(false);
-            pnlAC.setVisible(false);
-            pnlR.setVisible(false);
-            pnlVMP.setVisible(false);
-            adminHome.setVisible(false);
-            pnlAdd.setVisible(false);
-            pnlProfile.setVisible(false);
-            pnlBill.setVisible(false);
-            pnlB.setVisible(false);
-            pnlHour.setVisible(false);
-            pnlDate.setVisible(false);
-            pnlRCA.setVisible(false);
-            pnlBill.setVisible(false);
-        } //Back Button in View one Car Page
+        } //Learn More button in All Car Page
         else if(e.getSource() == btnLearnMoreACP) {
             txtCarModelB.setText(txtCarModel.getText());
             pnlB.setVisible(true);
