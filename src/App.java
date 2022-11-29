@@ -283,9 +283,7 @@ public class App extends JFrame implements MouseListener{
     private Border borderBill = new LineBorder(new Color(225,223,186), 1, true);
 
     Functions functions = new Functions();
-    /**
-     * @param user
-     */
+
     App(User user) throws FileNotFoundException {
 
         //Billing Page
@@ -1324,7 +1322,7 @@ public class App extends JFrame implements MouseListener{
         //Add Car Admin Page ✅
         {
             //columns
-            Object headers[] = { "Car Brand", "CarModel", "Car Plate Number","Car Year","Car Seats", "Price/Hr"};
+            Object headers[] = { "Car Brand", "CarModel", "Car Plate Number","Car Year","Car Seats", "Price/Hr", "Status"};
             
             //setup table with column, 0 row 
             DefaultTableModel model = new DefaultTableModel(headers,0);
@@ -1340,7 +1338,7 @@ public class App extends JFrame implements MouseListener{
             DefaultTableModel model1 = (DefaultTableModel)tableAC.getModel();
             functions.toAddCarTable(list, model1);
         
-            tableAC.setPreferredScrollableViewportSize(new Dimension(450, 300));
+            tableAC.setPreferredScrollableViewportSize(new Dimension(450, 250));
             tableAC.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
             tableAC.setFillsViewportHeight(true);
             tableAC.setBackground(new Color(27, 28, 30));
@@ -1710,22 +1708,7 @@ public class App extends JFrame implements MouseListener{
             List<String> listOfStrings
             = new ArrayList<String>();
    
-            try (// load content of file based on specific delimiter
-            Scanner sc = new Scanner(new FileReader("src\\Text Files\\Car.txt"))
-                            .useDelimiter(", \\s*")) {
-                String str;
-      
-                // checking end of file
-                while (sc.hasNext()) {
-                    str = sc.next();
-                
-                    // adding each string to arraylist
-                    listOfStrings.add(str);
-                }
-            } catch (FileNotFoundException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-            }
+            listOfStrings = functions.fromCar(listOfStrings);
             //BufferedReader br = new BufferedReader(new FileReader(file));
             DefaultTableModel modelA1 = (DefaultTableModel)tableA.getModel();
 
@@ -2434,8 +2417,8 @@ public class App extends JFrame implements MouseListener{
             pnlBill.setVisible(false);
         } //Reports Button
         else if(e.getSource() == btnReports) {
-            pnlBill.setVisible(true);
-            pnlVMP.setVisible(false);
+            pnlBill.setVisible(false);
+            pnlVMP.setVisible(true);
             adminHome.setVisible(false);
             pnlAdd.setVisible(false);
             pnlProfile.setVisible(false);
@@ -2631,50 +2614,11 @@ public class App extends JFrame implements MouseListener{
             String year = txtCarYearAC.getText();
             String seat = txtCarSeatAC.getText();
             String priceHr = txtCarPriceAC.getText();
-            // arraylist to store strings
-            List<String> listOfStrings
-            = new ArrayList<String>();
-   
-            try (// load content of file based on specific delimiter
-            Scanner sc = new Scanner(new FileReader("src\\Text Files\\Car.txt"))
-                            .useDelimiter(", \\s*")) {
-                String str;
-      
-                // checking end of file
-                while (sc.hasNext()) {
-                    str = sc.next();
-                
-                    // adding each string to arraylist
-                    listOfStrings.add(str);
-                }
-            } catch (FileNotFoundException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-            }
-            String[] row = {brand,model,plate,year,seat,priceHr, "\n"};
+            
+            String[] row = {brand,model,plate,year,seat,priceHr, "Available", "\n"};
             functions.toCar(row);
             DefaultTableModel updatedModel = (DefaultTableModel)tableAC.getModel();
                     updatedModel.addRow(row);
-            try
-                {
-                    FileWriter fw = new FileWriter("src\\Text Files\\Car.txt", true);
-                    BufferedWriter bw = new BufferedWriter(fw);
-                    PrintWriter pw = new PrintWriter(bw);    
-    
-                    for (int i = 0; i < row.length ; i++)
-                    {
-                        pw.write(row[i] + ", ");
-                    }
-                    pw.close();
-                    
-                    JOptionPane.showMessageDialog(null, "Car Added Successfully!", "Successful", JOptionPane.INFORMATION_MESSAGE);   
-                
-                }
-                catch (Exception f)
-                {
-                    f.printStackTrace();
-                    System.out.println("No such file exists.");
-                }
         } else if(e.getSource()==btnCancelAC){
             adminHome.setVisible(true);
             pnlProfile.setVisible(false);
@@ -2703,22 +2647,7 @@ public class App extends JFrame implements MouseListener{
             List<String> listOfStrings
             = new ArrayList<String>();
    
-            try (// load content of file based on specific delimiter
-            Scanner sc = new Scanner(new FileReader("src\\Text Files\\userDetails.txt"))
-                            .useDelimiter(", \\s*")) {
-                String str;
-      
-                // checking end of file
-                while (sc.hasNext()) {
-                    str = sc.next();
-                
-                    // adding each string to arraylist
-                    listOfStrings.add(str);
-                }
-            } catch (FileNotFoundException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-            }
+            listOfStrings = functions.fromUserDetails(listOfStrings);
             if (listOfStrings.contains(txtUsernameR.getText())) {
                 JOptionPane.showMessageDialog(null, "Username has been taken! Try another!", "Username Taken!!!", JOptionPane.WARNING_MESSAGE);
             } else {

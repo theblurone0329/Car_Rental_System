@@ -159,6 +159,7 @@ public class Functions {
             System.out.println("No such file exists.");
         }
     }
+
     public void toReturnedTable(List<String> listOfStrings,DefaultTableModel modelRCA1){
         for(int i = 7; i<listOfStrings.size(); i+=7) {
             if(listOfStrings.get(i-1).equals("Returned")) {
@@ -300,18 +301,26 @@ public class Functions {
 }
 
     public void toAddCarTable(List<String>listOfStrings,DefaultTableModel model1){
-    for(int i = 6; i<listOfStrings.size(); i+=6) {
-        Object[] tableLines = {listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), listOfStrings.get(i-1)};
+    for(int i = 7; i<listOfStrings.size(); i+=7) {
+        Object[] tableLines = {listOfStrings.get(i-7), listOfStrings.get(i-6), 
+            listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), 
+            listOfStrings.get(i-2), listOfStrings.get(i-1)};
         listOfStrings.remove(i);
         model1.addRow(tableLines);
-    }
+        }
     }
 
     public void toViewAllCarTable(List<String> listOfStrings, DefaultTableModel modelA1) {
-        for(int i = 6; i<listOfStrings.size(); i+=6) {
-            Object[] tableLines = {listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-3), listOfStrings.get(i-2), listOfStrings.get(i-1)};
-            listOfStrings.remove(i);
-            modelA1.addRow(tableLines);
+        for(int i = 7; i<listOfStrings.size(); i+=7) {
+            if(listOfStrings.get(i-1).equals("Available")) {
+                Object[] tableLines = {listOfStrings.get(i-7), listOfStrings.get(i-6), 
+                    listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2)};
+                listOfStrings.remove(i);
+                modelA1.addRow(tableLines);
+            } else {
+                listOfStrings.remove(i);
+                continue;
+            }
         }
     }
 
