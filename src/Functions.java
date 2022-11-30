@@ -118,6 +118,28 @@ public class Functions {
             f.printStackTrace();
             System.out.println("No such file exists.");
         }
+    } 
+    
+    public void toCarRewrite(String[] row) {
+        try
+        {
+            FileWriter fw = new FileWriter("src\\Text Files\\Car.txt");
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);    
+
+            for (int i = 0; i < row.length ; i++)
+            {
+                pw.write(row[i] + ", ");
+            }
+            pw.close();
+            JOptionPane.showMessageDialog(null, "Car Added Successfully!", "Successful", JOptionPane.INFORMATION_MESSAGE);   
+        
+        }
+        catch (Exception f)
+        {
+            f.printStackTrace();
+            System.out.println("No such file exists.");
+        }
     }
 
     public void toUserDetails(String[] array) {

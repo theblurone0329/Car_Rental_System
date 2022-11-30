@@ -9,9 +9,11 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -2566,6 +2568,11 @@ public class App extends JFrame implements MouseListener{
         } //Learn More button in All Car Page
         else if(e.getSource() == btnLearnMoreACP) {
             txtCarModelB.setText(txtCarModel.getText());
+            
+            int rowIndex = tableA.getSelectedRow();
+            String[] selected = {tableA.getValueAt(rowIndex, 0).toString(), tableA.getValueAt(rowIndex, 1).toString(), tableA.getValueAt(rowIndex, 2).toString(), tableA.getValueAt(rowIndex, 3).toString(), tableA.getValueAt(rowIndex, 4).toString()};
+            functions.storeArray(selected);
+
             pnlB.setVisible(true);
             pnlViewAllCar.setVisible(false);
             pnlBR.setVisible(false);
@@ -2671,8 +2678,54 @@ public class App extends JFrame implements MouseListener{
         } else if(e.getSource() == txtEndDateB) {
             txtEndDateB.setText("");
         } else if(e.getSource() == btnProceedBill) {
-            String[] array = functions.returnArray();
-            functions.toBooking(array);
+            String[] selected = functions.returnArray();
+            List<String> listOfStrings = new ArrayList<String>();
+            listOfStrings = functions.fromCar(listOfStrings);
+            //Check if Car Brand in list
+            if (listOfStrings.contains(selected[0])) {
+                int ind = listOfStrings.indexOf(selected[0] + 1);
+                //Check if Car Model in list
+                if (listOfStrings.get(ind).equals(selected[1])) {
+                    //Check if Car Year in list
+                    if (listOfStrings.get(ind+2).equals(selected[2])) {
+                        //Check if Car Seats in list
+                        if (listOfStrings.get(ind+3).equals(selected[3])) {
+                            //Check if Car price in list
+                            if (listOfStrings.get(ind+4).equals(selected[4])) {
+                                listOfStrings.set(ind+6, "Not Available");
+                                // convert any arraylist to array
+                                String[] array = listOfStrings.toArray(new String[0]);
+                                functions.toCarRewrite(array);
+
+                                //Adding booking entry to booking file
+                                String[] array1 = functions.returnArray();
+                                functions.toBooking(array1);
+
+                                //Print Receipt
+                                //Need to do JOptionPane validation
+                                for (Enumeration<AbstractButton> buttons = btnGroupBill.getElements(); buttons.hasMoreElements();) {
+                                    AbstractButton button = buttons.nextElement();
+                                    if (button.isSelected()) {
+                                            String choice = button.getText();
+                                            new Receipt(txtcarInfoBill.getText(), txtpriceBill.getText(), choice);
+                                    }
+                                }
+                                
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Car Unavailable...Bringing you back...", "Car Unavailable", JOptionPane.INFORMATION_MESSAGE);
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Car Unavailable...Bringing you back...", "Car Unavailable", JOptionPane.INFORMATION_MESSAGE);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Car Unavailable...Bringing you back...", "Car Unavailable", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Car Unavailable...Bringing you back...", "Car Unavailable", JOptionPane.INFORMATION_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Car Unavailable...Bringing you back...", "Car Unavailable", JOptionPane.INFORMATION_MESSAGE);
+            }
         } else if(e.getSource() == btnCancelBill) {
             pnlB.setVisible(true);
             pnlBill.setVisible(false); 

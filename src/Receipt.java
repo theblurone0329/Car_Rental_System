@@ -2,37 +2,37 @@ import java.awt.print.PageFormat;
 import java.awt.print.Paper;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
-import javax.swing.JFrame;
 
-public class Test extends JFrame{
+public class Receipt{
 
-    private static Double totalAmount=0.0;
-    private static Double bHeight=0.0;
-    private static String item = "Perodua Myvi";
-    private static String price = "70";
-    private static String paymentMethod = "Online Banking";
+    private Double totalAmount = 0.0;
+    private Double bHeight = 0.0;
+    private String item;
+    private String price;
+    private String paymentMethod;
 
-    public static void main(String[] args) {
+    Receipt(String item, String price, String paymentMethod) {
+        this.item = item;
+        this.price = price;
+        this.paymentMethod = paymentMethod;
+
         PrinterJob pj = PrinterJob.getPrinterJob();  
         String today = java.time.LocalDate.now().toString();     
         pj.setJobName("Receipt "+ today);
-
-        
         totalAmount = Double.parseDouble(price);
-        pj.setPrintable(new printReceipt(item, price, totalAmount.toString(), paymentMethod),getPageFormat(pj));
+        pj.setPrintable(new printReceipt(item, price, totalAmount.toString(), paymentMethod), 
+            getPageFormat(pj));
+        
         try {
              pj.print();
-          
         }
          catch (PrinterException ex) {
                  ex.printStackTrace();
-        }
-        
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
+        } 
+    }
 
     //Useful 
-    public static PageFormat getPageFormat(PrinterJob pj) {
+    public PageFormat getPageFormat(PrinterJob pj) {
         PageFormat pf = pj.defaultPage();
         Paper paper = pf.getPaper();    
 
@@ -50,11 +50,11 @@ public class Test extends JFrame{
         return pf;
     }
 
-    protected static double cm_to_pp(double cm) {            
+    protected double cm_to_pp(double cm) {            
 	    return toPPI(cm * 0.393600787);            
     }
  
-    protected static double toPPI(double inch) {            
+    protected  double toPPI(double inch) {            
 	    return inch * 72d;            
     }
 
