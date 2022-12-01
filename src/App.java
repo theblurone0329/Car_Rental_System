@@ -251,7 +251,7 @@ public class App extends JFrame implements MouseListener{
     private JTextField txtUsernameRCA = new JTextField();
     private JTextField txtCarModelRCA = new JTextField();
     private JTextField txtDateRCA = new JTextField();
-    private JButton btnResetRCA = new JButton();
+    private JButton btnRefreshRCA = new JButton();
     private JButton btnProceedRCA = new JButton();
     private JSeparator separator1RCA = new JSeparator();
     private JSeparator separator2RCA = new JSeparator();
@@ -594,16 +594,16 @@ public class App extends JFrame implements MouseListener{
             btnProceedRCA.setFocusable(false);
             btnProceedRCA.addMouseListener(this);
 
-            //Reset Button
-            btnResetRCA.setText("Reset");
-            btnResetRCA.setSize(90, 37);
-            btnResetRCA.setLocation(30, 320);
-            btnResetRCA.setForeground(new Color(225,223,186));
-            btnResetRCA.setBackground(new Color(27, 28, 30));
-            btnResetRCA.setBorder(borderRCA);
-            btnResetRCA.setFont(new Font("TW Cen MT", Font.BOLD, 15));
-            btnResetRCA.setFocusable(false);
-            btnResetRCA.addMouseListener(this);
+            //Refresh Button
+            btnRefreshRCA.setText("Refresh");
+            btnRefreshRCA.setSize(90, 37);
+            btnRefreshRCA.setLocation(30, 320);
+            btnRefreshRCA.setForeground(new Color(225,223,186));
+            btnRefreshRCA.setBackground(new Color(27, 28, 30));
+            btnRefreshRCA.setBorder(borderRCA);
+            btnRefreshRCA.setFont(new Font("TW Cen MT", Font.BOLD, 15));
+            btnRefreshRCA.setFocusable(false);
+            btnRefreshRCA.addMouseListener(this);
 
             //Components for return ID
             separator1RCA.setForeground(new Color(225,223,186));
@@ -687,7 +687,7 @@ public class App extends JFrame implements MouseListener{
             pnlRCA.add(separator1RCA);
             pnlRCA.add(separator2RCA);
             pnlRCA.add(separator3RCA);
-            pnlRCA.add(btnResetRCA);
+            pnlRCA.add(btnRefreshRCA);
             pnlRCA.add(btnProceedRCA);
             pnlRCA.add(onRentPnlRCA);
             pnlRCA.add(returnedPnlRCA);
@@ -3008,10 +3008,17 @@ public class App extends JFrame implements MouseListener{
                         
             
         
-        }else if(e.getSource()==btnResetRCA){
-            txtUsernameRCA.setText("");
-            txtCarModelRCA.setText("");
-            txtDateRCA.setText("");
+        }else if(e.getSource()==btnRefreshRCA){
+            //to ensure that the TODAY's returning data updated in table
+            JOptionPane.showMessageDialog(null, "Done refresh", "Refreshing", JOptionPane.INFORMATION_MESSAGE);
+            List<String> listOfStrings
+            = new ArrayList<String>();
+    
+            List<String> list = functions.fromBooking(listOfStrings);
+            DefaultTableModel modelORCA1 = (DefaultTableModel)onRentRCA.getModel();
+            modelORCA1.setRowCount(0);
+            functions.toOnRentTable(list, modelORCA1);
+
         }else if(e.getSource()==btnDeclineBR){
             String username = txtUserNameBR.getText();
             String CarInfo = txtCarInfoBR.getText();
@@ -3127,6 +3134,20 @@ public class App extends JFrame implements MouseListener{
                             for(int j=0;j < array.length; j++){
                                 pw.write(array[j]+", ");
                             }
+                        //update returned table
+                        String[] row = {Username,Model,ReturnDate,"Returned"};
+                        DefaultTableModel updatedReturned = (DefaultTableModel)returnedRCA.getModel();
+                        updatedReturned.addRow(row);
+                        //update on rent table
+                        DefaultTableModel updatedOnrent = (DefaultTableModel)onRentRCA.getModel();
+                        for(int k = 0;k<onRentRCA.getModel().getRowCount();k++)
+                            {
+                                if((onRentRCA.getModel().getValueAt(k,0).toString().equals(Username))&&
+                                (onRentRCA.getModel().getValueAt(k,1).toString().equals(Model))&&
+                                (onRentRCA.getModel().getValueAt(k,2).toString().equals(ReturnDate))){
+                                    updatedOnrent.removeRow(k);
+                                }
+                            }
                         }
                         else{
                             String[] array = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), listOfStrings.get(i-1),"\n"};
@@ -3134,7 +3155,7 @@ public class App extends JFrame implements MouseListener{
                             for(int j=0;j < array.length; j++){
                                 pw.write(array[j]+", ");
                             }
-                            }
+                            }                           
                     }
                     sc.close();
                     pw.flush();
