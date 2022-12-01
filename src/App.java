@@ -2568,10 +2568,6 @@ public class App extends JFrame implements MouseListener{
         } //Learn More button in All Car Page
         else if(e.getSource() == btnLearnMoreACP) {
             txtCarModelB.setText(txtCarModel.getText());
-            
-            int rowIndex = tableA.getSelectedRow();
-            String[] selected = {tableA.getValueAt(rowIndex, 0).toString(), tableA.getValueAt(rowIndex, 1).toString(), tableA.getValueAt(rowIndex, 2).toString(), tableA.getValueAt(rowIndex, 3).toString(), tableA.getValueAt(rowIndex, 4).toString()};
-            functions.storeArray(selected);
 
             pnlB.setVisible(true);
             pnlViewAllCar.setVisible(false);
@@ -2678,12 +2674,13 @@ public class App extends JFrame implements MouseListener{
         } else if(e.getSource() == txtEndDateB) {
             txtEndDateB.setText("");
         } else if(e.getSource() == btnProceedBill) {
-            String[] selected = functions.returnArray();
+            int rowIndex = tableA.getSelectedRow();
+            String[] selected = {tableA.getValueAt(rowIndex, 0).toString(), tableA.getValueAt(rowIndex, 1).toString(), tableA.getValueAt(rowIndex, 2).toString(), tableA.getValueAt(rowIndex, 3).toString(), tableA.getValueAt(rowIndex, 4).toString()};
             List<String> listOfStrings = new ArrayList<String>();
             listOfStrings = functions.fromCar(listOfStrings);
             //Check if Car Brand in list
             if (listOfStrings.contains(selected[0])) {
-                int ind = listOfStrings.indexOf(selected[0] + 1);
+                int ind = listOfStrings.indexOf(selected[0]) + 1;
                 //Check if Car Model in list
                 if (listOfStrings.get(ind).equals(selected[1])) {
                     //Check if Car Year in list
@@ -2692,39 +2689,79 @@ public class App extends JFrame implements MouseListener{
                         if (listOfStrings.get(ind+3).equals(selected[3])) {
                             //Check if Car price in list
                             if (listOfStrings.get(ind+4).equals(selected[4])) {
-                                listOfStrings.set(ind+6, "Not Available");
-                                // convert any arraylist to array
-                                String[] array = listOfStrings.toArray(new String[0]);
-                                functions.toCarRewrite(array);
-
-                                //Adding booking entry to booking file
-                                String[] array1 = functions.returnArray();
-                                functions.toBooking(array1);
-
-                                //Print Receipt
-                                //Need to do JOptionPane validation
-                                for (Enumeration<AbstractButton> buttons = btnGroupBill.getElements(); buttons.hasMoreElements();) {
-                                    AbstractButton button = buttons.nextElement();
-                                    if (button.isSelected()) {
+                                //Check if Car is available
+                                if (listOfStrings.get(ind+5).equals("Available")) {
+                                    for (Enumeration<AbstractButton> buttons = btnGroupBill.getElements(); buttons.hasMoreElements();) {
+                                        AbstractButton button = buttons.nextElement();
+                                        if (button.isSelected()) {
+                                            JOptionPane.showMessageDialog(null, "Press the 'Continue using the sponsored version' button to speed up the process", "Information", JOptionPane.INFORMATION_MESSAGE);
                                             String choice = button.getText();
-                                            new Receipt(txtcarInfoBill.getText(), txtpriceBill.getText(), choice);
+                                            listOfStrings.set(ind+5, "Not Available");
+                                            //Adding booking entry to booking file
+                                            String[] array1 = functions.returnArray();
+                                            functions.toBooking(array1);
+
+                                            // convert any arraylist to array
+                                            for(int k = 7; k < listOfStrings.size(); k+=8){
+                                                listOfStrings.set(k, "\n");
+                                            }
+                                            String[] array = listOfStrings.toArray(new String[0]);
+                                            functions.forCarBooking(array);
+
+                                            //Print Receipt
+                                            //Need to do JOptionPane validation
+                                            int ans = JOptionPane.showConfirmDialog(null, "Would you like to save your receipt?", "Receipt", JOptionPane.YES_NO_OPTION);
+                                            if(ans==0) {
+                                                double finalPrice = functions.returnPrice();
+                                                new Receipt(txtcarInfoBill.getText(), finalPrice, choice);
+                                                pnlViewAllCar.setVisible(true);
+                                                pnlB.setVisible(false);
+                                                pnlBill.setVisible(false);
+                                            } else {
+                                                JOptionPane.showMessageDialog(null, "Alright! Have a nice day!", "Good Bye!", JOptionPane.PLAIN_MESSAGE);
+                                                pnlViewAllCar.setVisible(true);
+                                                pnlB.setVisible(false);
+                                                pnlBill.setVisible(false);
+                                            }
+                                        } else if(!button.isSelected()) {
+                                            JOptionPane.showMessageDialog(null, "Please Select a Payment Method", "Payment Method", JOptionPane.WARNING_MESSAGE);
+                                        }
                                     }
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Car Unavailable...Bringing you back...", "Car Unavailable", JOptionPane.INFORMATION_MESSAGE);
+                                    pnlViewAllCar.setVisible(true);
+                                    pnlB.setVisible(false);
+                                    pnlBill.setVisible(false);
                                 }
-                                
                             } else {
                                 JOptionPane.showMessageDialog(null, "Car Unavailable...Bringing you back...", "Car Unavailable", JOptionPane.INFORMATION_MESSAGE);
+                                pnlViewAllCar.setVisible(true);
+                                pnlB.setVisible(false);
+                                pnlBill.setVisible(false);
                             }
                         } else {
                             JOptionPane.showMessageDialog(null, "Car Unavailable...Bringing you back...", "Car Unavailable", JOptionPane.INFORMATION_MESSAGE);
+                            pnlViewAllCar.setVisible(true);
+                            pnlB.setVisible(false);
+                            pnlBill.setVisible(false);
                         }
                     } else {
                         JOptionPane.showMessageDialog(null, "Car Unavailable...Bringing you back...", "Car Unavailable", JOptionPane.INFORMATION_MESSAGE);
+                        pnlViewAllCar.setVisible(true);
+                        pnlB.setVisible(false);
+                        pnlBill.setVisible(false);
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Car Unavailable...Bringing you back...", "Car Unavailable", JOptionPane.INFORMATION_MESSAGE);
+                    pnlViewAllCar.setVisible(true);
+                    pnlB.setVisible(false);
+                    pnlBill.setVisible(false);
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Car Unavailable...Bringing you back...", "Car Unavailable", JOptionPane.INFORMATION_MESSAGE);
+                pnlViewAllCar.setVisible(true);
+                pnlB.setVisible(false);
+                pnlBill.setVisible(false);
             }
         } else if(e.getSource() == btnCancelBill) {
             pnlB.setVisible(true);
@@ -2740,12 +2777,13 @@ public class App extends JFrame implements MouseListener{
                 end = txtEndHourB.getText();
                 String[] array = {lblUsernameEP.getText(), model, start, end, today, today, "Pending", "\n"};
                 functions.storeArray(array);
-                txtrentalDurationBill.setText(start + "-" + end + ", " + today); 
+                txtrentalDurationBill.setText(start + " to " + end + ", " + today); 
                 txtcarInfoBill.setText(model); 
                 double priceHr = Double.parseDouble(txtCarPrice.getText());
                 int startTime = functions.toHours(start);
                 int endTime = functions.toHours(end);
                 String finalPrice = Double.toString(priceHr * (endTime-startTime));
+                functions.storePrice(finalPrice);
                 txtpriceBill.setText("RM " + finalPrice);
             } else if(pnlDate.isVisible()) {
                 start = txtStartDateB.getText();
@@ -2753,7 +2791,7 @@ public class App extends JFrame implements MouseListener{
                 String[] array = {lblUsernameEP.getText(), model, "N/A", "N/A", start, end, "Pending", "\n"};
                 functions.storeArray(array);
                 
-                txtrentalDurationBill.setText(start + "-" + end);
+                txtrentalDurationBill.setText(start + " to " + end);
                 txtcarInfoBill.setText(model); 
                 double priceHr = Double.parseDouble(txtCarPrice.getText());
                 int numOfDays = functions.fromDate(start, end);
@@ -2761,22 +2799,15 @@ public class App extends JFrame implements MouseListener{
                 if (numOfDays == 0) {
                     numOfDays = 1;
                     String finalPrice = Double.toString(priceHr * (24 * numOfDays));
+                    functions.storePrice(finalPrice);
                     txtpriceBill.setText("RM " + finalPrice);
                 } else {
                     String finalPrice = Double.toString(priceHr * (24 * numOfDays));
+                    functions.storePrice(finalPrice);
                     txtpriceBill.setText("RM " + finalPrice);
                 }
                 
             }
-            btnBookingCus.setEnabled(false);
-            btnProfileCus.setEnabled(false);
-            btnBooking.setEnabled(false);
-            btnProfile.setEnabled(false);
-
-            btnBookingCus.addMouseListener(null);
-            btnProfileCus.addMouseListener(null);
-            btnBooking.addMouseListener(null);
-            btnProfile.addMouseListener(null);
             pnlB.setVisible(false);
             pnlBill.setVisible(true);
             

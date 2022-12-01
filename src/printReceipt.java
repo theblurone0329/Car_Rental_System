@@ -9,14 +9,12 @@ import javax.swing.ImageIcon;
 public class printReceipt implements Printable{
 
     String item;
-    String price;
-    String totalAmount;
+    double price;
     String paymentMethod; 
 
-    printReceipt(String item, String price, String totalAmount, String paymentMethod) {
+    printReceipt(String item, double price, String paymentMethod) {
         this.item = item;
         this.price = price;
-        this.totalAmount = totalAmount;
         this.paymentMethod = paymentMethod;
     }
 
@@ -56,7 +54,7 @@ public class printReceipt implements Printable{
               receipt.drawString("\n",10,y);y+=yShift;
 
               receipt.drawString("--------------------------------------------------------------------------------",10,y);y+=yShift;
-              receipt.drawString(" Total amount:                                                             "+totalAmount+"   ",10,y);y+=yShift;
+              receipt.drawString(" Total amount:                                                             "+price+"   ",10,y);y+=yShift;
               receipt.drawString("--------------------------------------------------------------------------------------",10,y);y+=yShift;
               receipt.drawString(" Payment Method:                                               "+paymentMethod+"   ",10,y);y+=yShift;
               receipt.drawString("--------------------------------------------------------------------------------------",10,y);y+=yShift;

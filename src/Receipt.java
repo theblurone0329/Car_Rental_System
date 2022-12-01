@@ -5,13 +5,12 @@ import java.awt.print.PrinterJob;
 
 public class Receipt{
 
-    private Double totalAmount = 0.0;
     private Double bHeight = 0.0;
     private String item;
-    private String price;
+    private double price;
     private String paymentMethod;
 
-    Receipt(String item, String price, String paymentMethod) {
+    Receipt(String item, double price, String paymentMethod) {
         this.item = item;
         this.price = price;
         this.paymentMethod = paymentMethod;
@@ -19,8 +18,7 @@ public class Receipt{
         PrinterJob pj = PrinterJob.getPrinterJob();  
         String today = java.time.LocalDate.now().toString();     
         pj.setJobName("Receipt "+ today);
-        totalAmount = Double.parseDouble(price);
-        pj.setPrintable(new printReceipt(item, price, totalAmount.toString(), paymentMethod), 
+        pj.setPrintable(new printReceipt(item, price, paymentMethod), 
             getPageFormat(pj));
         
         try {

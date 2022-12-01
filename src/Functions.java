@@ -14,6 +14,7 @@ import javax.swing.table.DefaultTableModel;
 public class Functions {
     
     private String today = java.time.LocalDate.now().toString(); 
+    private String finalPrice;
 
     public static void main(String[] args) {
         String today = java.time.LocalDate.now().toString(); 
@@ -120,7 +121,7 @@ public class Functions {
         }
     } 
     
-    public void toCarRewrite(String[] row) {
+    public void forCarBooking(String[] row) {
         try
         {
             FileWriter fw = new FileWriter("src\\Text Files\\Car.txt");
@@ -132,7 +133,7 @@ public class Functions {
                 pw.write(row[i] + ", ");
             }
             pw.close();
-            JOptionPane.showMessageDialog(null, "Car Added Successfully!", "Successful", JOptionPane.INFORMATION_MESSAGE);   
+            JOptionPane.showMessageDialog(null, "Car Booked Successfully!", "Successful", JOptionPane.INFORMATION_MESSAGE);   
         
         }
         catch (Exception f)
@@ -506,6 +507,14 @@ public class Functions {
 
     public String[] returnArray() {
         return array;
+    }
+
+    public void storePrice(String finalPrice) {
+        this.finalPrice = finalPrice;
+    }
+
+    public double returnPrice() {
+        return Double.parseDouble(finalPrice);
     }
 
 
