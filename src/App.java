@@ -76,6 +76,7 @@ public class App extends JFrame implements MouseListener{
     private JLabel message = new JLabel();
     private JLabel message2 = new JLabel();
     private JLabel message3 = new JLabel();
+    private JLabel carPic = new JLabel();
 
     //Add Page
     private JPanel pnlAdd = new JPanel();
@@ -2005,26 +2006,38 @@ public class App extends JFrame implements MouseListener{
         }
 
         //Profile Page ✅
-        {
+        {   
+            ImageIcon pic = new ImageIcon("src\\Pics\\car-rental.png");
+            carPic.setIcon(pic);
+            carPic.setSize(256,256);
+            carPic.setLocation(400, 25);
+
+            List<String> listOfStrings1 = new ArrayList<String>();
+            listOfStrings1 = functions.fromBooking(listOfStrings1);
+            int index = listOfStrings1.size();
+
             message.setText("Your booked service for: ");
-            message.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
+            message.setFont(new Font("TW Cen MT", Font.BOLD, 22));
             message.setForeground(new Color(225,223,186));
             message.setBackground(new Color(27, 28, 30));
-            message.setLocation(360, 147);
+            message.setLocation(370, 310);
             message.setSize(250, 26);
 
-            message2.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
+            message2.setText(listOfStrings1.get(index-7));
+            message2.setFont(new Font("TW Cen MT", Font.PLAIN, 20));
             message2.setForeground(new Color(225,223,186));
             message2.setBackground(new Color(27, 28, 30));
-            message2.setLocation(360, 180);
+            message2.setLocation(400, 335);
             message2.setSize(250, 26);
 
-            message3.setText("has been approved");
-            message3.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
+            message3.setText(functions.setBookingStatusTxt(listOfStrings1, index));
+            message3.setFont(new Font("TW Cen MT", Font.PLAIN, 20));
             message3.setForeground(new Color(225,223,186));
             message3.setBackground(new Color(27, 28, 30));
-            message3.setLocation(360, 213);
+            message3.setLocation(400, 360);
             message3.setSize(250, 26);
+
+            
 
             //Titles for each section
             titleProfile.setText("User Profile");
@@ -2106,6 +2119,7 @@ public class App extends JFrame implements MouseListener{
             pnlProfile.add(message);
             pnlProfile.add(message2);
             pnlProfile.add(message3);
+            pnlProfile.add(carPic);
         }
 
         //pnl2Cus 
@@ -2339,36 +2353,6 @@ public class App extends JFrame implements MouseListener{
             adminHome.setVisible(false);
             pnl2Cus.setVisible(true);
             pnlViewAllCar.setVisible(true);
-        }
-
-        List<String> listOfStrings1 = new ArrayList<String>();
-        listOfStrings1 = functions.fromBooking(listOfStrings1);
-        for(int i = listOfStrings1.size()-2; i >= listOfStrings1.size(); i-=8) {
-            if (listOfStrings1.get(i-7).equals(user.getUsername())) {
-                message2.setText(listOfStrings1.get(i-6));
-                System.out.println(listOfStrings1.get(i-6));
-                if (listOfStrings1.get(i).equals("Pending")){
-                    message3.setText("is currently pending");
-                    break;
-                } else if (listOfStrings1.get(i).equals("Accepted")){
-                    message3.setText("has been accepted!");
-                    break;
-                } else if (listOfStrings1.get(i).equals("Declined")){
-                    message3.setText("has been declined!");
-                    break;
-                } else if (listOfStrings1.get(i).equals("Returning")){
-                    message3.setText("is completing");
-                    break;
-                } else if (listOfStrings1.get(i).equals("Returned")){
-                    message.setVisible(false);
-                    message2.setVisible(false);
-                    message3.setVisible(false);
-                    break;
-                }
-            } else {
-                i-=8;
-                continue;
-            }
         }
 
         Functions function = new Functions();

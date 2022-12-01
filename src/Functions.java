@@ -12,10 +12,6 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Functions {
-    
-    private String today = java.time.LocalDate.now().toString(); 
-    private String finalPrice;
-
     public static void main(String[] args) {
         String today = java.time.LocalDate.now().toString(); 
         System.out.println(today);
@@ -23,14 +19,15 @@ public class Functions {
         func.returnStatus();
     }
 
+    private String today = java.time.LocalDate.now().toString(); 
+    private String finalPrice;
     String[] array;
-
+    
     Functions() {
 
     }
 
     public void returnStatus() {
-        int j = 1;
         List<String> listOfStrings
         = new ArrayList<String>();
 
@@ -55,7 +52,6 @@ public class Functions {
             if((listOfStrings.get(i).equals(today))&&(listOfStrings.get(i+1).equals("Accepted"))) {
                 listOfStrings.set(i+1, "Returning");
             } else {
-                j = 0;
             }
         }
 
@@ -557,5 +553,19 @@ public class Functions {
         return Double.parseDouble(finalPrice);
     }
 
-
+    public String setBookingStatusTxt(List<String> listOfStrings1, int index){
+        String text = "";
+        if (listOfStrings1.get(index-2).equals("Pending")){
+            text = "is currently pending";
+        } else if (listOfStrings1.get(index-2).equals("Accepted")){
+            text = "has been accepted!";
+        } else if (listOfStrings1.get(index-2).equals("Declined")){
+            text = "has been declined!";
+        } else if (listOfStrings1.get(index-2).equals("Returning")){
+            text = "is completing";
+        } else if (listOfStrings1.get(index-2).equals("Returned")){
+            text = "";
+        }
+        return text;
+    }
 }
