@@ -52,7 +52,7 @@ public class Functions {
         }
 
         for(int i = 5; i < listOfStrings.size(); i+=8){
-            if(listOfStrings.get(i).equals(today)) {
+            if((listOfStrings.get(i).equals(today))&&(listOfStrings.get(i+1).equals("Accepted"))) {
                 listOfStrings.set(i+1, "Returning");
             } else {
                 j = 0;
@@ -249,6 +249,26 @@ public class Functions {
                 System.out.println("No such file exists.");
             }
             continue;
+        }else if(listOfStrings.get(i-1).equals("Returning")) {
+            String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-2), "Returning","\n"};
+            try
+            {
+                FileWriter fw3 = new FileWriter("src\\Text Files\\Ongoing.txt");
+                BufferedWriter bw3 = new BufferedWriter(fw3);
+                PrintWriter pw3 = new PrintWriter(bw3);    
+
+                listOfStrings.remove(i);
+                for(int j = 0; j < arrayAccepted.length; j++){
+                    pw3.write(arrayAccepted[j] + ", ");
+                }
+                pw3.close();
+            }
+            catch (Exception f)
+            {
+                f.printStackTrace();
+                System.out.println("No such file exists.");
+            }
+            continue;
         }
     }
     }
@@ -304,6 +324,26 @@ public class Functions {
             try
             {
                 FileWriter fw3 = new FileWriter("src\\Text Files\\Declined.txt");
+                BufferedWriter bw3 = new BufferedWriter(fw3);
+                PrintWriter pw3 = new PrintWriter(bw3);    
+
+                listOfStrings.remove(i);
+                for(int j = 0; j < arrayAccepted.length; j++){
+                    pw3.write(arrayAccepted[j] + ", ");
+                }
+                pw3.close();
+            }
+            catch (Exception f)
+            {
+                f.printStackTrace();
+                System.out.println("No such file exists.");
+            }
+            continue;
+        }else if(listOfStrings.get(i-1).equals("Returned")) {
+            String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-2), "Returned","\n"};
+            try
+            {
+                FileWriter fw3 = new FileWriter("src\\Text Files\\Ongoing.txt");
                 BufferedWriter bw3 = new BufferedWriter(fw3);
                 PrintWriter pw3 = new PrintWriter(bw3);    
 
