@@ -60,7 +60,7 @@ public class printReceipt implements Printable{
               receipt.drawString("--------------------------------------------------------------------------------------",10,y);y+=yShift;
 
               receipt.drawString("*******************************************************************************",10,y);y+=yShift;
-              receipt.drawString("                                               THANK YOU!                                       ",10,y);y+=yShift;
+              receipt.drawString("                                             THANK YOU!                                       ",10,y);y+=yShift;
               receipt.drawString("*******************************************************************************",10,y);y+=yShift;   
       }
       catch(Exception e){
