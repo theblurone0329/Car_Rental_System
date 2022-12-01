@@ -2977,6 +2977,19 @@ public class App extends JFrame implements MouseListener{
                             for(int j=0;j < array.length; j++){
                                 pw.write(array[j]+", ");
                             }
+                        //update BR table
+                        DefaultTableModel updatedBRtable = (DefaultTableModel)tableBR.getModel();
+                        for(int k = 0;k<tableBR.getModel().getRowCount();k++)
+                            {
+                                if((tableBR.getModel().getValueAt(k,0).toString().equals(username))&&
+                                (tableBR.getModel().getValueAt(k,1).toString().equals(CarInfo))&&
+                                (tableBR.getModel().getValueAt(k,2).toString().equals(StartTime))&&
+                                (tableBR.getModel().getValueAt(k,3).toString().equals(EndTime))&&
+                                (tableBR.getModel().getValueAt(k,4).toString().equals(RentDate))&&
+                                (tableBR.getModel().getValueAt(k,5).toString().equals(ReturnDate))){
+                                    updatedBRtable.removeRow(k);
+                                }
+                            }
                         }
                         else{
                             String[] array = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), listOfStrings.get(i-1),"\n"};
@@ -3065,6 +3078,19 @@ public class App extends JFrame implements MouseListener{
                             listOfStrings.remove(i);
                             for(int j=0;j < array.length; j++){
                                 pw.write(array[j]+", ");
+                            }
+                        //update BR table
+                        DefaultTableModel updatedBRtable = (DefaultTableModel)tableBR.getModel();
+                        for(int k = 0;k<tableBR.getModel().getRowCount();k++)
+                            {
+                                if((tableBR.getModel().getValueAt(k,0).toString().equals(username))&&
+                                (tableBR.getModel().getValueAt(k,1).toString().equals(CarInfo))&&
+                                (tableBR.getModel().getValueAt(k,2).toString().equals(StartTime))&&
+                                (tableBR.getModel().getValueAt(k,3).toString().equals(EndTime))&&
+                                (tableBR.getModel().getValueAt(k,4).toString().equals(RentDate))&&
+                                (tableBR.getModel().getValueAt(k,5).toString().equals(ReturnDate))){
+                                    updatedBRtable.removeRow(k);
+                                }
                             }
                         }
                         else{
