@@ -96,7 +96,7 @@ public class App extends JFrame implements MouseListener{
     private JLabel txtTotalIncome = new JLabel();
     private JCheckBox completed = new JCheckBox();
     private JCheckBox uncompleted = new JCheckBox();
-    private JTable table = new JTable();
+    private JTable tableMR = new JTable();
     private JScrollPane pane = new JScrollPane();
     private JPanel tablePnl = new JPanel();
     private Border borderVMP = new LineBorder(new Color(225,223,186), 1, true);
@@ -1843,25 +1843,33 @@ public class App extends JFrame implements MouseListener{
 
         //View Monthly Report Page
         {
-            //Table
-            String[] columnsReturn = {"First", "Second", "Third", "Fourth"};
-            String[][] rowsReturn = {};
+            Object columns[] = {"Username", "Model", "Return Date", "Status"};
+            DefaultTableModel modelMR = new DefaultTableModel(columns,0);
+            tableMR = new JTable();
+            tableMR.setCellSelectionEnabled(false); 
+            tableMR.setDefaultEditor(Object.class, null);
+            tableMR.setModel(modelMR);
 
-            table = new JTable(rowsReturn, columnsReturn){
-                public boolean isCellEditable(int rows, int columns) {
-                    return false;
-                }
-            };
+            List<String> listOfStrings
+            = new ArrayList<String>();
+    
+            List<String> list = functions.fromBooking(listOfStrings);
+            //BufferedReader br = new BufferedReader(new FileReader(file));
+            DefaultTableModel modelMR1 = (DefaultTableModel)tableMR.getModel();
+            functions.toReturnedTable(list, modelMR1);
 
-            table.setPreferredScrollableViewportSize(new Dimension(597, 1500));
-            table.setFillsViewportHeight(true);
-            table.setBackground(new Color(27, 28, 30));
-            table.setForeground(new Color(225,223,186));
-            table.setGridColor(new Color(225,223,186));
-            table.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-            table.setRowHeight(30);
+
+
+            tableMR.setPreferredScrollableViewportSize(new Dimension(597, 1500));
+            tableMR.setFillsViewportHeight(true);
+            tableMR.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+            tableMR.setBackground(new Color(27, 28, 30));
+            tableMR.setForeground(new Color(225,223,186));
+            tableMR.setGridColor(new Color(225,223,186));
+            tableMR.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+            tableMR.setRowHeight(30);
             
-            pane = new JScrollPane(table);
+            pane = new JScrollPane(tableMR, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             pane.setVisible(true);
 
             tablePnl.setBounds(50, 155, 597, 300);
