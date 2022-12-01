@@ -73,6 +73,9 @@ public class App extends JFrame implements MouseListener{
     private JLabel icnEmail = new JLabel();
     private JLabel icnPhoneNum = new JLabel();
     private JLabel titleProfile = new JLabel();
+    private JLabel message = new JLabel();
+    private JLabel message2 = new JLabel();
+    private JLabel message3 = new JLabel();
 
     //Add Page
     private JPanel pnlAdd = new JPanel();
@@ -2003,6 +2006,26 @@ public class App extends JFrame implements MouseListener{
 
         //Profile Page ✅
         {
+            message.setText("Your booked service for: ");
+            message.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
+            message.setForeground(new Color(225,223,186));
+            message.setBackground(new Color(27, 28, 30));
+            message.setLocation(360, 147);
+            message.setSize(250, 26);
+
+            message2.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
+            message2.setForeground(new Color(225,223,186));
+            message2.setBackground(new Color(27, 28, 30));
+            message2.setLocation(360, 180);
+            message2.setSize(250, 26);
+
+            message3.setText("has been approved");
+            message3.setFont(new Font("TW Cen MT", Font.PLAIN, 16));
+            message3.setForeground(new Color(225,223,186));
+            message3.setBackground(new Color(27, 28, 30));
+            message3.setLocation(360, 213);
+            message3.setSize(250, 26);
+
             //Titles for each section
             titleProfile.setText("User Profile");
             titleProfile.setFont(new Font("TW Cen MT", Font.PLAIN, 28));
@@ -2080,6 +2103,9 @@ public class App extends JFrame implements MouseListener{
             pnlProfile.add(lblPhoneNum);
             pnlProfile.add(border);
             pnlProfile.add(border2);
+            pnlProfile.add(message);
+            pnlProfile.add(message2);
+            pnlProfile.add(message3);
         }
 
         //pnl2Cus 
@@ -2315,16 +2341,38 @@ public class App extends JFrame implements MouseListener{
             pnlViewAllCar.setVisible(true);
         }
 
+        List<String> listOfStrings1 = new ArrayList<String>();
+        listOfStrings1 = functions.fromBooking(listOfStrings1);
+        for(int i = listOfStrings1.size()-2; i >= listOfStrings1.size(); i-=8) {
+            if (listOfStrings1.get(i-7).equals(user.getUsername())) {
+                message2.setText(listOfStrings1.get(i-6));
+                System.out.println(listOfStrings1.get(i-6));
+                if (listOfStrings1.get(i).equals("Pending")){
+                    message3.setText("is currently pending");
+                    break;
+                } else if (listOfStrings1.get(i).equals("Accepted")){
+                    message3.setText("has been accepted!");
+                    break;
+                } else if (listOfStrings1.get(i).equals("Declined")){
+                    message3.setText("has been declined!");
+                    break;
+                } else if (listOfStrings1.get(i).equals("Returning")){
+                    message3.setText("is completing");
+                    break;
+                } else if (listOfStrings1.get(i).equals("Returned")){
+                    message.setVisible(false);
+                    message2.setVisible(false);
+                    message3.setVisible(false);
+                    break;
+                }
+            } else {
+                i-=8;
+                continue;
+            }
+        }
+
         Functions function = new Functions();
         function.returnStatus();
-
-        //code for getselected row, display at labels below. but i dont know how to to do the mouse event thing.
-        //tried the e.getsource and mouse listener thing not workinggg hahahhaa.
-        /*int rowIndex = tableBR.getSelectedRow();
-        lblUserNameBR.setText(modelBR.getValueAt(rowIndex, 1).toString());
-        lblCarInfoBR.setText(modelBR.getValueAt(rowIndex, 2).toString());
-        lblRentDateBR.setText(modelBR.getValueAt(rowIndex,3).toString());
-        lblReturnDateBR.setText(modelBR.getValueAt(rowIndex, 4).toString());*/
     }
 
     @Override
