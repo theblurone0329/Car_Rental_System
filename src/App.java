@@ -1858,8 +1858,6 @@ public class App extends JFrame implements MouseListener{
             DefaultTableModel modelMR1 = (DefaultTableModel)tableMR.getModel();
             functions.toReturnedTable(list, modelMR1);
 
-
-
             tableMR.setPreferredScrollableViewportSize(new Dimension(597, 1500));
             tableMR.setFillsViewportHeight(true);
             tableMR.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -2747,6 +2745,14 @@ public class App extends JFrame implements MouseListener{
                                             }
                                             String[] array = listOfStrings.toArray(new String[0]);
                                             functions.forCarBooking(array);
+
+                                            //for report   
+                                            array1[2] = array1[3];//end time
+                                            array1[3] = array1[4];//end date
+                                            array1[4] = choice;//payment method
+                                            array1[5] = Double.toString(functions.returnPrice());
+                                            array1[6] = "Uncompleted";                       
+                                            functions.forReport(array1);
 
                                             //Print Receipt
                                             //Need to do JOptionPane validation

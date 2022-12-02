@@ -139,6 +139,26 @@ public class Functions {
         }
     }
 
+    public void forReport(String[] arrayReport) {
+    try
+    {   
+
+        FileWriter fw = new FileWriter("src\\Text Files\\Report.txt", true);
+        BufferedWriter bw = new BufferedWriter(fw);
+        PrintWriter pw = new PrintWriter(bw);                                    
+        for (int k = 0; k < arrayReport.length ; k++)
+        {
+            pw.write(arrayReport[k] + ", ");
+        }
+        pw.close();
+    }
+    catch (Exception f)
+    {
+        f.printStackTrace();
+        System.out.println("No such file exists.");
+    }
+}
+
     public void toUserDetails(String[] array) {
         try
         {
