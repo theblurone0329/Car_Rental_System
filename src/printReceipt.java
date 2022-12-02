@@ -24,7 +24,7 @@ public class printReceipt implements Printable{
           if (pageIndex == 0) {                    
           
               Graphics2D receipt = (Graphics2D) graphics;                    
-              double width = pageFormat.getImageableWidth();                               
+              pageFormat.getImageableWidth();                               
               receipt.translate((int) pageFormat.getImageableX(),(int) pageFormat.getImageableY()); 
   
   

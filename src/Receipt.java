@@ -6,14 +6,8 @@ import java.awt.print.PrinterJob;
 public class Receipt{
 
     private Double bHeight = 0.0;
-    private String item;
-    private double price;
-    private String paymentMethod;
 
     Receipt(String item, double price, String paymentMethod) {
-        this.item = item;
-        this.price = price;
-        this.paymentMethod = paymentMethod;
 
         PrinterJob pj = PrinterJob.getPrinterJob();  
         String today = java.time.LocalDate.now().toString();     
