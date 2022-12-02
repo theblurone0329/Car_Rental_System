@@ -90,8 +90,8 @@ public class App extends JFrame implements MouseListener{
 
     //View Monthly Report Page
     private JPanel pnlVMP = new JPanel();
-    private JButton btnClear = new JButton();
-    private JButton btnSearch = new JButton();
+    private JButton btnClearMR = new JButton();
+    private JButton btnSearchMR = new JButton();
     private JLabel totalIncome = new JLabel();
     private JLabel txtTotalIncome = new JLabel();
     private JCheckBox completed = new JCheckBox();
@@ -1856,8 +1856,11 @@ public class App extends JFrame implements MouseListener{
             List<String> list = functions.fromReport(listOfStrings);
             //BufferedReader br = new BufferedReader(new FileReader(file));
             DefaultTableModel modelMR1 = (DefaultTableModel)tableMR.getModel();
-            functions.toViewMonthlyReportTable(list, modelMR1);
-
+            functions.toViewMonthlyReportTable(list, modelMR1,"Completed");
+            double income = 0;
+            for(int k = 0;k<tableMR.getModel().getRowCount();k++){
+                income = income + Double.parseDouble(tableMR.getModel().getValueAt(k,5).toString());
+            }
             tableMR.setPreferredScrollableViewportSize(new Dimension(597, 1500));
             tableMR.setFillsViewportHeight(true);
             tableMR.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -1877,29 +1880,29 @@ public class App extends JFrame implements MouseListener{
             //Object[] rowReturns = new Object[4];
 
             //Cancel Button
-            btnSearch.setText("Search");
-            btnSearch.setSize(85, 37);
-            btnSearch.setLocation(155, 100);
-            btnSearch.setForeground(new Color(225,223,186));
-            btnSearch.setBackground(new Color(27, 28, 30));
-            btnSearch.setBorder(borderVMP);
-            btnSearch.setFont(new Font("TW Cen MT", Font.BOLD, 16));
-            btnSearch.setFocusable(false);
-            btnSearch.addMouseListener(this);
+            btnSearchMR.setText("Search");
+            btnSearchMR.setSize(85, 37);
+            btnSearchMR.setLocation(155, 100);
+            btnSearchMR.setForeground(new Color(225,223,186));
+            btnSearchMR.setBackground(new Color(27, 28, 30));
+            btnSearchMR.setBorder(borderVMP);
+            btnSearchMR.setFont(new Font("TW Cen MT", Font.BOLD, 16));
+            btnSearchMR.setFocusable(false);
+            btnSearchMR.addMouseListener(this);
             
             //Clear Button
-            btnClear.setText("Clear");
-            btnClear.setSize(85, 37);
-            btnClear.setLocation(50, 100);
-            btnClear.setForeground(new Color(225,223,186));
-            btnClear.setBackground(new Color(27, 28, 30));
-            btnClear.setBorder(borderVMP);
-            btnClear.setFont(new Font("TW Cen MT", Font.BOLD, 16));
-            btnClear.setFocusable(false);
-            btnClear.addMouseListener(this);
+            btnClearMR.setText("Clear");
+            btnClearMR.setSize(85, 37);
+            btnClearMR.setLocation(50, 100);
+            btnClearMR.setForeground(new Color(225,223,186));
+            btnClearMR.setBackground(new Color(27, 28, 30));
+            btnClearMR.setBorder(borderVMP);
+            btnClearMR.setFont(new Font("TW Cen MT", Font.BOLD, 16));
+            btnClearMR.setFocusable(false);
+            btnClearMR.addMouseListener(this);
 
             //Text Total income (Manipulate)
-            txtTotalIncome.setText("RM 4,230.00");
+            txtTotalIncome.setText("RM "+income);
             txtTotalIncome.setFont(new Font("TW Cen MT", Font.BOLD, 16));
             txtTotalIncome.setForeground(new Color(225,223,186));
             txtTotalIncome.setBackground(new Color(27, 28, 30));
@@ -1922,6 +1925,7 @@ public class App extends JFrame implements MouseListener{
             uncompleted.setFont(new Font("Segoe UI", Font.PLAIN, 14));
             uncompleted.setLocation(60, 60);
             uncompleted.setFocusable(false);
+            uncompleted.addMouseListener(this);
 
             //CheckBox for completed
             completed.setText("Completed");
@@ -1931,6 +1935,7 @@ public class App extends JFrame implements MouseListener{
             completed.setFont(new Font("Segoe UI", Font.PLAIN, 14));
             completed.setLocation(60, 30);
             completed.setFocusable(false);
+            completed.addMouseListener(this);
 
             //Frame
             pnlVMP.setBackground(new Color(27, 28, 30));
@@ -1943,8 +1948,8 @@ public class App extends JFrame implements MouseListener{
             pnlVMP.add(uncompleted);
             pnlVMP.add(totalIncome);
             pnlVMP.add(txtTotalIncome);
-            pnlVMP.add(btnClear);
-            pnlVMP.add(btnSearch);
+            pnlVMP.add(btnClearMR);
+            pnlVMP.add(btnSearchMR);
             pnlVMP.add(tablePnl);
         }
 
@@ -3199,8 +3204,115 @@ public class App extends JFrame implements MouseListener{
                     // TODO Auto-generated catch block
                     e1.printStackTrace();
                 }
+
+
+
+                // uncompleted to completed 
+                List<String> listOfStrings2
+                = new ArrayList<String>();
+
+                String tempFile2 = "temp.txt";
+                File newFile2 = new File(tempFile2);
+
+                try (// load content of file based on specific delimiter
+
+                FileWriter fw = new FileWriter(tempFile2,true);
+                BufferedWriter bw = new BufferedWriter(fw);
+                PrintWriter pw = new PrintWriter(bw); 
+
+                Scanner sc = new Scanner(new FileReader("src\\Text Files\\Report.txt"))
+                                .useDelimiter(", \\s*")) {
+      
+                // checking end of file
+                while (sc.hasNext()) {
+                    String str = sc.next();
+            
+                    // adding each string to arraylist
+                    listOfStrings2.add(str);
                 }
+                for(int i = 7; i<listOfStrings2.size(); i+=7) {  //forced to do this way to get distinct data, cus we dont hv unique id for rental.
+                    if((listOfStrings2.get(i-7).equals(Username))&&
+                    (listOfStrings2.get(i-6).equals(Model))&&
+                    (listOfStrings2.get(i-4).equals(ReturnDate))&&
+                    (listOfStrings2.get(i-1).equals("Uncompleted")) ){
+                        String[] array = {listOfStrings2.get(i-7), listOfStrings2.get(i-6), listOfStrings2.get(i-5), listOfStrings2.get(i-4), listOfStrings2.get(i-3), listOfStrings2.get(i-2), "Completed","\n"};
+                        listOfStrings2.remove(i);
+                        for(int j=0;j < array.length; j++){
+                            pw.write(array[j]+", ");
+                        }
+                    }
+                    else{
+                        String[] array = {listOfStrings2.get(i-7), listOfStrings2.get(i-6), listOfStrings2.get(i-5), listOfStrings2.get(i-4), listOfStrings2.get(i-3), listOfStrings2.get(i-2), listOfStrings2.get(i-1),"\n"};
+                        listOfStrings2.remove(i);
+                        for(int j=0;j < array.length; j++){
+                            pw.write(array[j]+", ");
+                        }
+                        }                           
+                }
+                sc.close();
+                pw.flush();
+                pw.close();
+                try {
+                    String filePath = "src\\Text Files\\Report.txt";
+                    File fileToDelete = new File(filePath);
+                    fileToDelete.delete();
+                    File dumpFile = new File(filePath);
+                    newFile2.renameTo(dumpFile);
+                } catch (Exception e2) {
+                    e2.printStackTrace();
+                }
+
+            } catch (Exception e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+
+
+                }
+        }else if(e.getSource()==btnSearchMR){
+            List<String> listOfStrings
+            = new ArrayList<String>();
+            List<String> list = functions.fromReport(listOfStrings);
+            //BufferedReader br = new BufferedReader(new FileReader(file));
+            DefaultTableModel modelMR1 = (DefaultTableModel)tableMR.getModel();
+
+            if(completed.isSelected()&&(uncompleted.isSelected())){
+            modelMR1.setRowCount(0);
+            functions.toViewMonthlyReportTable(list, modelMR1,"Completed");
+            functions.toViewMonthlyReportTable(list, modelMR1,"Uncompleted");
+            double income = 0;
+            for(int k = 0;k<tableMR.getModel().getRowCount();k++){
+                income = income + Double.parseDouble(tableMR.getModel().getValueAt(k,5).toString());
+            }
+            txtTotalIncome.setText("RM "+income);
+            }else if(completed.isSelected()&&(!uncompleted.isSelected())){
+                modelMR1.setRowCount(0);
+                functions.toViewMonthlyReportTable(list, modelMR1,"Completed");
+                double income = 0;
+                for(int k = 0;k<tableMR.getModel().getRowCount();k++){
+                    income = income + Double.parseDouble(tableMR.getModel().getValueAt(k,5).toString());
+                }
+                txtTotalIncome.setText("RM "+income);
+            }else if(!completed.isSelected()&&(uncompleted.isSelected())){
+                modelMR1.setRowCount(0);
+                functions.toViewMonthlyReportTable(list, modelMR1,"Uncompleted");
+                double income = 0;
+                for(int k = 0;k<tableMR.getModel().getRowCount();k++){
+                    income = income + Double.parseDouble(tableMR.getModel().getValueAt(k,5).toString());
+                }
+                txtTotalIncome.setText("RM "+income);
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Please choose one report to be displayed", "BLANK INPUT", JOptionPane.WARNING_MESSAGE);
+            }
+        }else if(e.getSource()==btnClearMR){
+            DefaultTableModel modelMR1 = (DefaultTableModel)tableMR.getModel();
+            modelMR1.setRowCount(0);
+            completed.setSelected(false);
+            uncompleted.setSelected(false);
+            txtTotalIncome.setText("");
         }
+        
      }
 
     @Override

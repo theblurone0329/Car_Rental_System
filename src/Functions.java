@@ -493,13 +493,13 @@ public class Functions {
         }
     }
 
-    public void toViewMonthlyReportTable(List<String> listOfStrings, DefaultTableModel modelMR1) {
+    public void toViewMonthlyReportTable(List<String> listOfStrings, DefaultTableModel modelMR1,String status) {
         for(int i = 7; i<listOfStrings.size(); i+=7) {
-            if(listOfStrings.get(i-1).equals("Completed")) {
+            if(listOfStrings.get(i-1).equals(status)) {
                 Object[] tableLines = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3),listOfStrings.get(i-2),listOfStrings.get(i-1)};
                 modelMR1.addRow(tableLines);
                 listOfStrings.remove(i);
-        } else if(listOfStrings.get(i-1).equals("Uncompleted")) {//dummy file 
+        } else {//dummy file 
             String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-2), "Accepted","\n"};
             try
             {
@@ -656,4 +656,5 @@ public class Functions {
         }
         return text;
     }
+    
 }
