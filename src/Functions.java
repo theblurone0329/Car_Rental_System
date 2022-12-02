@@ -493,8 +493,34 @@ public class Functions {
         }
     }
 
-    public void toViewMonthlyReportTable() {
+    public void toViewMonthlyReportTable(List<String> listOfStrings, DefaultTableModel modelMR1) {
+        for(int i = 7; i<listOfStrings.size(); i+=7) {
+            if(listOfStrings.get(i-1).equals("Completed")) {
+                Object[] tableLines = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3),listOfStrings.get(i-2),listOfStrings.get(i-1)};
+                modelMR1.addRow(tableLines);
+                listOfStrings.remove(i);
+        } else if(listOfStrings.get(i-1).equals("Uncompleted")) {//dummy file 
+            String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-2), "Accepted","\n"};
+            try
+            {
+                FileWriter fw1 = new FileWriter("src\\Text Files\\Ongoing.txt");
+                BufferedWriter bw1 = new BufferedWriter(fw1);
+                PrintWriter pw1 = new PrintWriter(bw1);    
 
+                listOfStrings.remove(i);
+                for(int j = 0; j < arrayAccepted.length; j++){
+                    pw1.write(arrayAccepted[j] + ", ");
+                }
+                pw1.close();
+            }
+            catch (Exception f)
+            {
+                f.printStackTrace();
+                System.out.println("No such file exists.");
+            }
+            continue;
+        }
+    }
     }
 
     public List<String> fromUserDetails(List<String> listOfStrings) {
@@ -522,6 +548,28 @@ public class Functions {
 
         try (// load content of file based on specific delimiter
         Scanner sc = new Scanner(new FileReader("src\\Text Files\\Booking.txt"))
+                        .useDelimiter(", \\s*")) {
+            String str;
+  
+            // checking end of file
+            while (sc.hasNext()) {
+                str = sc.next();
+            
+                // adding each string to arraylist
+                listOfStrings.add(str);
+            }
+
+        } catch (FileNotFoundException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        return listOfStrings;
+    }
+
+    public List<String> fromReport(List<String> listOfStrings) {
+
+        try (// load content of file based on specific delimiter
+        Scanner sc = new Scanner(new FileReader("src\\Text Files\\Report.txt"))
                         .useDelimiter(", \\s*")) {
             String str;
   

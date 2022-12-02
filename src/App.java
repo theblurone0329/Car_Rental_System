@@ -1843,7 +1843,7 @@ public class App extends JFrame implements MouseListener{
 
         //View Monthly Report Page
         {
-            Object columns[] = {"Username", "Model", "Return Date", "Status"};
+            Object columns[] = {"Username", "Model", "End Time", "End Date","Payment method", "Total Price","Status"};
             DefaultTableModel modelMR = new DefaultTableModel(columns,0);
             tableMR = new JTable();
             tableMR.setCellSelectionEnabled(false); 
@@ -1853,10 +1853,10 @@ public class App extends JFrame implements MouseListener{
             List<String> listOfStrings
             = new ArrayList<String>();
     
-            List<String> list = functions.fromBooking(listOfStrings);
+            List<String> list = functions.fromReport(listOfStrings);
             //BufferedReader br = new BufferedReader(new FileReader(file));
             DefaultTableModel modelMR1 = (DefaultTableModel)tableMR.getModel();
-            functions.toReturnedTable(list, modelMR1);
+            functions.toViewMonthlyReportTable(list, modelMR1);
 
             tableMR.setPreferredScrollableViewportSize(new Dimension(597, 1500));
             tableMR.setFillsViewportHeight(true);
