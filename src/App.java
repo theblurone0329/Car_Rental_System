@@ -292,7 +292,7 @@ public class App extends JFrame implements MouseListener{
 
     App(User user) throws FileNotFoundException {
 
-        //Billing Page
+        //Billing Page ✅
         {
             titleRentalDetails.setText("Rental Details");
             titleRentalDetails.setSize(150, 30);
@@ -1841,7 +1841,7 @@ public class App extends JFrame implements MouseListener{
             pnlViewAllCar.add(btnLearnMoreACP);
         }
 
-        //View Monthly Report Page
+        //View Monthly Report Page ✅
         {
             Object columns[] = {"Username", "Model", "End Time", "End Date","Payment method", "Total Price","Status"};
             DefaultTableModel modelMR = new DefaultTableModel(columns,0);
@@ -2133,7 +2133,7 @@ public class App extends JFrame implements MouseListener{
             pnlProfile.add(carPic);
         }
 
-        //pnl2Cus 
+        //pnl2Cus ✅
         {
             //Booking icon
             ImageIcon bookingCus = new ImageIcon("src\\Pics\\online-booking.png");
@@ -2665,7 +2665,7 @@ public class App extends JFrame implements MouseListener{
             
             String[] row = {car.getBrand(), car.getModel(), car.getPlate(), 
                 car.getYear(), car.getSeat(), car.getPrice(), "Available", "\n"};
-                
+
             functions.toCar(row);
             DefaultTableModel updatedModel = (DefaultTableModel)tableAC.getModel();
                     updatedModel.addRow(row);
