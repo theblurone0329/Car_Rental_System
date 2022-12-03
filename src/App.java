@@ -2712,10 +2712,6 @@ public class App extends JFrame implements MouseListener{
             txtEndHourB.setText("");
         } else if(e.getSource() == txtStartHourB) {
             txtStartHourB.setText("");
-        } else if(e.getSource() == txtStartDateB) {
-            txtStartDateB.setText("");
-        } else if(e.getSource() == txtEndDateB) {
-            txtEndDateB.setText("");
         } else if(e.getSource() == btnProceedBill) {
             int rowIndex = tableA.getSelectedRow();
             String[] selected = {tableA.getValueAt(rowIndex, 0).toString(), tableA.getValueAt(rowIndex, 1).toString(), tableA.getValueAt(rowIndex, 2).toString(), tableA.getValueAt(rowIndex, 3).toString(), tableA.getValueAt(rowIndex, 4).toString()};

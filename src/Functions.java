@@ -619,8 +619,8 @@ public class Functions {
     public int fromDate(String start, String end) {
         String[] startDate = start.split("-");
         String[] endDate = end.split("-");
-        int startDay = Integer.parseInt(startDate[0]);
-        int endDay = Integer.parseInt(endDate[1]);
+        int startDay = Integer.parseInt(startDate[2]);
+        int endDay = Integer.parseInt(endDate[2]);
         int numOfDays = endDay - startDay;
         return numOfDays;
     }
