@@ -2661,7 +2661,11 @@ public class App extends JFrame implements MouseListener{
             String seat = txtCarSeatAC.getText();
             String priceHr = txtCarPriceAC.getText();
             
-            String[] row = {brand,model,plate,year,seat,priceHr, "Available", "\n"};
+            Car car = new Car(brand, model, plate, year, seat, priceHr);
+            
+            String[] row = {car.getBrand(), car.getModel(), car.getPlate(), 
+                car.getYear(), car.getSeat(), car.getPrice(), "Available", "\n"};
+                
             functions.toCar(row);
             DefaultTableModel updatedModel = (DefaultTableModel)tableAC.getModel();
                     updatedModel.addRow(row);
