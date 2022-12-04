@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.*;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -152,6 +153,8 @@ public class App extends JFrame implements MouseListener{
     private JButton btnClearAC = new JButton();
     private JButton btnCancelAC = new JButton();
     private JButton btnAddAC = new JButton(); 
+    private JButton btnEditAC = new JButton(); 
+    private JButton btnDeleteAC = new JButton(); 
     private JTable tableAC = new JTable();
     private JPanel tablePnlAC = new JPanel();
     private JSeparator separator1AC = new JSeparator();
@@ -1343,6 +1346,23 @@ public class App extends JFrame implements MouseListener{
             //BufferedReader br = new BufferedReader(new FileReader(file));
             DefaultTableModel model1 = (DefaultTableModel)tableAC.getModel();
             functions.toAddCarTable(list, model1);
+
+            tableAC.setFocusable(false);
+            tableAC.addMouseListener(new MouseAdapter() {
+               public void mouseClicked(MouseEvent me) {
+                  if (me.getClickCount() == 1) {     // to detect click row event
+                     JTable target = (JTable)me.getSource();
+                     int rowIndex = target.getSelectedRow();
+                     txtCarBrandAC.setText(tableAC.getValueAt(rowIndex, 0).toString());
+                     txtCarModelAC.setText(tableAC.getValueAt(rowIndex, 1).toString());           
+                     txtCarPlateNumAC.setText(tableAC.getValueAt(rowIndex, 2).toString());
+                     txtCarYearAC.setText(tableAC.getValueAt(rowIndex, 3).toString());
+                     txtCarSeatAC.setText(tableAC.getValueAt(rowIndex, 4).toString());
+                     txtCarYearAC.setText(tableAC.getValueAt(rowIndex, 5).toString());
+                     txtCarPriceAC.setText(tableAC.getValueAt(rowIndex, 6).toString());
+                  }
+               }
+            });
         
             tableAC.setPreferredScrollableViewportSize(new Dimension(450, 250));
             tableAC.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -1363,7 +1383,7 @@ public class App extends JFrame implements MouseListener{
 
             //Add Button
             btnAddAC.setText("Add");
-            btnAddAC.setSize(90, 37);
+            btnAddAC.setSize(85, 37);
             btnAddAC.setLocation(415, 365);
             btnAddAC.setForeground(new Color(225,223,186));
             btnAddAC.setBackground(new Color(27, 28, 30));
@@ -1372,9 +1392,31 @@ public class App extends JFrame implements MouseListener{
             btnAddAC.setFocusable(false);
             btnAddAC.addMouseListener(this);
 
+            //Edit Button
+            btnEditAC.setText("Edit");
+            btnEditAC.setSize(85, 37);
+            btnEditAC.setLocation(515, 365);
+            btnEditAC.setForeground(new Color(225,223,186));
+            btnEditAC.setBackground(new Color(27, 28, 30));
+            btnEditAC.setBorder(borderAC);
+            btnEditAC.setFont(new Font("TW Cen MT", Font.BOLD, 15));
+            btnEditAC.setFocusable(false);
+            btnEditAC.addMouseListener(this);
+        
+            //Delete Button
+            btnDeleteAC.setText("Delete");
+            btnDeleteAC.setSize(85, 37);
+            btnDeleteAC.setLocation(615, 365);
+            btnDeleteAC.setForeground(new Color(225,223,186));
+            btnDeleteAC.setBackground(new Color(27, 28, 30));
+            btnDeleteAC.setBorder(borderAC);
+            btnDeleteAC.setFont(new Font("TW Cen MT", Font.BOLD, 15));
+            btnDeleteAC.setFocusable(false);
+            btnDeleteAC.addMouseListener(this);
+
             //Cancel Button
             btnCancelAC.setText("Cancel");
-            btnCancelAC.setSize(90, 37);
+            btnCancelAC.setSize(85, 37);
             btnCancelAC.setLocation(315, 365);
             btnCancelAC.setForeground(new Color(225,223,186));
             btnCancelAC.setBackground(new Color(27, 28, 30));
@@ -1385,7 +1427,7 @@ public class App extends JFrame implements MouseListener{
             
             //Clear Button
             btnClearAC.setText("Clear");
-            btnClearAC.setSize(90, 37);
+            btnClearAC.setSize(85, 37);
             btnClearAC.setLocation(215, 365);
             btnClearAC.setForeground(new Color(225,223,186));
             btnClearAC.setBackground(new Color(27, 28, 30));
@@ -1394,12 +1436,14 @@ public class App extends JFrame implements MouseListener{
             btnClearAC.setFocusable(false);
             btnClearAC.addMouseListener(this);
 
+
+
             separator6AC.setForeground(new Color(225,223,186));
             separator6AC.setBackground(new Color(27, 28, 30));
             separator6AC.setSize(120, 17);
             separator6AC.setLocation(35, 400);
 
-            txtCarPriceAC.setText("eg: 25");
+            txtCarPriceAC.setText("");
             txtCarPriceAC.setSize(120, 30);
             txtCarPriceAC.setBorder(null);
             txtCarPriceAC.setForeground(new Color(225,223,186));
@@ -1421,7 +1465,7 @@ public class App extends JFrame implements MouseListener{
             separator5AC.setSize(120, 17);
             separator5AC.setLocation(35, 335);
 
-            txtCarSeatAC.setText("eg: 4");
+            txtCarSeatAC.setText("");
             txtCarSeatAC.setSize(120, 30);
             txtCarSeatAC.setBorder(null);
             txtCarSeatAC.setForeground(new Color(225,223,186));
@@ -1443,7 +1487,7 @@ public class App extends JFrame implements MouseListener{
             separator4AC.setSize(120, 17);
             separator4AC.setLocation(35, 270);
 
-            txtCarYearAC.setText("eg: 2017");
+            txtCarYearAC.setText("");
             txtCarYearAC.setSize(120, 30);
             txtCarYearAC.setBorder(null);
             txtCarYearAC.setForeground(new Color(225,223,186));
@@ -1465,7 +1509,7 @@ public class App extends JFrame implements MouseListener{
             separator3AC.setSize(120, 17);
             separator3AC.setLocation(35, 205);
 
-            txtCarPlateNumAC.setText("eg: SA 0923 B");
+            txtCarPlateNumAC.setText("");
             txtCarPlateNumAC.setSize(120, 30);
             txtCarPlateNumAC.setBorder(null);
             txtCarPlateNumAC.setForeground(new Color(225,223,186));
@@ -1487,7 +1531,7 @@ public class App extends JFrame implements MouseListener{
             separator2AC.setSize(120, 17);
             separator2AC.setLocation(35, 140);
 
-            txtCarModelAC.setText("eg: Corolla Altis");
+            txtCarModelAC.setText("");
             txtCarModelAC.setSize(120, 30);
             txtCarModelAC.setBorder(null);
             txtCarModelAC.setForeground(new Color(225,223,186));
@@ -1509,7 +1553,7 @@ public class App extends JFrame implements MouseListener{
             separator1AC.setSize(120, 17);
             separator1AC.setLocation(35, 80);
 
-            txtCarBrandAC.setText("eg: Toyota");
+            txtCarBrandAC.setText("");
             txtCarBrandAC.setSize(120, 30);
             txtCarBrandAC.setBorder(null);
             txtCarBrandAC.setForeground(new Color(225,223,186));
@@ -1553,6 +1597,8 @@ public class App extends JFrame implements MouseListener{
             pnlAC.add(btnClearAC);
             pnlAC.add(btnCancelAC);
             pnlAC.add(btnAddAC);
+            pnlAC.add(btnEditAC);
+            pnlAC.add(btnDeleteAC);
             pnlAC.add(tablePnlAC);
         }
 
@@ -2669,7 +2715,68 @@ public class App extends JFrame implements MouseListener{
             functions.toCar(row);
             DefaultTableModel updatedModel = (DefaultTableModel)tableAC.getModel();
                     updatedModel.addRow(row);
-        } else if(e.getSource()==btnCancelAC){
+        } 
+        else if(e.getSource()==btnDeleteAC){
+            String brand = txtCarBrandAC.getText();
+            String model = txtCarModelAC.getText();
+            String plate = txtCarPlateNumAC.getText();
+            String year = txtCarYearAC.getText();
+            String seat = txtCarSeatAC.getText();
+            String priceHr = txtCarPriceAC.getText();
+            
+            Car car = new Car(brand, model, plate, year, seat, priceHr);
+
+            List<String> listOfStrings
+            = new ArrayList<String>();
+
+            String tempFile = "temp.txt";
+            File newFile = new File(tempFile);
+
+            try (// load content of file based on specific delimiter
+
+                FileWriter fw = new FileWriter(tempFile,true);
+                BufferedWriter bw = new BufferedWriter(fw);
+                PrintWriter pw = new PrintWriter(bw); 
+                Scanner sc = new Scanner(new FileReader("src\\Text Files\\Car.txt"))
+                                .useDelimiter(", \\s*")) {
+      
+                // checking end of file
+                while (sc.hasNext()) {
+                    String str = sc.next();
+            
+                    // adding each string to arraylist
+                    listOfStrings.add(str);
+                }
+                for(int i = 7; i<listOfStrings.size(); i+=7) { 
+                    if(!listOfStrings.get(i-5).equals(plate)){
+                        String[] array = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), listOfStrings.get(i-1),"\n"};
+                        listOfStrings.remove(i);
+                        for(int j=0;j < array.length; j++){
+                            pw.write(array[j]+", ");
+                        }
+                    }
+                          
+                }
+                sc.close();
+                pw.flush();
+                pw.close();
+                try {
+                    String filePath = "src\\Text Files\\Car.txt";
+                    File fileToDelete = new File(filePath);
+                    fileToDelete.delete();
+                    File dumpFile = new File(filePath);
+                    newFile.renameTo(dumpFile);
+                } catch (Exception e2) {
+                    e2.printStackTrace();
+                }
+            
+            } catch (Exception e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        }     
+                
+        else if(e.getSource()==btnCancelAC){
             adminHome.setVisible(true);
             pnlProfile.setVisible(false);
             pnlAdd.setVisible(false);
