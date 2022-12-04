@@ -499,27 +499,27 @@ public class Functions {
                 Object[] tableLines = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3),listOfStrings.get(i-2),listOfStrings.get(i-1)};
                 modelMR1.addRow(tableLines);
                 listOfStrings.remove(i);
-        } else {//dummy file 
-            String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-2), "Accepted","\n"};
-            try
-            {
-                FileWriter fw1 = new FileWriter("src\\Text Files\\Ongoing.txt");
-                BufferedWriter bw1 = new BufferedWriter(fw1);
-                PrintWriter pw1 = new PrintWriter(bw1);    
+            } else {//dummy file 
+                String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-2), "Accepted","\n"};
+                try
+                {
+                    FileWriter fw1 = new FileWriter("src\\Text Files\\Ongoing.txt");
+                    BufferedWriter bw1 = new BufferedWriter(fw1);
+                    PrintWriter pw1 = new PrintWriter(bw1);    
 
-                listOfStrings.remove(i);
-                for(int j = 0; j < arrayAccepted.length; j++){
-                    pw1.write(arrayAccepted[j] + ", ");
+                    listOfStrings.remove(i);
+                    for(int j = 0; j < arrayAccepted.length; j++){
+                        pw1.write(arrayAccepted[j] + ", ");
+                    }
+                    pw1.close();
                 }
-                pw1.close();
+                catch (Exception f)
+                {
+                    f.printStackTrace();
+                    System.out.println("No such file exists.");
+                }
+                continue;
             }
-            catch (Exception f)
-            {
-                f.printStackTrace();
-                System.out.println("No such file exists.");
-            }
-            continue;
-        }
     }
     }
 

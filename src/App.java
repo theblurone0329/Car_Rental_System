@@ -3277,14 +3277,16 @@ public class App extends JFrame implements MouseListener{
             DefaultTableModel modelMR1 = (DefaultTableModel)tableMR.getModel();
 
             if(completed.isSelected()&&(uncompleted.isSelected())){
-            modelMR1.setRowCount(0);
-            functions.toViewMonthlyReportTable(list, modelMR1,"Completed");
-            functions.toViewMonthlyReportTable(list, modelMR1,"Uncompleted");
-            double income = 0;
-            for(int k = 0;k<tableMR.getModel().getRowCount();k++){
-                income = income + Double.parseDouble(tableMR.getModel().getValueAt(k,5).toString());
-            }
-            txtTotalIncome.setText("RM "+income);
+                modelMR1.setRowCount(0);
+                functions.toViewMonthlyReportTable(list, modelMR1,"Completed");
+                listOfStrings.clear();
+                List<String> list2 = functions.fromReport(listOfStrings);
+                functions.toViewMonthlyReportTable(list2, modelMR1,"Uncompleted");
+                double income = 0;
+                for(int k = 0;k<tableMR.getModel().getRowCount();k++){
+                    income = income + Double.parseDouble(tableMR.getModel().getValueAt(k,5).toString());
+                }
+                txtTotalIncome.setText("RM "+income);
             }else if(completed.isSelected()&&(!uncompleted.isSelected())){
                 modelMR1.setRowCount(0);
                 functions.toViewMonthlyReportTable(list, modelMR1,"Completed");
