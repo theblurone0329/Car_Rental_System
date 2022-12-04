@@ -1358,8 +1358,7 @@ public class App extends JFrame implements MouseListener{
                      txtCarPlateNumAC.setText(tableAC.getValueAt(rowIndex, 2).toString());
                      txtCarYearAC.setText(tableAC.getValueAt(rowIndex, 3).toString());
                      txtCarSeatAC.setText(tableAC.getValueAt(rowIndex, 4).toString());
-                     txtCarYearAC.setText(tableAC.getValueAt(rowIndex, 5).toString());
-                     txtCarPriceAC.setText(tableAC.getValueAt(rowIndex, 6).toString());
+                     txtCarPriceAC.setText(tableAC.getValueAt(rowIndex, 5).toString());
                   }
                }
             });
@@ -2709,13 +2708,107 @@ public class App extends JFrame implements MouseListener{
             
             Car car = new Car(brand, model, plate, year, seat, priceHr);
             
-            String[] row = {car.getBrand(), car.getModel(), car.getPlate(), 
+            List<String> listOfStrings
+            = new ArrayList<String>();  
+            List<String> list = functions.fromCar(listOfStrings);
+            if(list.contains(car.getPlate())){
+                JOptionPane.showMessageDialog(null, "Duplicated entry detected ! please enter another plate number", "Duplicated entry", JOptionPane.WARNING_MESSAGE);
+            }else{            String[] row = {car.getBrand(), car.getModel(), car.getPlate(), 
                 car.getYear(), car.getSeat(), car.getPrice(), "Available", "\n"};
+                functions.toCar(row);
+                DefaultTableModel updatedModel = (DefaultTableModel)tableAC.getModel();
+                updatedModel.addRow(row);
+                txtCarBrandAC.setText("");
+                txtCarModelAC.setText("");
+                txtCarYearAC.setText("");
+                txtCarPlateNumAC.setText("");
+                txtCarSeatAC.setText("");
+                txtCarPriceAC.setText("");
+            }
+        }
+        else if(e.getSource()==btnEditAC){
+            String brand = txtCarBrandAC.getText();
+            String model = txtCarModelAC.getText();
+            String plate = txtCarPlateNumAC.getText();
+            String year = txtCarYearAC.getText();
+            String seat = txtCarSeatAC.getText();
+            String priceHr = txtCarPriceAC.getText();
+            
+            Car car = new Car(brand, model, plate, year, seat, priceHr);
+            
+            List<String> listOfStrings
+            = new ArrayList<String>();
 
-            functions.toCar(row);
-            DefaultTableModel updatedModel = (DefaultTableModel)tableAC.getModel();
-                    updatedModel.addRow(row);
-        } 
+            String tempFile = "temp.txt";
+            File newFile = new File(tempFile);
+
+            try (// load content of file based on specific delimiter
+
+                FileWriter fw = new FileWriter(tempFile,true);
+                BufferedWriter bw = new BufferedWriter(fw);
+                PrintWriter pw = new PrintWriter(bw); 
+                Scanner sc = new Scanner(new FileReader("src\\Text Files\\Car.txt"))
+                                .useDelimiter(", \\s*")) {
+      
+                // checking end of file
+                while (sc.hasNext()) {
+                    String str = sc.next();
+            
+                    // adding each string to arraylist
+                    listOfStrings.add(str);
+                }
+                for(int i = 7; i<listOfStrings.size(); i+=7) { 
+                    if(listOfStrings.get(i-5).equals(car.getPlate())){
+                        listOfStrings.set(i-7, car.getBrand());
+                        listOfStrings.set(i-6, car.getModel());
+                        listOfStrings.set(i-5, car.getPlate());
+                        listOfStrings.set(i-4, car.getYear());
+                        listOfStrings.set(i-3, car.getSeat());
+                        listOfStrings.set(i-2, car.getPrice());
+                        String[] array = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), listOfStrings.get(i-1),"\n"};
+                        listOfStrings.remove(i);
+                        for(int j=0;j < array.length; j++){
+                            pw.write(array[j]+", ");
+                        }
+                    } else{
+                        String[] array = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), listOfStrings.get(i-1),"\n"};
+                        listOfStrings.remove(i);
+                        for(int j=0;j < array.length; j++){
+                            pw.write(array[j]+", ");
+                        }
+                        }                     
+                }
+                sc.close();
+                pw.flush();
+                pw.close();
+                try {
+                    String filePath = "src\\Text Files\\Car.txt";
+                    File fileToDelete = new File(filePath);
+                    fileToDelete.delete();
+                    File dumpFile = new File(filePath);
+                    newFile.renameTo(dumpFile);
+                    JOptionPane.showMessageDialog(null, "Edit saved !", "Editing successfull", JOptionPane.INFORMATION_MESSAGE);
+                    List<String> listOfStrings2
+                    = new ArrayList<String>();  
+                    List<String> list = functions.fromCar(listOfStrings2);
+                    DefaultTableModel model1 = (DefaultTableModel)tableAC.getModel();
+                    model1.setRowCount(0);
+                    functions.toAddCarTable(list, model1);
+                    txtCarBrandAC.setText("");
+                    txtCarModelAC.setText("");
+                    txtCarYearAC.setText("");
+                    txtCarPlateNumAC.setText("");
+                    txtCarSeatAC.setText("");
+                    txtCarPriceAC.setText("");                                            
+                } catch (Exception e2) {
+                    e2.printStackTrace();
+                }
+            
+            } catch (Exception e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        }  
         else if(e.getSource()==btnDeleteAC){
             String brand = txtCarBrandAC.getText();
             String model = txtCarModelAC.getText();
@@ -2748,14 +2841,15 @@ public class App extends JFrame implements MouseListener{
                     listOfStrings.add(str);
                 }
                 for(int i = 7; i<listOfStrings.size(); i+=7) { 
-                    if(!listOfStrings.get(i-5).equals(plate)){
+                    if(!listOfStrings.get(i-5).equals(car.getPlate())){
                         String[] array = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), listOfStrings.get(i-1),"\n"};
                         listOfStrings.remove(i);
                         for(int j=0;j < array.length; j++){
                             pw.write(array[j]+", ");
                         }
-                    }
-                          
+                    }else{
+                        listOfStrings.remove(i);
+                    }                      
                 }
                 sc.close();
                 pw.flush();
@@ -2766,6 +2860,21 @@ public class App extends JFrame implements MouseListener{
                     fileToDelete.delete();
                     File dumpFile = new File(filePath);
                     newFile.renameTo(dumpFile);
+                    JOptionPane.showMessageDialog(null, "The car has been deleted!", "Deleting successfull", JOptionPane.INFORMATION_MESSAGE);
+                    //update BR table
+                    DefaultTableModel updatedACtable = (DefaultTableModel)tableAC.getModel();
+                    for(int k = 0;k<tableAC.getModel().getRowCount();k++)
+                        {
+                            if(tableAC.getModel().getValueAt(k,2).toString().equals(car.getPlate())){
+                                updatedACtable.removeRow(k);
+                            }
+                        }
+                    txtCarBrandAC.setText("");
+                    txtCarModelAC.setText("");
+                    txtCarYearAC.setText("");
+                    txtCarPlateNumAC.setText("");
+                    txtCarSeatAC.setText("");
+                    txtCarPriceAC.setText("");                                            
                 } catch (Exception e2) {
                     e2.printStackTrace();
                 }
