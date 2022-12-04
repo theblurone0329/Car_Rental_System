@@ -205,11 +205,11 @@ public class Functions {
                 Object[] tableLines = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-2), listOfStrings.get(i-1)};
                 modelRCA1.addRow(tableLines);
                 listOfStrings.remove(i);
-        } else if(listOfStrings.get(i-1).equals("Accepted")) {
+        } else {
             String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-2), "Accepted","\n"};
             try
             {
-                FileWriter fw1 = new FileWriter("src\\Text Files\\Ongoing.txt");
+                FileWriter fw1 = new FileWriter("src\\Text Files\\Dummy.txt");
                 BufferedWriter bw1 = new BufferedWriter(fw1);
                 PrintWriter pw1 = new PrintWriter(bw1);    
 
@@ -218,66 +218,6 @@ public class Functions {
                     pw1.write(arrayAccepted[j] + ", ");
                 }
                 pw1.close();
-            }
-            catch (Exception f)
-            {
-                f.printStackTrace();
-                System.out.println("No such file exists.");
-            }
-            continue;
-        } else if(listOfStrings.get(i-1).equals("Pending")) {
-            String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-2), "Pending","\n"};
-            try
-            {
-                FileWriter fw2 = new FileWriter("src\\Text Files\\Ongoing.txt");
-                BufferedWriter bw2 = new BufferedWriter(fw2);
-                PrintWriter pw2 = new PrintWriter(bw2);    
-
-                listOfStrings.remove(i);
-                for(int j = 0; j < arrayAccepted.length; j++){
-                    pw2.write(arrayAccepted[j] + ", ");
-                }
-                pw2.close();
-            }
-            catch (Exception f)
-            {
-                f.printStackTrace();
-                System.out.println("No such file exists.");
-            }
-            continue;
-        } else if(listOfStrings.get(i-1).equals("Declined")) {
-            String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-2), "Declined","\n"};
-            try
-            {
-                FileWriter fw3 = new FileWriter("src\\Text Files\\Declined.txt");
-                BufferedWriter bw3 = new BufferedWriter(fw3);
-                PrintWriter pw3 = new PrintWriter(bw3);    
-
-                listOfStrings.remove(i);
-                for(int j = 0; j < arrayAccepted.length; j++){
-                    pw3.write(arrayAccepted[j] + ", ");
-                }
-                pw3.close();
-            }
-            catch (Exception f)
-            {
-                f.printStackTrace();
-                System.out.println("No such file exists.");
-            }
-            continue;
-        }else if(listOfStrings.get(i-1).equals("Returning")) {
-            String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-2), "Returning","\n"};
-            try
-            {
-                FileWriter fw3 = new FileWriter("src\\Text Files\\Ongoing.txt");
-                BufferedWriter bw3 = new BufferedWriter(fw3);
-                PrintWriter pw3 = new PrintWriter(bw3);    
-
-                listOfStrings.remove(i);
-                for(int j = 0; j < arrayAccepted.length; j++){
-                    pw3.write(arrayAccepted[j] + ", ");
-                }
-                pw3.close();
             }
             catch (Exception f)
             {
@@ -295,11 +235,11 @@ public class Functions {
                 Object[] tableLines = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-2), listOfStrings.get(i-1)};
                 modelORCA1.addRow(tableLines);
                 listOfStrings.remove(i);
-        } else if(listOfStrings.get(i-1).equals("Accepted")) {
+        } else{
             String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-2), "Accepted","\n"};
             try
             {
-                FileWriter fw1 = new FileWriter("src\\Text Files\\Ongoing.txt");
+                FileWriter fw1 = new FileWriter("src\\Text Files\\Dummy.txt");
                 BufferedWriter bw1 = new BufferedWriter(fw1);
                 PrintWriter pw1 = new PrintWriter(bw1);    
 
@@ -308,66 +248,6 @@ public class Functions {
                     pw1.write(arrayAccepted[j] + ", ");
                 }
                 pw1.close();
-            }
-            catch (Exception f)
-            {
-                f.printStackTrace();
-                System.out.println("No such file exists.");
-            }
-            continue;
-        } else if(listOfStrings.get(i-1).equals("Pending")) {
-            String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-2), "Pending","\n"};
-            try
-            {
-                FileWriter fw2 = new FileWriter("src\\Text Files\\Ongoing.txt");
-                BufferedWriter bw2 = new BufferedWriter(fw2);
-                PrintWriter pw2 = new PrintWriter(bw2);    
-
-                listOfStrings.remove(i);
-                for(int j = 0; j < arrayAccepted.length; j++){
-                    pw2.write(arrayAccepted[j] + ", ");
-                }
-                pw2.close();
-            }
-            catch (Exception f)
-            {
-                f.printStackTrace();
-                System.out.println("No such file exists.");
-            }
-            continue;
-        } else if(listOfStrings.get(i-1).equals("Declined")) {
-            String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-2), "Declined","\n"};
-            try
-            {
-                FileWriter fw3 = new FileWriter("src\\Text Files\\Declined.txt");
-                BufferedWriter bw3 = new BufferedWriter(fw3);
-                PrintWriter pw3 = new PrintWriter(bw3);    
-
-                listOfStrings.remove(i);
-                for(int j = 0; j < arrayAccepted.length; j++){
-                    pw3.write(arrayAccepted[j] + ", ");
-                }
-                pw3.close();
-            }
-            catch (Exception f)
-            {
-                f.printStackTrace();
-                System.out.println("No such file exists.");
-            }
-            continue;
-        }else if(listOfStrings.get(i-1).equals("Returned")) {
-            String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-2), "Returned","\n"};
-            try
-            {
-                FileWriter fw3 = new FileWriter("src\\Text Files\\Ongoing.txt");
-                BufferedWriter bw3 = new BufferedWriter(fw3);
-                PrintWriter pw3 = new PrintWriter(bw3);    
-
-                listOfStrings.remove(i);
-                for(int j = 0; j < arrayAccepted.length; j++){
-                    pw3.write(arrayAccepted[j] + ", ");
-                }
-                pw3.close();
             }
             catch (Exception f)
             {
@@ -409,11 +289,11 @@ public class Functions {
                 Object[] tableLines = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), listOfStrings.get(i-1)};
                 modelBR1.addRow(tableLines);
                 listOfStrings.remove(i);
-            } else if(listOfStrings.get(i-1).equals("Accepted")) {
+            } else{
                 String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), "Accepted","\n"};
                 try
                 {
-                    FileWriter fw1 = new FileWriter("src\\Text Files\\Ongoing.txt");
+                    FileWriter fw1 = new FileWriter("src\\Text Files\\Dummy.txt");
                     BufferedWriter bw1 = new BufferedWriter(fw1);
                     PrintWriter pw1 = new PrintWriter(bw1);    
     
@@ -429,67 +309,7 @@ public class Functions {
                     System.out.println("No such file exists.");
                 }
                 continue;
-            } else if(listOfStrings.get(i-1).equals("Returning")) {
-                String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), "Returning","\n"};
-                try
-                {
-                    FileWriter fw2 = new FileWriter("src\\Text Files\\Ongoing.txt");
-                    BufferedWriter bw2 = new BufferedWriter(fw2);
-                    PrintWriter pw2 = new PrintWriter(bw2);    
-    
-                    listOfStrings.remove(i);
-                    for(int j = 0; j < arrayAccepted.length; j++){
-                        pw2.write(arrayAccepted[j] + ", ");
-                    }
-                    pw2.close();
-                }
-                catch (Exception f)
-                {
-                    f.printStackTrace();
-                    System.out.println("No such file exists.");
-                }
-                continue;
-            } else if(listOfStrings.get(i-1).equals("Declined")) {
-                String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-5), listOfStrings.get(i-4), listOfStrings.get(i-3), listOfStrings.get(i-2), "Declined","\n"};
-                try
-                {
-                    FileWriter fw3 = new FileWriter("src\\Text Files\\Declined.txt");
-                    BufferedWriter bw3 = new BufferedWriter(fw3);
-                    PrintWriter pw3 = new PrintWriter(bw3);    
-    
-                    listOfStrings.remove(i);
-                    for(int j = 0; j < arrayAccepted.length; j++){
-                        pw3.write(arrayAccepted[j] + ", ");
-                    }
-                    pw3.close();
-                }
-                catch (Exception f)
-                {
-                    f.printStackTrace();
-                    System.out.println("No such file exists.");
-                }
-                continue;
-            }else if(listOfStrings.get(i-1).equals("Returned")) {
-                String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-2), "Returned","\n"};
-                try
-                {
-                    FileWriter fw3 = new FileWriter("src\\Text Files\\Ongoing.txt");
-                    BufferedWriter bw3 = new BufferedWriter(fw3);
-                    PrintWriter pw3 = new PrintWriter(bw3);    
-    
-                    listOfStrings.remove(i);
-                    for(int j = 0; j < arrayAccepted.length; j++){
-                        pw3.write(arrayAccepted[j] + ", ");
-                    }
-                    pw3.close();
-                }
-                catch (Exception f)
-                {
-                    f.printStackTrace();
-                    System.out.println("No such file exists.");
-                }
-                continue;
-            }
+            } 
         }
     }
 
@@ -503,7 +323,7 @@ public class Functions {
                 String[] arrayAccepted = {listOfStrings.get(i-7), listOfStrings.get(i-6), listOfStrings.get(i-2), "Accepted","\n"};
                 try
                 {
-                    FileWriter fw1 = new FileWriter("src\\Text Files\\Ongoing.txt");
+                    FileWriter fw1 = new FileWriter("src\\Text Files\\Dummy.txt");
                     BufferedWriter bw1 = new BufferedWriter(fw1);
                     PrintWriter pw1 = new PrintWriter(bw1);    
 
