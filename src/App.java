@@ -2355,7 +2355,7 @@ public class App extends JFrame implements MouseListener{
             adminHome.setVisible(false);
 
             //Frame
-            ImageIcon icon = new ImageIcon("src\\Pics\\Company Logo.png");
+            ImageIcon icon = new ImageIcon("src\\Pics\\Logo.png");
             this.setIconImage(icon.getImage());
             this.setTitle("RentiZen");
             this.setLayout(null);
@@ -2938,9 +2938,9 @@ public class App extends JFrame implements MouseListener{
             listOfStrings = functions.fromCar(listOfStrings);
             //Check if Car Brand in list
             if (listOfStrings.contains(selected[0])) {
-                int ind = listOfStrings.indexOf(selected[0]) + 1;
                 //Check if Car Model in list
-                if (listOfStrings.get(ind).equals(selected[1])) {
+                if (listOfStrings.contains(selected[1])) {
+                    int ind = listOfStrings.indexOf(selected[1]);
                     //Check if Car Year in list
                     if (listOfStrings.get(ind+2).equals(selected[2])) {
                         //Check if Car Seats in list
@@ -2989,7 +2989,7 @@ public class App extends JFrame implements MouseListener{
                                                 pnlB.setVisible(false);
                                                 pnlBill.setVisible(false);
                                             }
-                                        } else if(!button.isSelected()) {
+                                        } else {
                                             JOptionPane.showMessageDialog(null, "Please Select a Payment Method", "Payment Method", JOptionPane.WARNING_MESSAGE);
                                         }
                                     }
