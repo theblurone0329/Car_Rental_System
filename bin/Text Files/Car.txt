@@ -1,4 +1,4 @@
-Tesla, Model S, ABC 1234, 2020, 4, 25, Available, 
+Tesla, Model S, ABC 1234, 2020, 4, 25, Not Available, 
 , Toyota, Corolla Altis, SA 0923 B, 2017, 4, 12.5, Not Available, 
 , Proton, X70, DBF 7584, 2022, 5, 14, Not Available, 
 , Proton, X50 adv, WPS 0909, 2022, 5, 14, Available, 

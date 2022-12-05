@@ -485,16 +485,16 @@ public class Functions {
 
     public String setBookingStatusTxt(List<String> listOfStrings1, int index){
         String text = "";
-        if (listOfStrings1.get(index-2).equals("Pending")){
+        if (listOfStrings1.get(index+6).equals("Pending")){
             text = "is currently pending";
-        } else if (listOfStrings1.get(index-2).equals("Accepted")){
+        } else if (listOfStrings1.get(index+6).equals("Accepted")){
             text = "has been accepted!";
-        } else if (listOfStrings1.get(index-2).equals("Declined")){
+        } else if (listOfStrings1.get(index+6).equals("Declined")){
             text = "has been declined!";
-        } else if (listOfStrings1.get(index-2).equals("Returning")){
+        } else if (listOfStrings1.get(index+6).equals("Returning")){
             text = "is completing";
-        } else if (listOfStrings1.get(index-2).equals("Returned")){
-            text = "";
+        } else if (listOfStrings1.get(index+6).equals("Returned")){
+            text = "is completed!";
         }
         return text;
     }

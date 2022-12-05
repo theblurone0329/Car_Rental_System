@@ -526,7 +526,7 @@ public class App extends JFrame implements MouseListener{
             paneRCA1 = new JScrollPane(returnedRCA, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             paneRCA1.setVisible(true);
 
-            returnedPnlRCA.setBounds(315, 220, 305, 155);
+            returnedPnlRCA.setBounds(315, 220, 320, 155);
             returnedPnlRCA.setBorder(BorderFactory.createLineBorder(new Color(225,223,186)));
             returnedPnlRCA.add(paneRCA1);
         }
@@ -580,7 +580,7 @@ public class App extends JFrame implements MouseListener{
             paneRCA2 = new JScrollPane(onRentRCA, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             paneRCA2.setVisible(true);
 
-            onRentPnlRCA.setBounds(305,35,315,155);
+            onRentPnlRCA.setBounds(315,35,320,155);
             onRentPnlRCA.setBorder(BorderFactory.createLineBorder(new Color(225,223,186)));
             onRentPnlRCA.add(paneRCA2);
 
@@ -1905,7 +1905,7 @@ public class App extends JFrame implements MouseListener{
             for(int k = 0;k<tableMR.getModel().getRowCount();k++){
                 income = income + Double.parseDouble(tableMR.getModel().getValueAt(k,5).toString());
             }
-            tableMR.setPreferredScrollableViewportSize(new Dimension(597, 270));
+            tableMR.setPreferredScrollableViewportSize(new Dimension(525, 200));
             tableMR.setFillsViewportHeight(true);
             tableMR.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
             tableMR.setBackground(new Color(27, 28, 30));
@@ -1914,14 +1914,11 @@ public class App extends JFrame implements MouseListener{
             tableMR.setFont(new Font("Segoe UI", Font.PLAIN, 13));
             tableMR.setRowHeight(30);
             
-            pane = new JScrollPane(tableMR, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            pane = new JScrollPane(tableMR, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
             pane.setVisible(true);
 
-            tablePnl.setBounds(50, 155, 597, 300);
-            tablePnl.setBorder(BorderFactory.createLineBorder(new Color(225,223,186)));
+            tablePnl.setBounds(90, 155, 540, 240);
             tablePnl.add(pane);
-
-            //Object[] rowReturns = new Object[4];
 
             //Cancel Button
             btnSearchMR.setText("Search");
@@ -2069,7 +2066,18 @@ public class App extends JFrame implements MouseListener{
 
             List<String> listOfStrings1 = new ArrayList<String>();
             listOfStrings1 = functions.fromBooking(listOfStrings1);
-            int index = listOfStrings1.size();
+
+            int index = 0;
+            int i = listOfStrings1.size();
+            while (i > 0) {
+                if (listOfStrings1.get(i-8).equals(user.getUsername())) {
+                    index = i - 8;
+                    break;
+                } else {
+                    i-=8;
+                    continue;
+                }
+            }
 
             message.setText("Your booked service for: ");
             message.setFont(new Font("TW Cen MT", Font.BOLD, 22));
@@ -2078,7 +2086,7 @@ public class App extends JFrame implements MouseListener{
             message.setLocation(370, 310);
             message.setSize(250, 26);
 
-            message2.setText(listOfStrings1.get(index-7));
+            message2.setText(listOfStrings1.get(index + 1));
             message2.setFont(new Font("TW Cen MT", Font.PLAIN, 20));
             message2.setForeground(new Color(225,223,186));
             message2.setBackground(new Color(27, 28, 30));
