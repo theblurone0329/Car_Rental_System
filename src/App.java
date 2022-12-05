@@ -2,7 +2,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.*;
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -1906,7 +1905,7 @@ public class App extends JFrame implements MouseListener{
             for(int k = 0;k<tableMR.getModel().getRowCount();k++){
                 income = income + Double.parseDouble(tableMR.getModel().getValueAt(k,5).toString());
             }
-            tableMR.setPreferredScrollableViewportSize(new Dimension(597, 1500));
+            tableMR.setPreferredScrollableViewportSize(new Dimension(597, 270));
             tableMR.setFillsViewportHeight(true);
             tableMR.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
             tableMR.setBackground(new Color(27, 28, 30));
@@ -3347,6 +3346,30 @@ public class App extends JFrame implements MouseListener{
             if(Username.trim().equals("") || Model.trim().equals("") || ReturnDate.trim().equals("")){
                 JOptionPane.showMessageDialog(null, "Blank entry detected! please select a row. ", "ERROR", JOptionPane.WARNING_MESSAGE);   
             }else{
+                List<String> listOfStrings1
+                = new ArrayList<String>();
+                Functions functions = new Functions();
+                listOfStrings1 = functions.fromCar(listOfStrings1);
+                String[] mod = Model.split(" ");
+
+                if (listOfStrings1.contains(mod[0])) {
+                    if (listOfStrings1.contains(mod[1])) {
+                        int index = listOfStrings1.indexOf(mod[0]);
+                        if (listOfStrings1.get(index+6).equals("Not Available")) {
+                            listOfStrings1.set(index+6, "Available");
+                            for(int k = 7; k < listOfStrings1.size(); k+=8){
+                                listOfStrings1.set(k, "\n");
+                            }
+                            String[] array = listOfStrings1.toArray(new String[0]);
+                            
+                            functions.toCarRewrite(array);
+                        }
+                    }
+                } else {
+                    System.out.println("NO");
+                }
+
+
                 List<String> listOfStrings
                 = new ArrayList<String>();
 
@@ -3379,14 +3402,13 @@ public class App extends JFrame implements MouseListener{
                             for(int j=0;j < array.length; j++){
                                 pw.write(array[j]+", ");
                             }
-                        //update returned table
-                        String[] row = {Username,Model,ReturnDate,"Returned"};
-                        DefaultTableModel updatedReturned = (DefaultTableModel)returnedRCA.getModel();
-                        updatedReturned.addRow(row);
-                        //update on rent table
-                        DefaultTableModel updatedOnrent = (DefaultTableModel)onRentRCA.getModel();
-                        for(int k = 0;k<onRentRCA.getModel().getRowCount();k++)
-                            {
+                            //update returned table
+                            String[] row = {Username,Model,ReturnDate,"Returned"};
+                            DefaultTableModel updatedReturned = (DefaultTableModel)returnedRCA.getModel();
+                            updatedReturned.addRow(row);
+                            //update on rent table
+                            DefaultTableModel updatedOnrent = (DefaultTableModel)onRentRCA.getModel();
+                            for(int k = 0;k<onRentRCA.getModel().getRowCount();k++) {
                                 if((onRentRCA.getModel().getValueAt(k,0).toString().equals(Username))&&
                                 (onRentRCA.getModel().getValueAt(k,1).toString().equals(Model))&&
                                 (onRentRCA.getModel().getValueAt(k,2).toString().equals(ReturnDate))){
