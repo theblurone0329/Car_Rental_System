@@ -2719,10 +2719,11 @@ public class App extends JFrame implements MouseListener{
             = new ArrayList<String>();  
             List<String> list = functions.fromCar(listOfStrings);
             if(list.contains(car.getPlate())){
-                JOptionPane.showMessageDialog(null, "Duplicated entry detected ! please enter another plate number", "Duplicated entry", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Error! Do not submit blank entries or duplicated plate number.", "Error", JOptionPane.WARNING_MESSAGE);
             }else{            String[] row = {car.getBrand(), car.getModel(), car.getPlate(), 
                 car.getYear(), car.getSeat(), car.getPrice(), "Available", "\n"};
                 functions.toCar(row);
+                JOptionPane.showMessageDialog(null, "Car Added Successfully!", "Successful", JOptionPane.INFORMATION_MESSAGE);   
                 DefaultTableModel updatedModel = (DefaultTableModel)tableAC.getModel();
                 updatedModel.addRow(row);
                 txtCarBrandAC.setText("");
@@ -2926,6 +2927,8 @@ public class App extends JFrame implements MouseListener{
             } else {
                 String[] array = {txtUsernameR.getText(), txtPasswordR.getText(), txtEmailR.getText(), txtPhoneNumR.getText(), "\n"};
                 functions.toUserDetails(array);
+                JOptionPane.showMessageDialog(null, "The account has been registered!", "Registration Successfull", JOptionPane.INFORMATION_MESSAGE);
+
             } 
         } else if(e.getSource() == txtUsernameR) {
             txtUsernameR.setText("");

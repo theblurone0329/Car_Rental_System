@@ -107,7 +107,6 @@ public class Functions {
                 pw.write(row[i] + ", ");
             }
             pw.close();
-            JOptionPane.showMessageDialog(null, "Car Added Successfully!", "Successful", JOptionPane.INFORMATION_MESSAGE);   
         
         }
         catch (Exception f)
@@ -129,7 +128,6 @@ public class Functions {
                 pw.write(row[i] + ", ");
             }
             pw.close();
-            JOptionPane.showMessageDialog(null, "Car Added Successfully!", "Successful", JOptionPane.INFORMATION_MESSAGE);   
         
         }
         catch (Exception f)
