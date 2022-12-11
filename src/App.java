@@ -2917,18 +2917,24 @@ public class App extends JFrame implements MouseListener{
             txtCarSeatAC.setText("");
             txtCarPriceAC.setText("");
         } else if(e.getSource() == btnRegisterR) {
+            String username = txtUsernameR.getText();
+            String password = txtPasswordR.getText();
+            String email = txtEmailR.getText();
+            String phone = txtPhoneNumR.getText();
+
+            User regUser = new User(username,password,email,phone);
+
             // arraylist to store strings
             List<String> listOfStrings
             = new ArrayList<String>();
    
             listOfStrings = functions.fromUserDetails(listOfStrings);
-            if (listOfStrings.contains(txtUsernameR.getText())) {
+            if (listOfStrings.contains(regUser.getUsername())) {
                 JOptionPane.showMessageDialog(null, "Username has been taken! Try another!", "Username Taken!!!", JOptionPane.WARNING_MESSAGE);
             } else {
-                String[] array = {txtUsernameR.getText(), txtPasswordR.getText(), txtEmailR.getText(), txtPhoneNumR.getText(), "\n"};
+                String[] array = {regUser.getUsername(), regUser.getPassword(), regUser.getEmail(), regUser.getPhoneNum(), "\n"};
                 functions.toUserDetails(array);
                 JOptionPane.showMessageDialog(null, "The account has been registered!", "Registration Successfull", JOptionPane.INFORMATION_MESSAGE);
-
             } 
         } else if(e.getSource() == txtUsernameR) {
             txtUsernameR.setText("");
