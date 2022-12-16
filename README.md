@@ -1,5 +1,7 @@
 ## Need to knows
 
+All code files are within the 'src' folder
+
 The program starts at Login.java 
 
 The main program that houses all the UI designs are in App.java
