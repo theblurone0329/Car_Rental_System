@@ -3,4 +3,5 @@ Username, eg: Toyota eg: Corolla Altis, 17:00, 2022-12-02, Cash, 150.0, Uncomple
 , Adrian_Fu, Proton X70, 18:00, 2022-12-03, Online Banking, 154.0, Uncompleted, 
 , Username, Proton X50 adv, N/A, 2022-09-09, Online Banking, 336.0, Uncompleted, 
 , HamidKarim, Tesla Model S, 17:00, 2022-12-05, Cash, 250.0, Uncompleted, 
+, Adrian_Fu, Proton Waja, 17:00, 2022-12-28, Online Banking, 49.0, Uncompleted, 
 , 

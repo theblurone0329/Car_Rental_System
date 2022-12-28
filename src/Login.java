@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
@@ -150,7 +151,7 @@ public class Login extends JFrame implements MouseListener{
             if(list.contains(user)) {
                 int index = list.indexOf(user);
                 if(pwd.equals(list.get(index + 1))) {
-                    System.out.println("Login Successful");
+                    JOptionPane.showMessageDialog(null, "Login Successful", "Login", JOptionPane.INFORMATION_MESSAGE);
                     this.setVisible(false);
                     User user1 = new User(user, pwd, list.get(index + 2), list.get(index + 3), list.get(index - 1));
                     App hP;
@@ -163,10 +164,10 @@ public class Login extends JFrame implements MouseListener{
                     }
                     
                 } else {
-                    System.out.println("Login Denied Pwd");
+                    JOptionPane.showMessageDialog(null, "You have input the wrong credentials. Try Again", "Wrong Credentials", JOptionPane.WARNING_MESSAGE);
                 }
             } else {
-                System.out.println("Login Denied User");
+                JOptionPane.showMessageDialog(null, "You have input the wrong credentials. Try Again", "Wrong Credentials", JOptionPane.WARNING_MESSAGE);
             }
             
         } else if(e.getSource() == txtUsername) {
